@@ -1,9 +1,7 @@
-"""Giudice Groq opzionale di naturalezza a coppie; i piani sono offline per default.
+"""Giudice Groq opzionale di naturalezza a coppie.
 
 Il modello giudica la scrittura, non l'evasione dei detector o la fedeltà
-semantica. Le decisioni AB/BA sono conservate separatamente. Le decisioni API
-e le valutazioni sostitutive dell'assistente non vengono mai presentate
-come annotazioni umane.
+semantica. Le decisioni AB/BA sono conservate separatamente. 
 """
 from __future__ import annotations
 from collections import Counter
@@ -68,9 +66,6 @@ def _kappa(predicted, reference):
 def validate_ratings(plan, judgments, ratings_csv, rating_key_csv, *, label_source):
     """Confronta le preferenze a coppie con valutazioni da 1 a 5 di provenienza esplicita.
 
-    Le etichette dell'assistente servono come diagnostica sostitutiva, mai come
-    riferimento umano. Solo le coppie complete e coerenti fra ordini entrano nel
-    calcolo della concordanza; va riportata anche la copertura.
     """
     if label_source not in {'human', 'assistant_proxy', 'other_proxy'}:
         raise ValueError('Explicit label_source must be human, assistant_proxy, or other_proxy')
