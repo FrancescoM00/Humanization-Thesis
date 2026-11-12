@@ -7,11 +7,7 @@
 *.pdf -text
 *.png -text
 
-# Nello ZIP di consegna la guida è soltanto il README principale.
-data/README.md export-ignore
-data/**/README.md export-ignore
-docs/**/README.md export-ignore
-results/**/README.md export-ignore
-docs/methodology.md export-ignore
-docs/organization.md export-ignore
-docs/reproducibility.md export-ignore
+# Nello ZIP l'unico file Markdown è il README principale.
+*.md export-ignore
+*.MD export-ignore
+/README.md -export-ignore
