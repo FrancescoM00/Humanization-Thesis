@@ -12,6 +12,6 @@ Verifica dei CSV dalla radice del progetto:
 python experiments/00_data.py --config configs/datasets.yaml --mode reproduce
 ```
 
-`--mode compute` prepara anche un campione con gli stessi criteri di pulizia e campionamento. Il confronto fra umano e macchina conserva gli identificatori delle fonti: i testi di una stessa origine non diventano osservazioni indipendenti. I file `SOURCE.json` registrano provenienza scientifica, nomi relativi dei file e SHA-256 verificabili.
+`--mode compute` prepara anche un campione con gli stessi criteri di pulizia e campionamento. 
 
 Per il flusso dei comandi vedere [reproducibility](../docs/reproducibility.md).
