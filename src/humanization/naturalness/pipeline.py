@@ -1,10 +1,3 @@
-"""Giudice opzionale Groq per confrontare la naturalezza di due testi; i piani
-vengono preparati senza connessione per impostazione predefinita.
-
-Il modello valuta la scrittura, non l’evasione dei detector o la fedeltà semantica.
-I giudizi negli ordini AB/BA vengono conservati separatamente. I giudizi API e le
-valutazioni dell’assistente non vengono mai presentati come annotazioni umane.
-"""
 from __future__ import annotations
 from collections import Counter
 import csv
@@ -24,12 +17,7 @@ from .groq import GroqClient, APIError, _retry_seconds, parse_judgment
 from humanization.evaluation.naturalness import summarize_orders, canonical_preference
 
 def run_plan(plan, output, *, execute=False, client=None, max_requests=6, max_retries=2, max_retry_wait=30, sleep=time.sleep):
-    """Riprende un piano congelato; il budget conta tutti i tentativi POST, comprese le ripetizioni.
-
-    Un’esecuzione ripresa può aumentare esplicitamente max_requests, ma non
-    azzera mai implicitamente le richieste già utilizzate. In modalità di
-    pianificazione non viene letta alcuna chiave API.
-    """
+    
     if max_requests < 1 or max_retries < 0 or (not 0 <= max_retry_wait <= 60):
         raise ValueError('Invalid explicit request or retry budget')
     output = Path(output)
