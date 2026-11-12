@@ -1,10 +1,5 @@
 """Valutazione a soglia congelata di un test dedicato alle espressioni di cautela.
 
-Lo score primario è il minimo bidirezionale sul documento usato in precedenza.
-La soglia di supporto non viene mai stimata qui. L'intento delle regole e la
-revisione dell'assistente restano distinti dalle etichette umane indipendenti;
-l'AUC usa sempre il rischio di alterazione ``-support`` e non viene invertita
-se il valore osservato è inferiore a un mezzo.
 """
 from __future__ import annotations
 
