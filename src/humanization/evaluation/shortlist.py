@@ -1,10 +1,8 @@
 """Selezione delle feature sul solo training e validazione per gruppi di un insieme compatto.
 
 L'insieme fisso precedente è esplicitamente esplorativo. Questo modulo valida
-una nuova procedura di selezione; non annulla la precedente selezione sul
-campione completo. Le righe umano/macchina sono associazioni del disegno
-sperimentale, non parafrasi semantiche presunte. Tutto il preprocessing e la
-selezione supervisionata usano esclusivamente le righe di training.
+una nuova procedura di selezione senza annullare la precedente selezione sul
+campione completo. 
 """
 from __future__ import annotations
 
@@ -41,12 +39,7 @@ def sha256(path: Path) -> str:
 
 
 def prepare_documents(frame: pd.DataFrame) -> pd.DataFrame:
-    """Valida il disegno congelato e associa agli umani il generatore macchina abbinato.
-
-    Questo esperimento ammette esattamente un umano e un testo macchina per gruppo
-    di fonte. Se l'input cambia, si interrompe: non vengono modificati implicitamente
-    né i pesi né il successivo calcolo dell'incertezza per gruppi.
-    """
+    
     required = {"id", "pair_id", "group_id", "domain", "generator", "label", "n_words"}
     missing = required.union(FEATURE_SCHEMA).difference(frame.columns)
     if missing:
@@ -80,13 +73,7 @@ def select_training_features(
     n_features: int = 4,
     max_abs_spearman: float = 0.85,
 ) -> tuple[list[str], pd.DataFrame]:
-    """Ordina i valori osservati di |g di Hedges| sul solo training e riduce la ridondanza.
-
-    Le correlazioni usano mediane stimate sulle stesse righe di training. Gli effetti
-    non definiti, anche per varianza aggregata entro classe nulla, non entrano nella
-    graduatoria. Le parità esatte sono risolte per nome della feature. Né le righe
-    di validazione né l'appartenenza alla shortlist precedente influenzano la selezione.
-    """
+    """Ordina i valori osservati di |g di Hedges| sul solo training """
     if n_features < 1 or not 0 < max_abs_spearman <= 1:
         raise ValueError("Invalid selection settings")
     x = train[features].replace([np.inf, -np.inf], np.nan).astype(float)
@@ -190,10 +177,6 @@ def iter_validation_splits(documents: pd.DataFrame, cv_seeds=DEFAULT_CV_SEEDS, n
     all_indices = np.arange(len(documents))
     groups = documents.group_id.astype(str).to_numpy()
     for repeat, seed in enumerate(cv_seeds):
-        # Quando ogni gruppo contiene [un umano, un testo macchina], sklearn 1.7.2
-        # può produrre partizioni identiche con semi diversi: mescolare conteggi di
-        # classe identici per gruppo non cambia il loro ordine. Si rietichettano quindi
-        # prima i gruppi casualmente, senza usare feature o modificare gli abbinamenti.
         unique_groups = np.unique(groups)
         permutation = np.random.default_rng(int(seed)).permutation(len(unique_groups))
         randomized_codes = dict(zip(unique_groups, permutation))
