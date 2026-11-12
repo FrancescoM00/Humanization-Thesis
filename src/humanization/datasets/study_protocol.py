@@ -1,4 +1,4 @@
-"""Conserva il pannello originale di 126 fonti e dichiara il trattamento degli input prima dell'inferenza."""
+"""Conserva l'esperimento di 126 fonti e dichiara il trattamento degli input prima dell'inferenza."""
 from __future__ import annotations
 
 import csv
