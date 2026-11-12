@@ -1,4 +1,4 @@
-"""Prepara pannelli locali fissati, senza eseguire generatori o detector."""
+"""Prepara gruppi di testi preselezionati, senza eseguire generatori o detector."""
 import argparse
 from pathlib import Path
 import sys
