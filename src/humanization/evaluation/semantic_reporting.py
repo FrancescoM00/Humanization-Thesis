@@ -1,4 +1,4 @@
-"""Riporta le metriche semantiche eseguite e distingue le fasi non disponibili."""
+"""Riporta le metriche semantiche eseguite """
 from __future__ import annotations
 import json
 from pathlib import Path
@@ -61,8 +61,7 @@ def write_semantic_report(pairs, output, seed=42):
             valid = part.dropna(subset=[metric])
             if not len(valid):
                 continue
-            # Le fonti, non i diversi editor o varianti della stessa fonte, sono
-            # le unità indipendenti del bootstrap e ricevono lo stesso peso.
+            
             values = valid.groupby('source_id')[metric].mean()
             low, high = _interval(values.to_numpy(), rng)
             rows.append(dict(zip(['dataset', 'perturbation', 'comparison'], key), metric=metric,
