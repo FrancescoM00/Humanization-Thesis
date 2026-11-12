@@ -1,9 +1,8 @@
 """Valuta detector aperti con calibrazione sui soli umani e ASR condizionato.
 
 Gli score dei detector sono medie pesate per token di blocchi completi non
-sovrapposti. Sono punteggi del modello, non probabilità calibrate di paternità
-umana. Ogni detector ha una propria soglia fissata; il voto di maggioranza dei
-tre modelli combina decisioni binarie, mai score grezzi. Le generazioni fallite
+sovrapposti, sono punteggi del modello. Ogni detector ha una propria soglia fissata; 
+il voto di maggioranza dei tre modelli combina decisioni binarie, mai score grezzi. Le generazioni fallite
 rimangono nei denominatori dell'ASR.
 """
 from __future__ import annotations
