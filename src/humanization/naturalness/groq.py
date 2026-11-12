@@ -1,9 +1,7 @@
-"""Giudice opzionale Groq per confrontare la naturalezza di due testi; i piani
-vengono preparati senza connessione per impostazione predefinita.
+"""Giudice opzionale Groq per confrontare la naturalezza di due testi.
 
 Il modello valuta la scrittura, non l’evasione dei detector o la fedeltà semantica.
-I giudizi negli ordini AB/BA vengono conservati separatamente. I giudizi API e le
-valutazioni dell’assistente non vengono mai presentati come annotazioni umane.
+I giudizi negli ordini AB/BA vengono conservati separatamente. 
 """
 from __future__ import annotations
 from collections import Counter
@@ -69,7 +67,7 @@ def _safe_provider_error(response, api_key):
     return ' '.join(detail.split())[:800] or 'No provider detail returned'
 
 class GroqClient:
-    """Solo l’host Groq prestabilito riceve la chiave fornita dall’ambiente."""
+    
 
     def __init__(self, api_key=None, *, timeout=120, session=None):
         import requests
