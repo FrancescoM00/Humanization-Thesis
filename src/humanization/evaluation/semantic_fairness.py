@@ -1,8 +1,5 @@
-"""Aggregazione equa, errori distribuiti e diagnostica della lunghezza su fonti congelate.
-
-Tutti gli score primari sono continui. La calibrazione serve solo a stimare
-percentili di riferimento opzionali condizionati alla lunghezza; non viene
-mai usata per invertire un'AUC.
+"""Aggregazione equa. La calibrazione serve solo a stimare
+percentili di riferimento opzionali condizionati alla lunghezza.
 """
 from __future__ import annotations
 
@@ -257,7 +254,7 @@ def _weighted_quantile(values, weights, quantiles):
 
 
 def length_percentiles(frame, quality, output):
-    """Stima i percentili di riferimento sui soli positivi di calibrazione, mai una soglia."""
+    """Stima i percentili di riferimento sui positivi di calibrazione"""
     calibration = frame[(frame.dataset == 'opai_positive') & (frame.evaluation_split == 'calibration')]
     if calibration.empty:
         return pd.DataFrame(index=frame.index), None
