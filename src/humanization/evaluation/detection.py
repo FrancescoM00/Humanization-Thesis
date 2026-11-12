@@ -1,11 +1,3 @@
-"""Valutazione dei detector aperti con calibrazione sui soli umani e ASR condizionato.
-
-Gli score dei detector sono medie ponderate per token su segmenti completi e
-non sovrapposti. Sono punteggi del modello, non probabilità calibrate di paternità
-umana. Ogni detector ha una propria soglia congelata; il voto di maggioranza
-fra tre modelli combina decisioni binarie, mai score grezzi. Le generazioni
-fallite restano nei denominatori dell'ASR.
-"""
 from __future__ import annotations
 from collections import defaultdict
 import gc
@@ -23,11 +15,6 @@ from humanization.datasets.records import read_jsonl, digest, text_records, _sco
 
 def calibrate_threshold(scores, target_fpr=0.05):
     """Fissa un quantile empirico conservativo degli umani, con confronto stretto score > t.
-
-    Al massimo floor(n * target_fpr) testi di calibrazione superano la soglia,
-    anche in presenza di punteggi uguali. È un limite empirico di calibrazione,
-    non una garanzia sui futuri testi umani. Nessuno score macchina o riscritto
-    entra in questo calcolo.
     """
     values = np.asarray(scores, dtype=float)
     if values.ndim != 1 or not len(values) or (not np.isfinite(values).all()):
@@ -39,7 +26,7 @@ def calibrate_threshold(scores, target_fpr=0.05):
     return {'threshold': threshold, 'calibration_n': len(values), 'target_fpr': target_fpr, 'calibration_fpr': float(np.mean(values > threshold)), 'decision': 'AI iff score > threshold; ties are classified human'}
 
 def summarize_detection(cohort, rewrites, scores, config):
-    """Restituisce soglie, riepiloghi per classificatore e una macro senza score grezzi."""
+    """Restituisce soglie e riepiloghi per classificatore """
     expected_rows = text_records(cohort, rewrites)
     expected = {_score_key(row) for row in expected_rows}
     expected_metadata = {_score_key(row): row for row in expected_rows}
