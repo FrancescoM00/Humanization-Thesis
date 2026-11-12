@@ -3,7 +3,7 @@
 Il punteggio è un rapporto, non una probabilità: valori più bassi indicano un
 testo più simile a quelli IA. Il numeratore è la NLL dei token osservati secondo
 il performer; il denominatore è l'entropia incrociata dall'observer al performer.
-Non riutilizza implicitamente soglie dei classificatori o voti di maggioranza.
+
 """
 from __future__ import annotations
 import gc
@@ -31,8 +31,7 @@ def token_windows(ids, max_tokens=512):
 
     La maschera del denominatore esclude il primo token ripetuto delle finestre
     successive. Conserva l'entropia incrociata dell'ultima posizione, come il
-    Binoculars originale per una singola finestra. Il primo token non è un
-    obiettivo della NLL dei token osservati.
+    Binoculars originale per una singola finestra. 
     """
     if len(ids) < 2 or max_tokens < 2:
         raise ValueError('Binoculars needs at least two tokens and context size >= 2')
