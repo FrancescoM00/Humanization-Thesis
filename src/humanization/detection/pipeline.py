@@ -1,10 +1,8 @@
 """Valuta detector aperti con calibrazione sui soli umani e ASR condizionato.
 
 I punteggi dei detector sono medie pesate per token su blocchi completi e non
-sovrapposti. Sono punteggi dei modelli, non probabilità calibrate di paternità
-umana. Ogni detector usa una propria soglia congelata; il voto di maggioranza
-fra tre modelli combina decisioni binarie, mai punteggi grezzi. Le generazioni
-fallite restano nei denominatori dell'ASR.
+sovrapposti.  Ogni detector usa una propria soglia congelata, il voto di maggioranza
+fra tre modelli combina decisioni binarie.
 """
 from __future__ import annotations
 from collections import defaultdict
