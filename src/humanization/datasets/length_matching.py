@@ -1,9 +1,4 @@
 """Controlla il numero esatto di parole con prefissi allineati per fonte e conclusi a fine frase.
-
-Un testo umano non viene abbinato alla generazione di un'altra fonte. Si seleziona
-un generatore per ogni riga originale, mantenendo validi i test appaiati e la
-cross-validation con fonti separate. Le parole dei prefissi seguono la definizione
-spaCy is_alpha usata dall'estrattore.
 """
 from __future__ import annotations
 
@@ -28,9 +23,9 @@ def sentence_prefixes(text: str, tokenizer, minimum: int = 90,
     """Indicizza i prefissi iniziali conclusi a fine frase per numero esatto di parole lessicali.
 
     Si correggono soltanto gli spazi e un eventuale frammento finale incompleto.
-    I tagli usano la punteggiatura, con controlli per decimali e abbreviazioni,
-    senza garantire la completezza grammaticale. I caratteri interni restano
-    invariati: le parole non vengono troncate a conteggi arbitrari né aggiunte.
+    I tagli usano la punteggiatura, senza garantire la completezza grammaticale.
+    I caratteri interni restano invariati: le parole non vengono troncate a 
+    conteggi arbitrari né aggiunte.
     """
     text = trim_incomplete_tail(process_spaces(text))
     if not text:
