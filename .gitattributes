@@ -1,0 +1,8 @@
+# Keep source code stable and preserve the exact bytes of frozen research data.
+* text=auto eol=lf
+*.csv -text -whitespace
+*.jsonl -text -whitespace
+*.json -text
+*.npz -text
+*.pdf -text
+*.png -text
