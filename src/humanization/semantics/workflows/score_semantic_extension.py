@@ -64,6 +64,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'stage': None, 'data_dir': ROOT / 'data/semantic_extension', 'output': ROOT / 'results/new_runs/03_semantics/extension', 'previous_data': ROOT / 'data/semantic_full', 'previous_output': ROOT / 'results/published/03_semantics/baseline', 'threads': 4}
+    values = {'stage': None, 'data_dir': ROOT / 'data/processed/semantic_extension', 'output': ROOT / 'results/new_runs/03_semantics/extension', 'previous_data': ROOT / 'data/processed/semantic_baseline', 'previous_output': ROOT / 'results/published/03_semantics/baseline', 'threads': 4}
     values.update(overrides)
     return SimpleNamespace(**values)

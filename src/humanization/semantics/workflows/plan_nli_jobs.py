@@ -44,6 +44,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'data_dir': ROOT / 'data/semantic_full', 'output': ROOT / 'results/new_runs/03_semantics/baseline', 'model': ROOT / 'data/models/nli'}
+    values = {'data_dir': ROOT / 'data/processed/semantic_baseline', 'output': ROOT / 'results/new_runs/03_semantics/baseline', 'model': ROOT / 'data/models/nli'}
     values.update(overrides)
     return SimpleNamespace(**values)

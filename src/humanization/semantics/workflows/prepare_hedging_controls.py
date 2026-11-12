@@ -18,6 +18,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'protocol': ROOT / 'supplements/hedging/results/protocol.json', 'output': ROOT / 'results/new_runs/hedging'}
+    values = {'protocol': ROOT / 'configs/protocols/hedging.json', 'output': ROOT / 'results/new_runs/hedging'}
     values.update(overrides)
     return SimpleNamespace(**values)

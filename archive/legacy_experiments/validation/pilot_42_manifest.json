@@ -1,9 +1,0 @@
-{
-  "n_detectors": 4,
-  "models_executed": false,
-  "reference_checks": 15,
-  "reference_mismatched_columns": 0,
-  "bootstrap_draws": 5000,
-  "bootstrap_seed": 42,
-  "output": "runs/reproduced_pilot_42"
-}

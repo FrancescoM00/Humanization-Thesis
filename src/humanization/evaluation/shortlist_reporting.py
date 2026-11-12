@@ -43,9 +43,9 @@ def write_report(results: Path | str, protocol_path: Path | str | None = None) -
     frequencies = pd.read_csv(results / "selection_frequency.csv")
     references = pd.read_csv(results / "random_reference_summary.csv")
     selections = pd.read_csv(results / "selections.csv")
-    manifest = json.loads((results / "manifest.json").read_text())
-    stats = json.loads((results / "statistics_manifest.json").read_text())
     protocol = json.loads((Path(protocol_path) if protocol_path else results / "protocol.json").read_text())
+    manifest = json.loads((results / protocol.get("fit_manifest_file", "manifest.json")).read_text())
+    stats = json.loads((results / "statistics_manifest.json").read_text())
     def metric(name, config):
         return metrics[(metrics.protocol == name) & (metrics.scope == "macro") &
                        (metrics.configuration == config)].iloc[0]
@@ -246,7 +246,7 @@ Le conclusioni restano sul riconoscimento umano/macchina in questo corpus. Numer
 
 ## Codice, materiali e verifica
 
-Il protocollo è in [protocol.json](protocol.json) e nella specifica `SHORTLIST_VALIDATION.md` alla radice del progetto. `src/humanization/semantics/workflows/run_shortlist_validation.py` esegue i modelli; `src/humanization/evaluation/workflows/analyze_shortlist_validation.py` calcola tabelle, intervalli, grafici e questo report. I moduli sono `stylometry/shortlist_validation.py`, `stylometry/shortlist_statistics.py` e `stylometry/shortlist_report.py`.
+Il protocollo operativo è `configs/protocols/shortlist.json`. `python experiments/01_stylometry.py --analysis shortlist --mode compute` esegue i classificatori; `--mode reproduce` ricalcola tabelle, intervalli, grafici e questo report dalle predizioni salvate. Le implementazioni sono `humanization.evaluation.shortlist`, `humanization.evaluation.shortlist_statistics` e `humanization.evaluation.shortlist_reporting`.
 
 Sono salvati: [metriche](metrics.csv), [differenze appaiate](paired_differences.csv), [frequenze di tutte le feature](selection_frequency.csv), [famiglie selezionate](selection_family_frequency.csv), [quaterne casuali](random_subsets.csv), [loro risultati](random_subset_metrics.csv), [distribuzioni casuali](random_reference_summary.csv), [selezioni per training](selections.csv), [coefficienti delle quattro feature](coefficients.csv), [audit delle partizioni](split_audit.csv) e predizioni numeriche compresse in `predictions.npz`.
 

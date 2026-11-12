@@ -171,6 +171,18 @@ def _checkpoint(root, repo_id, revision, *, complete=True):
     return snapshot
 
 
+def test_read_only_cache_roots_include_project_and_platform_temp(tmp_path, monkeypatch):
+    import humanization.rewriting.loading as module
+    project, platform_temp = tmp_path/'project', tmp_path/'system_temp'
+    monkeypatch.setattr(module, 'project_root', lambda: project)
+    monkeypatch.setattr(module.tempfile, 'gettempdir', lambda: str(platform_temp))
+    roots = module._cached_hf_roots()
+    assert project/'.cache/huggingface/hub' in roots
+    assert platform_temp/'humanization/huggingface/hub' in roots
+    assert not any('/desktop/' in str(root) for root in roots)
+    assert not project.exists() and not platform_temp.exists()
+
+
 @pytest.mark.parametrize('wrong_revision', [False, True])
 def test_strict_cached_reuse_rejects_incomplete_or_unpinned_weights_before_cuda(
         tmp_path, monkeypatch, wrong_revision):

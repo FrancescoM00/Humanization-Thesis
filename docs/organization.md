@@ -27,7 +27,6 @@ Humanization/
 │   ├── published/
 │   └── new_runs/
 ├── docs/
-├── archive/legacy_experiments/
 └── tests/
 ```
 
@@ -65,8 +64,8 @@ Moduli aggiuntivi mantengono separate le analisi più specifiche, come shortlist
 
 La trasformazione di una fonte non deve cambiare il suo identificatore per diventare una nuova osservazione indipendente. I confronti mantengono insieme le versioni collegate.
 
-## Dati storici e nuove esecuzioni
+## Risultati di riferimento e nuove esecuzioni
 
-`results/published/` contiene i riferimenti storici. `data/processed/` contiene input e punteggi necessari alla loro rianalisi. I nuovi output sono separati. I manifest originali identificano il codice e i dati dell'esecuzione storica; non vengono reinterpretati come prova che i modelli siano stati eseguiti di nuovo con questa organizzazione.
+`results/published/` contiene i risultati di riferimento. `data/processed/` contiene input e punteggi necessari alla loro rianalisi. I nuovi output sono separati. Le configurazioni eseguibili sono relative alla cartella del progetto; i manifest di esecuzione registrano gli input e i parametri effettivamente usati. Ricalcolare una tabella dai punteggi salvati è distinto dall'eseguire nuovamente un modello.
 
-L'archivio storico non è un passaggio necessario per eseguire gli esperimenti correnti. Le entry point operative sono i file numerati di `experiments/`.
+Le entry point operative sono i file numerati di `experiments/`. I parametri dei controlli specifici sono in `configs/protocols/`.

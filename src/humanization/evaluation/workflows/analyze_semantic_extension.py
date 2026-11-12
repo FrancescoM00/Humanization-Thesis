@@ -33,6 +33,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'pairs': ROOT / 'data/semantic_extension/pairs.jsonl', 'scores': ROOT / 'results/published/03_semantics/extension/scores.csv', 'output': ROOT / 'results/new_runs/03_semantics/extension', 'rescaled': None, 'review': None, 'seed': 42, 'bootstrap': 1000, 'target_fpr': 0.1}
+    values = {'pairs': ROOT / 'data/processed/semantic_extension/pairs.jsonl', 'scores': ROOT / 'results/published/03_semantics/extension/scores.csv', 'output': ROOT / 'results/new_runs/03_semantics/extension', 'rescaled': None, 'review': None, 'seed': 42, 'bootstrap': 1000, 'target_fpr': 0.1}
     values.update(overrides)
     return SimpleNamespace(**values)

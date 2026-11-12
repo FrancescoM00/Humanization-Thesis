@@ -3,7 +3,7 @@
   "n_fresh_entity_and_local_control_pairs": 290,
   "input_pairs_exactly_identical": true,
   "cached_hashes_and_chunk_texts_identical": true,
-  "embedding_model_directory": "/workspace/Humanization/data/models/embedding",
+  "embedding_model_directory": "data/models/embedding",
   "historical_embedding_metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820",
   "recomputed_embedding_metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
   "current_metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
@@ -97,7 +97,7 @@
       "candidate_text_set_differs": true
     }
   ],
-  "fresh_alignment_snapshot": "/workspace/Humanization/data/semantic_clean/alignment_recomputed.json",
+  "fresh_alignment_snapshot": "data/processed/semantic_clean/alignment_recomputed.json",
   "embedding_cosine_scores_recomputed_and_not_replaced": true,
   "nli_not_planned_or_executed_at_freeze": true,
   "reason": "Hold the retrieval factor fixed on identical controls; near ties can reorder after floating-point recomputation.",

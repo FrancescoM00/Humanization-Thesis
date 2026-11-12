@@ -23,7 +23,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from threadpoolctl import threadpool_limits
 
-from humanization.paths import resolve_legacy_path
+from humanization.paths import resolve_path
 
 from humanization.stylometry.features import FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES
 from humanization.evaluation.shortlist import prepare_documents, select_training_features, sha256
@@ -81,7 +81,7 @@ def load_saved_splits(documents: pd.DataFrame, membership: pd.DataFrame):
 
 def _resolve(root: Path, path) -> Path:
     value = Path(path)
-    return resolve_legacy_path(root, value).resolve()
+    return resolve_path(root, value).resolve()
 
 
 def _verified_hash(path: Path, expected: str | None, description: str) -> str:
@@ -103,19 +103,21 @@ def run_robustness(protocol_path: Path, output: Path, root: Path) -> dict:
     source = _resolve(root, protocol.get("input_csv", "results/published/02_stylometry/length_matched/features.csv"))
     if output in {parent, source.parent}:
         raise ValueError("Use a new results directory; parent results are immutable")
+    parent_protocol_file = parent / protocol.get("parent_protocol_file", "protocol.json")
+    parent_manifest_file = parent / protocol.get("parent_manifest_file", "manifest.json")
     checks = {
         source: _verified_hash(source, protocol.get("input_sha256"), "input features"),
-        parent / "protocol.json": _verified_hash(parent / "protocol.json", protocol.get("parent_protocol_sha256"), "parent protocol"),
+        parent_protocol_file: _verified_hash(parent_protocol_file, protocol.get("parent_protocol_sha256"), "parent protocol"),
         parent / "predictions.npz": _verified_hash(parent / "predictions.npz", protocol.get("parent_predictions_sha256"), "parent predictions"),
         parent / "split_membership.csv": _verified_hash(parent / "split_membership.csv", protocol.get("parent_splits_sha256"), "parent splits"),
     }
-    old_protocol = json.loads((parent / "protocol.json").read_text())
-    parent_manifest = json.loads((parent / "manifest.json").read_text())
+    old_protocol = json.loads((parent_protocol_file).read_text())
+    parent_manifest = json.loads((parent_manifest_file).read_text())
     if parent_manifest.get("status") != "completed":
         raise ValueError("Parent validation has not completed")
     if parent_manifest.get("input_sha256") != checks[source]:
         raise ValueError("The parent used a different input feature table")
-    if parent_manifest.get("protocol_sha256") != checks[parent / "protocol.json"]:
+    if parent_manifest.get("protocol_sha256") != checks[parent_protocol_file]:
         raise ValueError("Parent protocol differs from its run manifest")
     settings = protocol.get("selection", {})
     for field in ("n_features", "max_abs_spearman"):
@@ -249,7 +251,7 @@ def run_robustness(protocol_path: Path, output: Path, root: Path) -> dict:
     manifest = {
         "status": "completed", "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "protocol_sha256": hashlib.sha256(protocol_bytes).hexdigest(),
-        "input_sha256": checks[source], "parent_protocol_sha256": checks[parent / "protocol.json"],
+        "input_sha256": checks[source], "parent_protocol_sha256": checks[parent_protocol_file],
         "parent_predictions_sha256": checks[parent / "predictions.npz"],
         "parent_splits_sha256": checks[parent / "split_membership.csv"],
         "parent_results": str(parent.relative_to(root)) if parent.is_relative_to(root) else str(parent),
@@ -267,5 +269,7 @@ def run_robustness(protocol_path: Path, output: Path, root: Path) -> dict:
         "all_length_dependence_eliminated": False,
         "humanization_quality_evaluated": False,
     }
+    if protocol.get("fit_manifest_file"):
+        (output / protocol["fit_manifest_file"]).write_text(json.dumps(manifest, indent=2)+"\n", encoding="utf-8")
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2)+"\n", encoding="utf-8")
     return manifest

@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 from threadpoolctl import threadpool_limits
 
-from humanization.paths import resolve_legacy_path
+from humanization.paths import resolve_path
 
 from humanization.stylometry.features import FEATURE_GROUPS, FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES
 from humanization.evaluation.shortlist_statistics import (
@@ -76,7 +76,7 @@ def analyze_results(results: Path | str, protocol_path: Path | str | None = None
     protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
     parent = Path(protocol["parent_results"])
     if not parent.is_absolute():
-        parent = resolve_legacy_path(root, parent)
+        parent = resolve_path(root, parent)
     parent = parent.resolve()
     documents = pd.read_csv(results / "documents.csv")
     parent_documents = pd.read_csv(parent / "documents.csv")
@@ -98,7 +98,7 @@ def analyze_results(results: Path | str, protocol_path: Path | str | None = None
     seed = int(protocol.get("bootstrap_seed", 20261112))
     if n_bootstrap < 2:
         raise ValueError("At least two bootstrap draws are required")
-    parent_protocol = json.loads((parent / "protocol.json").read_text())
+    parent_protocol = json.loads((parent / protocol.get("parent_protocol_file", "protocol.json")).read_text())
     if (n_bootstrap != int(parent_protocol["n_bootstrap"])
             or seed != int(parent_protocol["bootstrap_seed"])):
         raise ValueError("Use the same bootstrap settings as the parent experiment")
@@ -244,7 +244,7 @@ def write_report(results: Path | str, protocol_path: Path | str | None = None) -
     differences = pd.read_csv(results / "paired_differences.csv")
     comparison = pd.read_csv(results / "selection_comparison.csv")
     selections = pd.read_csv(results / "selections.csv")
-    fit = json.loads((results / "manifest.json").read_text())
+    fit = json.loads((results / protocol.get("fit_manifest_file", "manifest.json")).read_text())
     stats = json.loads((results / "summary.json").read_text())
     def metric(p, config):
         return metrics[(metrics.protocol == p) & (metrics.scope == "macro") &
@@ -417,9 +417,9 @@ Il matching delle parole e la selezione sul solo training non eliminano differen
 
 ## Materiali e riproduzione
 
-Il [protocollo](protocol.json) identifica dati, partizioni e riferimento precedente. Sono disponibili [AUC e intervalli](metrics.csv), [differenze appaiate](paired_differences.csv), [frequenze complete](selection_frequency.csv), [confronto fra selezioni](selection_comparison.csv), [selezioni per training](selections.csv), [audit delle partizioni](split_audit.csv), [manifest dei fit](manifest.json) e [manifest statistico](statistics_manifest.json). Le predizioni complete e le AUC bootstrap sono salvate nei due file NPZ.
+Il [protocollo](protocol.json) identifica dati, partizioni e riferimento precedente. Sono disponibili [AUC e intervalli](metrics.csv), [differenze appaiate](paired_differences.csv), [frequenze complete](selection_frequency.csv), [confronto fra selezioni](selection_comparison.csv), [selezioni per training](selections.csv), [audit delle partizioni](split_audit.csv), [manifest dei fit]({protocol.get("fit_manifest_file", "manifest.json")}) e [manifest statistico](statistics_manifest.json). Le predizioni complete e le AUC bootstrap sono salvate nei due file NPZ.
 
-`src/humanization/semantics/workflows/run_shortlist_length_robustness.py` esegue i soli nuovi modelli; `src/humanization/evaluation/workflows/analyze_shortlist_length_robustness.py` ricalcola tabelle, intervalli, figure e questo report senza ripetere i fit. Gli output storici restano invariati.
+`python experiments/01_stylometry.py --analysis shortlist_100 --mode compute` esegue i soli nuovi classificatori. `--mode reproduce` ricalcola tabelle, intervalli, figure e questo report dalle predizioni salvate senza ripetere i fit. Il protocollo operativo è `configs/protocols/shortlist_robustness.json`; le implementazioni sono `humanization.evaluation.shortlist_robustness` e `humanization.evaluation.shortlist_robustness_analysis`.
 """
     path = results / "report.md"
     path.write_text(text, encoding="utf-8")

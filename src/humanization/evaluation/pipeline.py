@@ -15,7 +15,7 @@ def run(config):
         source=path('results/published/hedging')
         import shutil
         for name in ['preparation_manifest.json','discussione.md','replacements.csv']:shutil.copy2(source/name,out/name)
-        analyze(source/'pairs.jsonl',source/'nli.csv',out,source/'protocol.json',source/'assistant_review.csv');write_report(out)
+        analyze(source/'pairs.jsonl',source/'nli.csv',out,path('configs/protocols/hedging.json'),source/'assistant_review.csv');write_report(out)
         return record(out,config,mode,models_executed=False,metrics_computed=True)
     source=path(config['source']) if mode=='reproduce' else path(config['run_dir'])
     if mode!='reproduce':

@@ -1,5 +1,5 @@
 {
-  "source_file": "/workspace/Humanization/data/clean/samples.jsonl",
+  "source_file": "data/clean/samples.jsonl",
   "source_sha256": "af76cb25878c7761b9ad68d4c1164d9547884c319a47996deee58163b74cc593",
   "pairs_sha256": "8da5f641dd186d751558d2788615a1c22f738dc8d091e27a961ca4dbf49ab9f5",
   "seed": 42,
@@ -45,17 +45,17 @@
   "source_cohort_policy": "fixed_v1_eligibility",
   "code_sha256": {
     "semantics/__init__.py": "3d41cbc6218cf6d1fb9f5daa3c9204ea9a531440036c83f6dd0d72a8742edc64",
-    "semantics/aggregator_analysis.py": "e0dfa297503bf0405b694aa8496a3a48dbac65d06c9748134582cf19f0cb447a",
-    "semantics/aligned_similarity.py": "5ef41285fd9fb16d1566df649384ac0bf2f346ed9794445f0261040b5f1865ba",
-    "semantics/distributed_perturbations.py": "a8f3626eda2cf575c4894a10d60bbcabe4a026d199e0b0053b3f38b36d659fc6",
-    "semantics/fairness_analysis.py": "ed5c6872adbf3db6997006808bc70df1a80e95e9919265a89956d7c8041644a1",
-    "semantics/lexical_guards.py": "b71f8d1f0814dca4b7e51d5ff778c47d993bb19d7df22598ad952e11506ba28b",
-    "semantics/metrics.py": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
-    "semantics/opai.py": "c7abe7bf3b14771622820535eaf3f86584c7c47a7bb63ddff18ccdbc06843c7f",
-    "semantics/perturbations.py": "93e141b01966406bb09d47ccb409dc8fa7df97f5098b8d0a0e4c700a243dd6f6",
-    "semantics/positive_controls.py": "455017418156bab983913347776553f33edcac9b6d84d1228ec69244b68012b4",
-    "semantics/report.py": "6c6bfabbd7bca887bf485c45fe97f07b6d2731e3f52eb0f1cd7996c6d18b05b4",
-    "semantics/subtle_perturbations.py": "6f4d9eef614d23082eeea0e99e53519109e0109cf72b0a3723420886948055cc",
-    "semantics/touched_style.py": "8df32ec5c8e5f370f75c72c14dde1cf855fca4b2c9c8f37b4cd5d6bf21218bf8"
+    "src/humanization/evaluation/semantic.py": "e0dfa297503bf0405b694aa8496a3a48dbac65d06c9748134582cf19f0cb447a",
+    "src/humanization/semantics/aligned_similarity.py": "5ef41285fd9fb16d1566df649384ac0bf2f346ed9794445f0261040b5f1865ba",
+    "src/humanization/semantics/distributed_perturbations.py": "a8f3626eda2cf575c4894a10d60bbcabe4a026d199e0b0053b3f38b36d659fc6",
+    "src/humanization/evaluation/semantic_fairness.py": "ed5c6872adbf3db6997006808bc70df1a80e95e9919265a89956d7c8041644a1",
+    "src/humanization/semantics/lexical_guards.py": "b71f8d1f0814dca4b7e51d5ff778c47d993bb19d7df22598ad952e11506ba28b",
+    "src/humanization/semantics/metrics.py": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+    "src/humanization/datasets/opai.py": "c7abe7bf3b14771622820535eaf3f86584c7c47a7bb63ddff18ccdbc06843c7f",
+    "src/humanization/semantics/perturbations.py": "93e141b01966406bb09d47ccb409dc8fa7df97f5098b8d0a0e4c700a243dd6f6",
+    "src/humanization/semantics/positive_controls.py": "455017418156bab983913347776553f33edcac9b6d84d1228ec69244b68012b4",
+    "src/humanization/evaluation/semantic_reporting.py": "6c6bfabbd7bca887bf485c45fe97f07b6d2731e3f52eb0f1cd7996c6d18b05b4",
+    "src/humanization/semantics/subtle_perturbations.py": "6f4d9eef614d23082eeea0e99e53519109e0109cf72b0a3723420886948055cc",
+    "src/humanization/stylometry/touched.py": "8df32ec5c8e5f370f75c72c14dde1cf855fca4b2c9c8f37b4cd5d6bf21218bf8"
   }
 }

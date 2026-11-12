@@ -1,0 +1,342 @@
+{
+  "scope": "Portable descriptions of reference artifacts; model runs were not repeated",
+  "normalization": "Project-relative paths. Numerical artifacts, model identities and upstream scientific attributions are unchanged. Byte-identical source documents are retained separately by checksum.",
+  "documents": [
+    {
+      "file": "data/raw/mgtbench/SOURCE.json",
+      "reference_document_sha256": "02071465d5efeb13e4871ba0bb0e190771345a48e050ea8a4fd868fb32240a3a",
+      "portable_document_sha256": "240305af26797ee320461d00145b2befe3d093f63fbdfa2003cb4f346891b2bd",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "data/raw/opai/SOURCE.json",
+      "reference_document_sha256": "0f46b8b95a7e31ae8d221558c5142eae7f77d09c8a6ec1bfd53538506ec07381",
+      "portable_document_sha256": "973366fe83e0b36953d9de4529f74e7e8ae9c4a2b619a0aa559679cab782ff6c",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/baseline/run_metadata.json",
+      "reference_document_sha256": "90b64154520e6f4d9f261556a03bb84d0ab72c9a25308c9df4ef733d1b9d9321",
+      "portable_document_sha256": "9a2b6470ac2448e978debbbbd9014a99a66d7506519e8290e2399a533679acc2",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/length_matched/run_metadata.json",
+      "reference_document_sha256": "bcf506f5b3fdc534db2e0e13079126ec3c06269c21bbde41d0679cd8b70cfcc4",
+      "portable_document_sha256": "1961f6d913515b9c203e04c9fd82d9b8e752b1b9e3b2cacddec64067b738108b",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist/implementation_note.json",
+      "reference_document_sha256": "2d451cf9078698b0387733eda5bee3eed577c1aac052e5082d0a8f23fb2cd156",
+      "portable_document_sha256": "cee58b10a9e86286ae85531f5561798c037469ce6a0b589aaf8901709796c23a",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist/execution_manifest.json",
+      "reference_document_sha256": "c38d0c4ade44eb4b963bd6b5954d8754ffbc39a63885bfbdd88c3b03371a8717",
+      "portable_document_sha256": "0f8401665b4f0381c9080da601475ef07c77e92c9c01ec4532be99dbbc76cca4",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist/execution_protocol.json",
+      "reference_document_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
+      "portable_document_sha256": "147ee97d56e6e1159a235de89ce93a7e07f4e9cbcd03e3ee546313c6f27f7e76",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist_length_robustness/execution_manifest.json",
+      "reference_document_sha256": "2d8dcc3867f48bb6880f3d19d2f9af935de3a017fb9fcd92cf2dde6a6496723f",
+      "portable_document_sha256": "e3416cc806c44f5e8c17a4bafd2cdf788bc8cb912337f9d6f5d582918ded84d7",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist_length_robustness/execution_protocol.json",
+      "reference_document_sha256": "3a281a5cbb38bcc2245b8f5b1054105c1fa798341c711649edb71b79783e488b",
+      "portable_document_sha256": "ee02d83b20b1f7075bb09c9bfe081ec2b69241de297a53310f117e65f5c8e0bc",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/bertscore_run.json",
+      "reference_document_sha256": "e3c8779da12f6debeb997b96857bd7c2bd93f311753e7a1ad994685ced1b6de2",
+      "portable_document_sha256": "515f912edcbda2bdef985141d4230eb0781fde2e65e27e327b0d545bd31c2ee6",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/embedding_run.json",
+      "reference_document_sha256": "362213298c8edf78cb4a153e98e6c4bd3dd6c7478d647b7a0b9756c7229722c8",
+      "portable_document_sha256": "031f3b3dc9565a152cd76f67af022e6232908acf60f33e38befd25c91b2db03c",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/nli_run.json",
+      "reference_document_sha256": "aea1ffd41ab42133020fc79eb27198093245bde89e5bd0b3e180bf9a5c75583f",
+      "portable_document_sha256": "2abba41c1c127d99d8c015c8856932e4b5983e5e9805dbc0da52f52c25ea7137",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/opai_manifest.json",
+      "reference_document_sha256": "fc656d2728a81f06047176920aea8c2502aa39654c28435c6bd86d709794f1b4",
+      "portable_document_sha256": "3fb90cb3d357be38c906e59abd5a5c000be6703000d4f6fb5e71beb239b85ce3",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/preparation_manifest.json",
+      "reference_document_sha256": "fe0fea0acdf94ab2dd504737c6f81846ab0c9d9774f54ceae9c2b715fa734d13",
+      "portable_document_sha256": "5a2bc7fdc32f0d935e29c1490a4d926982c493e056de46e0d6500e798b2f3c6b",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/reproducibility_manifest.json",
+      "reference_document_sha256": "bb245fd34d869720a18e8837a7c9485a20471905e23e6030e823e3de34372b1a",
+      "portable_document_sha256": "a415199b1f3f1e0f8c85abd3b0ea76e8a816697a72f9b6e3dd3251a5c0f41779",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/bertscore_run.json",
+      "reference_document_sha256": "4df1503115cbca120b3e8b93dcefa327c7181a1f64f99977365fc498c0879ad8",
+      "portable_document_sha256": "e7acb363800b709490551da4f3b53cde035d8bff28d79e7ae2abd17c223fed0f",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/embedding_run.json",
+      "reference_document_sha256": "d54d32c91c6e5ab53cafae0345dba7b7c27507302783ea47f255debbc91b1c1f",
+      "portable_document_sha256": "2bb09daa1c99627ce24e1b2cc3efa0969953e40cf3c5a3a6b954365cbb63b53b",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/nli_run.json",
+      "reference_document_sha256": "dc10a8173ee19e52b1015cc9518f04fee0325c9d200a4af9014666db3c3aa43e",
+      "portable_document_sha256": "dd94bac105e180e9b189904a9032f1d4beda962ebace56fa0c481f2fc01eb7b8",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/opai_manifest.json",
+      "reference_document_sha256": "fc656d2728a81f06047176920aea8c2502aa39654c28435c6bd86d709794f1b4",
+      "portable_document_sha256": "3fb90cb3d357be38c906e59abd5a5c000be6703000d4f6fb5e71beb239b85ce3",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/preparation_manifest.json",
+      "reference_document_sha256": "71df23d4b472120bcf0934f04663038d90060902d42296abb33dd5d4dd0a301f",
+      "portable_document_sha256": "e8336aa0c9e125dc72ee932e3ccd0499e457be730d614eea6c251b7e8628c6ee",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/unchanged_alignment_reuse.json",
+      "reference_document_sha256": "7374932dee6b31417c8ae00ab52418d26b449dfb17e0d231f63bfe062c8480ff",
+      "portable_document_sha256": "f1d49088699c026d23bf31434aced1a707ecf39a5798a3ad89fdfab89caa22f0",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/bertscore_run.json",
+      "reference_document_sha256": "80e60d05c7fceeb5b61bece339ae15fd4780966e3d370efccae133821423cc23",
+      "portable_document_sha256": "c13b0c62c05840fd2f45e04c3fed0f78271b3237c33db689df2b4d1d40ade4ff",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/embedding_run.json",
+      "reference_document_sha256": "d5899a2fa2fb4213397d441c87dc31a20971dc49221c401cb2d789156958c159",
+      "portable_document_sha256": "c79eb13b7ee62393f9b35a4cde30dde10952b7f8d39a52b7879a061653a3cac1",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/lexical_run.json",
+      "reference_document_sha256": "738145cc9e084c605577fe7e1201fd2910f8572d0ab37c8584cfe820c45f0685",
+      "portable_document_sha256": "fb1d150af8735f95284469deced1547087a339988efa8adee8854623e855859e",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/nli_run.json",
+      "reference_document_sha256": "aac1f303ad57f05df7f213e5d57cfde61a42b20b1c9be42a279d2c48c4160ce1",
+      "portable_document_sha256": "82f5b0bdd2baf00863a9233e2ca38d9800c9168793ba53ebcf1a5d671e7725c4",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/positive_controls_manifest.json",
+      "reference_document_sha256": "d46aa2415e2fec5e630e098155cd2ff3a07772946215d62f0f1bb5a46e40b697",
+      "portable_document_sha256": "70882657bb54da897548343e50037deb52c0cfa2608c899c88d44f097e7a3be6",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/preparation_manifest.json",
+      "reference_document_sha256": "2449d1cc2fc1a7506c8aaf7ff73d97d1c397e66b65894ce5fb77c3a343226d04",
+      "portable_document_sha256": "c4765991f9af35bf2d17e204df5bc5953987cefc0737ae56a044c3c1973d03b8",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/extension/subtle_manifest.json",
+      "reference_document_sha256": "196cae594501e489888fd04a135f292a6d2a35608dbb9aa443a2e070aa35514c",
+      "portable_document_sha256": "38935e43e6f6554b3ef95efa50c888e2583acad94c5b06ea32bc591d90c2b9ff",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/aligned_new/aligned_bertscore_run.json",
+      "reference_document_sha256": "74101b0e97ee4f55062d38f661c58906cf342bdb2e573d1ee6d665eae6bc5e89",
+      "portable_document_sha256": "6af1cdc496b71191f25297fdf4a1b26c3e13a9a3a621d77e4533d2b7b0bc36a9",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/aligned_old/aligned_bertscore_run.json",
+      "reference_document_sha256": "de97c014b76aeab78ed2a0adf0a98589f775d3870b8ad4994cc016cccd658256",
+      "portable_document_sha256": "ade58667aab72fd0fa859a04c25890d87667839168d34e3d2c47f0772ed34644",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/distributed_manifest.json",
+      "reference_document_sha256": "b7479c287f8d3f70e385984d208313bed7d7fc2e77c5862d688e70c429b4be40",
+      "portable_document_sha256": "7dc542299cd44a8ce1446412260a880a581c3b49b63d8a2354192773a1bbfb02",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/expanded_manifest.json",
+      "reference_document_sha256": "a21754fe5d1475b0be2fb01eee0be4194d0cc919fccf732638eedfcfde7ea2e1",
+      "portable_document_sha256": "569e3575249c73d5ab19b19435fe0fa4d76172e7c930485a82dbab68468275c8",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/expanded_panel/embedding_run.json",
+      "reference_document_sha256": "482bff545e1cc9264493847d9781477df99a0f902e369ef4b54bedfb4dd3599b",
+      "portable_document_sha256": "ae49eef4e64dd37ba6ad226bd5cd3964e23b7fd6e52ed997ca3560d5fe9aaa21",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/guards_full/extraction_manifest.json",
+      "reference_document_sha256": "17e113c17c41a2054e6d0fdd58a348ac9c4c6398b8bb0b6366ff9bb6273d0ac5",
+      "portable_document_sha256": "037831eaf7920d4b8fac43c13d186e18f59c6ca3abc449530c573c436f3e0ea5",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/nli_run.json",
+      "reference_document_sha256": "f0c3b06cba75327190d1f9a0f24fdf287949a56f8ff2a648fd2c976c7b0490e3",
+      "portable_document_sha256": "456b051d6053d436f7daf93ef0bdb7dfefd20d8d7ec32b308bf257a3db1913a8",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/03_semantics/fairness/original_panel/embedding_run.json",
+      "reference_document_sha256": "3e7724aae788af9c800573a032323856995a0a5b7dbc836c47cdafbd2a2da7f6",
+      "portable_document_sha256": "6f211dfd6ab3b711cefb83ea153757670e84acee0667ea35019a35cff720afe1",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/04_opai_style/document/data_manifest.json",
+      "reference_document_sha256": "59d807939fd10628260cf08cd1dd636e4227a5272d921ee6112ccf1017ca3679",
+      "portable_document_sha256": "3bdb96b75e871399eede76394d8e6c13d9a6debe7cd8f5daf442c5dbe6cfd6c3",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/04_opai_style/touched/manifest.json",
+      "reference_document_sha256": "2bffec3f3e812fe176ef0dc261cde7d75fedfe870a9dc1db241601f161834dfa",
+      "portable_document_sha256": "318369d188f0a0563e8767540a5febe318818620db4bd56ae3ab806761cd0f88",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/06_pilot_42/dipper/provenance.json",
+      "reference_document_sha256": "035d17b3c1aec3856a5e4e2278ded709e837cf824b09af5bad4f67ed3b0bdceb",
+      "portable_document_sha256": "d3e15e222330ad06f3ed40f77c0b0d88f65ae3069034ef471ce0d65e17067b38",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/hedging/pre_review/preparation_manifest.json",
+      "reference_document_sha256": "990fb81eaf22a538bf6dff26eb43d6f4c9ac8f348685d2c73df67932c38367d4",
+      "portable_document_sha256": "a4d585554a2cbd62998414c7a2e5368c052e59aeb963ee569d415f2a59f35255",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/hedging/pre_review/protocol.json",
+      "reference_document_sha256": "c31feb81a7f85871f7d94942d9e74eda2517b38f264489f14ed78f86c5f16d45",
+      "portable_document_sha256": "44635f2237039ee07b273e5855e3aa2e102432ec44053d53d51f0241ac6928d7",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/hedging/preparation_manifest.json",
+      "reference_document_sha256": "22f4755549448c3fbd9046841a47941e21bbae071936f308640ff3cf57f7e0ac",
+      "portable_document_sha256": "13568c8613a42db97ab9a54a72ce3b429a8d4cee89bfa29ce356ef9950fffce5",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "configs/protocols/hedging.json",
+      "reference_document_sha256": "c31feb81a7f85871f7d94942d9e74eda2517b38f264489f14ed78f86c5f16d45",
+      "portable_document_sha256": "cb27e7686f39a3bde8e09f30c02b77507084e7fad834d13fb4bf60d8f0e40028",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/hedging/source_overlap_audit.json",
+      "reference_document_sha256": "fb3f7107fa3dc63457eaf810c0909db1c5ff1d354b3eb2fad8a69d0976134080",
+      "portable_document_sha256": "0cab6bc936a9554eed7f329a12187cbb9d408f078780c60aed2d71aa84010866",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "docs/validation/desktop_validation.json",
+      "reference_document_sha256": "afb56c18823f746903e381ca6fc8f482c33ab778127077b58235713592cc80dd",
+      "portable_document_sha256": "8d180a27ba3eaa6424e03c28f23cce826db4cd493452da9471a8aff74e0685c3",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "docs/validation/study_reproduction_manifest.json",
+      "reference_document_sha256": "7b8da37548c0bcb58684b95f163fc4d9ca366b2d91cb0d3ea641e7c4a343d1c5",
+      "portable_document_sha256": "1ba1c427c3df5a9474496dfcd11f22668bbdd85f2c7d1718c0f4ff0caae2db4d",
+      "scope": "portable reference description; not a new inference"
+    },
+    {
+      "file": "results/published/07_study_126/report.md",
+      "reference_document_sha256": "80160f5baaf5ea4afc4274786b058600939645472ba11252483b22ea69fe0b9c",
+      "portable_document_sha256": "3ddb26de7684a0ea7e07fa8cd1669ec6652d5e29c125232754a5381f0b26ca09",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist/README.md",
+      "reference_document_sha256": "ac938bde677d823f702fd2c7266a2898ffa13b09320440914771070b17742d80",
+      "portable_document_sha256": "b50143f788419c9ec4e30bc32c074c1e4b8c966d9ccd7c08edc757e2d46837b2",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist/report.md",
+      "reference_document_sha256": "ea3e8989a8177721ff53ef03587a6652ba43093dfae462cd4aa38a7ff62350f3",
+      "portable_document_sha256": "b5129716ef741117f147eaf2a1a4b95b3ddc19bc71a9642624533c6271b8a5b1",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist_length_robustness/README.md",
+      "reference_document_sha256": "be9d3c5414c61aea517334856d53b76e86f03381f62279f582ff8825afb9dcb2",
+      "portable_document_sha256": "a6de2cc649302b8da7e3b566b8875ddddeec931fa90f7836194a00874ce6000c",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/02_stylometry/shortlist_length_robustness/report.md",
+      "reference_document_sha256": "2f3a79a4b9095946d06a05af62fb97a6809a5f9a731d115216a8f7b1fb4322e5",
+      "portable_document_sha256": "ea2e467e2373f1bd4aee5dc959c2a26f9562aa0e524faa56d918e21bad31e84b",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/06_pilot_42/dipper/report.md",
+      "reference_document_sha256": "ff80cca2dcdcd583378aaed6f9b9c4c6019eddcfb26e05107ff03073df4a1ad0",
+      "portable_document_sha256": "23ebe721babffccc7bc2a1de43aad68b48ac62d4babc05ccc1f512b16ed8eb94",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/06_pilot_42/qwen/report.md",
+      "reference_document_sha256": "ec711b99730b143c6d8b6629346d63f3113543b8391b070ab8620aea15209945",
+      "portable_document_sha256": "b62bc73255cd1c66339f3d338bfa45c3b823fab23a513f6b829a4ccdf6b15e7b",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/08_nli_calibration/calibration/README.md",
+      "reference_document_sha256": "1b111c717d70c645746309ed43347cf37b52321a4dfe652e95539b9bef2689a8",
+      "portable_document_sha256": "4ab189c89508b5e6aa3c2b697444786aeb1fba0be7530ee05667f82f2ba41821",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/08_nli_calibration/calibration/report.md",
+      "reference_document_sha256": "d23824ac14f3509ac84a0f27aba5bcaa9d0e5fa9dfa18d566b4bf0bbc4b60c13",
+      "portable_document_sha256": "ff4ea4e85a429391855fcdcbfabc5525efb63dd5125cad86ebddd87589d705c0",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/interpretazione.md",
+      "reference_document_sha256": "094500f022d3467e687186d017e52bd39e31ae90244d64a6b3cc0f8725549daa",
+      "portable_document_sha256": "8ee3e38a05522a4e2aef991a843090bd4f3addd05436db154f81f88792af7cbd",
+      "scope": "editorial portable reference copy; numerical results unchanged"
+    }
+  ]
+}

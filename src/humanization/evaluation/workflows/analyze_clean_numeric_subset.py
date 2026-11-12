@@ -86,6 +86,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'data_dir': ROOT / 'data/semantic_clean', 'baseline_data': ROOT / 'data/semantic_full', 'results': ROOT / 'results/published/03_semantics/entity_clean', 'baseline_results': ROOT / 'results/published/03_semantics/baseline', 'output': ROOT / 'results/new_runs/03_semantics/entity_clean/numeric34', 'bootstrap': 1000, 'seed': 42}
+    values = {'data_dir': ROOT / 'data/processed/semantic_clean', 'baseline_data': ROOT / 'data/processed/semantic_baseline', 'results': ROOT / 'results/published/03_semantics/entity_clean', 'baseline_results': ROOT / 'results/published/03_semantics/baseline', 'output': ROOT / 'results/new_runs/03_semantics/entity_clean/numeric34', 'bootstrap': 1000, 'seed': 42}
     values.update(overrides)
     return SimpleNamespace(**values)

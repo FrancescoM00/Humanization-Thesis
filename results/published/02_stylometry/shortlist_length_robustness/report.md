@@ -115,6 +115,6 @@ Il matching delle parole e la selezione sul solo training non eliminano differen
 
 ## Materiali e riproduzione
 
-Il [protocollo](protocol.json) identifica dati, partizioni e riferimento precedente. Sono disponibili [AUC e intervalli](metrics.csv), [differenze appaiate](paired_differences.csv), [frequenze complete](selection_frequency.csv), [confronto fra selezioni](selection_comparison.csv), [selezioni per training](selections.csv), [audit delle partizioni](split_audit.csv), [manifest dei fit](manifest.json) e [manifest statistico](statistics_manifest.json). Le predizioni complete e le AUC bootstrap sono salvate nei due file NPZ.
+Il [protocollo](execution_protocol.json) identifica dati, partizioni e riferimento precedente. Sono disponibili [AUC e intervalli](metrics.csv), [differenze appaiate](paired_differences.csv), [frequenze complete](selection_frequency.csv), [confronto fra selezioni](selection_comparison.csv), [selezioni per training](selections.csv), [audit delle partizioni](split_audit.csv), [manifest dei fit](execution_manifest.json) e [manifest statistico](statistics_manifest.json). Le predizioni complete e le AUC bootstrap sono salvate nei due file NPZ.
 
 `scripts/run_shortlist_length_robustness.py` esegue i soli nuovi modelli; `scripts/analyze_shortlist_length_robustness.py` ricalcola tabelle, intervalli, figure e questo report senza ripetere i fit. Gli output storici restano invariati.

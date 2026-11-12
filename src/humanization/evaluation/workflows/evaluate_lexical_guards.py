@@ -164,7 +164,7 @@ def run(args):
     args.output.mkdir(parents=True, exist_ok=True)
     if args.self_check:
         print(json.dumps(self_check()), flush=True)
-    paths = args.pairs or [ROOT / 'data/semantic_fairness/pairs.jsonl']
+    paths = args.pairs or [ROOT / 'data/processed/semantic_fairness/pairs.jsonl']
     pairs = read_pairs(paths)
 
     def progress(done, total):

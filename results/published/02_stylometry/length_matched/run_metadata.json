@@ -239,9 +239,9 @@
   "sample_sha256": "66c6267b333e0cb570018129516678c19b225dddf9c9ff2c5f8a152abb570537",
   "elapsed_seconds": 401.84,
   "code_sha256": {
-    "stylometry/length_matching.py": "1b88b73d7f9ee0dbe3ba951213f3faf5f6ef468db86d6e4029cd061ac7d14a0d",
-    "stylometry/features.py": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
-    "stylometry/analysis.py": "3f44fc9d7ab7302109aa88ae03ac42403480b0587871926e39f28e897e575bb1",
+    "src/humanization/datasets/length_matching.py": "1b88b73d7f9ee0dbe3ba951213f3faf5f6ef468db86d6e4029cd061ac7d14a0d",
+    "src/humanization/stylometry/features.py": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
+    "src/humanization/evaluation/stylometric.py": "3f44fc9d7ab7302109aa88ae03ac42403480b0587871926e39f28e897e575bb1",
     "scripts/run_length_matched_style.py": "e5976726b1c010a9e37b23269b364054f88e4a29ea7a6cf27453a1c0fe92d959"
   },
   "shortlist_is_exploratory": true

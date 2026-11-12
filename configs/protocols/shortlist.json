@@ -2,7 +2,7 @@
   "protocol_version": "compact_stylometry_training_only_selection_v1.1",
   "created_at_utc": "2026-11-11T13:26:36.973334+00:00",
   "created_at_rome": "2026-11-11T14:26:36.974009+01:00",
-  "input_csv": "results_length_matched/features.csv",
+  "input_csv": "results/published/02_stylometry/length_matched/features.csv",
   "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
   "features": [
     "n_words",
@@ -181,5 +181,7 @@
   ],
   "amended_at_utc": "2026-11-11T13:32:29.529878+00:00",
   "cv_group_randomization": "For each CV seed randomly relabel entire group IDs before StratifiedGroupKFold; this ensures distinct repetitions when every group has identical class composition.",
-  "implementation_correction": "An initial attempt produced identical five-fold partitions for all seeds under sklearn 1.7.2. It was excluded before AUC analysis. No feature, model, random panel or metric choice was changed. Only group randomization was corrected before the final fits."
+  "implementation_correction": "An initial attempt produced identical five-fold partitions for all seeds under sklearn 1.7.2. It was excluded before AUC analysis. No feature, model, random panel or metric choice was changed. Only group randomization was corrected before the final fits.",
+  "reference_protocol_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
+  "fit_manifest_file": "execution_manifest.json"
 }

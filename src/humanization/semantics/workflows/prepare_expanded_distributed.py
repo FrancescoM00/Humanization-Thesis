@@ -123,6 +123,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'opai_dir': ROOT / 'data/opai', 'old_positive_pairs': ROOT / 'data/semantic_extension/positive_pairs.jsonl', 'data_dir': ROOT / 'data/semantic_fairness', 'manifest': ROOT / 'results/new_runs/03_semantics/fairness/expanded_manifest.json', 'n_sources_per_family': 50, 'minimum_screened': 800, 'max_sources': 1200, 'seed': 20261106, 'overwrite': False}
+    values = {'opai_dir': ROOT / 'data/raw/opai', 'old_positive_pairs': ROOT / 'data/processed/semantic_extension/positive_pairs.jsonl', 'data_dir': ROOT / 'data/processed/semantic_fairness', 'manifest': ROOT / 'results/new_runs/03_semantics/fairness/expanded_manifest.json', 'n_sources_per_family': 50, 'minimum_screened': 800, 'max_sources': 1200, 'seed': 20261106, 'overwrite': False}
     values.update(overrides)
     return SimpleNamespace(**values)

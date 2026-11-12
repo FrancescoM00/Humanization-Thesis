@@ -5,7 +5,7 @@
     "status": "completed",
     "created_at_utc": "2026-11-11T13:31:28.765263+00:00",
     "protocol_sha256": "b6767073983a71004fcba9ab9a8f22efc8b59ded2a4a8e562d37c9b9280ebc96",
-    "input_csv": "results_length_matched/features.csv",
+    "input_csv": "results/published/02_stylometry/length_matched/features.csv",
     "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
     "n_documents": 1800,
     "n_groups": 900,

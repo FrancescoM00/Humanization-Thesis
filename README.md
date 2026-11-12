@@ -43,7 +43,6 @@ Il secondo comando ricalcola le metriche dai punteggi individuali salvati, confr
 | `results/published/` | Risultati di riferimento già ottenuti |
 | `results/new_runs/` | Output delle nuove esecuzioni |
 | `docs/` | Metodo, flusso e istruzioni di riproduzione |
-| `archive/legacy_experiments/` | Materiale storico, separato dal percorso operativo |
 | `tests/` | Verifiche del codice e dei protocolli |
 
 La [guida all'organizzazione](docs/organization.md) descrive quali moduli producono gli score e quali calcolano le metriche.
@@ -65,12 +64,14 @@ La [guida all'organizzazione](docs/organization.md) descrive quali moduli produc
 
 La riproduzione delle tabelle usa CPU e punteggi inclusi. Eseguire nuovamente i modelli richiede i checkpoint e risorse adeguate; i pesi non sono nello ZIP. Per GPU usare `requirements/gpu.txt` con un PyTorch CUDA compatibile. La naturalezza tramite servizio esterno richiede una chiave in una variabile d'ambiente e un'esecuzione esplicita: non è necessaria per il percorso di riproduzione principale.
 
-Il [metodo](docs/methodology.md) distingue etichette intenzionali, revisioni dell'assistente e annotazioni umane. Il repository originale rimane separato; questa riorganizzazione non modifica i risultati storici. Attribuzioni e termini delle fonti: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Il [metodo](docs/methodology.md) distingue etichette intenzionali, revisioni dell'assistente e annotazioni umane. Le configurazioni scientifiche eseguibili sono in `configs/` e `configs/protocols/`; i dati di riferimento e i relativi SHA-256 permettono di controllare gli input usati. Attribuzioni e termini delle fonti: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+La [nota sulla provenienza](docs/provenance/README.md) distingue i documenti portabili dalle evidenze originali conservate separatamente.
 
 ## Consegna ZIP
 
-Da questa repository si può scaricare lo ZIP dal pulsante **Code → Download ZIP**. Per generare una cartella radice chiamata esattamente `Humanization/`, eseguire `python tools/build_delivery.py`: crea `dist/Humanization.zip`, includendo anche i dati ufficiali OpAI e la risorsa linguistica CMUdict. Pesi, ambiente virtuale, credenziali e nuovi run rimangono fuori dall'archivio.
+Per generare la consegna con cartella radice `Humanization/`, eseguire `python tools/build_delivery.py`: crea `dist/Humanization.zip`. Il comando seleziona esplicitamente codice, configurazioni, dati, risultati di riferimento, guide e test, includendo anche i Parquet OpAI e la risorsa linguistica CMUdict. Pesi, ambiente virtuale, credenziali e nuovi run rimangono fuori dallo ZIP.
 
-Verifica di questa versione: **209 test passati, 1 saltato perché richiede CUDA**. La riproduzione dello studio controlla 209 colonne numeriche e quella del pilot 15, con tolleranza 1e-12. I comandi di riproduzione sono stati eseguiti senza nuovi modelli o richieste al provider.
+La verifica comprende la suite di test, l'esecuzione dei comandi dalla cartella estratta e il confronto numerico delle tabelle: 209 colonne per lo studio e 15 per il pilot, con tolleranza 1e-12. Gli esiti sono registrati in `docs/validation/`. Riprodurre le tabelle dai punteggi inclusi non richiede nuove inferenze o richieste al provider.
 
 Lo ZIP completo è di circa **160 MiB** perché comprende anche i Parquet ufficiali OpAI e gli input congelati. Una nuova esecuzione dei modelli richiede ulteriori download di checkpoint, non inclusi in questa dimensione.

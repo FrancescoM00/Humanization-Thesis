@@ -19,7 +19,7 @@
   "device": "cpu",
   "threads": 4,
   "batch_size": 8,
-  "model_directory": "/workspace/Humanization/data/models/nli",
+  "model_directory": "data/models/nli",
   "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
   "precomputation": {
     "status": "executed",

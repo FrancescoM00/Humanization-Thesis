@@ -50,7 +50,7 @@ ENTITY_REPLACEMENTS = {
 }
 
 # Clean entity policy (v2), derived from the manual review of 40 perturbations
-# (results_semantic_extension/review40.md and the student's own review). Kept as a
+# (results/published/03_semantics/extension/review40.md and the student's own review). Kept as a
 # separate condition so that the published v1 results stay reproducible.
 # Dropped on purpose: ORG (company/product/disease/acronym/outlet are mixed up by
 # NER and the three replacements are not sub-type compatible), LOC (granularity

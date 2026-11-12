@@ -21,6 +21,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'protocol': ROOT / 'results/published/02_stylometry/shortlist/protocol.json', 'output': ROOT / 'results/new_runs/02_stylometry/shortlist'}
+    values = {'protocol': ROOT / 'configs/protocols/shortlist.json', 'output': ROOT / 'results/new_runs/02_stylometry/shortlist'}
     values.update(overrides)
     return SimpleNamespace(**values)

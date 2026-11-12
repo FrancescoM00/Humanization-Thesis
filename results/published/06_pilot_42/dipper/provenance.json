@@ -27,7 +27,7 @@
     "sha256": "7a35ca521ccc4e2147b42e479fe2ac6bde1ef676ddb462137a27af046960f272",
     "n_shared_sources": 42,
     "identical_original_texts": true,
-    "summary": "results_kaggle_pilot/per_pair_summary.csv"
+    "summary": "results/published/06_pilot_42/qwen/per_pair_summary.csv"
   },
   "n_sources": 42,
   "n_pairs": 84,

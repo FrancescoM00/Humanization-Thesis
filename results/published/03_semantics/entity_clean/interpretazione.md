@@ -55,7 +55,7 @@ Questi casi sono stati corretti con guardie conservative e regressioni separate.
 
 ## File
 
-- Copie scaricabili direttamente dal repository: [exports/semantic_clean/](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/exports/semantic_clean/README.md), con JSONL e ZIP.
+- Copie scaricabili direttamente dal repository: exports/semantic_clean/, con JSONL e ZIP.
 - Dati completi: `data/semantic_clean/pairs.jsonl`.
 - Casi non applicabili: `data/semantic_clean/skipped.jsonl`.
 - Archivio leggero con entrambi: `data/semantic_clean/semantic_clean_pairs.zip`.

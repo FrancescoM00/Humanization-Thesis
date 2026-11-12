@@ -154,12 +154,12 @@
   },
   "previous_stylometry": [
     {
-      "path": "results/features.csv",
+      "path": "results/published/02_stylometry/baseline/features.csv",
       "sha256": "6284e19237e9132b5a0f337ee60fed3540b6aa260910cce8e6e7372ac01db4d8",
       "overlapping_source_rows": 10
     },
     {
-      "path": "results_length_matched/features.csv",
+      "path": "results/published/02_stylometry/length_matched/features.csv",
       "sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
       "overlapping_source_rows": 24
     }

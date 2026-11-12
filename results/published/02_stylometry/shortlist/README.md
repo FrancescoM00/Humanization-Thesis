@@ -3,8 +3,8 @@
 Esperimento completato l'11 novembre 2026 su 1.800 testi già rappresentati da feature. Il confronto non richiede nuovi modelli linguistici o GPU.
 
 - **[Report leggibile](report.md)** e **[PDF](report.pdf)**.
-- **[ZIP leggero](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/results_shortlist_validation/report_shortlist.zip)** con report, grafici, tabelle e specifica.
-- [Protocollo eseguibile](protocol.json) e [spiegazione del metodo](../../../docs/protocols/SHORTLIST_VALIDATION.md).
+- **ZIP leggero** con report, grafici, tabelle e specifica.
+- [Protocollo eseguibile](execution_protocol.json) e [spiegazione del metodo](../../../docs/protocols/SHORTLIST_VALIDATION.md).
 - [AUC e intervalli](metrics.csv), [differenze appaiate](paired_differences.csv).
 - [Frequenze delle 105 feature](selection_frequency.csv), [famiglie](selection_family_frequency.csv), [selezioni per training](selections.csv).
 - [Quaterne casuali](random_subsets.csv), [loro AUC](random_subset_metrics.csv), [distribuzioni](random_reference_summary.csv).
@@ -12,7 +12,7 @@ Esperimento completato l'11 novembre 2026 su 1.800 testi già rappresentati da f
 - [Identificativi dei testi](documents.csv), [registro modelli](model_registry.csv), [audit split](split_audit.csv), [appartenenza ai gruppi](split_membership.csv).
 - `predictions.npz`: probabilità complete, array `cv` (5,1800,206), `leave_domain_out` e `leave_generator_out` (1,1800,206). L'ordine dei testi è `documents.csv`, quello dei modelli è `model_registry.csv`.
 - `bootstrap_auc.npz`: AUC ricampionate; l'ordine delle configurazioni è in [summary.json](summary.json).
-- [Manifest del fit](manifest.json), [manifest statistico](statistics_manifest.json), [nota sul tentativo escluso](implementation_note.json).
+- [Manifest del fit](execution_manifest.json), [manifest statistico](statistics_manifest.json), [nota sul tentativo escluso](implementation_note.json).
 
 **C2 non è una conferma indipendente delle quattro colonne:** erano già state selezionate sull'intero campione. C3 valuta una nuova regola limitata al training. Gli abbinamenti umano/macchina controllano le parole, non garantiscono stesso contenuto. Questi limiti valgono anche per il trasferimento a domini e generatori esclusi.
 

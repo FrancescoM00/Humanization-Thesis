@@ -9,7 +9,6 @@ from pathlib import Path
 from humanization import resources as resource
 import sys
 import time
-import zipfile
 from humanization.paths import project_root
 ROOT = project_root()
 sys.path.insert(0, str(ROOT))
@@ -29,14 +28,14 @@ def csv_rows(path):
 
 def focused_pilot(root=ROOT):
     """Fixed explanatory challenge panel, explicitly not a random accuracy test."""
-    dipper_dir = root / 'data/desktop_received/pilotdipper_20261109'
+    dipper_dir = root / 'data/processed/pilot_42/dipper'
     pairs = jsonl(dipper_dir / 'semantic/pairs.jsonl')
     alignment = json.loads((dipper_dir / 'semantic/alignment.json').read_text())
     baseline = {r['id']: r for r in csv_rows(dipper_dir / 'semantic/scores/nli.csv')}
-    with zipfile.ZipFile(root / 'exports/desktop_pilot/humanization_pilot.zip') as z:
-        qwen = [json.loads(s) for s in z.read('semantic/pairs.jsonl').decode().splitlines()]
-        alignment.update(json.loads(z.read('semantic/alignment.json')))
-        baseline.update({r['id']: r for r in csv.DictReader(z.read('semantic/scores/nli.csv').decode().splitlines())})
+    qwen_dir = root / 'data/processed/pilot_42/qwen'
+    qwen = jsonl(qwen_dir / 'semantic/pairs.jsonl')
+    alignment.update(json.loads((qwen_dir / 'semantic/alignment.json').read_text()))
+    baseline.update({r['id']: r for r in csv_rows(qwen_dir / 'semantic/scores/nli.csv')})
     lookup = {(r['source_id'], r['humanizer']): r for r in [*pairs, *qwen]}
     sources = [('WritingPrompts:285:80b9ea16794068e3', 'narrative_fusion_15_to_5_assistant_review_not_gold'), ('Essay:198:ee27e99f1bc3dc32', 'diagnostic_list_fusion_and_omissions_mixed'), ('Reuters:417:b07c03bd035b9249', 'legal_challenges_omission'), ('Essay:476:30c42c3c6951daac', 'largely_conservative_case_assistant_review_not_gold')]
     selected = []
@@ -47,25 +46,25 @@ def focused_pilot(root=ROOT):
         selection.append({'id': row['id'], 'source_id': row.get('source_id', ''), 'humanizer': row.get('humanizer', ''), 'selection_reason': reason, 'origin': origin})
     for source, reason in sources:
         for system in ('dipper', 'qwen_humanize'):
-            add(lookup[source, system], reason, 'desktop pilot')
+            add(lookup[source, system], reason, 'fixed rewrite pilot')
     for source in ('Essay:198:ee27e99f1bc3dc32', 'Reuters:417:b07c03bd035b9249', 'WritingPrompts:562:785eead74dc70cd2'):
-        add(lookup[source, 'identity'], 'identity_one_per_domain', 'desktop pilot')
+        add(lookup[source, 'identity'], 'identity_one_per_domain', 'fixed rewrite pilot')
     dipper_by_id = {r['id']: r for r in pairs}
     for row_id, reason in [('humanizer_1262d303f86a672c96ff1467', 'observed_number_bound_change_100_to_30'), ('humanizer_82c81ae99ce2c8599bc313e4', 'observed_currency_change_euros_to_francs')]:
-        add(dipper_by_id[row_id], reason, 'desktop pilot')
-    clean = jsonl(root / 'data/semantic_clean/pairs.jsonl')
+        add(dipper_by_id[row_id], reason, 'fixed rewrite pilot')
+    clean = jsonl(root / 'data/processed/semantic_clean/pairs.jsonl')
     for condition in ('negation', 'entity_substitution'):
         candidates = [r for r in clean if r['perturbation'] == condition and r['status'] == 'applied' and r['source_id'].startswith(('Chat', 'Claude', 'Dolly', 'GPT', 'Stable')) and (condition != 'entity_substitution' or r.get('metadata', {}).get('entity_type') in {'DATE', 'MONEY', 'PERCENT'})]
         chosen = min(candidates, key=lambda r: hashlib.sha256(('nli-context-focus-v1:' + r['id']).encode()).hexdigest())
         add(chosen, 'hash_selected_' + condition + '_controlled_candidate_not_gold', 'semantic clean')
         identity = next((r for r in clean if r['perturbation'] == 'identity' and r['source_id'] == chosen['source_id']))
         add(identity, 'same_source_identity_for_' + condition, 'semantic clean')
-    extension = jsonl(root / 'data/semantic_extension/pairs.jsonl')
+    extension = jsonl(root / 'data/processed/semantic_extension/pairs.jsonl')
     for operation in ('opai_polish', 'opai_paraphrase'):
         candidates = [r for r in extension if r['perturbation'] == operation]
         chosen = min(candidates, key=lambda r: hashlib.sha256(('nli-context-focus-v1:' + r['id']).encode()).hexdigest())
         add(chosen, 'hash_selected_' + operation + '_presumed_conservative_not_gold', 'semantic extension')
-    for candidate in [root / 'data/semantic_clean/alignment.json', root / 'data/semantic_clean/alignment_recomputed.json', root / 'data/semantic_extension/alignment.json']:
+    for candidate in [root / 'data/processed/semantic_clean/alignment.json', root / 'data/processed/semantic_clean/alignment_recomputed.json', root / 'data/processed/semantic_extension/alignment.json']:
         if candidate.exists():
             data = json.loads(candidate.read_text())
             for row in selected:

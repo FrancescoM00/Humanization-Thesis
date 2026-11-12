@@ -94,6 +94,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'model': Path('data/models/nli'), 'onnx': Path('data/models/nli_onnx/model.onnx'), 'data_dir': Path('data/semantic_full'), 'output': Path('results/new_runs/03_semantics/baseline'), 'threads': 4, 'batch_size': 8}
+    values = {'model': Path('data/models/nli'), 'onnx': Path('data/models/nli_onnx/model.onnx'), 'data_dir': Path('data/processed/semantic_baseline'), 'output': Path('results/new_runs/03_semantics/baseline'), 'threads': 4, 'batch_size': 8}
     values.update(overrides)
     return SimpleNamespace(**values)

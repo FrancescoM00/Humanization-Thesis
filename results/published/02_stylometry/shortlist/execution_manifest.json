@@ -1,8 +1,8 @@
 {
   "status": "completed",
   "created_at_utc": "2026-11-11T13:37:27.042458+00:00",
-  "protocol_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
-  "input_csv": "results_length_matched/features.csv",
+  "protocol_sha256": "147ee97d56e6e1159a235de89ce93a7e07f4e9cbcd03e3ee546313c6f27f7e76",
+  "input_csv": "results/published/02_stylometry/length_matched/features.csv",
   "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
   "n_documents": 1800,
   "n_groups": 900,
@@ -46,5 +46,7 @@
   "elapsed_seconds": 75.98290290899968,
   "fitting_and_preprocessing": "training rows only; no tuning; source groups disjoint",
   "historical_fixed_panel_is_independently_validated": false,
-  "semantic_alignment_of_human_machine_rows_is_assumed": false
+  "semantic_alignment_of_human_machine_rows_is_assumed": false,
+  "manifest_scope": "portable_reference_descriptor",
+  "reference_manifest_sha256": "c38d0c4ade44eb4b963bd6b5954d8754ffbc39a63885bfbdd88c3b03371a8717"
 }

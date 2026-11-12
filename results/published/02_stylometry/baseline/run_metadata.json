@@ -232,10 +232,10 @@
   "extractor_sha256": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
   "code_sha256": {
     "stylometry/__init__.py": "788c3ab5953b9d92a6c6d02b472281ac3806a71a13d5cadf070412e71af645e1",
-    "stylometry/analysis.py": "3f44fc9d7ab7302109aa88ae03ac42403480b0587871926e39f28e897e575bb1",
-    "stylometry/data.py": "a9e46fd253fea98a023ed12756b1c55dbdf337ad3b2132f09780bb905d75c968",
-    "stylometry/features.py": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
-    "stylometry/report.py": "e63630153bf8d177670cee99af37d43b483ddefba6346aec3f395f36bb5f065a"
+    "src/humanization/evaluation/stylometric.py": "3f44fc9d7ab7302109aa88ae03ac42403480b0587871926e39f28e897e575bb1",
+    "src/humanization/datasets/mgtbench.py": "a9e46fd253fea98a023ed12756b1c55dbdf337ad3b2132f09780bb905d75c968",
+    "src/humanization/stylometry/features.py": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
+    "src/humanization/evaluation/reporting.py": "e63630153bf8d177670cee99af37d43b483ddefba6346aec3f395f36bb5f065a"
   },
   "elapsed_seconds": 185.13,
   "shortlist_is_exploratory": true,

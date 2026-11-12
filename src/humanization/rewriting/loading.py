@@ -15,7 +15,9 @@ import os
 from pathlib import Path
 import re
 import shutil
+import tempfile
 import time
+from humanization.paths import project_root
 PROTOCOL = 'humanizer_fixed_single_attempt_v1'
 DIPPER_TOKENIZER = 'google/t5-v1_1-xxl'
 DIPPER_TOKENIZER_REVISION = '3db67ab1af984cf10548a73467f0e5bca2aaaeb2'
@@ -24,7 +26,7 @@ DIPPER_WINDOW_PROTOCOLS = {'entire_passage_no_prefix', 'three_sentence_context_v
 def _cached_hf_roots() -> list[Path]:
     """Read existing caches without probing writes or changing HF globals."""
     from huggingface_hub import constants
-    candidates = [os.environ.get('HF_HUB_CACHE'), os.environ.get('HUMANIZATION_HF_READ_CACHE'), constants.HF_HUB_CACHE, Path(os.environ.get('HF_HOME', str(Path.home() / '.cache/huggingface'))) / 'hub', '/desktop/temp/humanization_runtime/huggingface/hub', '/desktop/temp/humanization_runtime/hf/hub', '/desktop/temp/humanization_downloads_http/hub', '/tmp/humanization_downloads_http/hub', '/desktop/working/.humanization_downloads_http/hub', Path.home() / '.cache/huggingface/hub']
+    candidates = [os.environ.get('HF_HUB_CACHE'), os.environ.get('HUMANIZATION_HF_READ_CACHE'), constants.HF_HUB_CACHE, Path(os.environ.get('HF_HOME', str(Path.home() / '.cache/huggingface'))) / 'hub', project_root() / '.cache/huggingface/hub', Path(tempfile.gettempdir()) / 'humanization/huggingface/hub', Path.home() / '.cache/huggingface/hub']
     return list(dict.fromkeys((Path(root) for root in candidates if root)))
 
 def _load_cached_tokenizer(system: dict, roots: list[Path], tokenizer_cls):
@@ -56,7 +58,7 @@ def _load_model(system: dict, device: str):
         tokenizer = _load_cached_tokenizer(system, roots, T5Tokenizer if system['kind'] == 'dipper' else AutoTokenizer)
     if selected_device.type == 'cuda':
         if not torch.cuda.is_available():
-            raise RuntimeError('CUDA is unavailable. Enable a desktop GPU before this stage.')
+            raise RuntimeError('CUDA is unavailable. Select a CUDA-capable GPU before this stage.')
         if selected_device.index is None:
             selected_device = torch.device('cuda', torch.cuda.current_device())
         torch.cuda.set_device(selected_device.index)

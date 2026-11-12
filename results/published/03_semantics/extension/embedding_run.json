@@ -17,7 +17,7 @@
     "rouge-score": "0.1.2",
     "sacrebleu": "2.5.1"
   },
-  "reused_results": "/workspace/Humanization/results_semantic_full",
+  "reused_results": "results/published/03_semantics/baseline",
   "previous_score_sha256": "7c4d08740ad2818d996e547044d5ab89aa1d3f17f199cc78cc34825f9fd2f63e",
   "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a"
 }

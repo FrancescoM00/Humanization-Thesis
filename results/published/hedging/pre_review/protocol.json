@@ -2,27 +2,27 @@
   "protocol_version": "epistemic_hedging_extension_frozen_threshold_v1",
   "created_at_utc": "2026-11-11T20:19:16.457322+00:00",
   "created_at_rome": "2026-11-11T21:19:16.457637+01:00",
-  "raw_dir": "data/raw",
+  "raw_dir": "data/raw/mgtbench",
   "exclusion_files": [
-    "data/semantic/pairs.jsonl",
-    "data/semantic_full/pairs.jsonl",
-    "data/semantic_clean/pairs.jsonl",
-    "data/semantic_extension/pairs.jsonl",
-    "data/semantic_fairness/expanded_panel/pairs.jsonl",
-    "data/semantic_fairness/original_panel/pairs.jsonl"
+    "data/processed/semantic_initial/pairs.jsonl",
+    "data/processed/semantic_baseline/pairs.jsonl",
+    "data/processed/semantic_clean/pairs.jsonl",
+    "data/processed/semantic_extension/pairs.jsonl",
+    "data/processed/semantic_fairness/expanded_panel/pairs.jsonl",
+    "data/processed/semantic_fairness/original_panel/pairs.jsonl"
   ],
   "exclusion_sha256": {
-    "data/semantic/pairs.jsonl": "a65187a8d360a887d5f639b0dc82e8cdf058aa1f6b094208a5a24c889e50d088",
-    "data/semantic_full/pairs.jsonl": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
-    "data/semantic_clean/pairs.jsonl": "8da5f641dd186d751558d2788615a1c22f738dc8d091e27a961ca4dbf49ab9f5",
-    "data/semantic_extension/pairs.jsonl": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
-    "data/semantic_fairness/expanded_panel/pairs.jsonl": "d3c25fc81d2bbddb64b6a0a409e08fdc703f384151ac7def1a1b0a23edfd217e",
-    "data/semantic_fairness/original_panel/pairs.jsonl": "2f7cfcd8b9f0b18d24efdc010593cd67a00906dc25c6d7ad705bac5eeba8cec7"
+    "data/processed/semantic_initial/pairs.jsonl": "a65187a8d360a887d5f639b0dc82e8cdf058aa1f6b094208a5a24c889e50d088",
+    "data/processed/semantic_baseline/pairs.jsonl": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+    "data/processed/semantic_clean/pairs.jsonl": "8da5f641dd186d751558d2788615a1c22f738dc8d091e27a961ca4dbf49ab9f5",
+    "data/processed/semantic_extension/pairs.jsonl": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
+    "data/processed/semantic_fairness/expanded_panel/pairs.jsonl": "d3c25fc81d2bbddb64b6a0a409e08fdc703f384151ac7def1a1b0a23edfd217e",
+    "data/processed/semantic_fairness/original_panel/pairs.jsonl": "2f7cfcd8b9f0b18d24efdc010593cd67a00906dc25c6d7ad705bac5eeba8cec7"
   },
   "raw_sha256": {
-    "data/raw/Essay_LLMs.csv": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
-    "data/raw/Reuters_LLMs.csv": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
-    "data/raw/WP_LLMs.csv": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278"
+    "data/raw/mgtbench/Essay_LLMs.csv": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+    "data/raw/mgtbench/Reuters_LLMs.csv": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+    "data/raw/mgtbench/WP_LLMs.csv": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278"
   },
   "n_sources": 60,
   "seed": 20261111,
@@ -49,7 +49,7 @@
   "review": "Score-blind assistant reading of selected source triplets before inference; not human gold. Prepare independent blank human forms. Record valid/qualified/invalid and uncertainty, retain full intended-label analysis and matched valid-review subset separately.",
   "human_annotation_available": false,
   "data_dir": "data/semantic_hedging",
-  "output_dir": "results_hedging_extension",
+  "output_dir": "results/published/hedging",
   "models_dir": "data/models",
   "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
   "nli_revision": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
@@ -67,7 +67,7 @@
   "local_scores": "secondary directional/local AUC and distributions only; do not transfer document threshold to local score",
   "threshold_support": 0.040749866515398,
   "threshold_rule": "strict document_support < threshold_support",
-  "calibration_reference": "results_semantic_extension/aggregator_selection.json",
+  "calibration_reference": "results/published/03_semantics/extension/aggregator_selection.json",
   "calibration_reference_sha256": "dee09dcd479790e23e9afb468d6db6802a02a1006a6a60b72a83eb8d348cc53c",
   "recalibrate_threshold": false,
   "reselect_aggregator": false,
@@ -99,11 +99,11 @@
   "native_pool_amendment": "Before any new NLI inference: all 1976 eligible-marker records under the initial exclusion set were screened and yielded only 51 independent applicable originals (29 Essay, 14 WritingPrompts, 8 Reuters); no computational cap was responsible. Remove only the two stylometry-feature CSVs from source exclusions. Their feature extraction did not use semantic labels, NLI scores or threshold calibration. Retain all six previous semantic-panel exclusions, connected-source and canonical-text exclusions. Keep 60 sources, target 20/domain, 120 alterations, original seed, rules and NLI settings. Sources may have appeared in prior stylometry analyses; they are new to the previous declared semantic panels, not globally untouched texts.",
   "previous_stylometry_inputs_not_excluded": [
     {
-      "path": "results/features.csv",
+      "path": "results/published/02_stylometry/baseline/features.csv",
       "sha256": "6284e19237e9132b5a0f337ee60fed3540b6aa260910cce8e6e7372ac01db4d8"
     },
     {
-      "path": "results_length_matched/features.csv",
+      "path": "results/published/02_stylometry/length_matched/features.csv",
       "sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c"
     }
   ],
@@ -117,7 +117,7 @@
   "domain_quota_amended_utc": "2026-11-12T01:34:36.405944+00:00",
   "domain_quota_amendment": "Before NLI inference: expanded native screening found 82 independent eligible originals (40 Essay computational cap, 26 WritingPrompts, 16 Reuters). Keep 60 originals, 120 alterations and 60 faithful controls; balanced deterministic selection gives 22 Essay, 22 WritingPrompts and 16 Reuters. Treat 20/domain as preference, not requirement. No semantic/grammatical rule, threshold or model is changed. If textual review rejects a source and its same-domain reserve is exhausted, use the next deterministic score-blind reserve from another domain and log the replacement before inference.",
   "score_free_candidate_screening_reference": {
-    "path": "results_hedging_extension/candidate_pool_debug_20261112T013316Z.jsonl",
+    "path": "results/published/hedging/candidate_pool_debug_20261112T013316Z.jsonl",
     "sha256": "ce428549191bd47b6007f1adeb5cda5aebcc3fc0f29485c80380dfffc0afa364",
     "generator_code_sha256": "9f82314a01073be402c56e1368f29eff6bce1c3e07b48c0a4bb180dbdf21eab0",
     "candidate_count": 82

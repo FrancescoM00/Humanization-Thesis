@@ -1,5 +1,5 @@
 {
-  "source_file": "/workspace/Humanization/data/semantic_full/pairs.jsonl",
+  "source_file": "data/processed/semantic_baseline/pairs.jsonl",
   "source_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
   "pairs_sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
   "seed": 42,
@@ -40,7 +40,7 @@
   },
   "semantic_labels_are_automatic_hypotheses": true,
   "code_sha256": {
-    "semantics/positive_controls.py": "455017418156bab983913347776553f33edcac9b6d84d1228ec69244b68012b4",
+    "src/humanization/semantics/positive_controls.py": "455017418156bab983913347776553f33edcac9b6d84d1228ec69244b68012b4",
     "scripts/prepare_semantic_extension.py": "67a0c9b4b39bc1abad385800d9736a1e193e584670beba749510e045a5f2c25d"
   },
   "n_pairs": 2621,

@@ -70,9 +70,9 @@ Per la naturalezza configurare `GROQ_API_KEY` nell'ambiente locale quando necess
 python -m pytest -q
 ```
 
-Le verifiche del refactoring e delle tabelle vanno riferite alla versione effettivamente consegnata. Un controllo sintattico non equivale a una nuova esecuzione dei modelli. Un buon risultato su perturbazioni sintetiche non sostituisce la validazione su riscritture reali e annotazioni umane.
+Le verifiche del progetto e delle tabelle vanno riferite alla versione effettivamente consegnata. Gli esiti sono registrati in `docs/validation/`. Un controllo sintattico non equivale a una nuova esecuzione dei modelli. Un buon risultato su perturbazioni sintetiche non sostituisce la validazione su riscritture reali e annotazioni umane.
 
-`results/published/` conserva i risultati di riferimento; `results/new_runs/` contiene le nuove esecuzioni. Le vecchie strutture e gli hash storici restano identificabili nell'archivio e nella cronologia. Il repository originale è separato e non viene modificato da questi comandi.
+`results/published/` conserva i risultati di riferimento; `results/new_runs/` contiene le nuove esecuzioni. I comandi usano i percorsi relativi del progetto estratto. I protocolli eseguibili di `configs/protocols/` dichiarano parametri e input; gli SHA-256 permettono di verificare che i dati corrispondano a quelli richiesti dall'esperimento.
 
 ## Comandi dei singoli moduli
 
@@ -100,4 +100,4 @@ Questi preset condividono `results/new_runs/custom_study`. Non si devono usare o
 
 Per preparare il giudizio di naturalezza usare `06_naturalness.py --mode prepare`: produce il piano senza richieste. Gli eventuali fallimenti dei riscrittori sono registrati separatamente; la politica esplicita `report_and_exclude` limita i giudizi alle coppie con entrambe le versioni disponibili. Per effettuare richieste reali impostare `enabled: true`, configurare `GROQ_API_KEY` nell'ambiente ed eseguire `--mode compute --execute`. I giudizi non sono etichette umane.
 
-I Parquet ufficiali OpAI sono già inclusi in `data/raw/opai/official_parquet`; CMUdict è in `data/resources/nltk_data`, con le attribuzioni originali. I pesi restano esterni: una nuova inferenza completa può richiedere molta memoria, decine di GB di cache e tempi lunghi. La nuova esecuzione completa dei modelli non è stata effettuata durante il refactoring.
+I Parquet ufficiali OpAI sono già inclusi in `data/raw/opai/official_parquet`; CMUdict è in `data/resources/nltk_data`, con le attribuzioni originali. I pesi restano esterni: una nuova inferenza completa può richiedere molta memoria, decine di GB di cache e tempi lunghi. La verifica della consegna usa i punteggi inclusi e non costituisce una nuova esecuzione completa dei modelli.

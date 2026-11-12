@@ -42,6 +42,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'pairs': ROOT / 'data/semantic_extension/pairs.jsonl', 'alignment': ROOT / 'data/semantic_extension/alignment.json', 'output': ROOT / 'results/new_runs/03_semantics/fairness/aligned_old', 'stage': None, 'model': ROOT / 'data/models/bertscore', 'threads': 4, 'batch_size': 4, 'device': 'cpu'}
+    values = {'pairs': ROOT / 'data/processed/semantic_extension/pairs.jsonl', 'alignment': ROOT / 'data/processed/semantic_extension/alignment.json', 'output': ROOT / 'results/new_runs/03_semantics/fairness/aligned_old', 'stage': None, 'model': ROOT / 'data/models/bertscore', 'threads': 4, 'batch_size': 4, 'device': 'cpu'}
     values.update(overrides)
     return SimpleNamespace(**values)

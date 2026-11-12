@@ -27,7 +27,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from threadpoolctl import threadpool_limits
 
-from humanization.paths import resolve_legacy_path
+from humanization.paths import resolve_path
 
 from humanization.stylometry.features import FEATURE_GROUPS, FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES, WIKIPEDIA_FEATURES
 
@@ -219,7 +219,7 @@ def run_validation(protocol_path: Path, output: Path, root: Path) -> dict:
     protocol_bytes = protocol_path.read_bytes()
     protocol = json.loads(protocol_bytes)
     source = Path(protocol.get("input_csv", "results/published/02_stylometry/length_matched/features.csv"))
-    source = resolve_legacy_path(root, source)
+    source = resolve_path(root, source)
     source = source.resolve()
     input_hash = sha256(source)
     if not protocol.get("input_sha256"):
@@ -346,5 +346,7 @@ def run_validation(protocol_path: Path, output: Path, root: Path) -> dict:
         "historical_fixed_panel_is_independently_validated": False,
         "semantic_alignment_of_human_machine_rows_is_assumed": False,
     }
+    if protocol.get("fit_manifest_file"):
+        (output / protocol["fit_manifest_file"]).write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return manifest

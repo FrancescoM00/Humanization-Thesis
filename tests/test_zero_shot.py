@@ -62,6 +62,32 @@ def test_resumed_falcons_in_distinct_caches_need_no_download_budget(tmp_path, mo
     assert snapshots == expected
 
 
+def test_binoculars_cache_fallbacks_follow_project_and_platform_temp(tmp_path, monkeypatch):
+    import humanization.detection.binoculars as module
+    initial, project, platform_temp = (tmp_path/name for name in ('read_only', 'project', 'system_temp'))
+    monkeypatch.setenv('HUMANIZATION_HF_READ_CACHE', str(initial))
+    monkeypatch.delenv('HUMANIZATION_HF_WRITE_CACHE', raising=False)
+    monkeypatch.setenv('HF_HUB_CACHE', str(initial))
+    monkeypatch.setenv('HF_HUB_DISABLE_XET', '0')
+    monkeypatch.setenv('TMPDIR', str(platform_temp))
+    monkeypatch.setattr(module, 'project_root', lambda: project)
+    monkeypatch.setattr(module.tempfile, 'gettempdir', lambda: str(platform_temp))
+    monkeypatch.setattr(module, 'cached_weight_snapshot', lambda *args: None)
+    expected = project/'.cache/huggingface/hub'
+    def select(candidates, *, missing_models):
+        assert missing_models == 2
+        assert candidates[0] == initial
+        assert expected in candidates
+        assert platform_temp/'humanization/huggingface/hub' in candidates
+        assert not any('/desktop/' in str(path) for path in candidates)
+        expected.mkdir(parents=True)
+        return expected
+    monkeypatch.setattr(module, 'select_writable_cache', select)
+    writable, snapshots = module._prepare_model_storage(module.DEFAULT_MODELS)
+    assert writable == expected
+    assert snapshots == {'observer': None, 'performer': None}
+
+
 def test_binoculars_observed_nll_and_cross_entropy_have_correct_direction_and_masks():
     # p(observer)=[.75,.25], q(performer)=[.5,.5] at every position.
     # Both NLL and cross-entropy equal log(2), hence ratio one.

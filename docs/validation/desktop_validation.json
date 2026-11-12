@@ -1,5 +1,5 @@
 {
-  "tests_passed": 209,
+  "tests_passed": 217,
   "tests_skipped": 1,
   "skip_reason": "requires CUDA",
   "models_rerun": false,
@@ -7,6 +7,15 @@
   "study_numeric_columns_checked": 209,
   "pilot_numeric_columns_checked": 15,
   "entrypoints_checked": 8,
-  "original_repository_commit": "d2868b323938a2a9371c2a872ad86b5596d0f097",
-  "original_checkout_clean": true
+  "validation_date_utc": "2026-11-12",
+  "research_artifacts_unchanged": 366,
+  "portable_reference_descriptors_verified": 56,
+  "original_evidence_files_retained": 75,
+  "stylometry_candidate100_classifiers_refitted": 35,
+  "history_rewritten": false,
+  "reference_maximum_absolute_difference": 1.1102230246251565e-16,
+  "stylometry_refit_maximum_absolute_difference": 0,
+  "official_opai_files_verified": 16,
+  "zip_extracted_without_git": true,
+  "external_working_directory_entrypoints_checked": 8
 }

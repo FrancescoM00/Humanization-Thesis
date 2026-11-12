@@ -23,10 +23,10 @@ def _argument_error(message):
     raise ValueError(message)
 
 def run(args):
-    data = ROOT / 'data/semantic_fairness'
+    data = ROOT / 'data/processed/semantic_fairness'
     output = args.output
     output.mkdir(parents=True, exist_ok=True)
-    old = read(ROOT / 'data/semantic_extension/pairs.jsonl')
+    old = read(ROOT / 'data/processed/semantic_extension/pairs.jsonl')
     initial = read(data / 'distributed_pairs.jsonl')
     expanded = read(data / 'expanded_positive_pairs.jsonl') + read(data / 'expanded_distributed_pairs.jsonl')
     combined = old + initial + expanded
@@ -40,8 +40,8 @@ def run(args):
     for name in ['nli_probability_cache.jsonl', 'nli_pytorch_reference.jsonl']:
         target = data / name
         if not target.exists():
-            shutil.copyfile(ROOT / 'data/semantic_extension' / name, target)
-    alignment_paths = [ROOT / 'data/semantic_extension/alignment.json', data / 'original_panel/alignment.json', data / 'expanded_panel/alignment.json']
+            shutil.copyfile(ROOT / 'data/processed/semantic_extension' / name, target)
+    alignment_paths = [ROOT / 'data/processed/semantic_extension/alignment.json', data / 'original_panel/alignment.json', data / 'expanded_panel/alignment.json']
     if all((path.is_file() for path in alignment_paths)):
         alignment = {}
         for path in alignment_paths:

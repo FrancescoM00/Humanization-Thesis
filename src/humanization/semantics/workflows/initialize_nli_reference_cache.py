@@ -41,6 +41,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'data_dir': Path('data/semantic_full'), 'model': Path('data/models/nli'), 'n': 128}
+    values = {'data_dir': Path('data/processed/semantic_baseline'), 'model': Path('data/models/nli'), 'n': 128}
     values.update(overrides)
     return SimpleNamespace(**values)

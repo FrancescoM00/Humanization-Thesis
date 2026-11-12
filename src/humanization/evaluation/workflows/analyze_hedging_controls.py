@@ -23,6 +23,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'pairs': None, 'scores': None, 'protocol': None, 'review': None, 'output': None}
+    values = {'pairs': None, 'scores': None, 'protocol': ROOT / 'configs/protocols/hedging.json', 'review': None, 'output': None}
     values.update(overrides)
     return SimpleNamespace(**values)

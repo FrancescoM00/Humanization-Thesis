@@ -1,5 +1,5 @@
 {
-  "source_file": "/workspace/Humanization/data/clean/samples.jsonl",
+  "source_file": "data/clean/samples.jsonl",
   "source_sha256": "af76cb25878c7761b9ad68d4c1164d9547884c319a47996deee58163b74cc593",
   "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
   "seed": 42,
@@ -39,9 +39,9 @@
   "semantic_labels_are_automatic_hypotheses": true,
   "code_sha256": {
     "semantics/__init__.py": "3d41cbc6218cf6d1fb9f5daa3c9204ea9a531440036c83f6dd0d72a8742edc64",
-    "semantics/metrics.py": "a676c6e318e183d9130bab82536f10b3e18491a24e15b8fafb3f1650035919ab",
-    "semantics/opai.py": "c7abe7bf3b14771622820535eaf3f86584c7c47a7bb63ddff18ccdbc06843c7f",
-    "semantics/perturbations.py": "f513ed8cdbc3c03685db40fdc31556b08e1cd637eef6921f849cf78876eeb4b4",
-    "semantics/report.py": "c8c9eb8d05b76292ea1e7088273dff90bb9519905b789bfab723199699d66ec3"
+    "src/humanization/semantics/metrics.py": "a676c6e318e183d9130bab82536f10b3e18491a24e15b8fafb3f1650035919ab",
+    "src/humanization/datasets/opai.py": "c7abe7bf3b14771622820535eaf3f86584c7c47a7bb63ddff18ccdbc06843c7f",
+    "src/humanization/semantics/perturbations.py": "f513ed8cdbc3c03685db40fdc31556b08e1cd637eef6921f849cf78876eeb4b4",
+    "src/humanization/evaluation/semantic_reporting.py": "c8c9eb8d05b76292ea1e7088273dff90bb9519905b789bfab723199699d66ec3"
   }
 }

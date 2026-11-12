@@ -31,6 +31,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'input': ROOT / 'data/clean/samples.jsonl', 'original_pairs': ROOT / 'data/semantic_full/pairs.jsonl', 'output': ROOT / 'data/semantic_extension/subtle_pairs.jsonl', 'manifest': ROOT / 'results/new_runs/03_semantics/extension/subtle_manifest.json', 'n_per_type': 50, 'seed': 42}
+    values = {'input': ROOT / 'data/processed/generated/baseline/samples.jsonl', 'original_pairs': ROOT / 'data/processed/semantic_baseline/pairs.jsonl', 'output': ROOT / 'data/processed/semantic_extension/subtle_pairs.jsonl', 'manifest': ROOT / 'results/new_runs/03_semantics/extension/subtle_manifest.json', 'n_per_type': 50, 'seed': 42}
     values.update(overrides)
     return SimpleNamespace(**values)

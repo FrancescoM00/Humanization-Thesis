@@ -4,7 +4,7 @@ In questo report **baseline 3B** indica Qwen2.5-3B-Instruct con il prompt fissat
 
 **Il pilot DIPPER è completo: 42 riscritture e 42 identità, tutte tecnicamente riuscite.** Rispetto a baseline 3B, DIPPER evade meno spesso OpenAI e più spesso Fakespot raw; sul voto di maggioranza entrambi hanno due successi, su fonti differenti. La compressione è molto più frequente con DIPPER. La lettura dei testi mostra omissioni e cambiamenti puntuali, ma anche limiti dell'NLI quando la riscrittura fonde più frasi.
 
-L'analisi usa esclusivamente gli output ricevuti, senza nuove generazioni o inferenze. [Archivio e schede manuali](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/exports/kaggle_dipper_pilot/README.md), [dati per coppia](per_pair_summary.csv), [confronto dei due sistemi](comparison_with_qwen.csv), [confronto ASR appaiato](paired_comparison.md), [distribuzioni](metric_distributions.csv), [casi commentati](case_review.md), [integrità](integrity.md), [provenienza](provenance.json).
+L'analisi usa esclusivamente gli output ricevuti, senza nuove generazioni o inferenze. Archivio e schede manuali, [dati per coppia](per_pair_summary.csv), [confronto dei due sistemi](comparison_with_qwen.csv), [confronto ASR appaiato](paired_comparison.md), [distribuzioni](metric_distributions.csv), [casi commentati](case_review.md), [integrità](integrity.md), [provenienza](provenance.json).
 
 ## Dati e condizioni
 
@@ -132,6 +132,6 @@ La configurazione e i dati sono identici a quelli Qwen. I 1.278 score detector c
 
 Il confronto riguarda **42 fonti**, non 84 osservazioni indipendenti perché sono presenti due sistemi. Si conferma l'utilità di estendere il campione comune; le 126 fonti sono già riservate, mentre la proposta da 420 richiede una nuova coorte con i 300 gruppi di calibrazione esplicitamente fissi. Nessuna estensione è stata ancora eseguita e i preset non sono modificati dopo la lettura degli output.
 
-Sono pronte [schede comuni](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/exports/kaggle_dipper_pilot/README.md): **45 coppie semantiche**, con baseline 3B e DIPPER sulle stesse 21 fonti più tre identità, e **24 testi per naturalezza** su sei fonti comuni, con umani, originali macchina e riscritture dei due sistemi. Le selezioni usano identificatori, non score; chiavi separate e giudizi vuoti. Le 24 coppie del precedente modulo baseline 3B sono incluse nella nuova scheda semantica e non vanno conteggiate come nuovi giudizi indipendenti se già annotate.
+Sono pronte schede comuni: **45 coppie semantiche**, con baseline 3B e DIPPER sulle stesse 21 fonti più tre identità, e **24 testi per naturalezza** su sei fonti comuni, con umani, originali macchina e riscritture dei due sistemi. Le selezioni usano identificatori, non score; chiavi separate e giudizi vuoti. Le 24 coppie del precedente modulo baseline 3B sono incluse nella nuova scheda semantica e non vanno conteggiate come nuovi giudizi indipendenti se già annotate.
 
 L'estensione migliorerà la precisione dell'evasione; le annotazioni serviranno a distinguere errori reali e falsi allarmi delle metriche, e a completare l'asse naturalezza. Fino ad allora i risultati mostrano profili differenti dei due preset, senza un vincitore generale sui quattro assi.

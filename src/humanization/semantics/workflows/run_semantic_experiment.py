@@ -158,6 +158,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'stage': 'all', 'input': ROOT / 'data/clean/samples.jsonl', 'opai_file': None, 'data_dir': ROOT / 'data/semantic', 'output': ROOT / 'results/new_runs/03_semantics/baseline', 'models': ROOT / 'data/models', 'n': 200, 'seed': 42, 'entity_policy': 'v1', 'threads': 2, 'device': 'cpu', 'nli_batch_size': 8, 'require_nli_cache': False}
+    values = {'stage': 'all', 'input': ROOT / 'data/processed/generated/baseline/samples.jsonl', 'opai_file': None, 'data_dir': ROOT / 'data/processed/semantic_initial', 'output': ROOT / 'results/new_runs/03_semantics/baseline', 'models': ROOT / 'data/models', 'n': 200, 'seed': 42, 'entity_policy': 'v1', 'threads': 2, 'device': 'cpu', 'nli_batch_size': 8, 'require_nli_cache': False}
     values.update(overrides)
     return SimpleNamespace(**values)

@@ -57,6 +57,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'opai_dir': ROOT / 'data/opai', 'previous_pairs': ROOT / 'data/semantic_full/pairs.jsonl', 'subtle_pairs': ROOT / 'data/semantic_extension/subtle_pairs.jsonl', 'data_dir': ROOT / 'data/semantic_extension', 'output': ROOT / 'results/new_runs/03_semantics/extension', 'n': 100, 'matched_subtle_per_type': 50, 'seed': 42, 'without_subtle': False, 'overwrite': False}
+    values = {'opai_dir': ROOT / 'data/raw/opai', 'previous_pairs': ROOT / 'data/processed/semantic_baseline/pairs.jsonl', 'subtle_pairs': ROOT / 'data/processed/semantic_extension/subtle_pairs.jsonl', 'data_dir': ROOT / 'data/processed/semantic_extension', 'output': ROOT / 'results/new_runs/03_semantics/extension', 'n': 100, 'matched_subtle_per_type': 50, 'seed': 42, 'without_subtle': False, 'overwrite': False}
     values.update(overrides)
     return SimpleNamespace(**values)

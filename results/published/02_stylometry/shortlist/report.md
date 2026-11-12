@@ -151,7 +151,7 @@ Le conclusioni restano sul riconoscimento umano/macchina in questo corpus. Numer
 
 ## Codice, materiali e verifica
 
-Il protocollo è in [protocol.json](protocol.json) e nella specifica `SHORTLIST_VALIDATION.md` alla radice del progetto. `scripts/run_shortlist_validation.py` esegue i modelli; `scripts/analyze_shortlist_validation.py` calcola tabelle, intervalli, grafici e questo report. I moduli sono `stylometry/shortlist_validation.py`, `stylometry/shortlist_statistics.py` e `stylometry/shortlist_report.py`.
+Il protocollo è in [protocol.json](execution_protocol.json) e nella specifica `SHORTLIST_VALIDATION.md` alla radice del progetto. `scripts/run_shortlist_validation.py` esegue i modelli; `scripts/analyze_shortlist_validation.py` calcola tabelle, intervalli, grafici e questo report. I moduli sono `stylometry/shortlist_validation.py`, `stylometry/shortlist_statistics.py` e `stylometry/shortlist_report.py`.
 
 Sono salvati: [metriche](metrics.csv), [differenze appaiate](paired_differences.csv), [frequenze di tutte le feature](selection_frequency.csv), [famiglie selezionate](selection_family_frequency.csv), [quaterne casuali](random_subsets.csv), [loro risultati](random_subset_metrics.csv), [distribuzioni casuali](random_reference_summary.csv), [selezioni per training](selections.csv), [coefficienti delle quattro feature](coefficients.csv), [audit delle partizioni](split_audit.csv) e predizioni numeriche compresse in `predictions.npz`.
 

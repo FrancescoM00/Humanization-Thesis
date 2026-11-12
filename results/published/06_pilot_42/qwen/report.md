@@ -6,7 +6,7 @@ Il punto da verificare nell’estensione è la variazione complessiva di rilevab
 
 Il pilot è tecnicamente completo: **42 fonti macchina, 42 riscritture baseline 3B e 42 identità**, senza generazioni fallite. L'evasione si concentra sul detector storico OpenAI. Su Fakespot, RADAR e voto di maggioranza rimane bassa; dopo la riscrittura questi ultimi riconoscono anche diversi originali che prima sfuggivano. La conservazione del contenuto richiede una lettura più articolata delle sole medie: sono presenti cambiamenti reali, input anomali e limiti delle metriche.
 
-[Archivio originale e schede da annotare](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/exports/kaggle_pilot/README.md), [dati per coppia](per_pair_summary.csv), [riepilogo detector](detection_summary.csv), [transizioni](detection_transitions.csv), [distribuzioni](metric_distributions.csv), [casi commentati](case_review.md), [integrità](integrity.md), [provenienza](provenance.json).
+Archivio originale e schede da annotare, [dati per coppia](per_pair_summary.csv), [riepilogo detector](detection_summary.csv), [transizioni](detection_transitions.csv), [distribuzioni](metric_distributions.csv), [casi commentati](case_review.md), [integrità](integrity.md), [provenienza](provenance.json).
 
 ## Disegno e stato dell'esperimento
 
@@ -105,7 +105,7 @@ La naturalezza resta da valutare. I moduli originali contengono 12 coppie semant
 
 ## Prossimo passo concreto
 
-È pronta una [scheda semantica da 24 coppie](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/exports/kaggle_pilot/semantic_audit_24.csv): una riscrittura per ciascuna delle 21 celle dominio/generatore, più tre identità di controllo. La selezione dipende solo dagli ID e la scheda non contiene score o nomi dei sistemi. La chiave è separata. Occorre distinguere tipo di input, aggiunte, omissioni, numeri, vincoli quantitativi e cambi di forza delle affermazioni.
+È pronta una scheda semantica da 24 coppie: una riscrittura per ciascuna delle 21 celle dominio/generatore, più tre identità di controllo. La selezione dipende solo dagli ID e la scheda non contiene score o nomi dei sistemi. La chiave è separata. Occorre distinguere tipo di input, aggiunte, omissioni, numeri, vincoli quantitativi e cambi di forza delle affermazioni.
 
 Compilare la scheda e i valutazione fuori dal perimetro della consegna fornirà un primo riferimento umano. Un singolo valutatore resta un controllo esplorativo; eventuali giudizi indipendenti vanno conservati separatamente. Non usare NLI o il verdetto dei detector per decidere l'etichetta.
 

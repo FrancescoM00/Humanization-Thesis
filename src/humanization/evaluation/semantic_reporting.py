@@ -246,5 +246,5 @@ def write_semantic_report(pairs, output, seed=42):
              'La cache delle rappresentazioni token BERT viene limitata a 512MiB tra documenti.', '',
              'File completi: `scores.csv`, `metric_summary.csv`, `directional_deltas.csv`, `preparation_manifest.json`, `*_run.json`. '
              'I testi delle coppie e i metadati esatti delle modifiche restano nella directory dati locale indicata dai comandi di esecuzione '
-             '(`data/semantic_full/` per il run completo), ignorata da Git.', '']
+             '(`data/processed/semantic_baseline/` per le coppie di riferimento). I nuovi allineamenti e le nuove cache vengono scritti soltanto nella directory del nuovo run.', '']
     (output / 'report.md').write_text('\n'.join(lines), encoding='utf-8')

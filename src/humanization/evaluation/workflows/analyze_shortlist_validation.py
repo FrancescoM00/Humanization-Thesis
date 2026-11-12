@@ -23,12 +23,14 @@ def _argument_error(message):
 def run(args):
     if args.results.resolve() != args.output.resolve():
         shutil.copytree(args.results, args.output, dirs_exist_ok=True)
+    if args.protocol is not None and args.protocol.resolve() != (args.output / 'protocol.json').resolve():
+        shutil.copyfile(args.protocol, args.output / 'protocol.json')
     summary = analyze_results(args.output, args.protocol)
     report = write_report(args.output, args.protocol)
     print(json.dumps({'primary_metrics': summary['primary_metrics'], 'report': str(report), 'elapsed_seconds': summary['elapsed_seconds']}, indent=2, ensure_ascii=False))
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'results': ROOT / 'results/published/02_stylometry/shortlist', 'output': ROOT / 'results/new_runs/shortlist_analysis', 'protocol': None}
+    values = {'results': ROOT / 'results/published/02_stylometry/shortlist', 'output': ROOT / 'results/new_runs/shortlist_analysis', 'protocol': ROOT / 'configs/protocols/shortlist.json'}
     values.update(overrides)
     return SimpleNamespace(**values)

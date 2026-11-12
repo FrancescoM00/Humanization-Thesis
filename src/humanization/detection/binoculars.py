@@ -14,11 +14,13 @@ import os
 from pathlib import Path
 import re
 import shutil
+import tempfile
 import time
 import numpy as np
 import pandas as pd
 from humanization.evaluation.detection import _asr_interval, calibrate_low_threshold, summarize_zero_shot
 from humanization.datasets.records import digest, read_jsonl, text_records
+from humanization.paths import project_root
 PROTOCOL = 'binoculars_fullcoverage_fp32_statistics_v1'
 UPSTREAM_COMMIT = 'c8ae2f90d50ee696418bc71d8d9e5020e5f9d7b8'
 DEFAULT_MODELS = {'observer_model_id': 'tiiuae/falcon-7b', 'observer_revision': 'ec89142b67d748a1865ea4451372db8313ada0d8', 'performer_model_id': 'tiiuae/falcon-7b-instruct', 'performer_revision': '8782b5c5d8c9290412416618f36a133653e85285'}
@@ -142,9 +144,6 @@ def select_writable_cache(candidates, *, missing_models, min_free_bytes=None):
             if free < needed:
                 failures.append(f'{candidate}: insufficient free space')
                 continue
-            if str(candidate).startswith('/desktop/working/') and missing_models > 1:
-                failures.append(f'{candidate}: two new Falcon checkpoints exceed the usual 20-GB output quota')
-                continue
             return candidate
         except OSError as exc:
             failures.append(f'{candidate}: {exc.strerror} (errno {exc.errno})')
@@ -153,8 +152,8 @@ def select_writable_cache(candidates, *, missing_models, min_free_bytes=None):
 def _prepare_model_storage(settings):
     initial = Path(os.environ.get('HUMANIZATION_HF_READ_CACHE') or os.environ.get('HF_HUB_CACHE') or str(Path(os.environ.get('HF_HOME', str(Path.home() / '.cache/huggingface'))) / 'hub'))
     override = os.environ.get('HUMANIZATION_HF_WRITE_CACHE')
-    fallbacks = [Path('/desktop/temp/humanization_downloads_http/hub'), Path('/tmp/humanization_downloads_http/hub'), Path('/desktop/working/.humanization_downloads_http/hub')]
-    roots = list(dict.fromkeys([initial, Path.home() / '.cache/huggingface/hub', Path('/desktop/temp/humanization_runtime/huggingface/hub'), *([Path(override)] if override else []), *fallbacks]))
+    fallbacks = [Path.home() / '.cache/huggingface/hub', project_root() / '.cache/huggingface/hub', Path(tempfile.gettempdir()) / 'humanization/huggingface/hub']
+    roots = list(dict.fromkeys([initial, *([Path(override)] if override else []), *fallbacks]))
     snapshots = {p: cached_weight_snapshot(settings[p + '_model_id'], settings[p + '_revision'], roots) for p in ('observer', 'performer')}
     candidates = [Path(override)] if override else [initial, *fallbacks]
     writable = select_writable_cache(candidates, missing_models=sum((p is None for p in snapshots.values())))
@@ -175,7 +174,7 @@ def _load_pair(settings, observer_device, performer_device):
     if any((d.type != 'cuda' or d.index is None for d in devices)) or devices[0] == devices[1]:
         raise ValueError('Binoculars Falcon 7B requires two distinct indexed CUDA devices, e.g. cuda:0 and cuda:1')
     if not torch.cuda.is_available() or max((d.index for d in devices)) >= torch.cuda.device_count():
-        raise RuntimeError('Enable desktop T4 x2; both Falcon 7B models must fit simultaneously')
+        raise RuntimeError('Select two CUDA-capable GPUs; both Falcon 7B models must fit simultaneously')
     dtype = getattr(torch, settings.get('precision', 'float16'))
     for device in devices:
         with torch.cuda.device(device):

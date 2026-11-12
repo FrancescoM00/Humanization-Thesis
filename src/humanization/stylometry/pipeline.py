@@ -15,7 +15,8 @@ def run(config):
             else:
                 from humanization.evaluation.workflows import analyze_shortlist_length_robustness as workflow
                 source=path('results/published/02_stylometry/shortlist_length_robustness')
-            workflow.run(workflow.default_arguments(results=source,output=out))
+            profile='shortlist' if analysis=='shortlist' else 'shortlist_robustness'
+            workflow.run(workflow.default_arguments(results=source,output=out,protocol=path('configs/protocols/'+profile+'.json')))
         else:
             import pandas as pd
             from humanization.evaluation.stylometric import effect_tables
@@ -29,10 +30,10 @@ def run(config):
             from humanization.paths import project_root
             if analysis=='shortlist':
                 from humanization.evaluation.shortlist import run_validation
-                run_validation(path('results/published/02_stylometry/shortlist/protocol.json'),out,project_root())
+                run_validation(path('configs/protocols/shortlist.json'),out,project_root())
             else:
                 from humanization.evaluation.shortlist_robustness import run_robustness
-                run_robustness(path('results/published/02_stylometry/shortlist_length_robustness/protocol.json'),out,project_root())
+                run_robustness(path('configs/protocols/shortlist_robustness.json'),out,project_root())
             return record(out,config,mode,models_executed=False,classifiers_refitted=True,analysis=analysis)
         if analysis=='rewrites':
             from .workflows import score_humanizer_style as workflow

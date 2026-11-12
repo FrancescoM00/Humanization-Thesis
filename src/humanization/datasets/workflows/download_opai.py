@@ -32,6 +32,6 @@ def run(args):
 
 def default_arguments(**overrides):
     from types import SimpleNamespace
-    values = {'output': ROOT / 'data/opai/records.jsonl', 'revision': None}
+    values = {'output': ROOT / 'data/raw/opai/records.jsonl', 'revision': None}
     values.update(overrides)
     return SimpleNamespace(**values)

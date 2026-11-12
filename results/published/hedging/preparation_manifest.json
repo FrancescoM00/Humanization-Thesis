@@ -44,27 +44,27 @@
     },
     "exclusion_files": [
       {
-        "path": "data/semantic/pairs.jsonl",
+        "path": "data/processed/semantic_initial/pairs.jsonl",
         "sha256": "a65187a8d360a887d5f639b0dc82e8cdf058aa1f6b094208a5a24c889e50d088"
       },
       {
-        "path": "data/semantic_full/pairs.jsonl",
+        "path": "data/processed/semantic_baseline/pairs.jsonl",
         "sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7"
       },
       {
-        "path": "data/semantic_clean/pairs.jsonl",
+        "path": "data/processed/semantic_clean/pairs.jsonl",
         "sha256": "8da5f641dd186d751558d2788615a1c22f738dc8d091e27a961ca4dbf49ab9f5"
       },
       {
-        "path": "data/semantic_extension/pairs.jsonl",
+        "path": "data/processed/semantic_extension/pairs.jsonl",
         "sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f"
       },
       {
-        "path": "data/semantic_fairness/expanded_panel/pairs.jsonl",
+        "path": "data/processed/semantic_fairness/expanded_panel/pairs.jsonl",
         "sha256": "d3c25fc81d2bbddb64b6a0a409e08fdc703f384151ac7def1a1b0a23edfd217e"
       },
       {
-        "path": "data/semantic_fairness/original_panel/pairs.jsonl",
+        "path": "data/processed/semantic_fairness/original_panel/pairs.jsonl",
         "sha256": "2f7cfcd8b9f0b18d24efdc010593cd67a00906dc25c6d7ad705bac5eeba8cec7"
       }
     ],

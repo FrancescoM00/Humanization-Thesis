@@ -15,6 +15,6 @@
   },
   "device": "cpu",
   "threads": 4,
-  "model_directory": "/workspace/Humanization/data/models/bertscore",
+  "model_directory": "data/models/bertscore",
   "metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820"
 }

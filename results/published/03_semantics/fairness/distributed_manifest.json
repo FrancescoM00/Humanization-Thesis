@@ -8099,11 +8099,11 @@
   "consistency_note": "Each rule operates within its selected sentence. Other mentions elsewhere remain unchanged.",
   "segmentation_validation": "Every output preserves metric sentence count and changes exactly K canonical metric sentences. Parser and metric counts retained separately.",
   "no_original_inputs_modified": true,
-  "input_file": "/workspace/Humanization/data/semantic_extension/positive_pairs.jsonl",
+  "input_file": "data/processed/semantic_extension/positive_pairs.jsonl",
   "input_sha256": "9536da29f309d4c9bb5b3330f2249e6888b5c3d787b0cc16685f6ba30988c136",
   "pairs_sha256": "2f7cfcd8b9f0b18d24efdc010593cd67a00906dc25c6d7ad705bac5eeba8cec7",
   "code_sha256": {
-    "semantics/distributed_perturbations.py": "a8f3626eda2cf575c4894a10d60bbcabe4a026d199e0b0053b3f38b36d659fc6",
+    "src/humanization/semantics/distributed_perturbations.py": "a8f3626eda2cf575c4894a10d60bbcabe4a026d199e0b0053b3f38b36d659fc6",
     "scripts/prepare_distributed_experiment.py": "da72357b5ed654b2b17438bbac0ec3baf648889fed3a8c73f530bda0f5483913"
   }
 }

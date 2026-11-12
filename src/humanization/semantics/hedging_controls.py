@@ -15,7 +15,7 @@ from pathlib import Path
 import re
 from typing import Any
 
-from humanization.paths import resolve_legacy_path
+from humanization.paths import resolve_path
 
 from humanization.datasets.mgtbench import DOMAINS, GENERATORS, canonical, process_spaces, trim_incomplete_tail
 from humanization.semantics.perturbations import _edit, _replace_edits, _stable_hex, load_perturbation_nlp
@@ -261,7 +261,7 @@ def collect_exclusions(paths, root: Path):
             for domain, row in _SOURCE_KEY.findall(value):
                 rows.add(("WritingPrompts" if domain == "WP" else domain, int(row)))
     for name in paths:
-        path = Path(name); path = resolve_legacy_path(root, path)
+        path = Path(name); path = resolve_path(root, path)
         if not path.is_file():
             raise FileNotFoundError(f"Missing declared exclusion file: {path}")
         if path.suffix == '.csv':
@@ -424,16 +424,16 @@ def prepare_panel(protocol_path:Path, output:Path, root:Path):
     started=datetime.now(timezone.utc);root=root.resolve();output=output.resolve();protocol_path=protocol_path.resolve()
     raw_protocol=protocol_path.read_bytes();protocol=json.loads(raw_protocol)
     if (output/'pairs.jsonl').exists():raise FileExistsError('Preserving an existing prepared panel; use a new output directory')
-    raw_dir=resolve_legacy_path(root,Path(protocol.get('raw_dir','data/raw/mgtbench')))
+    raw_dir=resolve_path(root,Path(protocol.get('raw_dir','data/raw/mgtbench')))
     exclusions=protocol.get('exclusion_files',[])
     names=[p['path'] if isinstance(p,dict) else p for p in exclusions]
     for name,expected_hash in {**protocol.get('exclusion_sha256',{}),**protocol.get('raw_sha256',{})}.items():
-        path=Path(name);path=resolve_legacy_path(root, path)
+        path=Path(name);path=resolve_path(root, path)
         if hashlib.sha256(path.read_bytes()).hexdigest()!=expected_hash:
             raise ValueError(f'Frozen preparation input changed: {name}')
     for item in exclusions:
         if isinstance(item,dict) and item.get('sha256'):
-            path=Path(item['path']);path=resolve_legacy_path(root, path)
+            path=Path(item['path']);path=resolve_path(root, path)
             if hashlib.sha256(path.read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Frozen exclusion input changed')
     records,screen=load_machine_records(raw_dir,names,root,int(protocol.get('minimum_words',80)),int(protocol.get('maximum_words',1000)))
     nlp=load_perturbation_nlp(protocol.get('model','en_core_web_sm'))

@@ -17,7 +17,7 @@
     "rouge-score": "0.1.2",
     "sacrebleu": "2.5.1"
   },
-  "reused_results": "results_semantic_extension",
+  "reused_results": "results/published/03_semantics/extension",
   "previous_score_sha256": "98444862338f35b4401aaeff5821f8f5a139afa9e520d2757ae0a4493797bddc",
   "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a"
 }

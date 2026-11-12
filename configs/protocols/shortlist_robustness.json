@@ -2,10 +2,10 @@
   "protocol_version": "compact_stylometry_candidate100_robustness_v1",
   "created_at_utc": "2026-11-11T14:21:52.693922+00:00",
   "created_at_rome": "2026-11-11T15:21:52.694116+01:00",
-  "parent_results": "results_shortlist_validation",
-  "input_csv": "results_length_matched/features.csv",
+  "parent_results": "results/published/02_stylometry/shortlist",
+  "input_csv": "results/published/02_stylometry/length_matched/features.csv",
   "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
-  "parent_protocol_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
+  "parent_protocol_sha256": "147ee97d56e6e1159a235de89ce93a7e07f4e9cbcd03e3ee546313c6f27f7e76",
   "parent_predictions_sha256": "0edc66bdcc82c581097b1e666a016853750f84983c3d03f3c926bc2250db540f",
   "parent_splits_sha256": "90c945d6c6acd10d40b86b8832f68a17fd69bc0660468a7e557bc932c698db76",
   "parent_selections_sha256": "c5a45dea39eee1b467d71e0d8458d132f590fa650dddd5dc5b63ec819ac5908d",
@@ -160,5 +160,9 @@
     "Removing diagnostics changes the information available; any performance change cannot be attributed causally to length alone.",
     "Human and machine document associations do not guarantee semantic equivalence; topic may influence features.",
     "Pointwise confidence intervals conditional on saved predictions; not full refitting uncertainty or multiple-comparison-adjusted confirmation."
-  ]
+  ],
+  "reference_protocol_sha256": "3a281a5cbb38bcc2245b8f5b1054105c1fa798341c711649edb71b79783e488b",
+  "fit_manifest_file": "execution_manifest.json",
+  "parent_manifest_file": "execution_manifest.json",
+  "parent_protocol_file": "execution_protocol.json"
 }

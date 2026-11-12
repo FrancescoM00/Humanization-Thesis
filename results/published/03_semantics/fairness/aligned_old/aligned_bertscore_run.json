@@ -8,7 +8,7 @@
   "peak_rss_mib": 1492.24609375,
   "threads": 4,
   "batch_size": 4,
-  "model": "/workspace/Humanization/data/models/bertscore",
+  "model": "data/models/bertscore",
   "unit_protocol": "exact existing NLI alignment chunks; no silent truncation",
   "alignment": "maximum across all premise units; both directions",
   "aggregation": "unweighted mean/q10/min; worst direction for bidirectional",

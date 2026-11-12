@@ -2,11 +2,11 @@
 
 Controllo aggiuntivo dell'11 novembre 2026. Entrambi i classificatori usano **quattro feature**: cambia soltanto l'insieme da cui selezionarle, da 105 a 100. Si escludono `n_words`, `n_characters`, `n_sentences`, `ttr`, `hapax_ratio`; non si sostiene che le restanti misure siano tutte indipendenti dalla lunghezza.
 
-- **[Report Markdown](report.md)**, **[PDF](report.pdf)** e **[ZIP](https://github.com/FrancescoM00/Humanization/blob/d2868b323938a2a9371c2a872ad86b5596d0f097/results_shortlist_length_robustness/report_robustezza.zip)**.
-- [Protocollo fissato prima dei nuovi fit](protocol.json), [specifica generale](../../../docs/protocols/SHORTLIST_VALIDATION.md), [esperimento precedente](../shortlist/README.md).
+- **[Report Markdown](report.md)**, **[PDF](report.pdf)** e **ZIP**.
+- [Protocollo fissato prima dei nuovi fit](execution_protocol.json), [specifica generale](../../../docs/protocols/SHORTLIST_VALIDATION.md), [esperimento precedente](../shortlist/README.md).
 - [AUC e intervalli](metrics.csv), [differenze appaiate](paired_differences.csv).
 - [Frequenze complete](selection_frequency.csv), [confronto delle selezioni](selection_comparison.csv), [famiglie](selection_family_frequency.csv), [selezioni di ogni training](selections.csv).
-- [Coefficienti e scale di training](coefficients.csv), [audit degli split](split_audit.csv), [manifest fit](manifest.json), [manifest statistico](statistics_manifest.json), [riepilogo](summary.json).
+- [Coefficienti e scale di training](coefficients.csv), [audit degli split](split_audit.csv), [manifest fit](execution_manifest.json), [manifest statistico](statistics_manifest.json), [riepilogo](summary.json).
 
 `predictions.npz` contiene gli array `cv` (5,1800,2), `leave_domain_out` e `leave_generator_out` (1,1800,2). Le colonne sono C3_105 e C3_100, nell'ordine di `model_registry.csv`; i testi seguono `documents.csv`. La prima colonna è identica alle predizioni C3 precedenti, senza refit. `bootstrap_auc.npz` contiene le AUC dei ricampionamenti, con lo stesso ordine di configurazioni.
 

@@ -38,7 +38,7 @@ def _argument_error(message):
     raise ValueError(message)
 
 def run(args):
-    data = ROOT / 'data/semantic_extension'
+    data = ROOT / 'data/processed/semantic_extension'
     output = args.output
     output.mkdir(parents=True, exist_ok=True)
     pairs = [json.loads(x) for x in (data / 'positive_pairs.jsonl').read_text().splitlines()]
