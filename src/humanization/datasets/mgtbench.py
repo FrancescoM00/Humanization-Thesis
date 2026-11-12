@@ -1,8 +1,4 @@
 """Prepara un piccolo campione MGTBench bilanciato e appaiato, conservandone la provenienza.
-
-L'input usa lo schema CSV originale con colonne affiancate del caricatore
-``mgt1`` di TH-Bench, non i CSV di soli testi macchina divisi per lunghezza
-prodotti dal suo script di attacco.
 """
 from __future__ import annotations
 
@@ -65,19 +61,13 @@ def _cell(value: object) -> str:
 
 def trim_incomplete_tail(text: str) -> str:
     """Conserva il testo fino all'ultima plausibile fine frase, con la stessa regola per entrambe le classi.
-
-    Questa euristica sulla punteggiatura NON verifica la completezza grammaticale.
-    Ignora punti decimali e comuni abbreviazioni o iniziali interne. Le virgolette
-    e parentesi subito dopo il segno finale restano nel testo. Se non trova una
-    chiusura plausibile restituisce una stringa vuota: il filtro di lunghezza
-    minima escluderà il testo senza inventare punteggiatura.
+       Se non trova una chiusura plausibile restituisce una stringa vuota: il filtro di lunghezza
+       minima escluderà il testo senza inventare punteggiatura.
     """
     text = text.rstrip()
     for match in reversed(list(TERMINAL_BOUNDARY.finditer(text))):
         prefix = text[:match.end()]
-        # Conserva un testo già concluso, comprese le abbreviazioni usate alla
-        # fine della frase (es. "He lives in the U.S."). Titoli interni
-        # come "Dr. Smith" non devono diventare confini di frase artificiali.
+        # Conserva un testo già concluso
         if match.end() != len(text) and text[match.start()] == ".":
             before = text[:match.start()]
             token_match = re.search(r"([\w.]+)$", before)
@@ -136,12 +126,7 @@ def prepare_dataset(data_dir: Path | str, output_dir: Path | str, n_pairs: int =
 
     Ogni dominio contiene ``n_pairs`` testi umani e altrettanti testi macchina,
     con un generatore valido assegnato casualmente a ogni coppia di origine e
-    quote quasi uguali per generatore. I testi umani non vengono replicati sette
-    volte. ``group_id`` collega prompt ripetuti e testi umani e deve essere
-    rispettato nelle partizioni. Per impostazione predefinita elimina i frammenti
-    finali incompleti PRIMA del filtro simmetrico sul numero minimo di parole.
-    Disabilitare la regola soltanto per un'analisi di sensibilità esplicitamente
-    indicata; il protocollo di pulizia predefinito è definito localmente.
+    quote quasi uguali per generatore.
     """
     data_dir, output_dir = Path(data_dir), Path(output_dir)
     generators = list(GENERATORS if generators is None else generators)
@@ -250,7 +235,7 @@ def prepare_dataset(data_dir: Path | str, output_dir: Path | str, n_pairs: int =
                                 "domain": domain, "generator": origin, "label": label,
                                 "text": text, "source_row": candidate["source_row"],
                                 "source_id": candidate["source_id"]})
-    # Le componenti connesse collegano prompt condivisi anche quando i testi umani differiscono.
+   
     parent = {p: p for p in grouping_keys}
     def find(item):
         while parent[item] != item:
