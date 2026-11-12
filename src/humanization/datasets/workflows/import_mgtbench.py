@@ -1,4 +1,4 @@
-"""Verifica o importa i tre CSV MGTBench invariati usati nella tesi."""
+
 from __future__ import annotations
 import argparse
 import csv
