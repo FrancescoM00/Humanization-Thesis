@@ -1,12 +1,7 @@
-"""Allinea rigorosamente le traiettorie dei dati OpAI-Bench pubblicati.
+"""Allinea le traiettorie dei dati OpAI-Bench pubblicati.
 
 Le coppie primarie sono le versioni adiacenti v3->v4 (Compress) e v4->v5 (Expand).
-Il confronto di v0 con uno dei due output è soltanto cumulativo e secondario:
-le modifiche precedenti non si possono separare dall'operazione di interesse.
 
-Questo caricatore non genera dati sostitutivi e non chiama modelli di editing.
-Gli alias dello schema provengono dall'adattatore HF e dal codice di costruzione
-ufficiali; schemi sconosciuti o ambigui causano un errore esplicito.
 """
 from __future__ import annotations
 
@@ -60,8 +55,7 @@ def _array(value):
 
 
 def _normalize(record):
-    # record_id identifica un record versionato nei dati pubblicati, non una fonte
-    # stabile: non viene MAI interpretato implicitamente come chiave della traiettoria.
+    # record_id identifica un record versionato nei dati pubblicati
     document_id = str(_first(record, ["document_hash_id", "document_id", "doc_id", "id", "essay_id"]))
     domain = str(_first(record, ["domain"]))
     generator = str(_first(record, ["generator", "model_used", "ai_model"]))
@@ -79,7 +73,7 @@ def _normalize(record):
 
 
 def _balanced_selection(candidates, n, rng):
-    """Seleziona a rotazione dagli strati dominio×generatore, con ordine interno fissato dal seme."""
+    
     strata = {}
     for candidate in candidates:
         strata.setdefault((candidate["domain"], candidate["generator"]), []).append(candidate)
@@ -103,12 +97,7 @@ def align_opai_records(
     records: Iterable[dict], n_per_operation: int = 200, seed: int = 42,
     include_cumulative: bool = True, source_metadata: dict | None = None,
 ) -> tuple[list[dict], dict]:
-    """Restituisce coppie valide di documenti e un manifest completo di selezione e provenienza.
-
-    Per ogni operazione primaria seleziona a rotazione dagli strati dominio×editor
-    disponibili. Le coppie cumulative usano esattamente le traiettorie adiacenti
-    selezionate, se è presente v0. Le versioni mancanti sono conteggiate senza
-    inventare sostituti.
+    """Restituisce coppie valide di documenti.
     """
     if n_per_operation < 1:
         raise ValueError("n_per_operation must be positive")
@@ -223,18 +212,6 @@ def read_opai_file(path: str | Path) -> list[dict]:
 
 def download_official_records(output: str | Path, revision: str, split: str = "test") -> dict:
     """Scarica frammenti Parquet ufficiali verificati e salva le versioni necessarie.
-
-    La repository ufficiale include copie Parquet viewer/default/{split} nella
-    stessa versione fissata. Sono molto più piccole dell'esportazione CSV e
-    conservano lo schema completo pubblicato. Prima della lettura, ogni frammento
-    in cache viene confrontato con la SHA-256 LFS autorevole della revisione.
-    Nel JSONL dell'esperimento entrano soltanto le colonne di identificazione,
-    versione, testo e frasi delle versioni v0/v3/v4/v5. I frammenti originali e
-    le loro impronte restano invariati.
-
-    Richiede requests e pyarrow. Riusa la cache solo se il checksum coincide;
-    non sostituisce file dell'utente né output completati. Un errore non lascia
-    un JSONL finale parzialmente valido. TLS rimane abilitato.
     """
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("Pin the exact 40-character Hugging Face dataset revision SHA")
