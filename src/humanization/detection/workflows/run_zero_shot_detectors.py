@@ -1,4 +1,4 @@
-"""Esegue Binoculars sulla coorte congelata e sulle riscritture, calibrando sui soli umani."""
+"""Esegue Binoculars sul campione congelata e sulle riscritture, calibrando sui soli umani."""
 import argparse
 import os
 from pathlib import Path
