@@ -1,10 +1,4 @@
-"""Confronta gli score semantici con controlli positivi, mantenendo unite le fonti.
-
-La classe di interesse è un'alterazione semantica intenzionale. Gli score di
-similarità e supporto ricevono quindi un segno meno fisso; le quote non
-supportate mantengono il proprio segno. Gli score non vengono mai invertiti
-dopo aver osservato un'AUC inferiore a 0,5. I nomi delle operazioni e le
-corruzioni a regole sono etichette sostitutive, non un riferimento semantico umano.
+"""Confronta gli score semantici 
 """
 from __future__ import annotations
 
@@ -33,7 +27,6 @@ MATCHED_SUBTLE = {'matched_number_change', 'matched_quantifier_strengthening',
 def _group_key(pair):
     meta = pair.get('metadata', {})
     key = pair.get('source_group_id') or meta.get('source_group_id') or pair['source_id']
-    # Aggiunge un prefisso ai corpora per non unire accidentalmente ID di fonti diverse.
     family = 'opai' if pair.get('dataset', '').startswith('opai') else 'mgtbench'
     return family + ':' + str(key)
 
@@ -73,7 +66,6 @@ def _metadata(pairs, seed):
                         'length_ratio': len(pair['modified'].split()) / len(pair['original'].split())})
     for row in records:
         group = row['source_group']
-        # La partizione deterministica è indipendente da score ed etichette di alterazione.
         if group not in splits:
             key = hashlib.sha256(f'{seed}:{group}'.encode()).digest()
             splits[group] = 'calibration' if int.from_bytes(key[:8], 'big') % 2 == 0 else 'test'
@@ -85,7 +77,7 @@ def _metadata(pairs, seed):
 
 
 def _metric_scores(frame):
-    """Restituisce score orientati all'alterazione e le relative definizioni di visualizzazione fisse."""
+    """Restituisce score orientati all'alterazione"""
     risk = pd.DataFrame(index=frame.index)
     definitions = []
     metrics = [name for name in CORE_METRICS if name in frame]
@@ -118,8 +110,7 @@ def _metric_scores(frame):
 
 
 def _source_weights(frame):
-    # Ogni fonte ha lo stesso peso totale *entro ciascuna classe*. Una fonte
-    # con più editor o corruzioni non deve dominare nessuna delle due classi.
+    
     return 1 / frame.groupby(['source_group', 'is_altered']).id.transform('count').to_numpy()
 
 
@@ -157,8 +148,7 @@ def source_bootstrap_auc(frame, score, rng, n_bootstrap=1000):
     order = np.argsort(values, kind='stable')
     starts = np.r_[0, np.flatnonzero(np.diff(values[order])) + 1]
     draws = []
-    # I conteggi multinomiali realizzano un bootstrap per gruppi: tutte le righe
-    # della fonte ricampionata restano unite, incluse le due classi della coorte abbinata.
+  
     for begin in range(0, n_bootstrap, 100):
         counts = rng.multinomial(len(unique), np.full(len(unique), 1 / len(unique)),
                                  size=min(100, n_bootstrap - begin))
@@ -209,7 +199,6 @@ def _threshold(frame, score, target_fpr=.1):
     weights = _source_weights(part)
     order = np.argsort(values, kind='stable')
     cumulative = np.cumsum(weights[order]) / weights.sum()
-    # Il confronto strettamente maggiore su questo quantile è conservativo in caso di parità.
     return float(values[order[min(np.searchsorted(cumulative, 1 - target_fpr), len(values) - 1)]])
 
 
