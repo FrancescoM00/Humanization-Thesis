@@ -1,4 +1,4 @@
-"""Verifica il pannello fissato e registra il trattamento degli input basato solo sulla fonte prima dell'inferenza."""
+"""Verifica il gruppo di testi fissato e registra il trattamento degli input basato solo sulla fonte prima dell'inferenza."""
 import argparse
 import json
 from pathlib import Path
