@@ -1,8 +1,5 @@
-"""Ricostruisce le tabelle della tesi sugli humanizer dagli output salvati per testo.
+"""Ricostruisce le tabelle sugli humanizer dagli output salvati.
 
-Qui non viene caricato alcun modello né stimata alcuna soglia. Le tabelle
-pubblicate restano riferimenti; le nuove tabelle appartengono a una directory
-di esecuzione separata.
 """
 from __future__ import annotations
 from collections import defaultdict
@@ -41,7 +38,7 @@ def cohort_path(run, study=False):
     return path
 
 def merged_pair_scores(run, pilot_ids=()):
-    """Unisce i CSV grezzi delle fasi dei modelli, mai la tabella della tesi già aggregata."""
+    """Unisce i CSV grezzi delle fasi dei modelli"""
     run = Path(run)
     rewrites, _ = read_rewrites(run)
     columns = ['id', 'source_id', 'source_group_id', 'domain', 'generator', 'humanizer', 'status']
