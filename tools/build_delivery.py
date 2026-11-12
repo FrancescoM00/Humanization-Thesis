@@ -6,13 +6,12 @@ import re
 import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
-ROOT_FILES=('README.md','requirements.txt','pyproject.toml','THIRD_PARTY_NOTICES.md',
+ROOT_FILES=('README.md','requirements.txt','pyproject.toml','THIRD_PARTY_NOTICES.txt',
             'Humanization.code-workspace','.gitignore','.gitattributes','.env.example')
 INCLUDE_TREES=('.vscode','configs','requirements','src','experiments','tests','tools','docs',
                'data/raw/mgtbench','data/raw/opai','data/processed','data/resources','results/published')
 EXCLUDED_PARTS={'.git','.venv','.cache','.pytest_cache','__pycache__','generated'}
 EXCLUDED_SUFFIXES={'.pyc','.pyo','.log','.safetensors','.onnx','.pt','.bin'}
-EXCLUDED_GUIDES={'docs/methodology.md','docs/organization.md','docs/reproducibility.md'}
 
 
 def delivery_files(root=ROOT):
@@ -23,8 +22,7 @@ def delivery_files(root=ROOT):
     return sorted(p for p in files if not EXCLUDED_PARTS.intersection(p.relative_to(root).parts)
                   and p.suffix not in EXCLUDED_SUFFIXES and not p.name.endswith('_progress.json')
                   and p.name!='.env'
-                  and (p.name!='README.md' or p.parent==root)
-                  and p.relative_to(root).as_posix() not in EXCLUDED_GUIDES)
+                  and (p.suffix.lower()!='.md' or p==root/'README.md'))
 
 
 def validate_portability(root,files):
@@ -49,6 +47,9 @@ def build(root=ROOT,target=None):
     with zipfile.ZipFile(target) as archive:
         if archive.testzip() is not None:raise RuntimeError('The generated ZIP is corrupt')
         assert not any('/archive/' in name for name in archive.namelist())
+        markdown=[name for name in archive.namelist() if name.lower().endswith('.md')]
+        if markdown!=['Humanization/README.md']:
+            raise RuntimeError('La consegna deve contenere soltanto README.md come file Markdown')
     print(f'{target}: {len(files)} project files, {target.stat().st_size/1024**2:.1f} MiB')
     return target
 

@@ -2,7 +2,7 @@
 
 Questo ZIP raccoglie il codice usato per la parte sperimentale della tesi, i dati e i risultati delle esecuzioni già svolte. Il lavoro studia se la riscrittura di un testo generato da un modello linguistico ne riduce la rilevabilità, quanto ne conserva il significato e come ne modifica lo stile.
 
-**Per consultare il lavoro basta questo README e i report collegati sotto.** Non occorre installare Python o eseguire gli script per leggere i risultati. La cartella può essere aperta in Visual Studio Code; tabelle CSV e figure PDF si possono aprire anche separatamente.
+**Questo README è l’unico file Markdown della consegna. I risultati si consultano direttamente nelle tabelle e nei grafici collegati sotto.** Non occorre installare Python o eseguire gli script per leggere i risultati. La cartella può essere aperta in Visual Studio Code; tabelle CSV e figure PDF si possono aprire anche separatamente.
 
 ## 1. Contenuto dello ZIP
 
@@ -30,7 +30,7 @@ Humanization/
 ├── tools/                     Script per costruire lo ZIP
 ├── requirements/              Profili delle dipendenze CPU e GPU
 ├── docs/                      Registri tecnici di controllo e provenienza
-└── THIRD_PARTY_NOTICES.md      Attribuzioni e riferimenti ai progetti esterni
+└── THIRD_PARTY_NOTICES.txt      Attribuzioni e riferimenti ai progetti esterni
 ```
 
 I CSV MGTBench contengono testi umani e testi prodotti da diversi generatori nei domini Essay, Reuters e WritingPrompts. I testi umani servono per il confronto stilistico e per calibrare i detector. **Negli esperimenti di riscrittura si parte invece da un testo macchina e se ne valuta la versione riscritta.** Per «fonte» si intende quel testo originale: più riscritture dello stesso originale non costituiscono fonti indipendenti.
@@ -72,30 +72,30 @@ I modelli principali sono Qwen2.5-3B-Instruct, Qwen2.5-14B-Instruct e DIPPER XXL
 
 ## 3. Dove leggere i risultati già ottenuti
 
-**Tutti i percorsi di questa tabella partono da `results/published/`.** Ogni riga identifica il tipo di esperimento; il report collegato spiega campione, metodo, risultati e limiti. I nomi tecnici delle cartelle sono mantenuti per collegare senza ambiguità codice, input e risultati.
+**Tutti i percorsi di questa tabella partono da `results/published/`.** Ogni riga identifica il tipo di esperimento e indica le tabelle e i grafici da aprire. I nomi tecnici delle cartelle collegano codice, input e risultati; i file JSON conservano parametri e informazioni delle esecuzioni.
 
-| Esperimento | Cartella | Report e tabelle da consultare |
+| Esperimento | Cartella | Tabelle e grafici da consultare |
 | --- | --- | --- |
-| Confronto stilometrico iniziale umano/macchina | `02_stylometry/baseline/` | [Report](results/published/02_stylometry/baseline/report.md), `feature_effects.csv`, `classifier_metrics.csv`. |
-| Stilometria con lunghezza abbinata: 300 umani e 300 macchina per ciascuno dei tre domini | `02_stylometry/length_matched/` | [Report](results/published/02_stylometry/length_matched/report.md), `features.csv`, `classifier_metrics.csv`. |
-| Verifica delle quattro feature: tutte le feature, shortlist fissa, selezione sul training e quaterne casuali | `02_stylometry/shortlist/` | [Report PDF](results/published/02_stylometry/shortlist/report.pdf), `metrics.csv`, `paired_differences.csv`, `selection_frequency.csv`. |
-| Robustezza della selezione escludendo cinque indicatori sensibili alla lunghezza: 105 contro 100 candidati | `02_stylometry/shortlist_length_robustness/` | [Report PDF](results/published/02_stylometry/shortlist_length_robustness/report.pdf), `metrics.csv`, `selection_comparison.csv`. |
-| Validazione semantica iniziale: negazioni, entità, frasi mescolate, troncamento, cancellazione e asimmetria OpAI | `03_semantics/baseline/` | [Report](results/published/03_semantics/baseline/report.md), `metric_summary.csv` e figure PDF. |
-| Sostituzioni di entità corrette dopo la revisione degli esempi | `03_semantics/entity_clean/` | [Confronto fra le due politiche](results/published/03_semantics/entity_clean/entity_policy_comparison.md), `entity_policy_summary.csv`. |
-| Controllo sulle sole 34 sostituzioni di date, importi e percentuali | `03_semantics/entity_clean/numeric34/` | [Report](results/published/03_semantics/entity_clean/numeric34/report.md), `summary.csv`. |
-| Controlli positivi OpAI, alterazioni sottili e confronto degli aggregatori semantici | `03_semantics/extension/` | [Confronto degli aggregatori](results/published/03_semantics/extension/aggregator_report.md), `metric_auc.csv`, `auc_by_stratum.csv`. |
-| Confronto equo fra metriche: allineamento per frase, errori su più frasi, effetto della lunghezza e guardie lessicali | `03_semantics/fairness/` | [Report](results/published/03_semantics/fairness/report.md), `fair_metric_auc.csv`, `distributed_auc.csv`; analisi delle guardie in `guards_full/`. |
-| Variazione dello stile dopo Polish, Paraphrase, Style Rewrite, Compress ed Expand | `04_opai_style/` | [Documento intero](results/published/04_opai_style/document/report.md) e [sole frasi modificate](results/published/04_opai_style/touched/report.md); `touched/distance_summary.csv`. |
-| Prove preliminari su 42 originali: baseline 3B e DIPPER sul passaggio intero | `06_pilot_42/` | [Pilot 3B](results/published/06_pilot_42/qwen/report.md), [pilot DIPPER e confronto appaiato](results/published/06_pilot_42/dipper/paired_comparison.md). |
-| Studio su 126 originali: quattro configurazioni di riscrittura, controlli nulli e quattro detector | `07_study_126/` | [Detection](results/published/07_study_126/detection_analysis.md), [semantica e stile](results/published/07_study_126/semantic_style.md), `detection_overall.csv`, `nli_primary_summary.csv`, `style_summary.csv`. |
-| Scelta della modalità NLI su controlli positivi, alterazioni e identità | `08_nli_calibration/calibration/` | [Report](results/published/08_nli_calibration/calibration/report.md), `candidate_summary.csv`, `auc_by_condition.csv`. |
-| Estensione mirata delle alterazioni di cautela, con soglia storica invariata | `hedging/` | [Report PDF](results/published/hedging/report.pdf), `metrics.csv`, `directional_summary.csv`. |
+| Confronto stilometrico iniziale umano/macchina | `02_stylometry/baseline/` | [Differenze fra feature](results/published/02_stylometry/baseline/feature_effects.csv), [prestazioni del classificatore](results/published/02_stylometry/baseline/classifier_metrics.csv), [grafico delle differenze](results/published/02_stylometry/baseline/feature_effects.pdf). |
+| Stilometria con lunghezza abbinata: 300 umani e 300 macchina per ciascuno dei tre domini | `02_stylometry/length_matched/` | [Prestazioni](results/published/02_stylometry/length_matched/classifier_metrics.csv), [controllo delle lunghezze](results/published/02_stylometry/length_matched/length_balance.csv), [grafico delle differenze](results/published/02_stylometry/length_matched/feature_effects.pdf). |
+| Verifica delle quattro feature: tutte le feature, shortlist fissa, selezione sul training e quaterne casuali | `02_stylometry/shortlist/` | [AUC e intervalli](results/published/02_stylometry/shortlist/metrics.csv), [frequenze di selezione](results/published/02_stylometry/shortlist/selection_frequency.csv), [grafico delle AUC](results/published/02_stylometry/shortlist/auc_comparison.pdf). |
+| Robustezza della selezione escludendo cinque indicatori sensibili alla lunghezza: 105 contro 100 candidati | `02_stylometry/shortlist_length_robustness/` | [AUC e intervalli](results/published/02_stylometry/shortlist_length_robustness/metrics.csv), [confronto delle selezioni](results/published/02_stylometry/shortlist_length_robustness/selection_comparison.csv), [grafico delle AUC](results/published/02_stylometry/shortlist_length_robustness/auc_comparison.pdf). |
+| Validazione semantica iniziale: negazioni, entità, frasi mescolate, troncamento, cancellazione e asimmetria OpAI | `03_semantics/baseline/` | [Riepilogo delle metriche](results/published/03_semantics/baseline/metric_summary.csv), [grafico delle perturbazioni](results/published/03_semantics/baseline/semantic_perturbations.pdf), [asimmetria OpAI](results/published/03_semantics/baseline/opai_asymmetry.csv). |
+| Sostituzioni di entità corrette dopo la revisione degli esempi | `03_semantics/entity_clean/` | [Confronto fra le due politiche](results/published/03_semantics/entity_clean/entity_policy_summary.csv), [differenze appaiate](results/published/03_semantics/entity_clean/entity_policy_paired_deltas.csv). |
+| Controllo sulle sole 34 sostituzioni di date, importi e percentuali | `03_semantics/entity_clean/numeric34/` | [Riepilogo delle metriche](results/published/03_semantics/entity_clean/numeric34/summary.csv), [risultati per categoria](results/published/03_semantics/entity_clean/numeric34/by_category.csv). |
+| Controlli positivi OpAI, alterazioni sottili e confronto degli aggregatori semantici | `03_semantics/extension/` | [AUC delle metriche](results/published/03_semantics/extension/metric_auc.csv), [AUC per gruppo](results/published/03_semantics/extension/auc_by_stratum.csv), [grafico degli aggregatori](results/published/03_semantics/extension/aggregator_auc.pdf). |
+| Confronto equo fra metriche: allineamento per frase, errori su più frasi, effetto della lunghezza e guardie lessicali | `03_semantics/fairness/` | [Confronto delle metriche](results/published/03_semantics/fairness/fair_metric_auc.csv), [alterazioni su più frasi](results/published/03_semantics/fairness/distributed_auc.csv), [grafico degli aggregatori](results/published/03_semantics/fairness/fair_aggregation_auc.pdf), [guardie lessicali](results/published/03_semantics/fairness/guards_full/metric_auc.csv). |
+| Variazione dello stile dopo Polish, Paraphrase, Style Rewrite, Compress ed Expand | `04_opai_style/` | [Documento intero](results/published/04_opai_style/document/summary.csv), [distanze sulle sole frasi modificate](results/published/04_opai_style/touched/distance_summary.csv), [grafico delle distanze](results/published/04_opai_style/touched/distance_rms_coverage.pdf). |
+| Prove preliminari su 42 originali: baseline 3B e DIPPER sul passaggio intero | `06_pilot_42/` | [Detection della baseline 3B](results/published/06_pilot_42/qwen/detection_summary.csv), [confronto appaiato delle ASR](results/published/06_pilot_42/dipper/paired_asr_comparison.csv), [confronto fra riscrittori](results/published/06_pilot_42/dipper/comparison_with_qwen.csv). |
+| Studio su 126 originali: quattro configurazioni di riscrittura, controlli nulli e quattro detector | `07_study_126/` | [Detection](results/published/07_study_126/detection_overall.csv), [supporto NLI](results/published/07_study_126/nli_primary_summary.csv), [stile](results/published/07_study_126/style_summary.csv), [controlli nulli](results/published/07_study_126/null_comparisons.csv). |
+| Scelta della modalità NLI su controlli positivi, alterazioni e identità | `08_nli_calibration/calibration/` | [Confronto delle modalità](results/published/08_nli_calibration/calibration/candidate_summary.csv), [AUC per alterazione](results/published/08_nli_calibration/calibration/auc_by_condition.csv). |
+| Estensione mirata delle alterazioni di cautela, con soglia storica invariata | `hedging/` | [Metriche e intervalli](results/published/hedging/metrics.csv), [supporto nelle due direzioni](results/published/hedging/directional_summary.csv), [grafico delle distribuzioni](results/published/hedging/support_distributions.pdf). |
 
 Nello studio su 126 originali, 42 erano già presenti nei pilot e 84 sono aggiuntivi. Le quattro configurazioni di riscrittura sono la baseline Qwen 3B, Qwen 14B, DIPPER sul passaggio intero e DIPPER a finestre di tre frasi; l'identità serve da riferimento. Le annotazioni indipendenti richieste ai colleghi non sono ancora incluse: le revisioni dell'assistente sono indicate come tali e non valgono come giudizi umani indipendenti.
 
-Nei risultati di detection, **TPR** è la quota di testi macchina rilevati, **FPR** la quota di umani erroneamente rilevati e **ASR** la quota di originali già rilevati che, dopo riscrittura, eludono il detector. Nelle analisi delle feature e delle metriche semantiche, **AUC** misura la capacità di separare i due gruppi dichiarati nel report.
+Nei risultati di detection, **TPR** è la quota di testi macchina rilevati, **FPR** la quota di umani erroneamente rilevati e **ASR** la quota di originali già rilevati che, dopo riscrittura, eludono il detector. Nelle analisi delle feature e delle metriche semantiche, **AUC** misura la capacità di separare i due gruppi dell’esperimento, per esempio umano/macchina o significato conservato/alterato.
 
-I file `report.md` sono leggibili in VS Code con l'anteprima Markdown; dove disponibile, `report.pdf` contiene la versione impaginata. I CSV riportano i valori numerici, i PDF delle figure mostrano i grafici e i JSON conservano parametri e informazioni dell'esecuzione. `predictions.npz` contiene predizioni numeriche compresse. Le coppie e le riscritture in formato JSONL hanno una registrazione per riga.
+I CSV riportano i valori numerici, i PDF delle figure mostrano i grafici e i JSON conservano parametri e informazioni dell'esecuzione. `predictions.npz` contiene predizioni numeriche compresse. Le coppie e le riscritture in formato JSONL hanno una registrazione per riga.
 
 ## 4. Comandi facoltativi per riprodurre alcune analisi
 
@@ -131,7 +131,7 @@ I risultati sono in `esempio_evaluation/study_126/` e `esempio_evaluation/pilot_
 python experiments/01_stylometry.py --mode reproduce --analysis shortlist_100 --output results/new_runs/esempio_stilometria
 ```
 
-Si ottengono `report.md`, `metrics.csv`, `paired_differences.csv` e le tabelle delle selezioni.
+Si ottengono `metrics.csv`, `paired_differences.csv`, grafici e tabelle delle selezioni.
 
 **Rianalizzare i controlli positivi e le alterazioni semantiche** dagli score salvati:
 
@@ -143,4 +143,4 @@ Questi esempi usano CPU e dati inclusi: ricalcolano le analisi senza eseguire nu
 
 Per nuove inferenze sono disponibili modalità `compute`, configurazioni GPU in `requirements/gpu.txt` e parametri nei file YAML. I pesi dei modelli, l'ambiente virtuale e le credenziali non sono nello ZIP; generare nuovi testi o score richiede download e risorse adeguate. La naturalezza remota richiede anche una chiave e l'attivazione esplicita delle chiamate. Tutto questo non è necessario per consultare i risultati o per eseguire gli esempi sopra.
 
-Attribuzioni scientifiche e condizioni delle risorse esterne sono in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Per ricostruire lo ZIP della consegna: `python tools/build_delivery.py` produce `dist/Humanization.zip`.
+Attribuzioni scientifiche e condizioni delle risorse esterne sono in [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt). Per ricostruire lo ZIP della consegna: `python tools/build_delivery.py` produce `dist/Humanization.zip`.
