@@ -1,9 +1,5 @@
-"""Riaddestra C3 escludendo cinque indicatori e riusando le partizioni salvate delle fonti.
-
-Le probabilità precedenti di C3 sono copiate, non ristimate. Cambia solo
-l'insieme delle feature candidate; selezione supervisionata e preprocessing
-restano limitati al training. Escludere cinque indicatori non implica
-l'eliminazione di ogni effetto della lunghezza.
+"""Riaddestra  escludendo cinque indicatori.
+ Cambia solo l'insieme delle feature candidate. 
 """
 from __future__ import annotations
 
@@ -35,13 +31,7 @@ PREDICTION_PROTOCOLS = ("cv", "leave_domain_out", "leave_generator_out")
 
 
 def load_saved_splits(documents: pd.DataFrame, membership: pd.DataFrame):
-    """Recupera gli indici esatti di training e test precedenti senza generare nuovi fold.
-
-    Ogni partizione salvata deve assegnare ogni gruppo di fonte esattamente una
-    volta. L'integrità dei gruppi e la protezione del dominio/generatore escluso
-    sono verificate sull'ordine originale dei documenti restituito da
-    ``prepare_documents``.
-    """
+    
     required = {*SPLIT_KEYS, "group_id", "role"}
     if required - set(membership):
         raise ValueError(f"Missing saved split fields: {sorted(required - set(membership))}")
@@ -96,7 +86,7 @@ def _verified_hash(path: Path, expected: str | None, description: str) -> str:
 
 
 def run_robustness(protocol_path: Path, output: Path, root: Path) -> dict:
-    """Addestra solo C3_100, conservando C3_105 e le esatte appartenenze alle partizioni precedenti."""
+    
     started = time.monotonic()
     protocol_path, output, root = protocol_path.resolve(), output.resolve(), root.resolve()
     protocol_bytes = protocol_path.read_bytes()
