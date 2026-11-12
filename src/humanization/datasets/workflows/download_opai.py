@@ -1,4 +1,4 @@
-"""Identifica e salva la revisione pubblica esatta di OpAI-Bench prima del download."""
+"""Salva la revisione pubblica esatta di OpAI-Bench prima del download."""
 import argparse
 import json
 import os
