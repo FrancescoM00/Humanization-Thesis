@@ -1,12 +1,12 @@
-"""Strict trajectory alignment for released OpAI-Bench data.
+"""Allinea rigorosamente le traiettorie dei dati OpAI-Bench pubblicati.
 
-Primary pairs are adjacent v3->v4 (Compress) and v4->v5 (Expand). Comparing
-v0 with either output is supported only as a cumulative, secondary comparison:
-earlier edits are then inseparable from the operation of interest.
+Le coppie primarie sono le versioni adiacenti v3->v4 (Compress) e v4->v5 (Expand).
+Il confronto di v0 con uno dei due output è soltanto cumulativo e secondario:
+le modifiche precedenti non si possono separare dall'operazione di interesse.
 
-This loader does not generate replacement data or call an editing model. Its
-schema aliases are drawn from the official HF adapter and construction code;
-unknown or ambiguous schemas fail explicitly.
+Questo caricatore non genera dati sostitutivi e non chiama modelli di editing.
+Gli alias dello schema provengono dall'adattatore HF e dal codice di costruzione
+ufficiali; schemi sconosciuti o ambigui causano un errore esplicito.
 """
 from __future__ import annotations
 
@@ -60,8 +60,8 @@ def _array(value):
 
 
 def _normalize(record):
-    # record_id identifies a versioned record in released data, not a stable
-    # source; it is intentionally NEVER guessed to be the trajectory key.
+    # record_id identifica un record versionato nei dati pubblicati, non una fonte
+    # stabile: non viene MAI interpretato implicitamente come chiave della traiettoria.
     document_id = str(_first(record, ["document_hash_id", "document_id", "doc_id", "id", "essay_id"]))
     domain = str(_first(record, ["domain"]))
     generator = str(_first(record, ["generator", "model_used", "ai_model"]))
@@ -79,7 +79,7 @@ def _normalize(record):
 
 
 def _balanced_selection(candidates, n, rng):
-    """Round-robin over domain×generator strata with seeded within-stratum order."""
+    """Seleziona a rotazione dagli strati dominio×generatore, con ordine interno fissato dal seme."""
     strata = {}
     for candidate in candidates:
         strata.setdefault((candidate["domain"], candidate["generator"]), []).append(candidate)
@@ -103,11 +103,12 @@ def align_opai_records(
     records: Iterable[dict], n_per_operation: int = 200, seed: int = 42,
     include_cumulative: bool = True, source_metadata: dict | None = None,
 ) -> tuple[list[dict], dict]:
-    """Return valid document pairs and a complete selection/provenance manifest.
+    """Restituisce coppie valide di documenti e un manifest completo di selezione e provenienza.
 
-    Each primary operation is selected round-robin over available domain×editor
-    strata. Cumulative pairs use exactly the selected adjacent trajectories if
-    their v0 is present. Missing versions are counted; no substitute is invented.
+    Per ogni operazione primaria seleziona a rotazione dagli strati dominio×editor
+    disponibili. Le coppie cumulative usano esattamente le traiettorie adiacenti
+    selezionate, se è presente v0. Le versioni mancanti sono conteggiate senza
+    inventare sostituti.
     """
     if n_per_operation < 1:
         raise ValueError("n_per_operation must be positive")
@@ -133,8 +134,8 @@ def align_opai_records(
         original, modified = before["text"], after["text"]
         n_before, n_after = len(original.split()), len(modified.split())
         changes = []
-        # Only explicit stable sentence IDs warrant local alignment. Equal
-        # array lengths alone do not prove equivalent sentence positions.
+        # Solo identificatori di frase espliciti e stabili giustificano l’allineamento locale.
+        # Array di pari lunghezza non provano da soli che le posizioni delle frasi equivalgano.
         if before["sentence_ids"] is not None and after["sentence_ids"] is not None:
             if before["sentences"] is None or after["sentences"] is None:
                 raise ValueError("sentence_ids require sentence text arrays")
@@ -221,18 +222,19 @@ def read_opai_file(path: str | Path) -> list[dict]:
 
 
 def download_official_records(output: str | Path, revision: str, split: str = "test") -> dict:
-    """Download verified official Parquet shards and save the needed versions.
+    """Scarica frammenti Parquet ufficiali verificati e salva le versioni necessarie.
 
-    The official repository includes viewer/default/{split} Parquet copies in
-    the same pinned release. They are much smaller than its CSV export and
-    retain the full released schema. Each cached shard is checked against the
-    authoritative LFS SHA-256 from that revision's tree before parsing. Only
-    identity/version/text/sentence columns and v0/v3/v4/v5 enter the JSONL used
-    by this experiment; the untouched source shards and their hashes remain.
+    La repository ufficiale include copie Parquet viewer/default/{split} nella
+    stessa versione fissata. Sono molto più piccole dell'esportazione CSV e
+    conservano lo schema completo pubblicato. Prima della lettura, ogni frammento
+    in cache viene confrontato con la SHA-256 LFS autorevole della revisione.
+    Nel JSONL dell'esperimento entrano soltanto le colonne di identificazione,
+    versione, testo e frasi delle versioni v0/v3/v4/v5. I frammenti originali e
+    le loro impronte restano invariati.
 
-    Requires requests and pyarrow. Existing source caches are reused only when
-    their checksum matches; user files and completed outputs are not replaced.
-    Failure leaves no partially valid final JSONL. TLS remains enabled.
+    Richiede requests e pyarrow. Riusa la cache solo se il checksum coincide;
+    non sostituisce file dell'utente né output completati. Un errore non lascia
+    un JSONL finale parzialmente valido. TLS rimane abilitato.
     """
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("Pin the exact 40-character Hugging Face dataset revision SHA")

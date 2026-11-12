@@ -1,4 +1,4 @@
-"""Targeted guards for the new hedging panel, without neural-model inference."""
+"""Controlli mirati per il nuovo pannello delle cautele, senza inferenza di modelli neurali."""
 from __future__ import annotations
 
 import json
@@ -82,7 +82,7 @@ class FrozenThresholdTests(unittest.TestCase):
             frame.loc[frame.id.eq(f"source-{i}:hedging_preserved"), "document_support"] = tau + .2
             frame.loc[frame.id.eq(f"source-{i}:hedging_complete"), "document_support"] = tau - 1e-6
             frame.loc[frame.id.eq(f"source-{i}:hedging_partial"), "document_support"] = tau + .1
-        # Equal to the threshold is NOT an alarm. The perturbation below it is.
+        # Un valore uguale alla soglia NON è un allarme. La perturbazione al di sotto della soglia lo è.
         frame.loc[frame.id.eq("source-0:hedging_preserved"), "document_support"] = tau
         frame.loc[frame.id.eq("source-0:hedging_complete"), "document_support"] = tau
         frame.loc[frame.id.eq("source-0:hedging_partial"), "document_support"] = tau - 1e-6
@@ -97,7 +97,7 @@ class FrozenThresholdTests(unittest.TestCase):
                                  sample_weight=np.where(frame.is_altered.eq(1), .5, 1.0))
         self.assertAlmostEqual(result["auc"], expected)
         self.assertEqual(draws["auc"].shape, (32,))
-        # Bad ordering must remain bad; never flip a score after seeing AUC<.5.
+        # Un ordinamento errato deve restare tale; non invertire mai il punteggio dopo aver visto AUC<.5.
         reversed_frame = scored_frame()
         reversed_frame["document_support"] = np.where(reversed_frame.is_altered.eq(1), .9, .1)
         reversed_result, _ = grouped_metrics(reversed_frame, "document_support", tau,
@@ -170,7 +170,7 @@ class FrozenThresholdTests(unittest.TestCase):
                 review_rows.append({"id": f"source-{i}:hedging_complete",
                                     "validity": "valid" if i < 2 else "qualified" if i < 4 else "invalid",
                                     "reviewer_source": "assistant", "notes": "toy review"})
-            # Blank human form is not an independent human semantic label.
+            # Un modulo umano vuoto non costituisce un'etichetta semantica umana indipendente.
             review_rows.append({"id": "source-0:hedging_partial", "validity": "",
                                 "reviewer_source": "human", "notes": ""})
             review = root / "review.csv"
@@ -188,7 +188,7 @@ class FrozenThresholdTests(unittest.TestCase):
             self.assertEqual(qualified.n_sources, 4)
             self.assertFalse(doc[doc.panel.ne("rule_intended_full")].scope.eq("partial").any())
             self.assertFalse(metrics[metrics.metric.eq("local_min")].sensitivity.notna().any())
-            # Missing provenance is kept unspecified, rather than inferred human.
+            # Una provenienza mancante resta non specificata, senza dedurre che sia umana.
             pd.DataFrame([{"id": "x", "validity": "valid"}]).to_csv(root / "anonymous.csv", index=False)
             self.assertEqual(load_review(root / "anonymous.csv").iloc[0].reviewer_source, "unspecified")
 
@@ -196,8 +196,8 @@ class FrozenThresholdTests(unittest.TestCase):
 class NativeHedgeTransformationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Only the existing small spaCy parser runs on these synthetic phrases;
-        # no NLI, language generation, download, or real corpus preparation.
+        # Su queste frasi sintetiche viene eseguito soltanto il parser piccolo di spaCy già disponibile;
+        # nessuna NLI, generazione linguistica, download o preparazione del corpus reale.
         cls.nlp = load_perturbation_nlp()
 
     def triple(self, text):
@@ -277,8 +277,8 @@ class NativeHedgeTransformationTests(unittest.TestCase):
             self.assertEqual(pair["label_source"], "rule_intent_not_human_gold")
 
     def test_prefetched_duplicate_group_does_not_consume_generator_cap_or_domain_quota(self):
-        # Force the duplicate B source to precede B's independent source in the
-        # real deterministic queue; A accepts that shared group first.
+        # Forza la fonte B duplicata a precedere la fonte B indipendente nella
+        # coda deterministica reale; A accetta per prima quel gruppo condiviso.
         duplicate_id, fresh_id = sorted(("B-source-0", "B-source-1"),
                                         key=lambda value: _stable_hex(7, value))
         records = [
@@ -296,7 +296,7 @@ class NativeHedgeTransformationTests(unittest.TestCase):
 
         class PrefetchingParser:
             def pipe(self, inputs, *, as_tuples, batch_size):
-                # Mimic a parser reading a batch before yielding its documents.
+                # Simula un parser che legge un batch prima di restituirne i documenti.
                 queued = list(inputs)
                 for text, record in queued:
                     yield parser(text), record

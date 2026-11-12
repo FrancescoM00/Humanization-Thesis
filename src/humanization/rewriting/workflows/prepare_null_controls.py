@@ -1,4 +1,4 @@
-"""Prepare detector null controls; optionally compare already saved scores."""
+"""Prepara i controlli nulli dei detector e, facoltativamente, confronta punteggi già salvati."""
 import argparse
 import csv
 import json

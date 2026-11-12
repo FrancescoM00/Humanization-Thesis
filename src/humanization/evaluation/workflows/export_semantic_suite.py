@@ -1,7 +1,8 @@
-"""Export continuous semantic scores and per-humanizer distributions.
+"""Esporta score semantici continui e distribuzioni per humanizer.
 
-Consumes already computed ID-keyed score tables. No threshold, verdict,
-calibration to a previous editor, model download or neural inference is used.
+Usa tabelle di score già calcolati e indicizzati per ID. Non impiega soglie,
+verdetti, calibrazione su un editor precedente, download di modelli o
+inferenza neurale.
 """
 from __future__ import annotations
 import argparse

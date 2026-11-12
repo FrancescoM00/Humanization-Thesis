@@ -1,7 +1,7 @@
-"""Prepare calibration-only NLI pairs, then select a mode from saved scores.
+"""Prepara coppie NLI per la sola calibrazione, poi seleziona una modalità dagli score salvati.
 
-Neural inference is performed by the existing score_contextual_nli.py command.
-This driver never scores or selects from the previously inspected test split.
+L'inferenza neurale è eseguita dal comando esistente score_contextual_nli.py.
+Questo programma non calcola score né effettua selezioni sul test già esaminato.
 """
 from __future__ import annotations
 import argparse
@@ -32,7 +32,7 @@ def csv_text(rows, columns):
     return buffer.getvalue()
 
 def frozen_policy():
-    """These operational sanity cutoffs are fixed before scoring new modes."""
+    """Queste soglie operative di controllo sono fissate prima di valutare nuove modalità."""
     return dict(protocol=PROTOCOL, modes=list(MODES), aggregators=list(AGGREGATORS), selected_split='calibration', label_provenance='operational proxies, not human gold', score_orientation='higher means presumed preservation', bidirectional_score='min(forward, reverse); fraction uses 1-max(forward, reverse)', low_support_threshold=0.5, primary_requirements=dict(complete_labelled_coverage=1.0, complete_identity_coverage=1.0, identity_mean_min=0.95, identity_q10_min=0.9), selection='maximum pooled calibration AUC among eligible candidates', tie_tolerance=1e-12, tie_break_modes=list(MODES), tie_break_aggregators=list(AGGREGATORS), exclusions='test pairs and their metric scores are not used for selection', interpretation='development selection; independent human validation remains pending')
 
 def _write_frozen(output, bodies):

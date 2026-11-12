@@ -1,8 +1,9 @@
-"""Optional Groq pairwise naturalness judge; plans are offline by default.
+"""Giudice opzionale Groq per confrontare la naturalezza di due testi; i piani
+vengono preparati senza connessione per impostazione predefinita.
 
-The model judges writing, not detector evasion or semantic fidelity. AB/BA
-decisions are retained separately. API decisions and assistant proxy ratings
-are never relabelled as human annotations.
+Il modello valuta la scrittura, non l’evasione dei detector o la fedeltà semantica.
+I giudizi negli ordini AB/BA vengono conservati separatamente. I giudizi API e le
+valutazioni dell’assistente non vengono mai presentati come annotazioni umane.
 """
 from __future__ import annotations
 from collections import Counter
@@ -23,10 +24,11 @@ from .groq import GroqClient, APIError, _retry_seconds, parse_judgment
 from humanization.evaluation.naturalness import summarize_orders, canonical_preference
 
 def run_plan(plan, output, *, execute=False, client=None, max_requests=6, max_retries=2, max_retry_wait=30, sleep=time.sleep):
-    """Resume a frozen plan; budgets count *all* POST attempts, including retries.
+    """Riprende un piano congelato; il budget conta tutti i tentativi POST, comprese le ripetizioni.
 
-    A resumed run can raise max_requests explicitly, but it never silently
-    resets already spent requests. No API key is read in planning mode.
+    Un’esecuzione ripresa può aumentare esplicitamente max_requests, ma non
+    azzera mai implicitamente le richieste già utilizzate. In modalità di
+    pianificazione non viene letta alcuna chiave API.
     """
     if max_requests < 1 or max_retries < 0 or (not 0 <= max_retry_wait <= 60):
         raise ValueError('Invalid explicit request or retry budget')

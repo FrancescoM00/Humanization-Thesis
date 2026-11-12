@@ -1,9 +1,10 @@
-"""Descriptive effects and source-group-disjoint stylometry baselines.
+"""Effetti descrittivi e baseline stilometriche con gruppi di fonte disgiunti.
 
-The source ``pair_id`` is the unit of resampling and splitting. Human documents
-and every generator output derived from the same source must share that ID.
-All effects are signed machine minus human. A descriptive shortlist is never
-fed back into the reported held-out classifiers.
+La fonte ``pair_id`` è l'unità di ricampionamento e partizionamento. I documenti
+umani e tutti gli output dei generatori derivati dalla stessa fonte devono
+condividere questo ID. Il segno degli effetti è sempre macchina meno umano.
+La shortlist descrittiva non viene mai reinserita nei classificatori valutati
+su dati esclusi dal training.
 """
 
 from __future__ import annotations
@@ -40,12 +41,12 @@ def _validate(df: pd.DataFrame, features: Sequence[str]) -> None:
 
 
 def _group_column(df: pd.DataFrame) -> str:
-    """Broader duplicate-connected components take priority over source pairs."""
+    """Le componenti più ampie collegate da duplicati hanno precedenza sulle coppie di fonte."""
     return "group_id" if "group_id" in df else "pair_id"
 
 
 def _bh(p: np.ndarray) -> np.ndarray:
-    """Benjamini-Hochberg adjustment over the finite tests in one scope."""
+    """Correzione Benjamini-Hochberg sui test con valori finiti entro un singolo ambito."""
     q = np.full(len(p), np.nan)
     valid = np.flatnonzero(np.isfinite(p))
     order = valid[np.argsort(p[valid])]
@@ -56,7 +57,7 @@ def _bh(p: np.ndarray) -> np.ndarray:
 
 
 def _g_from_moments(n0, s0, ss0, n1, s1, ss1):
-    """Vectorized Hedges g; undefined when either n<2 or pooled SD is zero."""
+    """g di Hedges vettorizzato; non definito se un n<2 o la deviazione standard aggregata è nulla."""
     with np.errstate(divide="ignore", invalid="ignore"):
         mean0, mean1 = s0 / n0, s1 / n1
         var0 = np.maximum((ss0 - s0**2 / n0) / (n0 - 1), 0)
@@ -69,7 +70,7 @@ def _g_from_moments(n0, s0, ss0, n1, s1, ss1):
 
 
 def _paired_generator_subset(df: pd.DataFrame, generator: str) -> pd.DataFrame:
-    """Compare a generator with humans from its available source groups only."""
+    """Confronta un generatore con gli umani dei soli gruppi di fonte per cui è disponibile."""
     machines = df.loc[(df.label == 1) & (df.generator == generator)]
     groups = set(machines.pair_id)
     return df.loc[((df.label == 0) & df.pair_id.isin(groups)) | df.index.isin(machines.index)]
@@ -103,8 +104,8 @@ def _effect_scope(
         p = np.asarray(stats.ttest_ind(x[y == 1], x[y == 0], equal_var=False, nan_policy="omit").pvalue)
     both_constant = (sds[0] == 0) & (sds[1] == 0)
     p[both_constant] = np.where(means[0][both_constant] == means[1][both_constant], 1.0, 0.0)
-    # A source can have one human and multiple generator outputs. Average
-    # within source/class first so the paired test's unit remains the source.
+    # Una fonte può avere un umano e più output dei generatori. Si media prima
+    # entro fonte e classe, affinché la fonte resti l’unità del test appaiato.
     pair_means = []
     for label in (0, 1):
         values = df.loc[df.label == label, ["pair_id", *features]].copy()
@@ -131,9 +132,9 @@ def _effect_scope(
     valid_boot = np.zeros(len(features), dtype=int)
     groups, group_codes = np.unique(df[_group_column(df)].astype(str), return_inverse=True)
     if n_bootstrap > 0 and len(groups) >= 2:
-        # Each bootstrap draw samples source groups, preserving all texts and
-        # generators belonging to each sampled source. Missing features retain
-        # their own effective sample sizes.
+        # Ogni estrazione bootstrap campiona gruppi di fonte, conservando tutti i testi
+        # e i generatori di ogni fonte estratta. Le feature mancanti mantengono
+        # le rispettive numerosità effettive del campione.
         weights = rng.multinomial(len(groups), np.full(len(groups), 1 / len(groups)), size=n_bootstrap)
         boot_moments = []
         for label in (0, 1):
@@ -179,16 +180,15 @@ def effect_tables(
     seed: int = 42,
     n_bootstrap: int = 500,
 ) -> pd.DataFrame:
-    """Effects pooled and separately by domain, generator and both.
+    """Effetti aggregati e distinti per dominio, generatore e combinazione dei due.
 
-    CIs are percentile 95% intervals from source-group bootstrap resampling.
-    P-values use paired t-tests on per-source machine-human differences when
-    at least two complete independent source groups exist; paired differences
-    are averaged within duplicate-connected group_id components if supplied.
-    Otherwise p-values use an explicitly
-    labelled unpaired Welch fallback. BH correction is
-    applied across features separately in each displayed scope. No correction
-    across the multiple scope tables is claimed.
+    Gli intervalli sono percentili al 95% ottenuti da bootstrap per gruppi di fonte.
+    I p-value usano test t appaiati sulle differenze macchina-umano per fonte quando
+    esistono almeno due gruppi indipendenti completi; se sono fornite componenti
+    ``group_id`` collegate da duplicati, le differenze appaiate sono prima mediate
+    al loro interno. Altrimenti viene usato un test di Welch non appaiato,
+    esplicitamente segnalato. La correzione BH è applicata alle feature separatamente
+    in ogni ambito mostrato; non si dichiara una correzione fra le diverse tabelle.
     """
     features = list(feature_columns)
     _validate(df, features)
@@ -235,10 +235,10 @@ def _evaluation_splits(df: pd.DataFrame, seed: int, n_splits: int):
         train_mask = ~test_mask & ~df[group_col].isin(test_groups)
         yield "leave_domain_out", str(domain), "ALL", 0, df.index[train_mask].to_numpy(), df.index[test_mask].to_numpy()
     for generator in sorted(df.loc[df.label == 1, "generator"].unique()):
-        # Test only source groups on which this held-out generator exists.
-        # Other generators and human texts from these groups are removed from
-        # training as well. The held-out generator is absent from every fold's
-        # training set, even when its other source groups are available.
+        # Valuta solo gruppi di fonte per cui è presente il generatore escluso.
+        # Anche gli altri generatori e i testi umani di questi gruppi sono rimossi
+        # dal training. Il generatore escluso è assente dal training di ogni fold,
+        # anche quando sono disponibili altri suoi gruppi di fonte.
         target = _paired_generator_subset(df, generator)
         for fold, _, test in _folds(target, seed, n_splits):
             test_groups = set(df.loc[test, group_col])
@@ -253,14 +253,14 @@ def evaluate(
     n_splits: int = 5,
     n_bootstrap: int = 500,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Fit fixed L2 logistic models and return OOF metrics and predictions.
+    """Addestra modelli logistici L2 fissi e restituisce metriche e predizioni fuori fold.
 
-    Every fit contains median imputation, StandardScaler and LogisticRegression
-    (C=1, class_weight='balanced', threshold=0.5, max_iter=2000). Hyperparameters
-    and feature sets are fixed before testing. Metrics pool OOF predictions per
-    domain or held-out generator; folds are not treated as independent samples.
-    Metric CIs use source-group bootstrap with the *fixed OOF predictions*, and
-    therefore do not measure all training or dataset-selection uncertainty.
+    Ogni fit include imputazione con mediana, StandardScaler e LogisticRegression
+    (C=1, class_weight='balanced', soglia=0.5, max_iter=2000). Iperparametri e insiemi
+    di feature sono fissi prima del test. Le metriche aggregano predizioni fuori
+    fold per dominio o generatore escluso; i fold non sono campioni indipendenti.
+    Gli intervalli usano bootstrap per gruppi di fonte con *predizioni fuori fold
+    fisse*: non misurano tutta l'incertezza di training o selezione del dataset.
     """
     features = list(dict.fromkeys(f for values in feature_sets.values() for f in values))
     _validate(df, features)
@@ -352,13 +352,14 @@ def shortlist_features(
     max_features: int = 12,
     max_correlation: float = 0.85,
 ) -> tuple[list[str], pd.DataFrame]:
-    """Exploratory shortlist from *all* observations; no held-out claims.
+    """Shortlist esplorativa da *tutte* le osservazioni, senza dichiarazioni su test esclusi.
 
-    Require same-direction |g|>=min_abs_g in every domain and the same effect
-    direction in at least the specified fraction of generators, then prune highly correlated variables
-    by absolute Spearman correlation. Ranking is median domain |g| multiplied
-    by the fraction of generators satisfying the criterion. Thresholds are
-    practical heuristics, not significance tests or a preregistration.
+    Richiede |g|>=min_abs_g con la stessa direzione in ogni dominio e la stessa
+    direzione dell'effetto in almeno la frazione specificata di generatori, quindi
+    elimina le variabili molto correlate usando la correlazione assoluta di
+    Spearman. La graduatoria è la mediana di |g| sui domini moltiplicata per la
+    frazione di generatori che soddisfano il criterio. Le soglie sono euristiche
+    pratiche, non test di significatività o una preregistrazione.
     """
     rows = []
     for feature in feature_columns:

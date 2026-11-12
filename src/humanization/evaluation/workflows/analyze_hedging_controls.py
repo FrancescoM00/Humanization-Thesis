@@ -1,4 +1,4 @@
-"""Evaluate the dedicated hedging panel at its frozen historical threshold."""
+"""Valuta il pannello dedicato alle cautele con la soglia precedente congelata."""
 from __future__ import annotations
 import argparse
 import json

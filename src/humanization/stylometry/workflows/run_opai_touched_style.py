@@ -1,4 +1,4 @@
-"""Localized OpAI features/distances from validated native sentence arrays."""
+"""Feature e distanze locali OpAI da array originali delle frasi già verificati."""
 from __future__ import annotations
 import argparse
 from collections import Counter
@@ -56,7 +56,7 @@ def load_rows(pairs, opai_dir):
     return (rows, schema_audit)
 
 def compare_full_document_scope(frame, full_path, output, seed, n_bootstrap):
-    """Compare full/touched feature deltas on exactly the same valid pairs."""
+    """Confronta le variazioni delle feature sul documento intero e sulle frasi modificate nelle stesse coppie valide."""
     full = pd.read_csv(full_path)
     selected_features = SHORTLIST + ['word_length_mean']
     metadata = ['pair_id', 'source_id', 'domain', 'generator', 'operation']

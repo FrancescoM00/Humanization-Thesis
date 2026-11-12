@@ -1,9 +1,10 @@
-"""Sentence/chunk similarity with the same worst-case aggregation as NLI.
+"""Similarità tra frasi o segmenti con la stessa aggregazione del caso peggiore usata dall'NLI.
 
-The alignment units are the existing MiniLM-bounded sentence chunks used by
-the NLI stage. For each hypothesis unit, retain its maximum similarity over
-*all* premise units. Both directions are evaluated; mean/q10/min are unweighted
-over hypothesis units, matching NLI's aggregation convention.
+Le unità di allineamento sono i segmenti di frase già definiti entro il limite
+di MiniLM e usati nella fase NLI. Per ogni unità dell'ipotesi si conserva la
+similarità massima rispetto a *tutte* le unità della premessa. Si valutano entrambe
+le direzioni; media, q10 e minimo non sono pesati sulle unità dell'ipotesi,
+seguendo la convenzione di aggregazione dell'NLI.
 """
 from __future__ import annotations
 
@@ -20,7 +21,7 @@ from humanization.semantics.metrics import (_cached_chunks, _cpu_threads, _hash,
                       _records, _release_device_cache, _resolve_device)
 
 
-BERT_F1_BASELINE = .814463  # Official English RoBERTa-base, layer 10.
+BERT_F1_BASELINE = .814463  # RoBERTa-base ufficiale inglese, livello 10.
 AGGREGATORS = ('mean', 'q10', 'min')
 
 
@@ -44,7 +45,7 @@ def directional_row(pair, forward, reverse, prefix):
 
 
 def matrix_support(matrix):
-    """Rows are original/premise units; columns are modified/hypothesis units."""
+    """Le righe sono unità originali o della premessa; le colonne sono unità modificate o dell'ipotesi."""
     values = np.asarray(matrix, dtype=float)
     if values.ndim != 2 or min(values.shape) < 1 or not np.isfinite(values).all():
         raise ValueError('Expected nonempty finite original-by-modified matrix')
@@ -52,7 +53,7 @@ def matrix_support(matrix):
 
 
 def candidate_support(matrix, forward_candidates, reverse_candidates):
-    """Restrict maxima to exactly the same retrieved evidence as NLI."""
+    """Limita i massimi esattamente alle stesse evidenze recuperate per l'NLI."""
     values = np.asarray(matrix, dtype=float)
     if len(forward_candidates) != values.shape[1] or len(reverse_candidates) != values.shape[0]:
         raise ValueError('Candidate lists must cover every hypothesis unit')
@@ -73,7 +74,7 @@ def unit_record(pair, item, forward, reverse, metric):
 
 
 def aligned_cosine_scores(pairs, alignment, progress_callback=None):
-    """Reuse top-k cosine cache: it contains the exact global maximum (k>=1)."""
+    """Riusa la cache del coseno top-k: contiene il massimo globale esatto (k>=1)."""
     rows, units = [], []
     records = list(_records(pairs))
     for index, pair in enumerate(records, 1):
@@ -95,12 +96,13 @@ def aligned_cosine_scores(pairs, alignment, progress_callback=None):
 
 def aligned_bert_scores(pairs, alignment, modelpath, *, num_layers=10, batch_size=4,
                         n_threads=4, token_cache_limit_mib=512, progress_callback=None, device='cpu'):
-    """Max BERTScore F1 per shared sentence/chunk, with no document averaging.
+    """Massimo BERTScore F1 per frase o segmento condiviso, senza media sul documento.
 
-    Unlike the old BERTScore document approximation, F1 is computed for every
-    unit pair and maxima are aggregated directly. The shared units are not
-    resegmented using another tokenizer: any unit exceeding RoBERTa's 512-token
-    limit raises an error rather than silently truncating or changing units.
+    A differenza della precedente approssimazione documentale di BERTScore, F1
+    viene calcolato per ogni coppia di unità e i massimi sono aggregati direttamente.
+    Le unità condivise non sono segmentate di nuovo con un altro tokenizer: se
+    una supera il limite di 512 token di RoBERTa viene sollevato un errore, senza
+    troncare il testo o cambiare silenziosamente le unità.
     """
     from bert_score import BERTScorer
     from bert_score.utils import get_bert_embedding
@@ -131,7 +133,7 @@ def aligned_bert_scores(pairs, alignment, modelpath, *, num_layers=10, batch_siz
         return hashes[text]
 
     def pair_key(a, b):
-        # Raw F1 is symmetric at fixed model/IDF. Reuse transposed pairs.
+        # F1 grezzo è simmetrico a modello/IDF fissi. Riusa le coppie trasposte.
         return tuple(sorted((key_for(a), key_for(b))))
 
     def ensure_embeddings(texts):
@@ -153,7 +155,7 @@ def aligned_bert_scores(pairs, alignment, modelpath, *, num_layers=10, batch_siz
                 length = int(masks[i].sum())
                 vec = embeddings[i, :length].clone()
                 vec = vec / vec.norm(dim=-1, keepdim=True).clamp_min(1e-12)
-                # BERTScore returns IDF weights on CPU even for CUDA embeddings.
+                # BERTScore restituisce i pesi IDF sulla CPU anche con embedding CUDA.
                 weight = weights[i, :length].to(device=vec.device).clone()
                 weight = weight / weight.sum().clamp_min(1e-12)
                 vectors[text] = (vec, weight)

@@ -1,4 +1,4 @@
-# Pilot Kaggle: 42 riscritture baseline 3B e tre detector
+# Prova preliminare: 42 riscritture della baseline Qwen 3B e tre detector
 
 In questo report **baseline 3B** indica Qwen2.5-3B-Instruct con il prompt fissato e decoding greedy; **DIPPER** indica la configurazione XXL NF4 sul passaggio intero senza prefisso, lessico 60/ordine 0. I risultati non descrivono ogni configurazione dei due modelli.
 

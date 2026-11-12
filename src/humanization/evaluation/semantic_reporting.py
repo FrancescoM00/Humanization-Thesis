@@ -1,4 +1,4 @@
-"""Report executed semantic metrics and distinguish unavailable stages."""
+"""Riporta le metriche semantiche eseguite e distingue le fasi non disponibili."""
 from __future__ import annotations
 import json
 from pathlib import Path
@@ -61,8 +61,8 @@ def write_semantic_report(pairs, output, seed=42):
             valid = part.dropna(subset=[metric])
             if not len(valid):
                 continue
-            # Sources, not multiple editors/variants of the same source, are
-            # the independent bootstrap units and receive equal weight.
+            # Le fonti, non i diversi editor o varianti della stessa fonte, sono
+            # le unità indipendenti del bootstrap e ricevono lo stesso peso.
             values = valid.groupby('source_id')[metric].mean()
             low, high = _interval(values.to_numpy(), rng)
             rows.append(dict(zip(['dataset', 'perturbation', 'comparison'], key), metric=metric,

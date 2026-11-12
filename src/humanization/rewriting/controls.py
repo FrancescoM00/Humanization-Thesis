@@ -1,8 +1,9 @@
-"""Deterministic detector controls for length and minimal lexical editing.
+"""Controlli deterministici dei detector sulla lunghezza e su modifiche lessicali minime.
 
-These are diagnostics, not meaning-preserving humanizers. A hard prefix may
-remove information or end within a sentence. Dictionary substitutions are not
-semantic gold. No detector scores enter their construction.
+Sono strumenti diagnostici, non riscrittori che garantiscono di conservare il
+significato. Un prefisso troncato può perdere informazioni o interrompere una
+frase. Le sostituzioni da dizionario non sono esempi semantici convalidati.
+La loro costruzione non usa alcun punteggio dei detector.
 """
 from __future__ import annotations
 
@@ -20,8 +21,8 @@ from humanization.rewriting.pipeline import pair_id
 
 PROTOCOL = 'humanizer_null_controls_v1'
 
-# Fixed before the extended run. One alphabetic token replaces one alphabetic
-# token; conservative lexical edits still need human semantic inspection.
+# Fissato prima del run esteso. Un token alfabetico sostituisce un altro token
+# alfabetico; anche modifiche lessicali prudenti richiedono una verifica semantica umana.
 LEXICAL_REPLACEMENTS = {
     'also': 'likewise',
     'although': 'though',
@@ -57,7 +58,7 @@ def read_jsonl(path: Path) -> list[dict]:
 
 
 def lexical_count(doc) -> int:
-    """Use the exact alphabetic-token definition of the existing stylometry."""
+    """Usa la stessa definizione di token alfabetico adottata dalla stilometria."""
     return sum(bool(token.is_alpha) for token in doc)
 
 
@@ -68,12 +69,12 @@ def _sentence_ends(doc) -> set[int]:
 
 
 def prefix_at_word_count(text: str, n_words: int, nlp) -> tuple[str, dict]:
-    """Prefix with exactly n alphabetic spaCy tokens, without padding.
+    """Estrae un prefisso con esattamente n token alfabetici spaCy, senza aggiunte.
 
-    Trailing nonalphabetic tokens directly attached to the last lexical token
-    are retained (punctuation and contraction suffixes). The next lexical word
-    is never included. For n greater than the original, retain the original
-    and mark the result ineligible for an exact length comparison.
+    Conserva i token non alfabetici finali direttamente uniti all'ultimo token
+    lessicale, come punteggiatura e suffissi delle contrazioni. Non include mai
+    la parola lessicale successiva. Se n supera la lunghezza dell'originale,
+    conserva l'originale ed esclude il risultato dal confronto a lunghezza esatta.
     """
     if isinstance(n_words, bool) or not isinstance(n_words, int) or n_words < 0:
         raise ValueError('The target lexical count must be a nonnegative integer')
@@ -106,15 +107,15 @@ def prefix_at_word_count(text: str, n_words: int, nlp) -> tuple[str, dict]:
     last = words[n_words - 1]
     end = last.idx + len(last)
     candidate_end = end
-    # Keep e.g. "n't" after spaCy's alphabetic "ca", not a partial surface
-    # contraction. Whitespace separates following tokens from the cut point.
+    # Conserva, per esempio, "n't" dopo il token alfabetico "ca" di spaCy, evitando
+    # contrazioni incomplete. Uno spazio separa i token successivi dal punto di taglio.
     for token in doc[last.i + 1:]:
         if token.idx != candidate_end or token.is_alpha:
             break
         candidate_end = token.idx + len(token)
-        # A dangling hyphen can make e.g. "plant-" a nonalphabetic token,
-        # while the full text tokenizes "plant-based" as plant/-/based.
-        # Retain only suffix endpoints that preserve the declared count.
+        # Un trattino finale può rendere, per esempio, "plant-" un token non alfabetico,
+        # mentre il testo completo divide "plant-based" in plant/-/based.
+        # Conserva soltanto le terminazioni che mantengono il conteggio dichiarato.
         if lexical_count(nlp.make_doc(text[:candidate_end])) == n_words:
             end = candidate_end
     prefix = text[:end]
@@ -132,11 +133,12 @@ def prefix_at_word_count(text: str, n_words: int, nlp) -> tuple[str, dict]:
 
 def minimal_lexical_noise(text: str, nlp, *, seed: int = 42,
                           max_edits: int = 1) -> tuple[str, dict]:
-    """Apply at most a fixed number of dictionary edits, ranked by seed/ID.
+    """Applica al massimo un numero fisso di sostituzioni da dizionario, ordinate per seme e ID.
 
-    Recognized entities, capitalized tokens, numbers, PROPN/AUX/NUM/PART and
-    words outside the frozen inventory are not changed. This protects only
-    what the tokenizer/tagger/NER recognizes; it is not semantic validation.
+    Non modifica entità riconosciute, token con iniziale maiuscola, numeri,
+    PROPN/AUX/NUM/PART o parole esterne all'inventario congelato. Questa tutela
+    riguarda solo ciò che riconoscono tokenizer, tagger e NER; non costituisce
+    una validazione del significato.
     """
     if isinstance(max_edits, bool) or not isinstance(max_edits, int) or max_edits < 1:
         raise ValueError('noise max_edits must be a positive integer')
@@ -255,8 +257,8 @@ def generate_null_controls(cohort: list[dict], references: list[dict], nlp, *,
             control_kind='length', comparison_eligible=length['length_match_eligible'],
             **common, **length), status=status))
         noisy, noise = minimal_lexical_noise(prefix, nlp, seed=seed, max_edits=noise_max_edits)
-        # Noise metadata describes changes within the prefix; unchanged below
-        # is always relative to the complete original required by the runner.
+        # I metadati del rumore descrivono le modifiche nel prefisso; sotto, unchanged
+        # si riferisce sempre all’originale completo richiesto dalla procedura.
         noise['unchanged'] = noisy == source['machine']
         generated.append(_row(source, 'null_length_noise__' + reference_name, noisy, dict(
             control_kind='length_and_lexical_noise',
@@ -282,8 +284,8 @@ def prepare(cohort_path: Path, rewrite_paths: list[Path], output: Path, *,
             nlp=None) -> dict:
     if nlp is None:
         import spacy
-        # Same tokenizer as stylometry, retaining NER to protect recognized
-        # entity spans during the deliberately small dictionary edits.
+        # Usa lo stesso tokenizer della stilometria, mantenendo il NER per proteggere
+        # le entità riconosciute durante le modifiche da dizionario volutamente limitate.
         nlp = spacy.load('en_core_web_sm')
     cohort_path, output = Path(cohort_path), Path(output)
     rewrite_paths = [Path(path) for path in rewrite_paths]
@@ -321,8 +323,8 @@ def prepare(cohort_path: Path, rewrite_paths: list[Path], output: Path, *,
         'causal_attribution': False,
         'semantic_gold': False,
     }
-    # Check all frozen contents before making any write that could partly
-    # replace a prior run with a different configuration.
+    # Controlla tutti i contenuti congelati prima di scrivere, evitando di sostituire
+    # parzialmente un run precedente con una configurazione diversa.
     manifest_body = json.dumps(manifest, ensure_ascii=False, indent=2) + '\n'
     for path, value in [(output/'rewrites.jsonl', body), (output/'null_controls_run.json', manifest_body)]:
         if path.exists() and path.read_text() != value:
@@ -338,11 +340,12 @@ def prepare(cohort_path: Path, rewrite_paths: list[Path], output: Path, *,
 
 def summarize_null_controls(cohort, references, controls, scores, thresholds, *,
                             lower_is_ai=()):
-    """Paired diagnostic summaries on eligible sources and common baseline-AI.
+    """Produce riepiloghi diagnostici appaiati sulle fonti ammissibili e sugli originali IA rilevati in comune.
 
-    Scores may combine the saved reference run and the control run. Duplicated
-    text keys must have equal scores. Missing scores raise rather than count
-    as human. Thresholds are supplied, never fitted by this helper.
+    I punteggi possono provenire dall'esecuzione di riferimento salvata e da
+    quella di controllo. Chiavi di testo duplicate devono avere lo stesso
+    punteggio. I punteggi mancanti generano un errore anziché essere conteggiati
+    come umani. Le soglie sono fornite dall'esterno e mai stimate qui.
     """
     references = _deduplicate_references(references, None)
     validate_inputs(cohort, references)

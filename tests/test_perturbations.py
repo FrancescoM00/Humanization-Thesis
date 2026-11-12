@@ -147,7 +147,7 @@ def test_eligibility_screening_is_explicit_and_keeps_only_actual_changes(nlp):
                       source_id=f"{domain}:{generator}:{i}", domain=domain, generator=generator)
                for domain in ("Essay", "Reuters", "WritingPrompts")
                for generator in ("a", "b") for i in range(3)]
-    # Each source needs unique text for sampling; add a stable, harmless sentence.
+    # Ogni fonte richiede un testo unico per il campionamento; aggiunge una frase stabile e innocua.
     for index, source in enumerate(sources):
         source["text"] += f" The reference code was {index + 100}."
     sources.append(record("Hello.", source_id="inapplicable"))
@@ -168,7 +168,7 @@ def test_clean_entity_policy_drops_unsafe_categories_and_fixes_surnames(nlp):
     from spacy.tokens import Span
     from humanization.semantics.perturbations import _entity_substitution_clean
 
-    # ORG and TIME are not part of the clean policy.
+    # ORG e TIME non fanno parte della politica clean.
     for text, label, tokens in [("The firm hired a Toyota engineer.", "ORG", ("Toyota",)),
                                 ("The sun rose at 9:00 a.m. today.", "TIME", ("9:00", "a.m."))]:
         doc = nlp(text)
@@ -176,14 +176,14 @@ def test_clean_entity_policy_drops_unsafe_categories_and_fixes_surnames(nlp):
         doc.ents = (Span(doc, start, start + len(tokens), label=label),)
         assert _entity_substitution_clean(doc, Random(42)) is None
 
-    # A span crossing a line break is rejected.
+    # Un segmento che attraversa un'interruzione di riga viene rifiutato.
     doc = nlp("Strike by Workers\n\nContract talks have stalled.")
     end = next(t.i for t in doc if t.text == "Contract") + 1
     doc.ents = (Span(doc, 0, end, label="PERSON"),)
     assert "\n" in doc.ents[0].text
     assert _entity_substitution_clean(doc, Random(42)) is None
 
-    # Full name and standalone surname are renamed together.
+    # Il nome completo e il cognome isolato vengono rinominati insieme.
     doc = nlp('CEO Bernard Looney spoke. "We did well," Looney said.')
     start = next(t.i for t in doc if t.text == "Bernard")
     doc.ents = (Span(doc, start, start + 2, label="PERSON"),)
@@ -207,10 +207,10 @@ def test_clean_entity_policy_guards(nlp):
 
     covid = nlp("The COVID-19 pandemic spread quickly.")
     covid.ents = (Span(covid, 1, 1 + len(nlp.make_doc("COVID-19")), label="PERSON"),)
-    assert _entity_substitution_clean(covid, Random(42)) is None                          # mislabelled
-    assert apply("Firstly, we should act now.", "ORDINAL", "Firstly") is None            # adverb
-    assert apply("Exports to the US grew in 2020.", "GPE", "US") is None                 # abbreviation
-    assert apply("The two main characters, Ann and Bo, differ.", "CARDINAL", "two") is None  # enumerated list
+    assert _entity_substitution_clean(covid, Random(42)) is None                          # etichettato erroneamente
+    assert apply("Firstly, we should act now.", "ORDINAL", "Firstly") is None            # avverbio
+    assert apply("Exports to the US grew in 2020.", "GPE", "US") is None                 # abbreviazione
+    assert apply("The two main characters, Ann and Bo, differ.", "CARDINAL", "two") is None  # elenco enumerato
     change = apply("The office is on the 4th floor.", "ORDINAL", "4th")
     assert change is not None and "4th" not in change["modified"]
 
@@ -222,12 +222,12 @@ def test_clean_entity_policy_more_guards(nlp):
 
     doc = nlp("Lockdowns reduced travel.")
     doc.ents = (Span(doc, 0, 1, label="PERSON"),)
-    assert _entity_substitution_clean(doc, Random(42)) is None            # sentence-initial common noun
+    assert _entity_substitution_clean(doc, Random(42)) is None            # nome comune all'inizio della frase
     doc = nlp("The bank paid millions of dollars in fines.")
     start = next(t.i for t in doc if t.text == "millions")
     doc.ents = (Span(doc, start, start + 3, label="MONEY"),)
-    assert _entity_substitution_clean(doc, Random(42)) is None            # no digit
+    assert _entity_substitution_clean(doc, Random(42)) is None            # nessuna cifra
     doc = nlp("The two men met. The two main characters, Ann and Bo, argued.")
     firsts = [t.i for t in doc if t.text == "two"]
     doc.ents = tuple(Span(doc, i, i + 1, label="CARDINAL") for i in firsts)
-    assert _entity_substitution_clean(doc, Random(42)) is None            # one occurrence is a list
+    assert _entity_substitution_clean(doc, Random(42)) is None            # un'occorrenza è un elenco

@@ -1,4 +1,4 @@
-"""Prepare paired data, extract fixed features, evaluate, and write results."""
+"""Prepara dati appaiati, estrae feature fisse, valuta e salva i risultati."""
 from __future__ import annotations
 import argparse
 from datetime import datetime, timezone

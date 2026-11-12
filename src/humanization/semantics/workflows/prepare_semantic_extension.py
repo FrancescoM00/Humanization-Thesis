@@ -1,4 +1,4 @@
-"""Prepare OpAI positive controls, matched corruptions and subtle challenges."""
+"""Prepara controlli positivi OpAI, alterazioni appaiate e prove di modifiche sottili."""
 from __future__ import annotations
 import argparse
 from collections import Counter

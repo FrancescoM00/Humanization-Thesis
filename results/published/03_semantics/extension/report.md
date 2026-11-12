@@ -1,4 +1,4 @@
-# Esperimento semantico: risultati completi
+# Validazione semantica estesa: controlli positivi, alterazioni sottili e aggregatori
 
 Testi macchina originali: **200**; seed 42. Campione selezionato tra i testi idonei a tutte le trasformazioni, bilanciando dominio e generatore per quanto consentito dagli idonei. Questa selezione introduce un bias esplicito: le frasi ambigue o senza entità non vengono rappresentate. Le trasformazioni non applicabili sono contate, non sostituite con identità; vedere `eligibility_manifest.json`.
 

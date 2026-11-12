@@ -1,4 +1,4 @@
-"""Describe the existing DATE/MONEY/PERCENT clean pairs; no model inference."""
+"""Descrive le coppie pulite DATE/MONEY/PERCENT esistenti, senza inferenza dei modelli."""
 from __future__ import annotations
 import argparse
 from collections import Counter

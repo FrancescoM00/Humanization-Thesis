@@ -1,8 +1,9 @@
-"""Quantify the minimum's multiple-opportunity effect within fixed good pairs.
+"""Quantifica l'effetto delle molte occasioni sul minimo entro coppie corrette fisse.
 
-Use saved model outputs only. Premise evidence stays fixed; uniformly sample
-m hypothesis units from the same pair's two directional support arrays. The
-expected minimum is exact, without Monte Carlo or extra neural inference.
+Usa solo output salvati dei modelli. L'evidenza della premessa resta fissa;
+campiona uniformemente m unità di ipotesi dai due vettori di supporto
+direzionale della stessa coppia. Il minimo atteso è esatto, senza Monte Carlo
+o ulteriore inferenza neurale.
 """
 from __future__ import annotations
 import argparse

@@ -89,20 +89,20 @@ def test_binoculars_cache_fallbacks_follow_project_and_platform_temp(tmp_path, m
 
 
 def test_binoculars_observed_nll_and_cross_entropy_have_correct_direction_and_masks():
-    # p(observer)=[.75,.25], q(performer)=[.5,.5] at every position.
-    # Both NLL and cross-entropy equal log(2), hence ratio one.
+    # p(observer)=[.75,.25], q(performer)=[.5,.5] in ogni posizione.
+    # NLL ed entropia incrociata sono entrambe uguali a log(2), quindi il rapporto è uno.
     p = torch.log(torch.tensor([[[.75, .25]] * 4]))
     q = torch.log(torch.tensor([[[.5, .5]] * 4]))
     ids = torch.tensor([[0, 1, 0, 1]])
     mask = torch.tensor([[1, 1, 1, 0]])
     result = binoculars_components(p, q, ids, mask, positions_per_batch=2)
     assert result['nll_tokens'] == 2
-    assert result['cross_entropy_tokens'] == 3  # Includes last real position.
+    assert result['cross_entropy_tokens'] == 3  # Include l'ultima posizione reale.
     assert result['nll_sum'] == pytest.approx(2 * np.log(2))
     assert result['cross_entropy_sum'] == pytest.approx(3 * np.log(2))
     assert ratio_from_components([result])['score'] == pytest.approx(1)
-    # The last input token is genuinely observed even if its ID is EOS/pad-like.
-    # Attention mask, not equality to a token ID, decides inclusion.
+    # L'ultimo token di input è effettivamente osservato anche se il suo ID è simile a EOS o padding.
+    # L'inclusione è determinata dalla maschera di attenzione, non dall'uguaglianza con l'ID di un token.
     assert binoculars_components(p, q, ids, torch.ones_like(ids))['cross_entropy_tokens'] == 4
 
 
@@ -146,7 +146,7 @@ def fixture_data():
         rewrites.append({'id': f'r{i}', 'source_id': f't{i}', 'source_group_id': f'g{i}', 'humanizer': 'rewrite',
                          'original': f'Machine {i}.', 'modified': 'Rewrite.' if i != 1 else '',
                          'status': 'ok' if i != 1 else 'generation_error'})
-    # Lower means AI: two original positives, one evasion and one failed writer.
+    # Un valore più basso indica IA: due originali positivi, un'evasione e un riscrittore fallito.
     lookup = {('cal', 'calibration_human'): 1., ('t0', 'human'): 1.2,
         ('t1', 'human'): 1.1, ('t2', 'human'): 1.2,
         ('t0', 'machine'): .7, ('t1', 'machine'): .8, ('t2', 'machine'): 1.1,

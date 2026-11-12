@@ -27,7 +27,7 @@ def test_identity_distance_and_scales_depend_only_on_calibration_humans():
     names, means, scales, _ = fit_scales(calibration, features)
     assert means['word_length_mean'] == pytest.approx(1.5)
     assert scales['word_length_mean'] == pytest.approx(np.sqrt(.5))
-    # A test outlier cannot change calibration scales or identity distances.
+    # Un valore anomalo del test non può cambiare le scale di calibrazione o le distanze dell'identità.
     features[digest('machine 2')]['word_length_mean'] = 10000.
     scored = style_table(pairs, features, names, means, scales).iloc[0]
     assert scored.style_rms == 0

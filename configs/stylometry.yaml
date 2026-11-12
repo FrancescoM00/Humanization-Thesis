@@ -1,4 +1,4 @@
-# All paths are relative to the extracted project root.
+# Tutti i percorsi sono relativi alla cartella principale del progetto estratto.
 seed: 42
 bootstrap: 500
 run_dir: results/new_runs/custom_study

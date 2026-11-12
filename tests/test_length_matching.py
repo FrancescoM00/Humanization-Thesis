@@ -1,4 +1,4 @@
-"""Tests of matching invariants, without treating fixtures as research data."""
+"""Test degli invarianti dell'abbinamento, senza trattare le fixture come dati di ricerca."""
 import numpy as np
 import pandas as pd
 import pytest

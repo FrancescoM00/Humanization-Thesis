@@ -1,4 +1,4 @@
-"""Score a seeded native-PyTorch calibration subset before float32 ORT use."""
+"""Calcola con PyTorch nativo un sottoinsieme di calibrazione a seme fissato prima di usare ORT float32."""
 import argparse
 import hashlib
 import json

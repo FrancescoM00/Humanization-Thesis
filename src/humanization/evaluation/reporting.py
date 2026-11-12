@@ -1,4 +1,4 @@
-"""Standalone plots and an Italian report from actual experimental outputs."""
+"""Grafici autonomi e report italiano a partire dagli output sperimentali effettivi."""
 from pathlib import Path
 import json
 
@@ -10,7 +10,7 @@ import pandas as pd
 
 
 def markdown_table(frame, digits=3):
-    """Avoid an optional tabulate dependency in the reproducible report."""
+    """Evita la dipendenza opzionale da tabulate nel report riproducibile."""
     def fmt(x):
         if isinstance(x, (float, np.floating)):
             if np.isfinite(x) and x != 0 and abs(x) < 10 ** (-digits):

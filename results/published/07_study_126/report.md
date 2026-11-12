@@ -1,3 +1,7 @@
+# Studio su 126 originali: riscrittura, detection, semantica e stile
+
+I risultati di detection sono in [detection_analysis.md](detection_analysis.md); quelli semantici e stilistici sono in [semantic_style.md](semantic_style.md). Le tabelle principali sono `detection_overall.csv`, `nli_primary_summary.csv` e `style_summary.csv`.
+
 ## Annotazione e stato del lavoro
 
 Sono pronti due moduli indipendenti per gli annotatori, con **183 coppie**: 84 reference da 21 fonti e 99 diagnostiche da altre 25 fonti. La capacità diagnostica disponibile è maggiore di 100, ma il raggruppamento completo delle fonti e la selezione effettiva portano a 99: il manifest dichiara il target non raggiunto. Non si duplica o inventa un esempio per arrivare a cento. Le schede sono vuote; la revisione dell'assistente non costituisce annotazione umana indipendente.

@@ -1,4 +1,4 @@
-"""Regressions found while reviewing the supplied clean-v2 patch."""
+"""Regressioni rilevate durante la revisione della patch clean-v2 fornita."""
 from random import Random
 
 import pytest

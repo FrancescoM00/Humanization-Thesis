@@ -1,4 +1,4 @@
-"""Checks of pairing, inference direction, and held-out-source protection."""
+"""Verifiche dell'abbinamento, della direzione di inferenza e della separazione delle fonti escluse dal training."""
 
 import unittest
 
@@ -45,7 +45,7 @@ class EffectTests(unittest.TestCase):
 
     def test_generator_effect_uses_its_matched_humans(self):
         df = sample_frame(12)
-        # Put A-source humans and machines into a deliberately different range.
+        # Colloca deliberatamente umani e macchine della fonte A in un intervallo diverso.
         sources = set(df.loc[df.generator == "A", "pair_id"])
         df.loc[df.pair_id.isin(sources), "signal"] += 100
         effects = effect_tables(df, ["signal"], n_bootstrap=0)
@@ -57,8 +57,8 @@ class EffectTests(unittest.TestCase):
 
     def test_shortlist_requires_effect_in_each_domain(self):
         df = sample_frame()
-        # Add an association which reverses in one domain; pooled significance
-        # or magnitude should not make it into the stable shortlist.
+        # Aggiunge un'associazione che si inverte in un dominio; significatività o intensità
+        # aggregate non devono farla entrare nella lista stabile di feature.
         df["unstable"] = df.signal
         df.loc[df.domain == "Reuters", "unstable"] = -df.loc[df.domain == "Reuters", "signal"]
         effects = effect_tables(df, ["signal", "unstable"], n_bootstrap=0)
@@ -80,8 +80,8 @@ class EffectTests(unittest.TestCase):
 class SplitTests(unittest.TestCase):
     def test_cross_generator_and_cross_domain_remove_duplicate_components(self):
         df = sample_frame(12)
-        # Different source IDs connected by an exact-duplicate component,
-        # deliberately spanning domains. Every protocol must respect it.
+        # ID di fonte diversi collegati da una componente di duplicati esatti,
+        # deliberatamente distribuita tra domini. Ogni protocollo deve rispettarla.
         duplicate = df.pair_id.isin(["Essay:0", "Reuters:0"])
         df.loc[duplicate, "group_id"] = "duplicate-component"
         for protocol, domain, generator, fold, train, test in _evaluation_splits(df, 42, 3):
@@ -97,7 +97,7 @@ class SplitTests(unittest.TestCase):
     def test_reported_metrics_use_complete_disjoint_oof_predictions(self):
         df = sample_frame()
         metrics, predictions = evaluate(df, {"all": ["signal", "noise"]}, n_splits=3, n_bootstrap=20)
-        self.assertEqual(len(metrics), 8)  # 3 within + 3 held-domain + 2 held-generator
+        self.assertEqual(len(metrics), 8)  # 3 interni + 3 con dominio escluso + 2 con generatore escluso
         self.assertTrue((predictions.train_group_overlap == 0).all())
         for _, part in predictions.groupby(["protocol", "domain", "generator", "feature_set"]):
             self.assertFalse(part.id.duplicated().any())

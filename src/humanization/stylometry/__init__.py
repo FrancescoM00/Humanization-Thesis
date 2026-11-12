@@ -1,1 +1,1 @@
-"""stylometry components for reproducible humanization experiments."""
+"""Componenti stilometriche per esperimenti riproducibili di humanization."""

@@ -21,7 +21,7 @@ def test_panels_are_nested_balanced_and_source_disjoint():
     assert len(test_ids['pilot']) == 12
     assert len(test_ids['study']) == 24
     assert calibrations[0] == calibrations[1] == calibrations[2]
-    # Selection is independent of input ordering and arbitrary score fields.
+    # La selezione è indipendente dall'ordine degli input e da campi di punteggio arbitrari.
     other = select_cohorts([dict(r, detector_score=1) for r in reversed(rows)],
                            per_cell=2, reserve_per_cell=4, calibration_per_domain=5)
     assert panels == {k: [{key: val for key, val in r.items() if key != 'detector_score'}

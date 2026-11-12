@@ -1,4 +1,4 @@
-"""The command-line layer dispatches ordinary configuration mappings to modules."""
+"""L’interfaccia a riga di comando passa ai moduli le configurazioni lette dai file."""
 import argparse,json
 from .configuration import load,path,output,record
 

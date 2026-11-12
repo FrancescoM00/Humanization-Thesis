@@ -1,4 +1,4 @@
-"""Score an open detector pool and evaluate calibrated conditional evasion."""
+"""Calcola i punteggi di un insieme di detector aperti e valuta l’evasione condizionata con soglie calibrate."""
 import argparse
 from pathlib import Path
 import sys

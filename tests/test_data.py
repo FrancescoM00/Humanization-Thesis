@@ -1,4 +1,4 @@
-"""Unit fixtures exercise data handling; they are never benchmark results."""
+"""Le fixture dei test unitari verificano la gestione dei dati; non sono mai risultati del benchmark."""
 import json
 import tempfile
 import unittest
@@ -109,7 +109,7 @@ class DataTests(unittest.TestCase):
         frame.to_csv(path, index=False)
         with self.assertRaisesRegex(ValueError, "unique eligible humans"):
             self.run_prepare()
-        # Explicit sensitivity mode preserves the fragment; no silent fallback.
+        # La modalità esplicita di sensibilità conserva il frammento, senza ripieghi impliciti.
         data, manifest = self.run_prepare("sensitivity", clean_sentence_ends=False)
         self.assertEqual(len(data), 48)
         self.assertFalse(manifest["clean_sentence_ends"])

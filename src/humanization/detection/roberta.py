@@ -1,9 +1,10 @@
-"""Open detector evaluation with human-only calibration and conditional ASR.
+"""Valuta detector aperti con calibrazione sui soli umani e ASR condizionato.
 
-Detector scores are token-weighted means over non-overlapping, complete chunks.
-They are model scores, not calibrated probabilities of human authorship. Each
-detector receives its own frozen threshold; a three-model majority vote combines
-binary decisions, never raw scores. Failed generations remain in ASR denominators.
+I punteggi dei detector sono medie pesate per token su blocchi completi e non
+sovrapposti. Sono punteggi dei modelli, non probabilità calibrate di paternità
+umana. Ogni detector usa una propria soglia congelata; il voto di maggioranza
+fra tre modelli combina decisioni binarie, mai punteggi grezzi. Le generazioni
+fallite restano nei denominatori dell'ASR.
 """
 from __future__ import annotations
 from collections import defaultdict
@@ -21,7 +22,7 @@ import pandas as pd
 from humanization.datasets.records import digest
 
 def validate_ai_label(model_config, detector):
-    """Require the explicit model-card class direction, checking actual config."""
+    """Richiede il verso delle classi dichiarato nella scheda del modello e verifica la configurazione effettiva."""
     index = detector.get('ai_label_index')
     if isinstance(index, bool) or not isinstance(index, int) or index not in (0, 1):
         raise ValueError('Every binary detector requires explicit ai_label_index 0 or 1')
@@ -45,7 +46,7 @@ def _require_device(device):
     return selected
 
 def score_detector(records, detector, output, device='cpu'):
-    """Run one checkpoint, persisting text-keyed scores after every document."""
+    """Esegue un checkpoint e salva dopo ogni documento i punteggi associati alle chiavi dei testi."""
     import torch
     from transformers import AutoModelForSequenceClassification, AutoTokenizer
     from humanization.semantics.metrics import token_chunks

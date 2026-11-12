@@ -1,4 +1,4 @@
-"""Run Binoculars on the frozen cohort and rewrites, calibrating on humans only."""
+"""Esegue Binoculars sulla coorte congelata e sulle riscritture, calibrando sui soli umani."""
 import argparse
 import os
 from pathlib import Path

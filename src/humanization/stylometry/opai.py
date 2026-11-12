@@ -1,4 +1,4 @@
-"""OpAI style changes: paired features and touched-sentence distances."""
+"""Modifiche stilistiche OpAI: feature appaiate e distanze sulle frasi modificate."""
 import json
 import numpy as np
 import pandas as pd
@@ -14,7 +14,7 @@ def run(config):
         result=summarize(frame,SHORTLIST,np.random.default_rng(config.get('seed',42)),config.get('bootstrap',1000),'full_document')
         result.to_csv(out/'document_feature_summary.csv',index=False)
         units=pd.read_csv(root/'touched/aligned_sentence_distances.csv')
-        # All edits from an original remain one cluster before averaging.
+        # Tutte le modifiche dello stesso originale restano nello stesso gruppo prima della media.
         units=units[units.eligible_for_distance.eq(True)]
         grouped=units.groupby(['source_id','operation'])[['unit_distance_rms','unit_pos_js']].mean().reset_index()
         rows=[];rng=np.random.default_rng(config.get('seed',42));n=config.get('bootstrap',1000)

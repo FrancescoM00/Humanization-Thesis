@@ -33,7 +33,7 @@ def make_doc(words, pos, sent_starts):
 
 
 def test_feature_denominators_sentence_variation_and_schema():
-    # Four alpha words, one number, four punctuation tokens; sentences 2 and 2.
+    # Quattro parole alfabetiche, un numero, quattro token di punteggiatura; frasi di 2 e 2 parole.
     doc = make_doc(
         ["The", "cat", ",", "42", ".", "It", "runs", "—", "."],
         ["DET", "NOUN", "PUNCT", "NUM", "PUNCT", "PRON", "VERB", "PUNCT", "PUNCT"],

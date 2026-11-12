@@ -1,1 +1,1 @@
-"""detection components for reproducible humanization experiments."""
+"""Componenti di rilevazione per esperimenti riproducibili di humanization."""

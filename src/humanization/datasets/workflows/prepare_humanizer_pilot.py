@@ -1,4 +1,4 @@
-"""Prepare frozen desktop panels, without running generators or detectors."""
+"""Prepara pannelli locali fissati, senza eseguire generatori o detector."""
 import argparse
 from pathlib import Path
 import sys

@@ -1,8 +1,9 @@
-"""Distances and native sentence lineage for localized OpAI stylometry.
+"""Distanze e corrispondenze originali delle frasi per la stilometria locale OpAI.
 
-The public Parquet release drops explicit sentence_ids but keeps the builder's
-ordered sentence array. We use that lineage only after validating constant
-cardinality, exact text reconstruction and all unchanged v0 anchors.
+La versione Parquet pubblica omette gli sentence_ids espliciti ma conserva
+l'array ordinato delle frasi del costruttore. Si usa tale corrispondenza solo
+dopo aver verificato cardinalità costante, ricostruzione esatta del testo e
+tutti i riferimenti v0 invariati.
 """
 from __future__ import annotations
 
@@ -32,7 +33,7 @@ def normalize_whitespace(text):
 
 
 def validate_native_lineage(versions):
-    """Validate the released positional lineage, without fuzzy matching."""
+    """Verifica la corrispondenza posizionale pubblicata senza abbinamenti approssimativi."""
     if set(range(6)) - set(versions):
         raise ValueError('All adjacent versions v0..v5 are required')
     counts = {len(row['sentences']) for row in versions.values()}
@@ -74,7 +75,7 @@ def pos_js(before, after):
 
 
 def source_bootstrap(values, rng, n_bootstrap=1000):
-    """Scalar sample already averaged within each original document source."""
+    """Campione scalare già mediato all'interno di ogni documento di origine."""
     values = np.asarray(values, dtype=float)
     values = values[np.isfinite(values)]
     if len(values) < 2:

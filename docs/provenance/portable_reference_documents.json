@@ -281,7 +281,7 @@
     {
       "file": "results/published/07_study_126/report.md",
       "reference_document_sha256": "80160f5baaf5ea4afc4274786b058600939645472ba11252483b22ea69fe0b9c",
-      "portable_document_sha256": "3ddb26de7684a0ea7e07fa8cd1669ec6652d5e29c125232754a5381f0b26ca09",
+      "portable_document_sha256": "d41397f84062b63f27bb0d5548f1e3b919826ad0ee1c5ef690050bfc78bb39b4",
       "scope": "editorial portable reference copy; numerical results unchanged"
     },
     {
@@ -317,7 +317,7 @@
     {
       "file": "results/published/06_pilot_42/qwen/report.md",
       "reference_document_sha256": "ec711b99730b143c6d8b6629346d63f3113543b8391b070ab8620aea15209945",
-      "portable_document_sha256": "b62bc73255cd1c66339f3d338bfa45c3b823fab23a513f6b829a4ccdf6b15e7b",
+      "portable_document_sha256": "35c4e58e398254379f3aa583c46e58f47a28a2cf8676a2b9dcc8c2f5db7315c3",
       "scope": "editorial portable reference copy; numerical results unchanged"
     },
     {
@@ -337,6 +337,24 @@
       "reference_document_sha256": "094500f022d3467e687186d017e52bd39e31ae90244d64a6b3cc0f8725549daa",
       "portable_document_sha256": "8ee3e38a05522a4e2aef991a843090bd4f3addd05436db154f81f88792af7cbd",
       "scope": "editorial portable reference copy; numerical results unchanged"
+    },
+    {
+      "file": "results/published/03_semantics/baseline/report.md",
+      "reference_document_sha256": "c61b097a5f99d49b227bd310e4ff747071e022bea8df6bf8215350e910c92609",
+      "portable_document_sha256": "2abb1c9aea128b1f3b0f278be1c35cd7fe2a3b7a29033938f328c5a9b65138a5",
+      "scope": "editorial experiment title and navigation; numerical results unchanged"
+    },
+    {
+      "file": "results/published/03_semantics/entity_clean/report.md",
+      "reference_document_sha256": "64b69f346d9d2529086386e6f232515a266e3f57d0dfbffb46fd50e76ba3f74f",
+      "portable_document_sha256": "e46e113ee1646f9d6d04d9a452b7b047ed13935e0ef11f5061befc0db75190fb",
+      "scope": "editorial experiment title and navigation; numerical results unchanged"
+    },
+    {
+      "file": "results/published/03_semantics/extension/report.md",
+      "reference_document_sha256": "25265bc3e757f47b148b0df76959d4efe5715d9a0164d796b0135c11ad577299",
+      "portable_document_sha256": "387d8176fbd8fac75e7ee7fff5070eea1cd09c74217b37fc6bb459f180d75e4c",
+      "scope": "editorial experiment title and navigation; numerical results unchanged"
     }
   ]
 }

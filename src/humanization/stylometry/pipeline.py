@@ -1,4 +1,4 @@
-"""Feature extraction and reproducible stylometric analyses."""
+"""Estrazione delle feature e analisi stilometriche riproducibili."""
 import shutil
 from humanization.configuration import path,output,record
 

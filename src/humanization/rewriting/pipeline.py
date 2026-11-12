@@ -1,7 +1,8 @@
-"""Run fixed, non-adaptive rewriting systems and preserve unsuccessful attempts.
+"""Esegue sistemi di riscrittura fissi e non adattivi, conservando i tentativi falliti.
 
-The identity system requires only the Python standard library. Neural models
-are imported lazily, loaded one at a time, and never queried through a detector.
+Il sistema identità richiede soltanto la libreria standard di Python. I modelli
+neurali sono importati quando servono, caricati uno alla volta e mai interrogati
+attraverso un detector.
 """
 from __future__ import annotations
 from collections import Counter

@@ -1,4 +1,4 @@
-"""Project-relative paths for an extracted, standalone research project."""
+"""Percorsi relativi al progetto di ricerca, autonomo e utilizzabile dopo l’estrazione."""
 from pathlib import Path
 
 
@@ -10,7 +10,7 @@ def project_root():
 
 
 def resolve_path(root,value):
-    """Resolve a declared location once; never translate retired folder names."""
+    """Risolve una sola volta il percorso dichiarato, senza tradurre i vecchi nomi delle cartelle."""
     value=Path(value)
     result=(value if value.is_absolute() else Path(root)/value).resolve()
     if any(a==b=='published' for a,b in zip(result.parts,result.parts[1:])):

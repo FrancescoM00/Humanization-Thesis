@@ -1,7 +1,8 @@
-"""Adjacent OpAI positive controls and controlled errors in the same edits.
+"""Controlli positivi OpAI tra versioni adiacenti ed errori controllati nelle stesse modifiche.
 
-Operation names specify intended meaning preservation, not independently
-verified gold semantic labels. No editing API or new generated text is used.
+I nomi delle operazioni indicano la conservazione del significato prevista,
+non etichette semantiche certe verificate indipendentemente. Non si usano
+API di editing né nuovi testi generati.
 """
 from __future__ import annotations
 
@@ -21,7 +22,7 @@ POSITIVE_OPERATIONS = ((0, 1, 'polish'), (1, 2, 'paraphrase'), (2, 3, 'style'))
 
 
 def _conservative_entity(entity):
-    """Reduce obvious small-model NER span errors without semantic scoring."""
+    """Riduce errori evidenti negli span NER del modello piccolo senza usare score semantici."""
     text = entity.text.strip()
     if not text or '\n' in text or '\r' in text or len(text) > 100:
         return False
@@ -34,7 +35,7 @@ def _conservative_entity(entity):
         return (2 <= len(words) <= 5 and all(word.isalpha() for word in words)
                 and not text.isupper() and all(word[0].isupper() for word in words))
     if entity.label_ in {'GPE', 'LOC'}:
-        # Precision-oriented finite geography list: no NLI-based filtering.
+        # Elenco geografico finito orientato alla precisione: nessun filtro basato sull'NLI.
         known = {'united states', 'united kingdom', 'england', 'scotland', 'ireland',
                  'wales', 'france', 'germany', 'italy', 'spain', 'portugal', 'greece',
                  'sweden', 'norway', 'denmark', 'finland', 'poland', 'ukraine', 'russia',
@@ -71,11 +72,12 @@ def _sha256_file(path):
 
 
 def load_local_opai_trajectories(opai_dir=Path('data/opai'), max_version=5):
-    """Read the already verified local Parquet release, without network work.
+    """Legge la versione Parquet locale già verificata, senza operazioni di rete.
 
-    Return ``(trajectories, provenance)``. Trajectory keys are
-    ``(document_id, domain, generator)`` and version keys are integers. The
-    saved downloader provenance pins the 16 official shard checksums.
+    Restituisce ``(trajectories, provenance)``. Le chiavi delle traiettorie
+    sono ``(document_id, domain, generator)`` e quelle delle versioni sono
+    interi. La provenienza salvata dal downloader fissa gli hash dei
+    16 shard ufficiali.
     """
     import pyarrow.parquet as pq
 
@@ -121,10 +123,11 @@ def load_local_opai_trajectories(opai_dir=Path('data/opai'), max_version=5):
 
 
 def assign_source_splits(pairs, seed=42):
-    """Assign half the source groups per domain to calibration, then test.
+    """Assegna metà dei gruppi di fonte per dominio alla calibrazione, poi al test.
 
-    Every editor, version and perturbation of a human source keeps one split.
-    These experiment splits are distinct from OpAI's original dataset split.
+    Tutti gli editor, le versioni e le perturbazioni di una stessa fonte umana
+    restano nella stessa partizione. Queste partizioni sperimentali sono
+    distinte da quelle originali del dataset OpAI.
     """
     source_domains = {}
     for pair in pairs:
@@ -151,11 +154,12 @@ def assign_source_splits(pairs, seed=42):
 
 
 def select_positive_controls(trajectories, n=100, seed=42, require_through_version=5):
-    """Select common trajectories, balanced across domain×editor, then all edits.
+    """Seleziona traiettorie comuni bilanciate per dominio×editor, poi tutte le modifiche.
 
-    Sorted candidates and seeded round-robin match the first n of the style
-    study's larger selection when that study uses the same seed and loader.
-    Selection is independent of semantic model scores and edit applicability.
+    Candidati ordinati e rotazione con seme coincidono con i primi n elementi
+    della selezione più ampia dello studio stilistico se seme e caricamento
+    sono gli stessi. La selezione è indipendente dagli score semantici e
+    dall'applicabilità delle modifiche.
     """
     required = set(range(require_through_version + 1))
     candidates = [dict(key=key, domain=key[1], generator=key[2])
@@ -215,12 +219,13 @@ def select_positive_controls(trajectories, n=100, seed=42, require_through_versi
 
 
 def make_matched_negative_controls(positives, seed=42, nlp=None, n_per_subtle=50):
-    """Corrupt each actual positive output while retaining its original anchor.
+    """Altera ciascun output positivo effettivo mantenendo il riferimento originale.
 
-    A negative compares before-edit text with the *same edited output* plus a
-    controlled error. Its paired positive compares that same before-edit text
-    with the uncorrupted edited output. Local targets isolate the incremental
-    corruption on the post-edit output, not an invented alignment to the input.
+    Un negativo confronta il testo prima dell'editing con lo *stesso output
+    modificato* più un errore controllato. Il positivo appaiato confronta lo
+    stesso testo iniziale con l'output modificato non alterato. I bersagli
+    locali isolano l'alterazione aggiuntiva nell'output dopo l'editing,
+    senza inventare un allineamento all'input.
     """
     from humanization.semantics.perturbations import load_perturbation_nlp, _negation, _entity_substitution, _rng
     from humanization.semantics.subtle_perturbations import TRANSFORMS
@@ -234,8 +239,8 @@ def make_matched_negative_controls(positives, seed=42, nlp=None, n_per_subtle=50
         screened_entities = [entity for entity in doc.ents if _conservative_entity(entity)]
         transforms = [('negation', _negation), ('entity_substitution', _entity_substitution)] + list(TRANSFORMS.items())
         for condition, function in transforms:
-            # Restrict only entity substitution. Numeric/date and other subtle
-            # rules must retain the complete original NER annotation.
+            # Limita soltanto la sostituzione di entità. Le regole per numeri/date e le altre
+            # modifiche sottili devono conservare l'intera annotazione NER originale.
             doc.set_ents(screened_entities if condition == 'entity_substitution' else original_entities)
             rng = _rng(seed, positive['id'], doc.text, 'matched_' + condition)
             change = function(doc, rng)
@@ -271,8 +276,8 @@ def make_matched_negative_controls(positives, seed=42, nlp=None, n_per_subtle=50
                 negatives.append(pair)
     subtle_selection = {}
     for condition, candidates in subtle_candidates.items():
-        # Select solely by applicability and the existing domain×editor
-        # round-robin. Never inspect an NLI or similarity score.
+        # Seleziona solo in base all'applicabilità e alla rotazione dominio×editor
+        # già esistente. Non esamina mai score NLI o di similarità.
         chosen = _balanced_selection(candidates, n_per_subtle, random.Random(f'{seed}|{condition}|matched-selection'))
         negatives.extend(chosen)
         subtle_selection[condition] = {

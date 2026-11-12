@@ -1,4 +1,4 @@
-"""Freeze source-disjoint humanizer cohorts before observing detector scores."""
+"""Fissa coorti di riscrittura con fonti separate prima di osservare gli score dei detector."""
 from __future__ import annotations
 
 from collections import Counter, defaultdict
@@ -39,10 +39,10 @@ def paired_samples(samples):
 
 def select_cohorts(rows, *, per_cell=2, calibration_per_domain=100,
                    reserve_per_cell=6, seed=42):
-    """Nested test panels; calibration excludes the entire reserved study panel.
+    """Pannelli di test annidati; la calibrazione esclude l'intero pannello riservato allo studio.
 
-    Ranking depends on seed and identifiers only. Feature values, detector
-    scores and humanizer outputs never enter the selection.
+    L'ordinamento dipende soltanto dal seme e dagli identificatori. Valori delle
+    feature, score dei detector e output dei riscrittori non entrano nella selezione.
     """
     if not 1 <= per_cell <= reserve_per_cell or calibration_per_domain < 1:
         raise ValueError('Require 1 <= per_cell <= reserve_per_cell and positive calibration size')
@@ -93,11 +93,11 @@ def select_cohorts(rows, *, per_cell=2, calibration_per_domain=100,
 
 
 def reconstruct_samples(raw_dir, metadata_csv, historical_manifest):
-    """Rebuild the existing short passages, not the original matching search.
+    """Ricostruisce i passaggi brevi già selezionati, senza ripetere la ricerca degli abbinamenti.
 
-    The published feature table contains the selected source rows and exact
-    prefix lengths. Its text IDs verify the reconstructed strings. This avoids
-    uploading texts or the cloud virtual environment to the repository.
+    La tabella pubblicata delle feature contiene le righe di origine selezionate
+    e le lunghezze esatte dei prefissi. Gli ID dei testi verificano le stringhe
+    ricostruite. Questo evita di caricare testi o l'ambiente virtuale cloud nella repository.
     """
     from humanization.datasets.mgtbench import DOMAINS, text_hash, process_spaces, trim_incomplete_tail
     from humanization.stylometry.features import load_nlp
@@ -122,8 +122,8 @@ def reconstruct_samples(raw_dir, metadata_csv, historical_manifest):
         row = {key: item[key] for key in keys}
         raw = frames[row['domain']][int(row['source_row'])][row['generator']]
         count = int(row['matched_n_words'])
-        # Reproduce both normalization passes of the original matcher. Its
-        # caller cleans the full text before sentence_prefixes cleans it again.
+        # Riproduce entrambi i passaggi di normalizzazione dell’abbinamento originale.
+        # Il chiamante pulisce tutto il testo prima della seconda pulizia in sentence_prefixes.
         cleaned = trim_incomplete_tail(process_spaces(raw))
         prefixes = sentence_prefixes(cleaned, nlp.make_doc, count, count)
         if count not in prefixes:

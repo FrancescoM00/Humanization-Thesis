@@ -1,9 +1,10 @@
-"""Fixed lexical warnings for semantic edits, independent of NLI outputs.
+"""Segnalazioni lessicali fisse per modifiche semantiche, indipendenti dagli output NLI.
 
-These rules detect changed linguistic commitments, not factual truth. Inventories
-are fixed before evaluating scores. Numeric warnings compare normalized value
-multisets: replacing 20 with 30 is visible even though both texts contain one
-number. English cardinal/ordinal normalization is deliberately limited.
+Queste regole rilevano cambiamenti nel contenuto affermato, non la verità dei
+fatti. Gli inventari sono fissati prima di valutare gli score. Le segnalazioni
+numeriche confrontano multinsiemi di valori normalizzati: sostituire 20 con 30
+è rilevabile anche se entrambi i testi contengono un solo numero. La
+normalizzazione dei cardinali e ordinali inglesi è volutamente limitata.
 """
 from __future__ import annotations
 
@@ -52,7 +53,7 @@ def _decimal_string(number):
 
 
 def _cardinal_words(words):
-    """Parse a small grammatical subset; reject lists such as 'one two'."""
+    """Analizza un piccolo sottoinsieme grammaticale; scarta elenchi come 'one two'."""
     total, current, previous, last_scale = 0, 0, '', 10**15
     seen = False
     for word in words:
@@ -91,10 +92,11 @@ def _cardinal_words(words):
 
 
 def numeric_values(doc):
-    """Return a normalized number/unit multiset without inferring truth.
+    """Restituisce un multinsieme normalizzato di numeri e unità senza dedurne la verità.
 
-    Dates are not silently discarded: changed years can be meaningful. There
-    is no general arithmetic, scientific-notation or unit-conversion parser.
+    Le date non vengono scartate silenziosamente: cambiare un anno può essere
+    significativo. Non è presente un analizzatore generale per aritmetica,
+    notazione scientifica o conversione delle unità.
     """
     tokens, values, index = list(doc), Counter(), 0
     word_numbers = set(UNITS) | set(TENS) | set(SCALES)
@@ -150,7 +152,7 @@ def text_inventory(doc):
         word = _surface(token)
         lemma = token.lemma_.casefold() if token.lemma_ else word
         if word in HEDGE_MODALS and token.tag_ == 'MD':
-            hedges['modal'] += 1  # may/might swaps do not create a count warning.
+            hedges['modal'] += 1  # Gli scambi may/might non generano una segnalazione di conteggio.
         elif lemma in HEDGE_LEMMAS and token.pos_ not in {'PROPN', 'NUM'}:
             hedges['epistemic_lexical'] += 1
         if word in NEGATIONS:
@@ -171,8 +173,8 @@ def inventory_delta(original, modified):
                        prefix + '_signed_count_delta': after - before,
                        prefix + '_absolute_count_delta': abs(after - before),
                        prefix + '_lost_items': sum(removed.values()), prefix + '_gained_items': sum(added.values())})
-        # For hedging use total commitments, avoiding warnings for replacing
-        # one hedge by another. Other families compare the canonical multiset.
+        # Per le cautele usa il totale delle affermazioni, evitando segnalazioni quando
+        # una cautela sostituisce un'altra. Le altre famiglie confrontano il multinsieme canonico.
         result[prefix + '_change'] = abs(after - before) if family == 'hedge' else max(sum(removed.values()), sum(added.values()))
         result[prefix + '_count_loss'] = max(before - after, 0)
         result[prefix + '_count_gain'] = max(after - before, 0)
@@ -209,7 +211,7 @@ def definitions():
 
 
 def self_check():
-    """Small semantic examples, not tests that mirror the implementation."""
+    """Piccoli esempi semantici, distinti da test che ripetono l'implementazione."""
     import spacy
     nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
     cases = [

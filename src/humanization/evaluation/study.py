@@ -1,7 +1,8 @@
-"""Rebuild thesis humanizer tables from saved, per-text model outputs.
+"""Ricostruisce le tabelle della tesi sugli humanizer dagli output salvati per testo.
 
-No model is loaded and no threshold is fitted here. Published tables remain
-reference artifacts; newly generated tables belong in a separate run directory.
+Qui non viene caricato alcun modello né stimata alcuna soglia. Le tabelle
+pubblicate restano riferimenti; le nuove tabelle appartengono a una directory
+di esecuzione separata.
 """
 from __future__ import annotations
 from collections import defaultdict
@@ -40,7 +41,7 @@ def cohort_path(run, study=False):
     return path
 
 def merged_pair_scores(run, pilot_ids=()):
-    """Merge raw model stage CSVs, never the already aggregated thesis table."""
+    """Unisce i CSV grezzi delle fasi dei modelli, mai la tabella della tesi già aggregata."""
     run = Path(run)
     rewrites, _ = read_rewrites(run)
     columns = ['id', 'source_id', 'source_group_id', 'domain', 'generator', 'humanizer', 'status']
@@ -307,7 +308,7 @@ def pilot_pair_comparison(qwen_run, dipper_run, output, draws=5000, seed=42):
     return frame
 
 def compare_reference(output, reference, filenames):
-    """Report numerical differences explicitly; never substitute reference cells."""
+    """Riporta esplicitamente le differenze numeriche; non sostituisce celle con quelle di riferimento."""
     rows = []
     for filename in filenames:
         actual_path, expected_path = (Path(output) / filename, Path(reference) / filename)

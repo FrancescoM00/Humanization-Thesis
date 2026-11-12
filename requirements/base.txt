@@ -7,7 +7,7 @@ scikit-learn==1.7.2
 matplotlib==3.10.7
 pytest==8.4.2
 
-# Explicit Parquet support for OpAI style experiments.
+# Supporto Parquet per gli esperimenti stilometrici su OpAI.
 pyarrow==26.0.1
 
 PyYAML==6.0.3

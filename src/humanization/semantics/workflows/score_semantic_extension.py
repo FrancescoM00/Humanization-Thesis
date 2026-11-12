@@ -1,4 +1,4 @@
-"""Score new semantic pairs, retaining the already computed unchanged pairs."""
+"""Calcola gli score delle nuove coppie semantiche conservando quelli delle coppie invariate già calcolate."""
 from __future__ import annotations
 import argparse
 import hashlib

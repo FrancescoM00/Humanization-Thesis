@@ -1,4 +1,4 @@
-"""Project experiment; configuration is read from configs/."""
+"""Esperimento del progetto; la configurazione viene letta da configs/."""
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]

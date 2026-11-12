@@ -1,1 +1,1 @@
-"""semantics components for reproducible humanization experiments."""
+"""Componenti semantiche per esperimenti riproducibili sulle riscritture."""

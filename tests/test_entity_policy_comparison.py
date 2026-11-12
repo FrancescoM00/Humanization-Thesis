@@ -1,4 +1,4 @@
-"""Checks that unrelated changes cannot pass the policy comparison."""
+"""Verifica che modifiche estranee non possano superare il confronto tra politiche."""
 import pandas as pd
 import pytest
 import hashlib

@@ -1,4 +1,4 @@
-"""Neural entailment scores on aligned sentence units; no final system ranking."""
+"""Punteggi neurali di entailment su unità di frase allineate, senza classifica finale dei sistemi."""
 from pathlib import Path
 from collections import defaultdict,OrderedDict
 import gc,hashlib,json,re
@@ -6,17 +6,19 @@ import numpy as np
 import pandas as pd
 
 def nli_scores(pairs, modelpath, alignment_cache=None, *, max_pair_tokens=384, low_support_threshold=0.5, batch_size=8, n_threads=4, label_map=None, probability_cache_path=None, progress_callback=None, cache_only=False, device='cpu'):
-    """Directional sentence/chunk support with max entailment over evidence.
+    """Supporto direzionale di frasi o segmenti tramite entailment massimo sulle evidenze.
 
-    Forward=original entails modified; reverse=modified entails original.
-    Retrieved top-k evidence is used when cached; without a cache, evidence is
-    exhaustive. Unsupported retrieval is not proof of contradiction or fact
-    error. Contradiction summaries use the evidence selected for best support;
-    retrieved_contradiction_max additionally retains the maximum over *all*
-    candidates. Local edited targets bypass retrieval and dilution entirely.
-    Optional JSONL probability cache checkpoints each inference batch. Its
-    header binds it to this local checkpoint's path, config and weight-file
-    metadata; a different checkpoint is rejected instead of reusing stale scores.
+    Forward: l'originale implica il modificato; reverse: il modificato implica
+    l'originale. Si usano le evidenze top-k se presenti in cache, altrimenti
+    si confrontano tutte le evidenze. Il mancato supporto nel recupero non
+    prova una contraddizione o un errore fattuale. I riepiloghi di
+    contraddizione usano l'evidenza con supporto migliore;
+    retrieved_contradiction_max conserva anche il massimo su *tutti* i
+    candidati. I bersagli locali modificati evitano recupero e diluizione.
+    Una cache opzionale JSONL delle probabilità salva ogni batch di inferenza.
+    L'intestazione la lega al percorso, alla configurazione e ai metadati dei
+    pesi del checkpoint locale: un checkpoint diverso viene rifiutato,
+    evitando di riusare score non più validi.
     """
     from .metrics import sentence_chunks, _cached_chunks, _cpu_threads, _identity, _local, _model_path, _nli_direction, _records, _release_device_cache, _resolve_device, resolve_nli_labels
     import torch

@@ -1,4 +1,4 @@
-"""Analyze saved compact-feature predictions with paired group bootstrap."""
+"""Analizza le predizioni salvate delle feature compatte con bootstrap appaiato per gruppi."""
 from __future__ import annotations
 import argparse
 import json

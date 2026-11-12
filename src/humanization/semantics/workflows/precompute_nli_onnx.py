@@ -1,7 +1,8 @@
-"""Populate the unchanged NLI probability cache with validated float32 ORT.
+"""Popola la cache invariata delle probabilità NLI con ORT float32 validato.
 
-Sort globally by token length to avoid padding work. This changes scheduling,
-not evidence retrieval, labels, model weights, or aggregation.
+Ordina globalmente per lunghezza in token per ridurre il padding. Cambia
+la pianificazione, non il recupero delle evidenze, le etichette, i pesi
+del modello o l'aggregazione.
 """
 import argparse
 import hashlib

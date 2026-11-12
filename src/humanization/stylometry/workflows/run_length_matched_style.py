@@ -1,4 +1,4 @@
-"""Repeat the complete style experiment after exact source-paired length control."""
+"""Ripete l'esperimento stilistico completo dopo aver pareggiato esattamente la lunghezza nelle coppie di origine."""
 from __future__ import annotations
 import argparse
 from datetime import datetime, timezone

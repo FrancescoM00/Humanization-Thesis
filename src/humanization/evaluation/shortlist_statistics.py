@@ -1,13 +1,13 @@
-"""Paired, source-group uncertainty for the compact-feature experiment.
+"""Incertezza appaiata per gruppi di fonte nell'esperimento sulle feature compatte.
 
-The input predictions are already out of fold. Repeated predictions of a text
-stay together in the bootstrap; neither folds nor CV seeds are independent
-observations. Random-feature references average *AUCs*, not probabilities.
+Le predizioni di input sono già fuori fold. Le predizioni ripetute di un testo
+restano unite nel bootstrap; né i fold né i semi della CV sono osservazioni
+indipendenti. I riferimenti con feature casuali mediano le *AUC*, non le probabilità.
 
-For this experiment each source group contains one human and one machine text.
-That permits an exact comparison kernel: resampling a group gives the same
-weight to its two texts. The resulting intervals are conditional on the saved
-fits and do not include uncertainty from refitting the training procedure.
+In questo esperimento ogni gruppo di fonte contiene un testo umano e uno
+macchina. Questo consente un nucleo di confronto esatto: ricampionare un gruppo
+attribuisce lo stesso peso ai suoi due testi. Gli intervalli risultanti sono
+condizionati ai fit salvati e non includono l'incertezza del riaddestramento.
 """
 
 from __future__ import annotations
@@ -44,11 +44,12 @@ PROTOCOL_STRATA = {
 
 
 def pairwise_auc_kernel(positive_scores, negative_scores) -> np.ndarray:
-    """Average comparison credit over views; ties receive one half.
+    """Media il contributo dei confronti fra viste; le parità ricevono un mezzo.
 
-    A view is one fitted model/repetition. Inputs have shape ``(groups,)`` or
-    ``(views, groups)``; positive and negative positions use the same group
-    order. Averaging kernels therefore averages the individual model AUCs.
+    Una vista è un modello addestrato o una ripetizione. Gli input hanno forma
+    ``(groups,)`` oppure ``(views, groups)``; le posizioni positive e negative usano
+    lo stesso ordine dei gruppi. Mediare i nuclei equivale quindi a mediare le AUC
+    dei singoli modelli.
     """
     positive = np.asarray(positive_scores, dtype=float)
     negative = np.asarray(negative_scores, dtype=float)
@@ -62,7 +63,7 @@ def pairwise_auc_kernel(positive_scores, negative_scores) -> np.ndarray:
         raise ValueError("Comparison scores must be finite and nonempty")
     n_views, n_groups = positive.shape
     kernel = np.zeros((n_groups, n_groups), dtype=float)
-    # Limit transient comparison arrays, including for the random references.
+    # Limita gli array temporanei di confronto, anche per i riferimenti casuali.
     for start in range(0, n_views, 16):
         a = positive[start:start + 16, :, None]
         b = negative[start:start + 16, None, :]
@@ -72,10 +73,10 @@ def pairwise_auc_kernel(positive_scores, negative_scores) -> np.ndarray:
 
 
 def weighted_auc_from_kernel(kernel, weights):
-    """Return exact grouped AUC for one or several group-weight vectors.
+    """Restituisce l'AUC esatta per gruppi per uno o più vettori di pesi dei gruppi.
 
-    Weights are shared by the positive and negative document of every group.
-    For bootstrap counts ``w``, the AUC is ``w.T @ K @ w / sum(w)**2``.
+    Il documento positivo e quello negativo di ogni gruppo condividono il peso.
+    Con conteggi bootstrap ``w``, l'AUC è ``w.T @ K @ w / sum(w)**2``.
     """
     kernel = np.asarray(kernel, dtype=float)
     values = np.asarray(weights, dtype=float)
@@ -101,12 +102,12 @@ def _sha256(path: Path) -> str:
 
 
 def _auc_by_model(labels: np.ndarray, predictions: np.ndarray) -> np.ndarray:
-    """Vectorized AUC for every repetition and individual model."""
+    """AUC vettorizzata per ogni ripetizione e singolo modello."""
     positive = labels == 1
     n_positive, n_negative = int(positive.sum()), int((labels == 0).sum())
     if not n_positive or not n_negative:
         raise ValueError("AUC needs both classes")
-    # rankdata averages ties, exactly as the comparison-credit definition.
+    # rankdata media le parità, come previsto dalla definizione del contributo al confronto.
     values = predictions.transpose(0, 2, 1)
     ranks = rankdata(values, method="average", axis=-1)
     return (ranks[..., positive].sum(axis=-1)
@@ -161,7 +162,7 @@ def _quantiles(values: np.ndarray) -> tuple[float, float]:
 
 def selection_frequency_table(selections: pd.DataFrame,
                               feature_names=None) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Descriptive selection rates; overlapping fits are not independent trials."""
+    """Frequenze di selezione descrittive; i fit sovrapposti non sono prove indipendenti."""
     if feature_names is None:
         feature_names = list(FEATURE_SCHEMA)
     required = {"protocol", "seed", "fold", "feature", "selected"}
@@ -200,7 +201,7 @@ def selection_frequency_table(selections: pd.DataFrame,
 
 
 def analyze_results(results: Path | str, protocol_path: Path | str | None = None) -> dict[str, Any]:
-    """Analyze saved fits without model training or new feature selection."""
+    """Analizza i fit salvati senza addestrare modelli o selezionare nuove feature."""
     started = time.monotonic()
     results = Path(results)
     protocol_path = Path(protocol_path) if protocol_path else results / "protocol.json"

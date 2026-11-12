@@ -1,4 +1,4 @@
-"""Prepare nested distributed semantic corruptions without neural inference."""
+"""Prepara alterazioni semantiche distribuite annidate senza inferenza neurale."""
 from __future__ import annotations
 import argparse
 import hashlib
