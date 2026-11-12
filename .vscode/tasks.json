@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Humanization: riproduci evaluation",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["${workspaceFolder}/experiments/07_evaluation.py", "--config", "${workspaceFolder}/configs/evaluation.yaml", "--mode", "reproduce"],
+      "options": {"cwd": "${workspaceFolder}", "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUNBUFFERED": "1"}},
+      "problemMatcher": [],
+      "group": {"kind": "build", "isDefault": true},
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "Humanization: verifica dati",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["${workspaceFolder}/experiments/00_data.py", "--config", "${workspaceFolder}/configs/datasets.yaml", "--mode", "reproduce"],
+      "options": {"cwd": "${workspaceFolder}", "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUNBUFFERED": "1"}},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "Humanization: test",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pytest", "-q"],
+      "options": {"cwd": "${workspaceFolder}", "env": {"PYTHONPATH": "${workspaceFolder}/src"}},
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    }
+  ]
+}

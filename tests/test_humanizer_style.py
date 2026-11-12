@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from scripts.score_humanizer_style import digest, fit_scales, style_table, validate_inputs
-from stylometry.features import FEATURE_SCHEMA, POS_TAGS
+from humanization.stylometry.workflows.score_humanizer_style import digest, fit_scales, style_table, validate_inputs
+from humanization.stylometry.features import FEATURE_SCHEMA, POS_TAGS
 
 
 def cohort():

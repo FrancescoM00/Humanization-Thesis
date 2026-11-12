@@ -6,7 +6,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from humanizers.rewriting import (
+from humanization.rewriting.pipeline import (
     _load_model, _rewrite_one, dipper_prompt, generation_status, read_jsonl, run_humanizers,
 )
 
@@ -14,8 +14,8 @@ from humanizers.rewriting import (
 @pytest.mark.parametrize('oversized_second', [False, True])
 def test_dipper_three_sentence_context_keeps_prefix_and_records_incomplete_windows(monkeypatch, oversized_second):
     import torch
-    import humanizers.rewriting as rewriting
-    monkeypatch.setattr(rewriting, '_dipper_sentences', lambda text: ['A.', 'B.', 'C.', 'D.'])
+    import humanization.rewriting.pipeline as rewriting
+    monkeypatch.setattr(__import__('humanization.rewriting.dipper',fromlist=['']), '_dipper_sentences', lambda text: ['A.', 'B.', 'C.', 'D.'])
     source = dict(id='a', source_group_id='g', domain='Essay', generator='Claude', machine='A. B. C. D.')
     system = dict(name='dipper_context3', kind='dipper', window_protocol='three_sentence_context_v2',
                   max_input_tokens=12, max_new_tokens=8, lexical_diversity=60, order_diversity=0)
@@ -175,11 +175,11 @@ def _checkpoint(root, repo_id, revision, *, complete=True):
 def test_strict_cached_reuse_rejects_incomplete_or_unpinned_weights_before_cuda(
         tmp_path, monkeypatch, wrong_revision):
     import torch
-    import humanizers.rewriting as rewriting
+    import humanization.rewriting.pipeline as rewriting
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     monkeypatch.setenv('HUMANIZATION_REUSE_CACHED_MODELS', '1')
-    monkeypatch.setattr(rewriting, '_cached_hf_roots', lambda: [tmp_path])
+    monkeypatch.setattr(__import__('humanization.rewriting.loading',fromlist=['']), '_cached_hf_roots', lambda: [tmp_path])
     _checkpoint(tmp_path, 'test/model', '1'*40 if wrong_revision else '0'*40,
                 complete=wrong_revision)
     monkeypatch.setattr(torch.cuda, 'set_device', lambda *a: pytest.fail('Must not select CUDA'))
@@ -193,11 +193,11 @@ def test_strict_cached_reuse_rejects_incomplete_or_unpinned_weights_before_cuda(
 
 def test_strict_cached_reuse_rejects_missing_tokenizer_before_cuda(tmp_path, monkeypatch):
     import torch
-    import humanizers.rewriting as rewriting
+    import humanization.rewriting.pipeline as rewriting
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     monkeypatch.setenv('HUMANIZATION_REUSE_CACHED_MODELS', '1')
-    monkeypatch.setattr(rewriting, '_cached_hf_roots', lambda: [tmp_path])
+    monkeypatch.setattr(__import__('humanization.rewriting.loading',fromlist=['']), '_cached_hf_roots', lambda: [tmp_path])
     _checkpoint(tmp_path, 'test/model', '0'*40)
     monkeypatch.setattr(torch.cuda, 'set_device', lambda *a: pytest.fail('Must not select CUDA'))
     monkeypatch.setattr(AutoModelForCausalLM, 'from_pretrained',
@@ -223,13 +223,13 @@ def test_strict_cached_reuse_preserves_precision_and_checks_with_separate_tokeni
         tmp_path, monkeypatch, kind, device, quantized, free_gib):
     import torch
     import transformers
-    import humanizers.rewriting as rewriting
+    import humanization.rewriting.pipeline as rewriting
 
     model_root, tokenizer_root = tmp_path / 'weights', tmp_path / 'tokenizer'
     snapshot = _checkpoint(model_root, 'test/model', '0'*40)
     tokenizer_root.mkdir()
     monkeypatch.setenv('HUMANIZATION_REUSE_CACHED_MODELS', '1')
-    monkeypatch.setattr(rewriting, '_cached_hf_roots', lambda: [model_root, tokenizer_root])
+    monkeypatch.setattr(__import__('humanization.rewriting.loading',fromlist=['']), '_cached_hf_roots', lambda: [model_root, tokenizer_root])
     monkeypatch.setattr(rewriting.shutil, 'disk_usage',
                         lambda *a: pytest.fail('Complete checkpoints need no download space'))
     monkeypatch.setattr(torch.cuda, 'is_available', lambda: True)

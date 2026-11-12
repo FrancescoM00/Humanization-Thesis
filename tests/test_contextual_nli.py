@@ -3,7 +3,7 @@ import math
 import numpy as np
 import pytest
 
-from semantics.contextual_nli import build_plan, contiguous_contexts, score_plan, summarize_units
+from humanization.semantics.contextual_nli import build_plan, contiguous_contexts, score_plan, summarize_units
 
 
 class Tokenizer:

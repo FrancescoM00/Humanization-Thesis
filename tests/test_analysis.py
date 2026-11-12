@@ -5,7 +5,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from stylometry.analysis import _evaluation_splits, effect_tables, evaluate, shortlist_features
+from humanization.evaluation.stylometric import _evaluation_splits, effect_tables, evaluate, shortlist_features
 
 
 def sample_frame(n_pairs=18):

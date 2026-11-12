@@ -15,8 +15,8 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_auc_score
 
-from stylometry.features import FEATURE_GROUPS, FEATURE_SCHEMA
-from stylometry.shortlist_validation import (
+from humanization.stylometry.features import FEATURE_GROUPS, FEATURE_SCHEMA
+from humanization.evaluation.shortlist import (
     build_model_registry,
     iter_validation_splits,
     prepare_documents,
@@ -24,7 +24,7 @@ from stylometry.shortlist_validation import (
     select_training_features,
     sha256,
 )
-from stylometry.shortlist_statistics import (
+from humanization.evaluation.shortlist_statistics import (
     pairwise_auc_kernel,
     weighted_auc_from_kernel,
 )

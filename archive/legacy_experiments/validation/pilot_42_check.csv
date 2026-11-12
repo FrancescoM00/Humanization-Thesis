@@ -1,0 +1,16 @@
+table,column,n_compared,max_abs_difference,missing_mismatch,foreign_or_missing_rows,matches_at_1e_12
+paired_asr_comparison.csv,n_test_sources,4,0.0,0,0,True
+paired_asr_comparison.csv,baseline_detected,4,0.0,0,0,True
+paired_asr_comparison.csv,qwen_successes,4,0.0,0,0,True
+paired_asr_comparison.csv,dipper_successes,4,0.0,0,0,True
+paired_asr_comparison.csv,qwen_asr,4,0.0,0,0,True
+paired_asr_comparison.csv,dipper_asr,4,0.0,0,0,True
+paired_asr_comparison.csv,delta_asr_dipper_minus_qwen,4,1.1102230246251565e-16,0,0,True
+paired_asr_comparison.csv,paired_delta_ci95_low,4,0.0,0,0,True
+paired_asr_comparison.csv,paired_delta_ci95_high,4,0.0,0,0,True
+paired_asr_comparison.csv,both_evasion,4,0.0,0,0,True
+paired_asr_comparison.csv,qwen_only_evasion,4,0.0,0,0,True
+paired_asr_comparison.csv,dipper_only_evasion,4,0.0,0,0,True
+paired_asr_comparison.csv,neither_evasion,4,0.0,0,0,True
+paired_asr_comparison.csv,bootstrap_draws,4,0.0,0,0,True
+paired_asr_comparison.csv,bootstrap_seed,4,0.0,0,0,True

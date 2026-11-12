@@ -1,0 +1,47 @@
+# All paths are relative to the extracted project root.
+seed: 42
+bootstrap: 5000
+run_dir: results/new_runs/custom_study
+mode: replay
+cohort: data/processed/study_126/cohorts/study.jsonl
+rewrites: results/new_runs/custom_study/rewriting/rewrites.jsonl
+reference: data/processed/study_126
+output: results/new_runs/custom_study/detection
+device: cpu
+observer_device: cuda:0
+performer_device: cuda:1
+include_binoculars: true
+calibration_fpr: 0.05
+detectors:
+- name: openai_roberta_base
+  model_id: openai-community/roberta-base-openai-detector
+  revision: 6cba99c003b711c7fe94f8a3aa2be35a792cb6fa
+  ai_label_index: 0
+  ai_label: Fake
+  max_tokens: 512
+  preprocessing: none
+- name: fakespot_roberta_base_raw
+  model_id: fakespot-ai/roberta-base-ai-text-detection-v1
+  revision: f9cdb14d1f8b105f597d80fa7b56f20c6ea0e9db
+  ai_label_index: 1
+  ai_label: AI
+  max_tokens: 512
+  preprocessing: none
+- name: radar_vicuna
+  model_id: TrustSafeAI/RADAR-Vicuna-7B
+  revision: 4ff1f23a69a36aa1df47b0933be6279f1b896c9b
+  ai_label_index: 0
+  ai_label: LABEL_0
+  max_tokens: 512
+  preprocessing: none
+zero_shot_detectors:
+- name: binoculars_falcon7b
+  kind: binoculars
+  observer_model_id: tiiuae/falcon-7b
+  observer_revision: ec89142b67d748a1865ea4451372db8313ada0d8
+  performer_model_id: tiiuae/falcon-7b-instruct
+  performer_revision: 8782b5c5d8c9290412416618f36a133653e85285
+  max_tokens: 512
+  precision: float16
+  batch_size: 1
+  positions_per_batch: 32

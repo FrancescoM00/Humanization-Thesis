@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from stylometry.data import DOMAINS, canonical, prepare_dataset, process_spaces, trim_incomplete_tail
+from humanization.datasets.mgtbench import DOMAINS, canonical, prepare_dataset, process_spaces, trim_incomplete_tail
 
 
 class DataTests(unittest.TestCase):

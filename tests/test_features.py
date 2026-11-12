@@ -5,7 +5,7 @@ import pytest
 import spacy
 from spacy.tokens import Doc
 
-from stylometry.features import (
+from humanization.stylometry.features import (
     FEATURE_SCHEMA,
     POS_TAGS,
     extract_features,

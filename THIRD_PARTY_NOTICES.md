@@ -30,3 +30,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+# Resources packaged with the desktop project
+
+The three MGTBench CSVs are the unchanged copies supplied by the author. Official OpAI Parquet files and their source metadata are under data/raw/opai. CMUdict is packaged under data/resources/nltk_data/corpora/cmudict with its original README and dictionary notices. Model weights are not redistributed in the delivery ZIP.

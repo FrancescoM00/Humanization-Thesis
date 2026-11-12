@@ -1,0 +1,39 @@
+{
+  "protocol": "groq_pairwise_naturalness_ab_ba_v1",
+  "plan_sha256": "9c202e0a7f587dc0aac191945f784c78c92d0ebc19dc15dc4e5f93fd896776fd",
+  "status": "partial",
+  "blocked_reason": "request_budget_exhausted",
+  "api_execution_requested": true,
+  "last_provider_error": null,
+  "client_code_sha256": "e0159c84f69331b3f36ef3384011d4bcd85e323d1d98d2324fdbafe45278346d",
+  "http_transport": "requests; redirects disabled",
+  "generation_api_executed": true,
+  "max_requests": 256,
+  "generation_post_attempts": 256,
+  "expected_orders": 248,
+  "completed_valid_orders": 136,
+  "complete_order_consistent_pairs": 32,
+  "model_check": {
+    "requested_model": "qwen/qwen3.8-27b",
+    "present_in_authenticated_catalog": true,
+    "no_thinking_option": "reasoning_effort=none must be accepted by this model; otherwise execution stops"
+  },
+  "human_annotation_produced": false,
+  "reasoning_effort": "none",
+  "no_implicit_model_or_reasoning_fallback": true,
+  "budget_note": "Counts all POST attempts, including retries; USD cost is not inferred from unknown pricing.",
+  "token_usage": {
+    "prompt_tokens": 73850,
+    "completion_tokens": 3947,
+    "total_tokens": 77797
+  },
+  "failure_policy": "report",
+  "n_selected_sources": 126,
+  "n_eligible_pairs": 124,
+  "n_generation_failure_pairs": 2,
+  "n_failed_generations": 2,
+  "eligible_pair_coverage": 0.9841269841269841,
+  "stable_preference_coverage": 0.25396825396825395,
+  "eligibility_report": "judge_eligibility.json",
+  "naturalness_scope": "conditional on both generations succeeding; failures have no naturalness score"
+}

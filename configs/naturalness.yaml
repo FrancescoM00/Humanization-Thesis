@@ -1,0 +1,13 @@
+mode: reproduce
+enabled: false
+reference: data/processed/naturalness_reference
+rewrites: results/new_runs/custom_study/rewriting/rewrites.jsonl
+output: results/new_runs/custom_study/naturalness
+humanizer_a: qwen14b_humanize
+humanizer_b: dipper_context3
+model: qwen/qwen3.8-27b
+reasoning_effort: none
+max_pairs: 6
+max_requests: 16
+seed: 42
+failed_generation_policy: report_and_exclude

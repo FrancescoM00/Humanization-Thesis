@@ -14,10 +14,10 @@ from unittest.mock import patch
 import numpy as np
 import pandas as pd
 
-from stylometry.features import FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES
-from stylometry.shortlist_validation import run_validation, sha256
-from stylometry.shortlist_statistics import analyze_results
-from stylometry.shortlist_length_robustness import load_saved_splits, run_robustness
+from humanization.stylometry.features import FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES
+from humanization.evaluation.shortlist import run_validation, sha256
+from humanization.evaluation.shortlist_statistics import analyze_results
+from humanization.evaluation.shortlist_robustness import load_saved_splits, run_robustness
 
 
 def synthetic_features():
@@ -80,7 +80,7 @@ class LengthRobustnessTests(unittest.TestCase):
         cls.protocol_path = cls.output / "protocol.json"
         cls.protocol_path.write_text(json.dumps(cls.protocol))
         cls.parent_hashes = {p.name: sha256(p) for p in cls.parent.iterdir() if p.is_file()}
-        from stylometry import shortlist_length_robustness as module
+        from humanization.evaluation import shortlist_robustness as module
         original_pipeline = module.make_pipeline
         with patch.object(module, "make_pipeline", wraps=original_pipeline) as construction:
             with redirect_stdout(io.StringIO()):
@@ -158,7 +158,7 @@ class LengthRobustnessTests(unittest.TestCase):
             run_robustness(path, self.root / "bad_output", self.root)
 
     def test_saved_reference_analysis_reproduces_parent_auc_and_intervals(self):
-        from stylometry.shortlist_length_analysis import analyze_results as analyze_robustness
+        from humanization.evaluation.shortlist_robustness_analysis import analyze_results as analyze_robustness
         with redirect_stdout(io.StringIO()):
             summary = analyze_robustness(self.output, root=self.root)
         self.assertTrue(summary["parent_C3_reproduced"])

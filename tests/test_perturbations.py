@@ -2,7 +2,7 @@ from collections import Counter
 
 import pytest
 
-from semantics.perturbations import (
+from humanization.semantics.perturbations import (
     PERTURBATIONS,
     _entity_substitution,
     _negation,
@@ -166,7 +166,7 @@ def test_eligibility_screening_is_explicit_and_keeps_only_actual_changes(nlp):
 def test_clean_entity_policy_drops_unsafe_categories_and_fixes_surnames(nlp):
     from random import Random
     from spacy.tokens import Span
-    from semantics.perturbations import _entity_substitution_clean
+    from humanization.semantics.perturbations import _entity_substitution_clean
 
     # ORG and TIME are not part of the clean policy.
     for text, label, tokens in [("The firm hired a Toyota engineer.", "ORG", ("Toyota",)),
@@ -197,7 +197,7 @@ def test_clean_entity_policy_drops_unsafe_categories_and_fixes_surnames(nlp):
 def test_clean_entity_policy_guards(nlp):
     from random import Random
     from spacy.tokens import Span
-    from semantics.perturbations import _entity_substitution_clean
+    from humanization.semantics.perturbations import _entity_substitution_clean
 
     def apply(text, label, first, length=1):
         doc = nlp(text)
@@ -218,7 +218,7 @@ def test_clean_entity_policy_guards(nlp):
 def test_clean_entity_policy_more_guards(nlp):
     from random import Random
     from spacy.tokens import Span
-    from semantics.perturbations import _entity_substitution_clean
+    from humanization.semantics.perturbations import _entity_substitution_clean
 
     doc = nlp("Lockdowns reduced travel.")
     doc.ents = (Span(doc, 0, 1, label="PERSON"),)

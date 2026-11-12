@@ -1,0 +1,34 @@
+[
+  {
+    "entry": "experiments/00_data.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/01_stylometry.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/02_semantic_validation.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/03_opai_editing.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/04_rewriting.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/05_detection.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/06_naturalness.py",
+    "help_exit_code": 0
+  },
+  {
+    "entry": "experiments/07_evaluation.py",
+    "help_exit_code": 0
+  }
+]

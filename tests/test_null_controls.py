@@ -6,8 +6,8 @@ import math
 import pytest
 import spacy
 
-from humanizers.detection import validate_inputs
-from humanizers.null_controls import (
+from humanization.detection.pipeline import validate_inputs
+from humanization.rewriting.controls import (
     PROTOCOL, generate_null_controls, lexical_count, minimal_lexical_noise,
     prefix_at_word_count, prepare, summarize_null_controls,
 )

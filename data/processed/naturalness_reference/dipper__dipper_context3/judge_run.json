@@ -1,0 +1,39 @@
+{
+  "protocol": "groq_pairwise_naturalness_ab_ba_v1",
+  "plan_sha256": "19c049acb61782103e83b128acefe4c45787e344acb9453f4d5172deedf937de",
+  "status": "partial",
+  "blocked_reason": "provider_http_429",
+  "api_execution_requested": true,
+  "last_provider_error": "Groq HTTP 429 during completion request. type: tokens; code: rate_limit_exceeded; message: Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01jyy1xj5sffgbd965mw1mc1dz` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199936, Requested 518. Please try again in 3m16.128s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+  "client_code_sha256": "e0159c84f69331b3f36ef3384011d4bcd85e323d1d98d2324fdbafe45278346d",
+  "http_transport": "requests; redirects disabled",
+  "generation_api_executed": true,
+  "max_requests": 256,
+  "generation_post_attempts": 201,
+  "expected_orders": 250,
+  "completed_valid_orders": 100,
+  "complete_order_consistent_pairs": 15,
+  "model_check": {
+    "requested_model": "qwen/qwen3.8-27b",
+    "present_in_authenticated_catalog": true,
+    "no_thinking_option": "reasoning_effort=none must be accepted by this model; otherwise execution stops"
+  },
+  "human_annotation_produced": false,
+  "reasoning_effort": "none",
+  "no_implicit_model_or_reasoning_fallback": true,
+  "budget_note": "Counts all POST attempts, including retries; USD cost is not inferred from unknown pricing.",
+  "token_usage": {
+    "prompt_tokens": 49465,
+    "completion_tokens": 2900,
+    "total_tokens": 52365
+  },
+  "failure_policy": "report",
+  "n_selected_sources": 126,
+  "n_eligible_pairs": 125,
+  "n_generation_failure_pairs": 1,
+  "n_failed_generations": 2,
+  "eligible_pair_coverage": 0.9920634920634921,
+  "stable_preference_coverage": 0.11904761904761904,
+  "eligibility_report": "judge_eligibility.json",
+  "naturalness_scope": "conditional on both generations succeeding; failures have no naturalness score"
+}

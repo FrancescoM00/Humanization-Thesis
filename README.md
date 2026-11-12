@@ -1,76 +1,76 @@
-# Humanization — codice della sezione sperimentale
+# Humanization
 
-Questa repository accompagna la **sezione sperimentale della tesi** e ne segue l'ordine. Contiene script, dati d'ingresso, risultati e istruzioni per studiare tre aspetti delle riscritture di testi macchina: **rilevabilità, conservazione del significato e cambiamento stilistico**.
+Progetto Python per valutare le riscritture di testi generati da modelli linguistici. La cartella può essere estratta dallo ZIP e aperta direttamente in **Visual Studio Code**. Comprende codice, configurazioni, CSV originali e dati intermedi per riprodurre le analisi già eseguite.
 
-È una consegna separata da [Humanization](https://github.com/FrancescoM00/Humanization), che conserva l'intero lavoro precedente. La riorganizzazione parte dal commit [`d2868b3`](https://github.com/FrancescoM00/Humanization/tree/d2868b323938a2a9371c2a872ad86b5596d0f097). Il repository originale rimane invariato: per tornare alla vecchia organizzazione basta riaprire quello. La valutazione della naturalezza è esclusa dalla consegna attuale.
+Il flusso è: **dati → riscrittura → score individuali di stile, semantica e detection → evaluation → risultati**. La naturalezza è un modulo opzionale. La produzione di testi e score è separata dal calcolo delle metriche finali.
 
-## Da dove iniziare
+## Aprire ed eseguire il progetto
 
-Ogni guida spiega obiettivo, input, comandi, output, risultati e risorse richieste. Tutti i comandi si eseguono dalla radice del progetto.
+1. Estrarre lo ZIP in una cartella, per esempio `Humanization/`.
+2. In VS Code scegliere **File → Apri cartella** e selezionarla, oppure aprire `Humanization.code-workspace`.
+3. Installare le estensioni Python e Python Debugger suggerite. Usare **Python 3.12**.
+4. Aprire il terminale nella cartella del progetto e creare l'ambiente:
 
-| PDF | Esperimento |
+```bash
+python -m venv .venv
+```
+
+Attivarlo con `source .venv/bin/activate` su Linux/macOS oppure `.venv\Scripts\Activate.ps1` in PowerShell. Poi:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+In **Python: Select Interpreter** scegliere l'interprete della `.venv` appena creata. I comandi seguenti partono dalla radice del progetto:
+
+```bash
+python experiments/00_data.py --config configs/datasets.yaml --mode reproduce
+python experiments/07_evaluation.py --config configs/evaluation.yaml --mode reproduce
+```
+
+Il secondo comando ricalcola le metriche dai punteggi individuali salvati, confrontandole con i risultati pubblicati. Non esegue nuovamente riscrittori o detector e non effettua chiamate al giudice. In VS Code si può anche scegliere il task **Humanization: riproduci evaluation** oppure avviare la corrispondente configurazione con F5.
+
+## Organizzazione
+
+| Cartella | Funzione |
 | --- | --- |
-| §1.2 | [01 — Dataset e controllo della lunghezza](experiments/01_dataset/README.md) |
-| §1.3 | [02 — Stilometria, shortlist e robustezza](experiments/02_stilometria/README.md) |
-| §1.4 | [03 — Conservazione semantica e perturbazioni](experiments/03_conservazione_semantica/README.md) |
-| §1.5 | [04 — Stile delle porzioni OpAI riscritte](experiments/04_stile_opai/README.md) |
-| §1.6 | [05 — Riscrittori e detector](experiments/05_riscrittori_detector/README.md) |
-| §1.7 | [06 — Pilot su 42 fonti](experiments/06_pilot_42/README.md) |
-| §1.8 | [07 — Studio su 126 fonti](experiments/07_studio_126/README.md) |
-| §1.9 | [08 — Calibrazione NLI contestuale](experiments/08_calibrazione_nli/README.md) |
+| `configs/` | Parametri YAML, percorsi di input/output e preset dei modelli |
+| `data/raw/mgtbench/` | I tre CSV originali, conservati senza modifiche |
+| `data/raw/opai/` | File originali OpAI quando disponibili o scaricati |
+| `data/processed/` | Campioni, coppie e punteggi intermedi congelati |
+| `src/humanization/` | Package con dataset, stilometria, semantica, riscrittura, detection, naturalezza ed evaluation |
+| `experiments/` | Comandi che collegano configurazioni e moduli |
+| `results/published/` | Risultati di riferimento già ottenuti |
+| `results/new_runs/` | Output delle nuove esecuzioni |
+| `docs/` | Metodo, flusso e istruzioni di riproduzione |
+| `archive/legacy_experiments/` | Materiale storico, separato dal percorso operativo |
+| `tests/` | Verifiche del codice e dei protocolli |
 
-La [mappa dettagliata](docs/MAPPATURA_TESI.md) collega sezioni, script e tabelle. L'ultima estensione sulle cautele, successiva al PDF di riferimento, è un [supplemento separato](supplements/hedging/README.md).
+La [guida all'organizzazione](docs/organization.md) descrive quali moduli producono gli score e quali calcolano le metriche.
 
-## Dati ufficiali inclusi
+## Esperimenti e flusso completo
 
-In [`data/raw/`](data/raw) sono presenti le tre copie originali fornite dall'autore: `Essay_LLMs.csv`, `Reuters_LLMs.csv` e `WP_LLMs.csv`. Sono identiche byte per byte ai dati degli esperimenti. Il caricamento principale è locale; i CSV restano inalterati e la pulizia produce file separati.
+| Comando | Scopo |
+| --- | --- |
+| `00_data.py` | Verificare e preparare i dati |
+| `01_stylometry.py` | Estrarre feature e valutare i segnali stilistici |
+| `02_semantic_validation.py` | Calcolare e verificare le misure semantiche |
+| `03_opai_editing.py` | Studiare le modifiche OpAI, anche nelle porzioni riscritte |
+| `04_rewriting.py` | Produrre riscritture con i preset configurati |
+| `05_detection.py` | Produrre score dei detector per originali e riscritture |
+| `06_naturalness.py` | Preparare, eseguire o valutare confronti di naturalezza |
+| `07_evaluation.py` | Aggregare score, calcolare ASR, intervalli e confronti |
 
-Il controllo dei dati non richiede dipendenze esterne:
+`--mode reproduce` utilizza gli input congelati; le modalità di calcolo e riproduzione degli output salvati sono indicate da `--help`. Per una nuova esecuzione, i percorsi YAML devono collegare gli output della riscrittura agli input degli scorer e poi a quelli di evaluation. La [guida di riproduzione](docs/reproducibility.md) spiega l'ordine e i requisiti.
 
-```bash
-python scripts/import_mgtbench.py --verify-only
-```
+La riproduzione delle tabelle usa CPU e punteggi inclusi. Eseguire nuovamente i modelli richiede i checkpoint e risorse adeguate; i pesi non sono nello ZIP. Per GPU usare `requirements/gpu.txt` con un PyTorch CUDA compatibile. La naturalezza tramite servizio esterno richiede una chiave in una variabile d'ambiente e un'esecuzione esplicita: non è necessaria per il percorso di riproduzione principale.
 
-Provenienza, importazione e distinzione da OpAI sono spiegate nella [guida dati](data/README.md).
+Il [metodo](docs/methodology.md) distingue etichette intenzionali, revisioni dell'assistente e annotazioni umane. Il repository originale rimane separato; questa riorganizzazione non modifica i risultati storici. Attribuzioni e termini delle fonti: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-## Installazione
+## Consegna ZIP
 
-Ambiente di riferimento verificato: **Python 3.12 su Linux**. Per stilometria e rianalisi delle tabelle, da Linux/macOS:
+Da questa repository si può scaricare lo ZIP dal pulsante **Code → Download ZIP**. Per generare una cartella radice chiamata esattamente `Humanization/`, eseguire `python tools/build_delivery.py`: crea `dist/Humanization.zip`, includendo anche i dati ufficiali OpAI e la risorsa linguistica CMUdict. Pesi, ambiente virtuale, credenziali e nuovi run rimangono fuori dall'archivio.
 
-```bash
-git clone https://github.com/FrancescoM00/Humanization-Thesis.git
-cd Humanization-Thesis
-bash scripts/setup.sh style
-source .venv/bin/activate
-```
+Verifica di questa versione: **209 test passati, 1 saltato perché richiede CUDA**. La riproduzione dello studio controlla 209 colonne numeriche e quella del pilot 15, con tolleranza 1e-12. I comandi di riproduzione sono stati eseguiti senza nuovi modelli o richieste al provider.
 
-In PowerShell, dalla cartella del progetto:
-
-```powershell
-py -3.12 -m venv .venv
-.venv\Scripts\python.exe -m pip install -r requirements\style-lock.txt
-.venv\Scripts\python.exe -m pip install --no-deps -e .
-.venv\Scripts\python.exe -m nltk.downloader -q -e -d .venv\nltk_data cmudict
-.venv\Scripts\Activate.ps1
-```
-
-Il setup installa anche il modello spaCy piccolo. Le nuove inferenze semantiche su CPU usano il profilo `bash scripts/setup.sh semantic` con PyTorch CPU. Per i riscrittori e Binoculars su GPU seguire invece i [notebook Kaggle](notebooks/README.md), che conservano il PyTorch CUDA della piattaforma. I checkpoint vengono scaricati quando necessari; non sono inclusi nella repository.
-
-## Verificare i risultati senza rilanciare i modelli
-
-Le tabelle e le figure consegnate sono in `results/`. I punteggi e le coppie necessari alla loro rianalisi sono in `inputs/`. Per esempio:
-
-```bash
-python scripts/analyze_humanizer_results.py study --run inputs/study_126 --pilot-cohort inputs/study_126/cohorts/pilot.jsonl --output runs/study_126 --reference results/07_study_126
-python scripts/analyze_humanizer_results.py pilot --qwen-run inputs/pilot_42/qwen --dipper-run inputs/pilot_42/dipper --output runs/pilot_42 --reference results/06_pilot_42/dipper
-```
-
-Questi comandi usano i punteggi salvati e scrivono sotto `runs/`. Le guide distinguono questo percorso dalla nuova estrazione delle feature e dalle inferenze LLM, più costose. Gli output rigenerati non sostituiscono i risultati storici.
-
-Il codice condiviso è in `src/`, i comandi eseguibili in `scripts/`, i preset in `configs/`. Le verifiche della migrazione e della riproduzione sono in [VERIFICA_CONSEGNA.md](docs/VERIFICA_CONSEGNA.md). Per i test:
-
-```bash
-python -m pytest -q
-```
-
-Le etichette delle perturbazioni e le revisioni dell'assistente non sono annotazioni umane indipendenti; le reference umane dello studio sono ancora in raccolta. I manifest storici mantengono la provenienza originale, documentata nella [migrazione](docs/MIGRAZIONE.md). Le attribuzioni del codice e i termini delle fonti sono in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Lo ZIP completo è di circa **160 MiB** perché comprende anche i Parquet ufficiali OpAI e gli input congelati. Una nuova esecuzione dei modelli richiede ulteriori download di checkpoint, non inclusi in questa dimensione.

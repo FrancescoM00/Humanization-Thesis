@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Humanization: riproduci evaluation",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/experiments/07_evaluation.py",
+      "args": ["--config", "${workspaceFolder}/configs/evaluation.yaml", "--mode", "reproduce"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUNBUFFERED": "1"}
+    },
+    {
+      "name": "Humanization: verifica dati",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/experiments/00_data.py",
+      "args": ["--config", "${workspaceFolder}/configs/datasets.yaml", "--mode", "reproduce"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {"PYTHONPATH": "${workspaceFolder}/src", "PYTHONUNBUFFERED": "1"}
+    },
+    {
+      "name": "Humanization: aiuto riscrittura",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/experiments/04_rewriting.py",
+      "args": ["--help"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {"PYTHONPATH": "${workspaceFolder}/src"}
+    }
+  ]
+}

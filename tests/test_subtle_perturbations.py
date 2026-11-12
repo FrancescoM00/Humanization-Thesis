@@ -3,8 +3,8 @@ import random
 
 import pytest
 
-from semantics.perturbations import load_perturbation_nlp, _replace_edits
-from semantics.subtle_perturbations import (
+from humanization.semantics.perturbations import load_perturbation_nlp, _replace_edits
+from humanization.semantics.subtle_perturbations import (
     number_change, quantifier_strengthening, hedge_removal, unsupported_detail,
 )
 

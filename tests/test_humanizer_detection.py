@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from humanizers.detection import (calibrate_threshold, summarize_detection,
+from humanization.detection.pipeline import (calibrate_threshold, summarize_detection,
                                   text_records, validate_ai_label, validate_inputs)
 
 
@@ -99,7 +99,7 @@ def test_source_leakage_and_incomplete_generation_are_rejected():
 
 
 def test_changed_text_with_same_ids_cannot_reuse_stale_scores_or_relabel_manifest(tmp_path):
-    from humanizers.detection import run
+    from humanization.detection.pipeline import run
 
     cohort, rewrites, scores = fixture_data()
     config = {'detectors': [{'name': 'd1'}], 'bootstrap': 0}
@@ -135,7 +135,7 @@ def test_detector_covers_all_chunks_and_reuses_identity_score(monkeypatch, tmp_p
     import math
     import sys
     import torch
-    from humanizers.detection import score_detector
+    from humanization.detection.pipeline import score_detector
 
     class Tokenizer:
         is_fast = False

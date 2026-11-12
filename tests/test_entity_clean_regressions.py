@@ -3,7 +3,7 @@ from random import Random
 
 import pytest
 
-from semantics.perturbations import (
+from humanization.semantics.perturbations import (
     _entity_substitution_clean,
     generate_perturbation_pairs,
     load_perturbation_nlp,

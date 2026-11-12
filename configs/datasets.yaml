@@ -1,0 +1,6 @@
+# All paths are relative to the extracted project root.
+mode: reproduce
+raw_dir: data/raw/mgtbench
+processed_dir: data/processed/generated
+n_pairs: 300
+seed: 42

@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from semantics.aligned_similarity import candidate_support, directional_row, matrix_support, summarize_support
+from humanization.semantics.aligned_similarity import candidate_support, directional_row, matrix_support, summarize_support
 
 
 def test_maxima_use_all_units_and_direction_is_correct():

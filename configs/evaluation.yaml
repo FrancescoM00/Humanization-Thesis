@@ -1,0 +1,12 @@
+seed: 42
+bootstrap: 5000
+run_dir: results/new_runs/custom_study
+mode: reproduce
+source: data/processed/study_126
+pilot_qwen: data/processed/pilot_42/qwen
+pilot_dipper: data/processed/pilot_42/dipper
+pilot_cohort: data/processed/study_126/cohorts/pilot.jsonl
+output: results/new_runs/reproduction
+reference: results/published/07_study_126
+pilot_reference: results/published/06_pilot_42/dipper
+cohort: data/processed/study_126/cohorts/study.jsonl

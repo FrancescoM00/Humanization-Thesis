@@ -6,7 +6,7 @@ import math
 
 import pytest
 
-from scripts.calibrate_contextual_nli import (
+from humanization.evaluation.workflows.calibrate_contextual_nli import (
     AGGREGATORS, MODES, analyze_scores, combine_directions, csv_text,
     frozen_policy, prepare_panel, select_candidate,
 )

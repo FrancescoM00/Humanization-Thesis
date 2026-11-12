@@ -14,15 +14,15 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_auc_score
 
-from semantics.hedging_analysis import (
+from humanization.evaluation.hedging import (
     CONDITIONS, HISTORICAL_THRESHOLD, analyze, grouped_metrics, load_panel, load_review, wilson95,
 )
-from semantics.hedging_controls import (
+from humanization.semantics.hedging_controls import (
     collect_exclusions, discover_candidates, load_machine_records, select_sources,
     sentence_triplet, source_pairs, text_digest,
 )
-from semantics.perturbations import _stable_hex, load_perturbation_nlp
-from stylometry.data import DOMAINS, GENERATORS
+from humanization.semantics.perturbations import _stable_hex, load_perturbation_nlp
+from humanization.datasets.mgtbench import DOMAINS, GENERATORS
 
 
 def scored_frame(n_sources=5):

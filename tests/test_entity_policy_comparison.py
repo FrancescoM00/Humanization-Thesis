@@ -5,7 +5,7 @@ import hashlib
 import json
 from types import SimpleNamespace
 
-from scripts.compare_entity_policy import ROOT, freeze_unchanged_alignment, unchanged_pairs, validate_scores
+from humanization.evaluation.workflows.compare_entity_policy import ROOT, freeze_unchanged_alignment, unchanged_pairs, validate_scores
 
 
 def test_only_entity_rows_and_their_local_controls_may_change():
@@ -51,7 +51,7 @@ def freeze_fixture(tmp_path):
     for path in paths.values():
         path.mkdir()
     args = SimpleNamespace(**paths, atol=1e-6, rtol=1e-6)
-    code = hashlib.sha256((ROOT/"src/semantics/metrics.py").read_bytes()).hexdigest()
+    code = hashlib.sha256((ROOT/"src/humanization/semantics/metrics.py").read_bytes()).hexdigest()
     old_run = {"model_directory": str(tmp_path/"model"), "metrics_code_sha256": "unarchived-embedding-module"}
     new_run = dict(old_run, metrics_code_sha256=code)
     (args.baseline_output/"embedding_run.json").write_text(json.dumps(old_run))

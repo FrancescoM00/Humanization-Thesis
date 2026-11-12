@@ -6,7 +6,7 @@ import zipfile
 
 import pytest
 
-from scripts.prepare_semantic_audit_v2 import (
+from humanization.evaluation.workflows.prepare_semantic_audit_v2 import (
     FORM_COLUMNS, candidates_from_inputs, prepare_audit, read_pairs,
     select_candidates,
 )

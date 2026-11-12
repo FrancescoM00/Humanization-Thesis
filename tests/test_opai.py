@@ -1,6 +1,6 @@
 import unittest
 
-from semantics.opai import align_opai_records
+from humanization.datasets.opai import align_opai_records
 
 
 def trajectory(doc="source-a", generator="editor-a", domain="news"):

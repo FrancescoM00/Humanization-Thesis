@@ -4,7 +4,7 @@ import pandas as pd
 import pytest
 import spacy
 
-from stylometry.length_matching import _assign, length_balance, sentence_prefixes
+from humanization.datasets.length_matching import _assign, length_balance, sentence_prefixes
 
 
 @pytest.fixture(scope="module")

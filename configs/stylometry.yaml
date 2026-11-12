@@ -1,0 +1,13 @@
+# All paths are relative to the extracted project root.
+seed: 42
+bootstrap: 500
+run_dir: results/new_runs/custom_study
+mode: reproduce
+analysis: shortlist
+output: results/new_runs/stylometry
+raw_dir: data/raw/mgtbench
+reference: results/published/02_stylometry
+cohort: data/processed/study_126/cohorts/study.jsonl
+rewrites: results/new_runs/custom_study/rewriting/rewrites.jsonl
+pairs: 300
+spacy_model: en_core_web_sm

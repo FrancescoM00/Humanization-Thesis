@@ -1,6 +1,6 @@
 import json
 import pytest
-from humanizers.study_protocol import prepare_study_protocol, source_screen
+from humanization.datasets.study_protocol import prepare_study_protocol, source_screen
 
 
 def rows():

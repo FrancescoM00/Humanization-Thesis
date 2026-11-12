@@ -1,0 +1,14 @@
+-r base.txt
+torch==2.7.1+cpu
+transformers==4.57.3
+sentence-transformers==5.1.2
+bert-score==0.3.13
+rouge-score==0.1.2
+sacrebleu==2.5.1
+sentencepiece==0.2.1
+protobuf==5.29.5
+psutil==7.1.3
+datasets==3.6.0
+optimum-onnx==0.1.0
+onnx==1.18.0
+onnxruntime==1.23.2

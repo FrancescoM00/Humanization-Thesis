@@ -6,8 +6,8 @@ import pandas as pd
 import pytest
 import torch
 
-from humanizers.detection import text_records
-from humanizers.zero_shot import (binoculars_components, calibrate_low_threshold,
+from humanization.detection.pipeline import text_records
+from humanization.detection.binoculars import (binoculars_components, calibrate_low_threshold,
     cached_weight_snapshot, select_writable_cache,
     ratio_from_components, summarize_zero_shot, token_windows)
 
@@ -40,7 +40,7 @@ def test_cache_selection_skips_a_read_only_mount_without_deleting_existing_data(
 
 
 def test_resumed_falcons_in_distinct_caches_need_no_download_budget(tmp_path, monkeypatch):
-    import humanizers.zero_shot as module
+    import humanization.detection.binoculars as module
     read_cache, write_cache = tmp_path/'old', tmp_path/'fallback'
     settings = dict(module.DEFAULT_MODELS)
     expected = {}

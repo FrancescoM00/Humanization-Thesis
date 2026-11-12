@@ -1,4 +1,4 @@
-from humanizers.cohort import select_cohorts
+from humanization.datasets.cohort import select_cohorts
 
 
 def test_panels_are_nested_balanced_and_source_disjoint():

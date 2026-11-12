@@ -14,7 +14,7 @@ from unittest.mock import patch
 
 import numpy as np
 
-from semantics.metrics import (_cached_chunks, _hash, _nli_direction, _top_candidates, _resolve_device,
+from humanization.semantics.metrics import (_cached_chunks, _hash, _nli_direction, _top_candidates, _resolve_device,
                                bert_scores, lexical_scores, nli_scores,
                                resolve_nli_labels, token_chunks)
 
@@ -220,7 +220,7 @@ class BertDevicePlacementTests(unittest.TestCase):
     def check_document_and_aligned_paths(self, device):
         """Match upstream: GPU token vectors, but CPU masks and IDF weights."""
         import torch
-        from semantics.aligned_similarity import aligned_bert_scores
+        from humanization.semantics.aligned_similarity import aligned_bert_scores
 
         tokenizer = FakeTokenizer()
         scorer = SimpleNamespace(_tokenizer=tokenizer,

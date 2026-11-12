@@ -1,0 +1,12 @@
+{
+  "tests_passed": 209,
+  "tests_skipped": 1,
+  "skip_reason": "requires CUDA",
+  "models_rerun": false,
+  "judge_requests_executed": false,
+  "study_numeric_columns_checked": 209,
+  "pilot_numeric_columns_checked": 15,
+  "entrypoints_checked": 8,
+  "original_repository_commit": "d2868b323938a2a9371c2a872ad86b5596d0f097",
+  "original_checkout_clean": true
+}
