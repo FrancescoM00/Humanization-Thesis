@@ -1,9 +1,4 @@
-"""Analisi appaiata del controllo di robustezza di C3 con 100 feature candidate.
-
-Le predizioni con 105 candidate sono riutilizzate esattamente dall'esperimento
-precedente. Le estrazioni bootstrap seguono intenzionalmente il suo ordine e
-le sue chiavi di cache, consentendo di verificare AUC e intervalli del precedente
-C3 senza addestrarlo nuovamente.
+"""Analisi con 100 feature candidate. 
 """
 from __future__ import annotations
 from humanization.paths import project_root
