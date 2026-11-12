@@ -2,17 +2,16 @@
 
 Questo ZIP raccoglie il codice usato per la parte sperimentale della tesi, i dati e i risultati delle esecuzioni già svolte. Il lavoro studia se la riscrittura di un testo generato da un modello linguistico ne riduce la rilevabilità, quanto ne conserva il significato e come ne modifica lo stile.
 
-**Questo README è l’unico file Markdown della consegna. I risultati si consultano direttamente nelle tabelle e nei grafici collegati sotto.** Non occorre installare Python o eseguire gli script per leggere i risultati. La cartella può essere aperta in Visual Studio Code; tabelle CSV e figure PDF si possono aprire anche separatamente.
 
 ## 1. Contenuto dello ZIP
 
 ```text
 Humanization/
-├── README.md                  Questa guida alla consegna
+├── README.md                  Guida
 ├── requirements.txt           Dipendenze Python
 ├── pyproject.toml             Configurazione del package Python
 ├── Humanization.code-workspace
-├── .vscode/                   Configurazioni per aprire ed eseguire il progetto in VS Code
+├── .vscode/                   Per aprire ed eseguire il progetto in VS Code
 ├── configs/                   Parametri degli esperimenti e percorsi dei file
 │   └── protocols/             Regole fissate per shortlist e controllo delle cautele
 ├── data/
@@ -26,7 +25,6 @@ Humanization/
 ├── results/
 │   ├── published/             Risultati delle esecuzioni già svolte
 │   └── new_runs/              Creata quando si esegue una nuova analisi
-├── tests/                     Controlli sul codice
 ├── tools/                     Script per costruire lo ZIP
 ├── requirements/              Profili delle dipendenze CPU e GPU
 ├── docs/                      Registri tecnici di controllo e provenienza
