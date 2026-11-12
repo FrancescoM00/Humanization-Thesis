@@ -1,17 +1,4 @@
-"""Incertezza appaiata per gruppi di fonte nell'esperimento sulle feature compatte.
-
-Le predizioni di input sono già fuori fold. Le predizioni ripetute di un testo
-restano unite nel bootstrap; né i fold né i semi della CV sono osservazioni
-indipendenti. I riferimenti con feature casuali mediano le *AUC*, non le probabilità.
-
-In questo esperimento ogni gruppo di fonte contiene un testo umano e uno
-macchina. Questo consente un nucleo di confronto esatto: ricampionare un gruppo
-attribuisce lo stesso peso ai suoi due testi. Gli intervalli risultanti sono
-condizionati ai fit salvati e non includono l'incertezza del riaddestramento.
-"""
-
 from __future__ import annotations
-
 from datetime import datetime, timezone
 import hashlib
 import importlib.metadata
@@ -44,13 +31,7 @@ PROTOCOL_STRATA = {
 
 
 def pairwise_auc_kernel(positive_scores, negative_scores) -> np.ndarray:
-    """Media il contributo dei confronti fra viste; le parità ricevono un mezzo.
-
-    Una vista è un modello addestrato o una ripetizione. Gli input hanno forma
-    ``(groups,)`` oppure ``(views, groups)``; le posizioni positive e negative usano
-    lo stesso ordine dei gruppi. Mediare i nuclei equivale quindi a mediare le AUC
-    dei singoli modelli.
-    """
+    
     positive = np.asarray(positive_scores, dtype=float)
     negative = np.asarray(negative_scores, dtype=float)
     if positive.ndim == 1:
@@ -63,7 +44,7 @@ def pairwise_auc_kernel(positive_scores, negative_scores) -> np.ndarray:
         raise ValueError("Comparison scores must be finite and nonempty")
     n_views, n_groups = positive.shape
     kernel = np.zeros((n_groups, n_groups), dtype=float)
-    # Limita gli array temporanei di confronto, anche per i riferimenti casuali.
+    
     for start in range(0, n_views, 16):
         a = positive[start:start + 16, :, None]
         b = negative[start:start + 16, None, :]
@@ -73,11 +54,7 @@ def pairwise_auc_kernel(positive_scores, negative_scores) -> np.ndarray:
 
 
 def weighted_auc_from_kernel(kernel, weights):
-    """Restituisce l'AUC esatta per gruppi per uno o più vettori di pesi dei gruppi.
 
-    Il documento positivo e quello negativo di ogni gruppo condividono il peso.
-    Con conteggi bootstrap ``w``, l'AUC è ``w.T @ K @ w / sum(w)**2``.
-    """
     kernel = np.asarray(kernel, dtype=float)
     values = np.asarray(weights, dtype=float)
     scalar = values.ndim == 1
@@ -107,7 +84,7 @@ def _auc_by_model(labels: np.ndarray, predictions: np.ndarray) -> np.ndarray:
     n_positive, n_negative = int(positive.sum()), int((labels == 0).sum())
     if not n_positive or not n_negative:
         raise ValueError("AUC needs both classes")
-    # rankdata media le parità, come previsto dalla definizione del contributo al confronto.
+   
     values = predictions.transpose(0, 2, 1)
     ranks = rankdata(values, method="average", axis=-1)
     return (ranks[..., positive].sum(axis=-1)
@@ -162,7 +139,7 @@ def _quantiles(values: np.ndarray) -> tuple[float, float]:
 
 def selection_frequency_table(selections: pd.DataFrame,
                               feature_names=None) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Frequenze di selezione descrittive; i fit sovrapposti non sono prove indipendenti."""
+    
     if feature_names is None:
         feature_names = list(FEATURE_SCHEMA)
     required = {"protocol", "seed", "fold", "feature", "selected"}
