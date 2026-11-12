@@ -1,0 +1,9 @@
+humanizer,detector,n_sources,original_detected,rewritten_detected,ai_to_human,human_to_ai,ai_to_ai,human_to_human
+dipper,fakespot_roberta_base_raw,42,37,33,7,3,30,2
+dipper,openai_roberta_base,42,24,25,4,5,20,13
+dipper,radar_vicuna,42,28,33,3,8,25,6
+dipper,majority_vote,42,31,32,2,3,29,8
+qwen_humanize,fakespot_roberta_base_raw,42,37,41,1,5,36,0
+qwen_humanize,openai_roberta_base,42,24,8,17,1,7,17
+qwen_humanize,radar_vicuna,42,28,35,2,9,26,5
+qwen_humanize,majority_vote,42,31,35,2,6,29,5

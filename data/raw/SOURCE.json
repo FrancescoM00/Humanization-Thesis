@@ -1,0 +1,66 @@
+{
+  "source": "user-supplied official MGTBench CSV copies",
+  "supplied_date": "2026-11-12",
+  "official_source": "https://drive.google.com/drive/folders/1p4iBeM4r-sUKe8TnS4DcYlxvQagcmola",
+  "format": "MGTBench mgt1 wide CSV",
+  "files": {
+    "Essay_LLMs.csv": {
+      "sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+      "bytes": 17216305,
+      "rows": 1000,
+      "columns": [
+        "id",
+        "prompt",
+        "human",
+        "ChatGPT-turbo",
+        "Claude",
+        "ChatGLM",
+        "Dolly",
+        "ChatGPT",
+        "GPT4All",
+        "StableLM"
+      ],
+      "matches_published_experiments": true
+    },
+    "WP_LLMs.csv": {
+      "sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278",
+      "bytes": 13216282,
+      "rows": 1000,
+      "columns": [
+        "id",
+        "prompt",
+        "human",
+        "ChatGPT-turbo",
+        "Claude",
+        "ChatGLM",
+        "Dolly",
+        "ChatGPT",
+        "GPT4All",
+        "StableLM"
+      ],
+      "matches_published_experiments": true
+    },
+    "Reuters_LLMs.csv": {
+      "sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+      "bytes": 13727537,
+      "rows": 1000,
+      "columns": [
+        "id",
+        "author_id",
+        "author",
+        "prompt",
+        "human",
+        "ChatGPT-turbo",
+        "Claude",
+        "ChatGLM",
+        "Dolly",
+        "ChatGPT",
+        "GPT4All",
+        "StableLM"
+      ],
+      "matches_published_experiments": true
+    }
+  },
+  "transformations_on_import": [],
+  "historical_first_acquisition": "Pinned research GitHub mirror in original Humanization; later official copies verified identical. The original history is not rewritten."
+}

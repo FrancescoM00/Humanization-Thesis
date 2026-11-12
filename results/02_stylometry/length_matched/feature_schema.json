@@ -1,0 +1,422 @@
+{
+  "n_words": {
+    "group": "length",
+    "definition": "Count of alphabetic spaCy tokens (lexical words)."
+  },
+  "n_characters": {
+    "group": "length",
+    "definition": "Original text length in Unicode code points."
+  },
+  "n_sentences": {
+    "group": "length",
+    "definition": "Count of spaCy sentences containing at least one lexical word."
+  },
+  "sentence_length_mean": {
+    "group": "sentence",
+    "definition": "Mean lexical words per nonempty spaCy sentence."
+  },
+  "sentence_length_std": {
+    "group": "sentence",
+    "definition": "Population SD of lexical words per sentence (ddof=0)."
+  },
+  "sentence_length_cv": {
+    "group": "sentence",
+    "definition": "Sentence-length population SD divided by its mean."
+  },
+  "mattr_50": {
+    "group": "lexical",
+    "definition": "Mean TTR over all width-50 lexical-word windows; NaN below 50 words."
+  },
+  "ttr": {
+    "group": "lexical",
+    "definition": "Unique casefolded lexical words / lexical words; length-sensitive diagnostic."
+  },
+  "hapax_ratio": {
+    "group": "lexical",
+    "definition": "Types occurring exactly once / lexical words; length-sensitive."
+  },
+  "word_length_mean": {
+    "group": "lexical",
+    "definition": "Mean number of Unicode characters per lexical word."
+  },
+  "punct_comma_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_period_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_semicolon_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_colon_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_question_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_exclamation_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_em_dash_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_hyphen_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_parenthesis_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_double_quote_per100": {
+    "group": "punctuation",
+    "definition": "Literal character count per 100 lexical words."
+  },
+  "punct_total_per100": {
+    "group": "punctuation",
+    "definition": "spaCy punctuation-token count per 100 lexical words."
+  },
+  "pos_adj": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_adp": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_adv": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_aux": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_cconj": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_det": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_intj": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_noun": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_num": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_part": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_pron": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_propn": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_sconj": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_sym": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_verb": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "pos_x": {
+    "group": "pos",
+    "definition": "UPOS share of non-space, non-punctuation spaCy tokens."
+  },
+  "fw_a": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_an": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_the": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_and": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_or": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_but": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_if": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_because": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_although": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_while": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_of": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_to": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_in": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_on": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_at": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_for": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_with": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_from": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_by": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_as": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_that": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_which": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_who": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_this": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_these": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_it": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_its": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_they": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_their": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_he": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_she": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_we": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_our": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_you": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_your": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_i": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_my": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_is": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_are": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_was": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_were": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_be": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_been": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_have": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_has": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_had": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_do": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_does": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_did": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_can": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_could": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_will": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_would": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_should": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_may": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_might": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_must": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_not": {
+    "group": "function_words",
+    "definition": "Casefolded literal word count / lexical words."
+  },
+  "fw_total": {
+    "group": "function_words",
+    "definition": "Share of lexical words in the fixed function-word inventory."
+  },
+  "flesch_reading_ease": {
+    "group": "readability",
+    "definition": "textstat Flesch reading ease, en_US syllabification."
+  },
+  "flesch_kincaid_grade": {
+    "group": "readability",
+    "definition": "textstat Flesch-Kincaid grade, en_US syllabification."
+  },
+  "syllables_per_word": {
+    "group": "readability",
+    "definition": "textstat syllables divided by spaCy lexical words, en_US."
+  },
+  "wiki_ai_vocabulary_per1000": {
+    "group": "wikipedia",
+    "definition": "Fixed AI-vocabulary lemma occurrences per 1000 lexical words."
+  },
+  "wiki_emphasis_per1000": {
+    "group": "wikipedia",
+    "definition": "Fixed thesis emphasis phrase occurrences per 1000 lexical words."
+  },
+  "wiki_conclusion_per1000": {
+    "group": "wikipedia",
+    "definition": "Fixed conclusion/caveat phrase occurrences per 1000 lexical words."
+  },
+  "wiki_chat_per1000": {
+    "group": "wikipedia",
+    "definition": "Fixed conversational phrase occurrences per 1000 lexical words."
+  },
+  "wiki_negative_parallelism_per1000": {
+    "group": "wikipedia",
+    "definition": "Sentence-level not ... but / rather than regex matches per 1000 words."
+  },
+  "wiki_markdown_per1000": {
+    "group": "wikipedia",
+    "definition": "Markdown heading/bullet/bold marker occurrences per 1000 words."
+  }
+}

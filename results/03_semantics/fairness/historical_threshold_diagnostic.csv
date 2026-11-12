@@ -1,0 +1,6 @@
+editor,split,historical_support_cutoff,n_pairs,n_alerts,note
+all,test,0.040749866515398,153,11,Historical OpAI-only diagnostic; not primary and not transferable to DIPPER.
+gemini-2.5-flash,test,0.040749866515398,24,4,Historical OpAI-only diagnostic; not primary and not transferable to DIPPER.
+gpt-5.4,test,0.040749866515398,42,2,Historical OpAI-only diagnostic; not primary and not transferable to DIPPER.
+gpt-5.4-nano,test,0.040749866515398,48,1,Historical OpAI-only diagnostic; not primary and not transferable to DIPPER.
+qwen3-8b,test,0.040749866515398,39,4,Historical OpAI-only diagnostic; not primary and not transferable to DIPPER.

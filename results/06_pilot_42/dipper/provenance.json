@@ -1,0 +1,40 @@
+{
+  "received_filename": "humanization_pilotdipper.zip",
+  "received_sha256": "21a66ed1cb1d3744be742a79f4fb7b924668d21200ed11033364ac48a18df31d",
+  "received_bytes": 1947790,
+  "sediment_file_id": "file_0000000095d88211b65ee90d8cd81271",
+  "archive_in_repository": "exports/kaggle_dipper_pilot/humanization_pilotdipper.zip",
+  "analysis": "Existing Kaggle outputs only; no new generation, model inference, or human annotation.",
+  "runtime": {
+    "repository_commit": "bde08c9447244debf4aea6be4d9491392940f889",
+    "mode": "pilot",
+    "active_systems": [
+      "identity",
+      "dipper"
+    ],
+    "torch": "2.11.0+cu130",
+    "gpus": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "requirements_sha256": "d47f409520ddc66f86a6eca8377551737ed0d146f056eb0db94bef2526b873d2",
+    "config_sha256": "86db7eb81f3d75fbfb306601395b70442659a3ea27d38b2e534991b571556d3b"
+  },
+  "pairs_sha256": "a7965a827d497a682ccbff9b348e0e581b9c9fec8935020e265d90fcd0e2a7f3",
+  "cohort_pilot_sha256": "ed6b343dc972038515ff6dc4ebdfe7e1ce6ce50386cb49c5e104732da440574a",
+  "qwen_comparator": {
+    "archive": "exports/kaggle_pilot/humanization_pilot.zip",
+    "sha256": "7a35ca521ccc4e2147b42e479fe2ac6bde1ef676ddb462137a27af046960f272",
+    "n_shared_sources": 42,
+    "identical_original_texts": true,
+    "summary": "results_kaggle_pilot/per_pair_summary.csv"
+  },
+  "n_sources": 42,
+  "n_pairs": 84,
+  "human_annotation_present": false,
+  "semantic_threshold_applied": false,
+  "sensitivity_exclusion_sources": [
+    "Essay:245:198f5b62c8f94655",
+    "Reuters:903:3d3ffb6dca295be8"
+  ]
+}

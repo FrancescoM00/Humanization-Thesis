@@ -1,0 +1,125 @@
+{
+  "protocol_version": "epistemic_hedging_extension_frozen_threshold_v1",
+  "created_at_utc": "2026-11-11T20:19:16.457322+00:00",
+  "created_at_rome": "2026-11-11T21:19:16.457637+01:00",
+  "raw_dir": "data/raw",
+  "exclusion_files": [
+    "data/semantic/pairs.jsonl",
+    "data/semantic_full/pairs.jsonl",
+    "data/semantic_clean/pairs.jsonl",
+    "data/semantic_extension/pairs.jsonl",
+    "data/semantic_fairness/expanded_panel/pairs.jsonl",
+    "data/semantic_fairness/original_panel/pairs.jsonl"
+  ],
+  "exclusion_sha256": {
+    "data/semantic/pairs.jsonl": "a65187a8d360a887d5f639b0dc82e8cdf058aa1f6b094208a5a24c889e50d088",
+    "data/semantic_full/pairs.jsonl": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+    "data/semantic_clean/pairs.jsonl": "8da5f641dd186d751558d2788615a1c22f738dc8d091e27a961ca4dbf49ab9f5",
+    "data/semantic_extension/pairs.jsonl": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
+    "data/semantic_fairness/expanded_panel/pairs.jsonl": "d3c25fc81d2bbddb64b6a0a409e08fdc703f384151ac7def1a1b0a23edfd217e",
+    "data/semantic_fairness/original_panel/pairs.jsonl": "2f7cfcd8b9f0b18d24efdc010593cd67a00906dc25c6d7ad705bac5eeba8cec7"
+  },
+  "raw_sha256": {
+    "data/raw/Essay_LLMs.csv": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+    "data/raw/Reuters_LLMs.csv": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+    "data/raw/WP_LLMs.csv": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278"
+  },
+  "n_sources": 60,
+  "seed": 20261111,
+  "minimum_words": 80,
+  "maximum_words": 1000,
+  "reserve_sources": 30,
+  "model": "en_core_web_sm",
+  "target_sources_per_domain": null,
+  "generator_balance": "prefer diversity without relaxing semantic or grammatical screening",
+  "conditions": [
+    "hedging_complete",
+    "hedging_partial",
+    "hedging_preserved"
+  ],
+  "intended_labels": {
+    "hedging_complete": 1,
+    "hedging_partial": 1,
+    "hedging_preserved": 0
+  },
+  "expected_pairs": 180,
+  "expected_alterations": 120,
+  "expected_preserved": 60,
+  "screening": "No score-based selection. Native epistemic uncertainty only, same claim and one target sentence. Exclude permission/ability, negations/conditional scopes, quoted material, redundant-only removal and unrelated modifications. Whole source triplet may be replaced before NLI for an unambiguous grammatical or semantic failure, using same-domain reserved sources; preserve audit trail.",
+  "review": "Score-blind assistant reading of selected source triplets before inference; not human gold. Prepare independent blank human forms. Record valid/qualified/invalid and uncertainty, retain full intended-label analysis and matched valid-review subset separately.",
+  "human_annotation_available": false,
+  "data_dir": "data/semantic_hedging",
+  "output_dir": "results_hedging_extension",
+  "models_dir": "data/models",
+  "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+  "nli_revision": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "embedding_chunk_tokens": 160,
+  "retrieval_top_k": 3,
+  "nli_max_pair_tokens": 384,
+  "nli_precision": "float32",
+  "nli_backend": "same validated non-quantized ONNX export; native PyTorch reference verification, existing pipeline",
+  "nli_onnx_sha256": "752610e13db65dfadc183a17ccf399bf9bb1a52e76447fbd06addd2bab9aabd0",
+  "document_support": "min(nli_forward_min,nli_reverse_min); per unit maximum entailment over top3 retrieved evidence",
+  "alteration_risk": "negative document_support; not one minus support",
+  "primary_metric": "document-level AUC against faithful positive controls, and sensitivity/FPR at fixed historical threshold",
+  "local_scores": "secondary directional/local AUC and distributions only; do not transfer document threshold to local score",
+  "threshold_support": 0.040749866515398,
+  "threshold_rule": "strict document_support < threshold_support",
+  "calibration_reference": "results_semantic_extension/aggregator_selection.json",
+  "calibration_reference_sha256": "dee09dcd479790e23e9afb468d6db6802a02a1006a6a60b72a83eb8d348cc53c",
+  "recalibrate_threshold": false,
+  "reselect_aggregator": false,
+  "window2_secondary_planned": false,
+  "n_bootstrap": 2000,
+  "bootstrap_seed": 20261111,
+  "uncertainty": "pointwise percentile 95% source-group bootstrap, all variants of each original kept together; continuous AUC independent of decision threshold; class risk=altered",
+  "scopes": [
+    "all alterations vs matched preserved",
+    "complete removal vs matched preserved",
+    "partial strengthening vs matched preserved"
+  ],
+  "counting": "report raw TP/FN/FP/TN and source-weighted class rates; counts of independent sources separately from variants",
+  "limitations": [
+    "Generated conditions and assistant review do not constitute independent human semantic labels.",
+    "Partial strengthening and epistemic versus deontic readings depend on context.",
+    "Transfer of a frozen threshold is tested, not assumed; current window2 primary suite is unchanged.",
+    "Non-entailment need not mean contradiction.",
+    "No automatic extension to real humanizers; no repetition of BLEU/ROUGE/BERTScore or prior experiments."
+  ],
+  "secondary_rate_ci": "Wilson 95% for sensitivity in full/partial subtypes and FPR only when exactly one evaluated variant per original source; never treat the 120 pooled alterations as independent for a binomial interval.",
+  "secondary_rate_ci_reason": "Prespecified before any new NLI scores: ordinary source bootstrap rates can have degenerate intervals at zero or one events.",
+  "amended_before_inference_utc": "2026-11-11T20:23:07.135544+00:00",
+  "max_per_cell": 20,
+  "max_unique_candidates_per_domain": 40,
+  "candidate_search_amendment": "Before any NLI scoring, initial source search found only 51 independent eligible originals under a per-generator candidate cap that could count variants of the same source. Search now counts globally unique source groups, increases the computational cap to 20 per domain/generator and stops at 40 independent eligible candidates per domain. No grammatical/semantic filter, target count, random seed, label or NLI setting is relaxed.",
+  "candidate_search_amended_utc": "2026-11-11T20:35:16.097856+00:00",
+  "native_pool_amended_utc": "2026-11-12T01:29:28.985847+00:00",
+  "native_pool_amendment": "Before any new NLI inference: all 1976 eligible-marker records under the initial exclusion set were screened and yielded only 51 independent applicable originals (29 Essay, 14 WritingPrompts, 8 Reuters); no computational cap was responsible. Remove only the two stylometry-feature CSVs from source exclusions. Their feature extraction did not use semantic labels, NLI scores or threshold calibration. Retain all six previous semantic-panel exclusions, connected-source and canonical-text exclusions. Keep 60 sources, target 20/domain, 120 alterations, original seed, rules and NLI settings. Sources may have appeared in prior stylometry analyses; they are new to the previous declared semantic panels, not globally untouched texts.",
+  "previous_stylometry_inputs_not_excluded": [
+    {
+      "path": "results/features.csv",
+      "sha256": "6284e19237e9132b5a0f337ee60fed3540b6aa260910cce8e6e7372ac01db4d8"
+    },
+    {
+      "path": "results_length_matched/features.csv",
+      "sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c"
+    }
+  ],
+  "grammatical_guard_amendment": "Before any NLI inference, reject leading list bullets, finite verbs inside parser-derived subject subtrees, uncertain disjunctive subject agreement, and be-able ability constructions. Lower the article A inside preserved possibility wrappers. These conservative fixes do not broaden semantic eligibility or use scores.",
+  "preferred_sources_per_domain": 20,
+  "planned_actual_domain_allocation": {
+    "Essay": 22,
+    "Reuters": 16,
+    "WritingPrompts": 22
+  },
+  "domain_quota_amended_utc": "2026-11-12T01:34:36.405944+00:00",
+  "domain_quota_amendment": "Before NLI inference: expanded native screening found 82 independent eligible originals (40 Essay computational cap, 26 WritingPrompts, 16 Reuters). Keep 60 originals, 120 alterations and 60 faithful controls; balanced deterministic selection gives 22 Essay, 22 WritingPrompts and 16 Reuters. Treat 20/domain as preference, not requirement. No semantic/grammatical rule, threshold or model is changed. If textual review rejects a source and its same-domain reserve is exhausted, use the next deterministic score-blind reserve from another domain and log the replacement before inference.",
+  "score_free_candidate_screening_reference": {
+    "path": "results_hedging_extension/candidate_pool_debug_20261112T013316Z.jsonl",
+    "sha256": "ce428549191bd47b6007f1adeb5cda5aebcc3fc0f29485c80380dfffc0afa364",
+    "generator_code_sha256": "9f82314a01073be402c56e1368f29eff6bce1c3e07b48c0a4bb180dbdf21eab0",
+    "candidate_count": 82
+  }
+}

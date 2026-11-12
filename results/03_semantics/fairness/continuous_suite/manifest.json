@@ -1,0 +1,26 @@
+{
+  "n_pairs": 3500,
+  "humanizers": [
+    "ChatGLM",
+    "ChatGPT",
+    "ChatGPT-turbo",
+    "Claude",
+    "Dolly",
+    "GPT4All",
+    "StableLM",
+    "gemini-2.5-flash",
+    "gpt-5.4",
+    "gpt-5.4-nano",
+    "manual",
+    "qwen3-8b"
+  ],
+  "humanizer_label_source": "explicit humanizer field, otherwise generator/editor; OpAI editors are not DIPPER evaluations",
+  "primary_output": "continuous model support/similarity and lexical changes",
+  "threshold_applied": false,
+  "semantic_verdict_created": false,
+  "distribution_weighting": "one vote per source within each humanizer/condition",
+  "length_normalization": "No previous-editor calibration is applied implicitly; compare lengths and calibrate explicitly on new-domain references.",
+  "scores_are_not_probabilities_of_document_correctness": true,
+  "guard_columns_are_descriptive_counts_or_changes_not_calibrated_risks": true,
+  "pairs_sha256": "23a395c2b253dc40a7615414593bea0b8ac4d004202aca522c36bfcd7f8f46e2"
+}

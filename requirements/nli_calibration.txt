@@ -1,0 +1,9 @@
+# Reuse Kaggle's CUDA-enabled PyTorch; never install the CPU torch lockfile.
+transformers==4.57.3
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.16.3
+scikit-learn==1.7.2
+sentencepiece==0.2.1
+protobuf==5.29.5
+requests>=2.32.0,<3

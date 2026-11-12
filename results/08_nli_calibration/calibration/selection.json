@@ -1,0 +1,70 @@
+{
+  "protocol": "contextual_nli_calibration_selection_v1",
+  "status": "selected_on_calibration",
+  "selected": {
+    "mode": "window2",
+    "aggregator": "min",
+    "n_labelled": 436,
+    "n_labelled_complete": 436,
+    "n_identity": 137,
+    "n_identity_complete": 137,
+    "identity_mean": 0.9710095951156895,
+    "identity_q10": 0.9509246945381165,
+    "identity_median": 0.9778432250022888,
+    "identity_min": 0.8666298985481262,
+    "calibration_auc": 0.9734878763655743,
+    "calibration_auc_ci95_low": 0.9566194150440563,
+    "calibration_auc_ci95_high": 0.987353208974678,
+    "eligible_primary": true,
+    "exclusion_reasons": ""
+  },
+  "policy": {
+    "protocol": "contextual_nli_calibration_selection_v1",
+    "modes": [
+      "single_all",
+      "window2",
+      "window3",
+      "document"
+    ],
+    "aggregators": [
+      "mean",
+      "q10",
+      "min",
+      "low_support_fraction"
+    ],
+    "selected_split": "calibration",
+    "label_provenance": "operational proxies, not human gold",
+    "score_orientation": "higher means presumed preservation",
+    "bidirectional_score": "min(forward, reverse); fraction uses 1-max(forward, reverse)",
+    "low_support_threshold": 0.5,
+    "primary_requirements": {
+      "complete_labelled_coverage": 1.0,
+      "complete_identity_coverage": 1.0,
+      "identity_mean_min": 0.95,
+      "identity_q10_min": 0.9
+    },
+    "selection": "maximum pooled calibration AUC among eligible candidates",
+    "tie_tolerance": 1e-12,
+    "tie_break_modes": [
+      "single_all",
+      "window2",
+      "window3",
+      "document"
+    ],
+    "tie_break_aggregators": [
+      "mean",
+      "q10",
+      "min",
+      "low_support_fraction"
+    ],
+    "exclusions": "test pairs and their metric scores are not used for selection",
+    "interpretation": "development selection; independent human validation remains pending"
+  },
+  "n_positive": 139,
+  "n_negative": 297,
+  "n_identity": 137,
+  "n_source_groups": 46,
+  "test_used_for_selection": false,
+  "human_validation_completed": false,
+  "note": "Operational development choice on presumed labels; not gold accuracy or independent validation"
+}

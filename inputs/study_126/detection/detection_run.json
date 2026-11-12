@@ -1,0 +1,68 @@
+{
+  "cohort_sha256": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68",
+  "rewrites_sha256": "23c8a5a890c091ede15916c8b5206dedf52df486198749eda968a71eb67cac37",
+  "config_sha256": "947f1aaee4739d3ed5929b05a08884027b4ce5438e4cf3c7c47d023ac3ef65cd",
+  "analysis_only": false,
+  "detectors": [
+    {
+      "name": "openai_roberta_base",
+      "model_id": "openai-community/roberta-base-openai-detector",
+      "revision": "6cba99c003b711c7fe94f8a3aa2be35a792cb6fa",
+      "id2label": {
+        "0": "Fake",
+        "1": "Real"
+      },
+      "ai_label_index": 0,
+      "device": "cuda:0",
+      "preprocessing": "none",
+      "full_text_coverage": true,
+      "aggregation": "token-weighted mean of non-overlapping chunk AI scores",
+      "max_tokens_including_specials": 512,
+      "cache_fingerprint": "444b725412d13f6156bdae64773caa21a24e599d6f972645fd407db56911f940",
+      "elapsed_seconds": 25.51765154199893
+    },
+    {
+      "name": "fakespot_roberta_base_raw",
+      "model_id": "fakespot-ai/roberta-base-ai-text-detection-v1",
+      "revision": "f9cdb14d1f8b105f597d80fa7b56f20c6ea0e9db",
+      "id2label": {
+        "0": "Human",
+        "1": "AI"
+      },
+      "ai_label_index": 1,
+      "device": "cuda:0",
+      "preprocessing": "none",
+      "full_text_coverage": true,
+      "aggregation": "token-weighted mean of non-overlapping chunk AI scores",
+      "max_tokens_including_specials": 512,
+      "cache_fingerprint": "1d34fad791a24dbf3f64aafd5aefb2e40de5a4125cef7bbe4576fec37cd7f80a",
+      "elapsed_seconds": 24.268096484000125
+    },
+    {
+      "name": "radar_vicuna",
+      "model_id": "TrustSafeAI/RADAR-Vicuna-7B",
+      "revision": "4ff1f23a69a36aa1df47b0933be6279f1b896c9b",
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "ai_label_index": 0,
+      "device": "cuda:0",
+      "preprocessing": "none",
+      "full_text_coverage": true,
+      "aggregation": "token-weighted mean of non-overlapping chunk AI scores",
+      "max_tokens_including_specials": 512,
+      "cache_fingerprint": "41b0662aec173de577bcd63b20a5675ebc22eccebd1ef9f8752c372e8941b73b",
+      "elapsed_seconds": 82.18019832200116
+    }
+  ],
+  "n_text_records_per_detector": 2304,
+  "asr_denominator": "test sources detected AI before rewriting; failed generations remain failures",
+  "calibration": "human-only, source-group-disjoint from test; score > threshold",
+  "majority_vote": "two of three calibrated binary decisions, only when exactly three detectors are used",
+  "asr_intervals": "source-group bootstrap, fixed thresholds and checkpoints; calibration/model uncertainty excluded",
+  "bootstrap": 5000,
+  "macro_mean": "equal detector weight over defined ASRs; majority vote is excluded",
+  "naturalness_measured": false,
+  "python": "3.13.16"
+}

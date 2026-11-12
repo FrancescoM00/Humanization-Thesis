@@ -1,0 +1,15 @@
+{
+  "repository_commit": "71dd61596e259a9fda89cd7d1ef4909b84c5ee79",
+  "mode": "pilot",
+  "active_systems": [
+    "identity",
+    "qwen_humanize"
+  ],
+  "torch": "2.11.0+cu130",
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "requirements_sha256": "d47f409520ddc66f86a6eca8377551737ed0d146f056eb0db94bef2526b873d2",
+  "config_sha256": "86db7eb81f3d75fbfb306601395b70442659a3ea27d38b2e534991b571556d3b"
+}

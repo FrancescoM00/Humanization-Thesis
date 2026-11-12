@@ -1,0 +1,29 @@
+{
+  "initial_threads": 4,
+  "initial_batch_size": 8,
+  "initial_progress": {
+    "completed_pairs": 100,
+    "total_pairs": 2407,
+    "elapsed_seconds": 236.91,
+    "peak_rss_mib": 1587.12109375
+  },
+  "reason": "Profile CPU batching while preserving saved float32 checkpoint probabilities",
+  "serial_onnx_before_parallel_profile": {
+    "phase": "unique_evidence_pairs",
+    "completed": 53222,
+    "total": 88900,
+    "elapsed_seconds": 2377.838315259,
+    "peak_rss_mib": 1881.125,
+    "max_pair_tokens_this_batch": 54
+  },
+  "serial_onnx_completed": {
+    "phase": "unique_evidence_pairs",
+    "completed": 53222,
+    "total": 88900,
+    "elapsed_seconds": 2377.838315259,
+    "peak_rss_mib": 1881.125,
+    "max_pair_tokens_this_batch": 54
+  },
+  "decision_after_parallel_profile": "Retain four-thread serial ORT: parallel sessions gave no throughput gain",
+  "cached_model_pairs_before_resume": 53238
+}

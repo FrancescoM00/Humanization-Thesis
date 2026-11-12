@@ -1,0 +1,61 @@
+id,validity,reviewer_source,notes
+hedge:987c9634d3c81f194fd55270,valid,assistant,Elimina may e asserisce la stessa origine dei memi al presente.
+hedge:128d01b2fc99035f3aa59480,valid,assistant,Probably rafforza may mantenendo incertezza sulla stessa origine.
+hedge:7dc67380870d617243e0e775,valid,assistant,It is possible that riformula la stessa possibilità epistemica sui memi.
+hedge:92b9609f0926f773a2a473ad,valid,assistant,Rimuove la possibilità esplicita e mantiene la stessa spiegazione causale al presente.
+hedge:74a451a98a675037f66b4d82,valid,assistant,Likely rafforza possible senza eliminare la qualificazione.
+hedge:59bd4effb9e5325643398542,valid,assistant,Possibly conserva la possibilità della stessa spiegazione causale.
+hedge:3984a028e697dc330e70552e,qualified,assistant,Il periodo precedente ipotizza un coinvolgimento che avrebbe evitato i licenziamenti; has resulted lo presenta come avvenuto.
+hedge:ffaf07b9402d926b05d7a2a5,qualified,assistant,Il contesto suggerisce un esito controfattuale; has probably resulted può riferire un evento effettivo diverso.
+hedge:16becd5fe26a70b648489e64,qualified,assistant,May have può essere controfattuale qui; possible that ... has resulted favorisce invece una lettura epistemica del passato.
+hedge:059d3a17651c3c3c009a2854,qualified,assistant,An unemployed worker è generico: may può indicare un caso possibile anziché dubbio su un lavoratore specifico.
+hedge:d30543283b11ea70a8da160a,qualified,assistant,"Probably rafforza una previsione, ma may nel contesto può esprimere variabilità fra lavoratori."
+hedge:32a1b8054eb2e94a65a3fc2b,qualified,assistant,La possibilità sull’intera frase può cambiare la portata della possibilità generica riferita a un lavoratore.
+hedge:791ad18097bc599673ee4a18,valid,assistant,Has exacerbated rende certa la stessa conseguenza di uno spostamento già descritto come effettivo.
+hedge:4a9577167b0361f8e6bbc8a3,valid,assistant,Has probably exacerbated conserva il passato e rafforza la probabilità della stessa conseguenza.
+hedge:362e0ef7b0f6c97ccded1090,valid,assistant,Riformula epistemicamente may have senza cambiare la conseguenza né il tempo perfetto.
+hedge:e7b3763b9699051abd4ae95c,qualified,assistant,May descrive forme possibili dell’eczema; is acute or chronic trasforma la classificazione in un’asserzione generale.
+hedge:186a59abd0b1ec6ef083f7dd,qualified,assistant,La distinzione acuto/cronico è tassonomica; probably introduce probabilità anziché chiaramente rafforzare un dubbio.
+hedge:9525d9b44f71a1bb985c67ad,qualified,assistant,Possibile passaggio da varietà di forme cliniche a dubbio epistemico sull’intera classificazione.
+hedge:8c90b9f62159da3f44c9c743,qualified,assistant,Il testo afferma altrove l’influenza dei fattori ambientali e comportamentali; l’effetto aggiuntivo della rimozione è incerto.
+hedge:8cb082e2b4a7fb1d5edd68cc,qualified,assistant,L’influenza è già affermata altrove e may può indicare potenzialità causale; probably non isola bene il rafforzamento.
+hedge:2c76a3baab76069d0d986025,qualified,assistant,May può esprimere potenzialità causale generale; la parafrasi esplicita introduce una lettura epistemica.
+hedge:f1360f198e8d262e3252eae9,qualified,assistant,Il paragrafo precedente dice già che altri fornitori saranno costretti a ridurre prezzi o offrire promozioni.
+hedge:849c5041bfb606d487e2eb14,qualified,assistant,"Almost certain rafforza likely localmente, ma il testo aveva già previsto senza dubbio la reazione dei concorrenti."
+hedge:b4d8bb0ce5f967ee749f6c34,valid,assistant,Probably conserva il grado di probabilità di likely e mantiene will e il riferimento ai prossimi mesi.
+hedge:f044db8e12d0f636039b7127,valid,assistant,Has also made elimina il dubbio sullo stesso annuncio in francese mantenendo il perfetto.
+hedge:632d27e7e9bbd76d5db7a9d9,valid,assistant,Has probably also made rafforza may have senza eliminare la probabilità.
+hedge:6a4eceff038182085e344af4,valid,assistant,Possible that ... has also made conserva il dubbio sul medesimo annuncio in francese.
+hedge:b0ec993f451a0e424324ad95,valid,assistant,Asserisce il risparmio specifico oltre 100 miliardi; il successivo generico billions non ne fissa già l’importo.
+hedge:46950ec712a1a83a9389837a,valid,assistant,"Probably rafforza may have sullo stesso importo, mantenendo il perfetto."
+hedge:4a7a61c595c16b9d597a7326,valid,assistant,Conserva la possibilità epistemica del risparmio oltre 100 miliardi e il riferimento temporale.
+hedge:ae64fbad1dd77d55120b409b,qualified,assistant,Nelle istruzioni may be changed può concedere permesso o prevedere una modifica futura; is changed è assertivo al presente.
+hedge:8749e8a589daadd65b71ef9c,qualified,assistant,Probably non rafforza un eventuale permesso; inoltre la modifica durante la creazione è prospettica.
+hedge:48b77beafddcf6d7dd1b202a,qualified,assistant,Possible that può rendere epistemico un may autorizzativo; resta ambigua anche la collocazione futura della modifica.
+hedge:65162e27f7e07b8b38ca035f,qualified,assistant,"Might propone esempi fra cui scegliere, mentre is tende a definire quali eventi siano buoni."
+hedge:e8276a6b54dda2c6c0615fcd,qualified,assistant,"Probably introduce probabilità su una classificazione, dove il contesto suggerisce possibili argomenti di scrittura."
+hedge:0d02e93dd539fd91911c1a06,qualified,assistant,La parafrasi può spostare una proposta esemplificativa verso un dubbio sulla classificazione di un evento.
+hedge:7ce3c474b2e7c8fdb315c0c9,qualified,assistant,La breve durata è una previsione condizionata a prezzi e domanda futuri; is può sembrare una durata già accertata.
+hedge:552c4495349eb27797480c41,qualified,assistant,"Probably mantiene cautela, ma is può spostare verso il presente la previsione sulla durata futura del cambiamento."
+hedge:1d5b93bdf6b0fa5d9c503c60,valid,assistant,Possibilità della breve durata del cambiamento attuale conservata; resta compatibile con il successivo periodo ipotetico.
+hedge:ac3d1a405f3a02728138d187,valid,assistant,Il personaggio ammette senza perhaps lo stesso errore nella ricerca; tempo perfetto invariato.
+hedge:d7b6f8cbbb4f89d185f4e75b,valid,assistant,Probably rafforza l’ammissione ipotetica conservando una qualificazione.
+hedge:732c0aa4ed2b7fed71976a4a,valid,assistant,Possible that conserva il dubbio espresso da perhaps nella stessa battuta.
+hedge:954113ee48aaa6c4a3ed3cb1,valid,assistant,Elimina maybe mantenendo la valutazione passata del lupo sulla vacanza.
+hedge:0e6bc9e8dbb98f567acd5b3d,valid,assistant,Probably aumenta l’impegno nella stessa valutazione e conserva was.
+hedge:480876aa330afa73d2d0c020,qualified,assistant,It is possible introduce una valutazione al presente dentro una focalizzazione sui pensieri passati del lupo.
+hedge:bcef5e311fd4ab21c4abd698,valid,assistant,"Asserisce la stessa spiegazione passata dell’avvertimento del nonno, senza maybe."
+hedge:2afd1d4865856da4bee61201,valid,assistant,Probably rafforza l’ipotesi del narratore mantenendo lo stesso passato.
+hedge:7bb092bcc2a4e95c0afebcf6,qualified,assistant,Il presente is possible può spostare al narratore attuale il dubbio che segueva Had I imagined nella scena passata.
+hedge:e09adc5e9b906f5d7fff799c,qualified,assistant,Perhaps offre ambientazioni al lettore che scrive; l’asserzione trasforma suggerimenti in collocazioni fissate.
+hedge:98dacc4f35d4965e6627d2fe,qualified,assistant,"Probably rende probabili le ambientazioni proposte, ma qui perhaps può funzionare come suggerimento creativo."
+hedge:1ac34d16d40d22e5425e3f87,qualified,assistant,"Possible that è compatibile con le ambientazioni, ma può cambiare la funzione di proposta in dubbio epistemico."
+hedge:d36fc5ee4663af4eb521e868,valid,assistant,Asserisce il medesimo intento passato dei creatori mantenendo hoped.
+hedge:9d79f0554c0e54ef3bc4aab3,valid,assistant,Probably rafforza l’ipotesi sullo stesso intento passato e conserva incertezza.
+hedge:00e7eddd8340ffef419c8417,valid,assistant,Possibilità epistemica sul medesimo intento passato; la voce narrante può formulare questa valutazione.
+hedge:1a03fab2ee59428cf214109d,valid,assistant,"Rimuove perhaps dalla stessa attribuzione metaforica a Emily, nella medesima battuta al presente."
+hedge:40236806dee25b3d6d2b67d5,valid,assistant,Probably rafforza l’attribuzione a Emily conservando una qualificazione.
+hedge:ef66077fca9c1a3ac759b4b9,valid,assistant,Riformula la stessa possibilità nella battuta senza cambiare referente o tempo.
+hedge:878dca3453fcfffd61f264f3,qualified,assistant,May può prospettare un futuro pericolo; depends generalizza una dipendenza già suggerita dal precedente salvataggio.
+hedge:9efaa9a64eda83b43467e83d,qualified,assistant,"Probably rafforza localmente, ma il testo dice già che il dono ha salvato la vita e may può essere prospettico."
+hedge:a636d89292914655ee6697d3,qualified,assistant,"La parafrasi epistemica è plausibile, ma può attenuare la lettura prospettica di may e la dipendenza è già suggerita dal salvataggio."

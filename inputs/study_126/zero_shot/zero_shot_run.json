@@ -1,0 +1,46 @@
+{
+  "cohort_sha256": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68",
+  "rewrites_sha256": "23c8a5a890c091ede15916c8b5206dedf52df486198749eda968a71eb67cac37",
+  "config_sha256": "947f1aaee4739d3ed5929b05a08884027b4ce5438e4cf3c7c47d023ac3ef65cd",
+  "selected_detectors": [
+    "binoculars_falcon7b"
+  ],
+  "status": "completed",
+  "analysis_only": false,
+  "detectors": [
+    {
+      "observer_model_id": "tiiuae/falcon-7b",
+      "observer_revision": "ec89142b67d748a1865ea4451372db8313ada0d8",
+      "performer_model_id": "tiiuae/falcon-7b-instruct",
+      "performer_revision": "8782b5c5d8c9290412416618f36a133653e85285",
+      "protocol": "binoculars_fullcoverage_fp32_statistics_v1",
+      "precision": "float16",
+      "max_tokens": 512,
+      "attention": "sdpa",
+      "code_sha256": "c6bdfb618ab635c12cfb97e99a0a7a0bbf08f40b4ce795b252226f19b8142cd0",
+      "name": "binoculars_falcon7b",
+      "cache_fingerprint": "cb692a0e824b01c76083e44112513e5577aa7eaecd995b05b4954056e02617a5",
+      "observer_device": "cuda:0",
+      "performer_device": "cuda:1",
+      "elapsed_seconds": 876.6565694820001,
+      "full_text_coverage": true,
+      "score_orientation": "lower_is_more_ai_like",
+      "score_is_probability": false,
+      "upstream_source_commit": "c8ae2f90d50ee696418bc71d8d9e5020e5f9d7b8",
+      "aggregation": "ratio of global token means; one context token overlaps; denominator boundary counted once"
+    }
+  ],
+  "n_text_records_per_detector": 2304,
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.3",
+    "accelerate": "1.11.0"
+  },
+  "asr_denominator": "originals detected AI before rewriting; failed generations remain failures",
+  "calibration": "human-only, source-group-disjoint; raw ratio < threshold, ties human",
+  "majority_vote_created": false,
+  "published_threshold_used": false,
+  "score_is_probability": false,
+  "naturalness_measured": false,
+  "intervals": "source-group bootstrap with fixed checkpoints and calibration thresholds"
+}

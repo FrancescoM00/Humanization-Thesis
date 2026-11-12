@@ -1,0 +1,7 @@
+{
+  "seed": 2027,
+  "sampling": "3 nonidentity pairs per operation; three randomly selected distinct domains per operation, then random pair within domain",
+  "n_pairs": 9,
+  "source": "positive_pairs.jsonl",
+  "scores_consulted": false
+}

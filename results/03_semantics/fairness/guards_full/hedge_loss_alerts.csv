@@ -1,0 +1,9 @@
+split,population,rule,threshold,n_alerts,false_positive_rate,sensitivity,balanced_accuracy,n_preserved,n_altered,n_sources
+calibration,all_opai_positive,any_hedge_count_loss,0.0,18,0.125,,,147,0,48
+calibration,all_opai_positive,secondary_calibrated_loss,1.0,4,0.027777777777777776,,,147,0,48
+calibration,direct_mgt_hedge,any_hedge_count_loss,0.0,18,,1.0,,0,18,18
+calibration,direct_mgt_hedge,secondary_calibrated_loss,1.0,0,,0.0,,0,18,18
+test,all_opai_positive,any_hedge_count_loss,0.0,14,0.0915032679738562,,,153,0,51
+test,all_opai_positive,secondary_calibrated_loss,1.0,3,0.0196078431372549,,,153,0,51
+test,direct_mgt_hedge,any_hedge_count_loss,0.0,21,,1.0,,0,21,21
+test,direct_mgt_hedge,secondary_calibrated_loss,1.0,0,,0.0,,0,21,21

@@ -1,0 +1,5 @@
+{
+  "native_reference_predictions": 2622,
+  "sha256": "91947f6e3e2265eb19e5fc286d51a4db33df9e7899355203e5c61b48839db75d",
+  "provenance": "Exact prefix saved before float32 ONNX precomputation; native PyTorch checkpoint run"
+}

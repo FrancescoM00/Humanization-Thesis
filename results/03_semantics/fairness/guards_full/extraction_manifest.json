@@ -1,0 +1,15 @@
+{
+  "pairs_files": [
+    {
+      "path": "data/semantic_fairness/pairs.jsonl",
+      "sha256": "23a395c2b253dc40a7615414593bea0b8ac4d004202aca522c36bfcd7f8f46e2"
+    }
+  ],
+  "n_pairs": 3500,
+  "guard_features": [
+    "guard_hedge_change",
+    "guard_negation_change",
+    "guard_number_change",
+    "guard_quantifier_change"
+  ]
+}

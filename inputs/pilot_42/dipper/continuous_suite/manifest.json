@@ -1,0 +1,16 @@
+{
+  "n_pairs": 84,
+  "humanizers": [
+    "dipper",
+    "identity"
+  ],
+  "humanizer_label_source": "explicit humanizer field, otherwise generator/editor; OpAI editors are not DIPPER evaluations",
+  "primary_output": "continuous model support/similarity and lexical changes",
+  "threshold_applied": false,
+  "semantic_verdict_created": false,
+  "distribution_weighting": "one vote per source within each humanizer/condition",
+  "length_normalization": "No previous-editor calibration is applied implicitly; compare lengths and calibrate explicitly on new-domain references.",
+  "scores_are_not_probabilities_of_document_correctness": true,
+  "guard_columns_are_descriptive_counts_or_changes_not_calibrated_risks": true,
+  "pairs_sha256": "a7965a827d497a682ccbff9b348e0e581b9c9fec8935020e265d90fcd0e2a7f3"
+}

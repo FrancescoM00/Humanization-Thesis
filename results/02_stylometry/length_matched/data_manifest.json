@@ -1,0 +1,115 @@
+{
+  "method": "source-aligned exact lexical-count matching of sentence-ended initial prefixes",
+  "clean_sentence_ends": true,
+  "n_pairs_per_domain": 300,
+  "seed": 42,
+  "minimum_lexical_words": 90,
+  "maximum_lexical_words": 180,
+  "target_lexical_words": 150,
+  "caliper": 0,
+  "word_definition": "spaCy model tokenizer token.is_alpha, identical to feature extractor",
+  "generator_quota_per_domain": {
+    "ChatGPT-turbo": 43,
+    "Claude": 43,
+    "ChatGLM": 43,
+    "Dolly": 43,
+    "ChatGPT": 43,
+    "GPT4All": 43,
+    "StableLM": 42
+  },
+  "source_files": {
+    "Essay": {
+      "file": "Essay_LLMs.csv",
+      "sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+      "rows": 1000
+    },
+    "WritingPrompts": {
+      "file": "WP_LLMs.csv",
+      "sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278",
+      "rows": 1000
+    },
+    "Reuters": {
+      "file": "Reuters_LLMs.csv",
+      "sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+      "rows": 1000
+    }
+  },
+  "diagnostics": {
+    "Essay": {
+      "source_rows_with_exact_match": 695,
+      "eligible_by_generator": {
+        "GPT4All": 174,
+        "Claude": 212,
+        "Dolly": 113,
+        "ChatGPT-turbo": 219,
+        "ChatGPT": 209,
+        "ChatGLM": 133,
+        "StableLM": 88
+      }
+    },
+    "WritingPrompts": {
+      "source_rows_with_exact_match": 904,
+      "eligible_by_generator": {
+        "Claude": 472,
+        "Dolly": 275,
+        "StableLM": 349,
+        "ChatGPT-turbo": 373,
+        "ChatGPT": 380,
+        "GPT4All": 313,
+        "ChatGLM": 337
+      }
+    },
+    "Reuters": {
+      "source_rows_with_exact_match": 608,
+      "eligible_by_generator": {
+        "ChatGLM": 147,
+        "ChatGPT": 163,
+        "StableLM": 108,
+        "Claude": 204,
+        "GPT4All": 69,
+        "ChatGPT-turbo": 171,
+        "Dolly": 58
+      }
+    }
+  },
+  "n_rows": 1800,
+  "n_groups": 900,
+  "source_alignment": "Each paired human and machine derive from the SAME original CSV row; one generator per row.",
+  "split_unit": "group_id joins original human/source prompt; no cross-source matching edges added",
+  "selection": "Minimum-cost bipartite source-row/generator-quota assignment: minimize abs(prefix_word_count-target), seeded tie breaks",
+  "cleaning": [
+    "Pinned TH-Bench spacing normalization",
+    "Symmetric incomplete-tail removal",
+    "Initial sentence-ended prefixes with EXACT equal lexical count in each original human/machine pair",
+    "Global exact casefold/whitespace text deduplication; no arbitrary-word cuts or padding"
+  ],
+  "limitations": [
+    "Prefix cropping changes the estimand to short initial passages, not full documents",
+    "Sentence-ended prefixes are punctuation heuristics, not a grammar guarantee",
+    "Selection conditions on availability of exact matched sentence endpoints and may favor particular styles",
+    "Character count and sentence count are NOT matched: at fixed word count these encode word/sentence style",
+    "Historical generators and mirrored-source provenance retain prior limitations",
+    "No causal claim: source prompt, topic and selection effects can remain"
+  ],
+  "download_provenance": {
+    "method": "mirror",
+    "mirror_repository": "https://github.com/derek33125/AITextDetection",
+    "mirror_commit": "6f289c4cf4e3966e9442d104ea250bae43f3ff9e",
+    "official_url": "https://drive.google.com/drive/folders/1p4iBeM4r-sUKe8TnS4DcYlxvQagcmola",
+    "official_bytes_verified": false,
+    "mirror_claim": "README identifies Data_Generation as original data source; CSV schema matches official loader.",
+    "dataset_license": "Not established by mirror; upstream source corpus terms apply; no raw data redistribution intended.",
+    "files": {
+      "Reuters_LLMs.csv": {
+        "sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b"
+      },
+      "Essay_LLMs.csv": {
+        "sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707"
+      },
+      "WP_LLMs.csv": {
+        "sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278"
+      }
+    }
+  },
+  "samples_sha256": "66c6267b333e0cb570018129516678c19b225dddf9c9ff2c5f8a152abb570537"
+}

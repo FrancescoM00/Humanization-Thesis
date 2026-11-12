@@ -1,0 +1,15 @@
+{
+  "status": "exploratory_full_matched_sample_selection_requires_independent_validation",
+  "features": [
+    "pos_num",
+    "pos_cconj",
+    "mattr_50",
+    "pos_propn"
+  ],
+  "rule": {
+    "min_abs_g_each_domain": 0.3,
+    "min_generator_sign_fraction": 0.7142857142857143,
+    "max_spearman": 0.85,
+    "maximum_size": 12
+  }
+}

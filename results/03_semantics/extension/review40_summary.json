@@ -1,0 +1,56 @@
+{
+  "reviewer": "assistant_direct_text_review_not_human_annotation",
+  "individual_model_scores_consulted": false,
+  "global_hypothesis_known": true,
+  "seed": 2026,
+  "n_pairs": 40,
+  "n_sources": 20,
+  "summary": {
+    "negation": {
+      "edit_applied": {
+        "yes": 20
+      },
+      "grammaticality_preserved": {
+        "yes": 18,
+        "uncertain": 2
+      },
+      "meaning_changed": {
+        "yes": 19,
+        "uncertain": 1
+      },
+      "original_to_modified_relation": {
+        "contradiction": 17,
+        "uncertain": 3
+      },
+      "controlled_test_validity": {
+        "valid": 15,
+        "qualified": 4,
+        "invalid": 1
+      }
+    },
+    "entity_substitution": {
+      "edit_applied": {
+        "yes": 20
+      },
+      "grammaticality_preserved": {
+        "uncertain": 3,
+        "yes": 15,
+        "no": 2
+      },
+      "meaning_changed": {
+        "yes": 19,
+        "uncertain": 1
+      },
+      "original_to_modified_relation": {
+        "neutral": 10,
+        "uncertain": 5,
+        "contradiction": 5
+      },
+      "controlled_test_validity": {
+        "qualified": 8,
+        "invalid": 5,
+        "valid": 7
+      }
+    }
+  }
+}

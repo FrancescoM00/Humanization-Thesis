@@ -1,0 +1,31 @@
+.venv/
+.cache/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+runs/
+*.log
+*_progress.json
+progress.json
+.DS_Store
+
+# Only the unchanged official input CSVs are versioned under data/.
+data/*
+!data/README.md
+!data/raw/
+data/raw/*
+!data/raw/Essay_LLMs.csv
+!data/raw/Reuters_LLMs.csv
+!data/raw/WP_LLMs.csv
+!data/raw/SOURCE.json
+
+# Local caches, generated notebook archives and virtual environments.
+*.zip
+*.tar.gz
+*.safetensors
+*.onnx
+*.pt
+*.bin

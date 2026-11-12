@@ -1,0 +1,115 @@
+{
+  "checked_at": "2026-11-09T00:48:32+01:00",
+  "official_folder_url": "https://drive.google.com/drive/folders/1p4iBeM4r-sUKe8TnS4DcYlxvQagcmola",
+  "comparison_source": "CSV files uploaded by the user and identified by the user as downloads from the linked Google Drive folder",
+  "assistant_downloaded_directly_from_drive": false,
+  "original_experiment_source": {
+    "method": "mirror",
+    "repository": "https://github.com/derek33125/AITextDetection",
+    "commit": "6f289c4cf4e3966e9442d104ea250bae43f3ff9e"
+  },
+  "files": [
+    {
+      "filename": "Essay_LLMs.csv",
+      "uploaded_bytes": 17216305,
+      "experiment_bytes": 17216305,
+      "uploaded_sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+      "experiment_sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+      "bytes_equal": true,
+      "data_rows": 1000,
+      "columns": 10,
+      "column_names": [
+        "id",
+        "prompt",
+        "human",
+        "ChatGPT-turbo",
+        "Claude",
+        "ChatGLM",
+        "Dolly",
+        "ChatGPT",
+        "GPT4All",
+        "StableLM"
+      ],
+      "header_equal": true,
+      "rows_in_original_order_equal": true,
+      "different_data_cells": 0,
+      "matching_historical_manifests": [
+        "results/data_manifest.json",
+        "results_pilot/data_manifest.json",
+        "results_length_matched/data_manifest.json"
+      ]
+    },
+    {
+      "filename": "Reuters_LLMs.csv",
+      "uploaded_bytes": 13727537,
+      "experiment_bytes": 13727537,
+      "uploaded_sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+      "experiment_sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+      "bytes_equal": true,
+      "data_rows": 1000,
+      "columns": 12,
+      "column_names": [
+        "id",
+        "author_id",
+        "author",
+        "prompt",
+        "human",
+        "ChatGPT-turbo",
+        "Claude",
+        "ChatGLM",
+        "Dolly",
+        "ChatGPT",
+        "GPT4All",
+        "StableLM"
+      ],
+      "header_equal": true,
+      "rows_in_original_order_equal": true,
+      "different_data_cells": 0,
+      "matching_historical_manifests": [
+        "results/data_manifest.json",
+        "results_pilot/data_manifest.json",
+        "results_length_matched/data_manifest.json"
+      ]
+    },
+    {
+      "filename": "WP_LLMs.csv",
+      "uploaded_bytes": 13216282,
+      "experiment_bytes": 13216282,
+      "uploaded_sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278",
+      "experiment_sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278",
+      "bytes_equal": true,
+      "data_rows": 1000,
+      "columns": 10,
+      "column_names": [
+        "id",
+        "prompt",
+        "human",
+        "ChatGPT-turbo",
+        "Claude",
+        "ChatGLM",
+        "Dolly",
+        "ChatGPT",
+        "GPT4All",
+        "StableLM"
+      ],
+      "header_equal": true,
+      "rows_in_original_order_equal": true,
+      "different_data_cells": 0,
+      "matching_historical_manifests": [
+        "results/data_manifest.json",
+        "results_pilot/data_manifest.json",
+        "results_length_matched/data_manifest.json"
+      ]
+    }
+  ],
+  "all_three_csv_byte_identical": true,
+  "archive": {
+    "filename": "old_datasets-20261108T234347Z-1-001.zip",
+    "inspected": false,
+    "reason": "Uploaded archive exceeds the 32 MiB executor transfer limit"
+  },
+  "experiment_data_modified": false,
+  "experiments_rerun": false,
+  "historical_manifests_modified": false,
+  "conclusion": "The three uploaded CSVs are byte-identical to the raw files and hashes recorded in all three historical style-run manifests. No numerical result changes. This comparison does not certify the locally prepared samples as the separate TH-Bench clean attack files."
+}

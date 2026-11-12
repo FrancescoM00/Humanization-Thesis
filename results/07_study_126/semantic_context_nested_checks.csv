@@ -1,0 +1,13 @@
+direction,metric,before,after,n,n_decrease,mean_increase
+forward,mean,single_all,window2,626,0,0.10518728433049813
+forward,mean,window2,window3,626,0,0.020606671679302403
+forward,q10,single_all,window2,626,0,0.22614690735586548
+forward,q10,window2,window3,626,0,0.04827538084830328
+forward,min,single_all,window2,626,0,0.24727155968860035
+forward,min,window2,window3,626,0,0.06963991297298475
+reverse,mean,single_all,window2,626,0,0.10811399050228628
+reverse,mean,window2,window3,626,0,0.030185301565551676
+reverse,q10,single_all,window2,626,0,0.19917511075790464
+reverse,q10,window2,window3,626,0,0.0651652577749393
+reverse,min,single_all,window2,626,0,0.1627655190516521
+reverse,min,window2,window3,626,0,0.056605269826739246

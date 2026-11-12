@@ -1,0 +1,21 @@
+{
+  "repository_commit": "3d028202a2200d1aca02b0e9f558d5f3eee1944a",
+  "mode": "study",
+  "active_systems": [
+    "identity",
+    "qwen_humanize",
+    "qwen14b_humanize",
+    "dipper",
+    "dipper_context3"
+  ],
+  "torch": "2.11.0+cu130",
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "requirements_sha256": "d47f409520ddc66f86a6eca8377551737ed0d146f056eb0db94bef2526b873d2",
+  "venv_path": "/kaggle/temp/humanization_runtime/venv",
+  "hf_hub_cache": "/kaggle/temp/humanization_runtime/huggingface/hub",
+  "reuse_cached_models": false,
+  "config_sha256": "947f1aaee4739d3ed5929b05a08884027b4ce5438e4cf3c7c47d023ac3ef65cd"
+}

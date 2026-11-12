@@ -1,0 +1,6 @@
+{
+  "n_real_local_pairs": 32,
+  "max_absolute_difference_from_standard_BERTScorer": 2.980232238769531e-07,
+  "tolerance": 1e-05,
+  "passed": true
+}

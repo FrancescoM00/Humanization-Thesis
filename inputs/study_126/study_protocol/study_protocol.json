@@ -1,0 +1,34 @@
+{
+  "protocol": "humanizer_study_126_v2",
+  "panel": "study",
+  "cohort_sha256": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68",
+  "calibration_humans": 300,
+  "test_sources": 126,
+  "input_policy": "All frozen test sources stay in the primary result, including instructions and mixed inputs.",
+  "screening": "Original text only; candidate flags are not labels and never exclude a source.",
+  "secondary_analysis": "Prose-only results require completed source-only type labels; report missing labels and all exclusions.",
+  "known_two_instruction_sources": [
+    "Essay:245:198f5b62c8f94655",
+    "Reuters:903:3d3ffb6dca295be8"
+  ],
+  "human_type_labels_received": false,
+  "planned_conditions": [
+    "identity",
+    "qwen_humanize",
+    "qwen14b_humanize",
+    "dipper",
+    "dipper_context3"
+  ],
+  "planned_detector_families": [
+    "supervised RoBERTa classifiers",
+    "zero-shot Falcon Binoculars"
+  ],
+  "primary_detection_question": "Within-source change in AI detection, including newly detected originals; ASR is secondary to the full transition table.",
+  "primary_length_controls": [
+    "original prefix matched to each rewrite lexical count",
+    "minimal lexical noise",
+    "noise on length-matched prefix"
+  ],
+  "semantic_interpretation": "Continuous scores and independent labels; do not compare raw cosine/BERTScore/NLI means as accuracy.",
+  "extension_420": "deferred; not selected or executed"
+}

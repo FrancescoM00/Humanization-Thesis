@@ -1,0 +1,23 @@
+{
+  "protocol": "contextual_nli_v1",
+  "status": "planned",
+  "n_pairs": 573,
+  "n_comparisons": 323336,
+  "modes": [
+    "single_all",
+    "window2",
+    "window3",
+    "document"
+  ],
+  "device": "cpu",
+  "precision": "float32",
+  "max_pair_tokens": 384,
+  "hypothesis_units": "exact existing alignment units; otherwise sentence/chunks <=160 NLI tokens",
+  "premise_units": "native contiguous sentence/chunks; window2/window3 include shorter windows",
+  "document_mode": "exact full text only when actual tokenizer pair fits; incomplete coverage is not averaged",
+  "selection": "all supplied pairs",
+  "pairs_sha256": "f7aa68eb323c326c2019cb8a5de91e3426c7f487ae49b56706c09f1b2aae37fc",
+  "code_sha256": "12af52046ee12482fbf6766e9fd35bca50013c00de8f30a154d96b31de363a6c",
+  "execution_scope": "tokenizer planning only; no model weights loaded or new probabilities calculated",
+  "neural_inferences_executed": false
+}

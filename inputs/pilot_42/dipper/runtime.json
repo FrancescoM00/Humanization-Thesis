@@ -1,0 +1,15 @@
+{
+  "repository_commit": "bde08c9447244debf4aea6be4d9491392940f889",
+  "mode": "pilot",
+  "active_systems": [
+    "identity",
+    "dipper"
+  ],
+  "torch": "2.11.0+cu130",
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "requirements_sha256": "d47f409520ddc66f86a6eca8377551737ed0d146f056eb0db94bef2526b873d2",
+  "config_sha256": "86db7eb81f3d75fbfb306601395b70442659a3ea27d38b2e534991b571556d3b"
+}

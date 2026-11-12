@@ -1,0 +1,69 @@
+{
+  "hedge_modals_require_tag_MD": [
+    "could",
+    "may",
+    "might"
+  ],
+  "hedge_lemmas": [
+    "apparently",
+    "appear",
+    "arguably",
+    "estimate",
+    "indicate",
+    "likely",
+    "perhaps",
+    "possibly",
+    "potentially",
+    "presumably",
+    "probably",
+    "seem",
+    "suggest",
+    "tend",
+    "unlikely"
+  ],
+  "negation_canonicalization": {
+    "not": "not",
+    "n't": "not",
+    "never": "never",
+    "no": "no",
+    "none": "none",
+    "neither": "neither",
+    "nor": "nor",
+    "without": "without"
+  },
+  "quantifier_canonicalization": {
+    "all": "universal",
+    "every": "universal",
+    "each": "universal",
+    "always": "always",
+    "everyone": "everyone",
+    "everybody": "everyone",
+    "everything": "everything",
+    "some": "some",
+    "several": "several",
+    "many": "many",
+    "much": "much",
+    "most": "most",
+    "few": "few",
+    "someone": "someone",
+    "somebody": "someone",
+    "something": "something",
+    "any": "any",
+    "none": "none",
+    "no": "no",
+    "never": "never"
+  },
+  "primary_guard_features": [
+    "guard_hedge_change",
+    "guard_negation_change",
+    "guard_number_change",
+    "guard_quantifier_change"
+  ],
+  "number_normalization": "Decimal literals, English cardinal subset, basic ordinals, percent and USD/GBP/EUR labels; multisets, not just counts.",
+  "warnings_are_not_semantic_gold": true,
+  "known_limits": [
+    "Modal ability/permission vs epistemic uncertainty is not fully resolved.",
+    "Appear/suggest/indicate and quantifiers are lexical proxies with contextual false positives.",
+    "No general arithmetic, coreference, numerical unit conversion or scope reasoning."
+  ]
+}

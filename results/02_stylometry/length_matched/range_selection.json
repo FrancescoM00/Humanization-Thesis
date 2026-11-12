@@ -1,0 +1,44 @@
+{
+  "initial_range": [
+    120,
+    180
+  ],
+  "target": 150,
+  "initial_range_feasible": false,
+  "reason": "Reuters Dolly33 andGPT4All32 eligible source rows below generator quota43; no relaxed-caliper or reducedquota fallback used.",
+  "eligible_initial": {
+    "Essay": {
+      "ChatGPT-turbo": 147,
+      "Claude": 146,
+      "ChatGLM": 81,
+      "Dolly": 76,
+      "ChatGPT": 158,
+      "GPT4All": 118,
+      "StableLM": 62
+    },
+    "WritingPrompts": {
+      "ChatGPT-turbo": 275,
+      "Claude": 360,
+      "ChatGLM": 221,
+      "Dolly": 179,
+      "ChatGPT": 290,
+      "GPT4All": 214,
+      "StableLM": 229
+    },
+    "Reuters": {
+      "ChatGPT-turbo": 116,
+      "Claude": 143,
+      "ChatGLM": 98,
+      "Dolly": 33,
+      "ChatGPT": 110,
+      "GPT4All": 32,
+      "StableLM": 77
+    }
+  },
+  "chosen_range": [
+    90,
+    180
+  ],
+  "caliper": 0,
+  "decision_timing": "Range expanded for source/generator quota feasibility before examining effect sizes or classifier outcomes."
+}

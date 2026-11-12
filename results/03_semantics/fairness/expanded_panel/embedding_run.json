@@ -1,0 +1,23 @@
+{
+  "stage": "embedding",
+  "status": "executed",
+  "n_pairs": 487,
+  "n_reused_pairs": 0,
+  "n_newly_scored_pairs": 487,
+  "pairs_sha256": "d3c25fc81d2bbddb64b6a0a409e08fdc703f384151ac7def1a1b0a23edfd217e",
+  "elapsed_seconds": 42.92634184599956,
+  "peak_rss_mib": 663.0,
+  "device": "cpu",
+  "threads": 4,
+  "versions": {
+    "torch": "2.7.1+cpu",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1"
+  },
+  "reused_results": "results_semantic_extension",
+  "previous_score_sha256": "98444862338f35b4401aaeff5821f8f5a139afa9e520d2757ae0a4493797bddc",
+  "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a"
+}

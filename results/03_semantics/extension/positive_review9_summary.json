@@ -1,0 +1,15 @@
+{
+  "seed": 2027,
+  "n_pairs": 9,
+  "n_sources": 7,
+  "n_source_groups": 7,
+  "conservation": {
+    "yes": 5,
+    "qualified": 4
+  },
+  "reviewer": "assistant_direct_full_document_text_review_not_human_annotation",
+  "individual_model_scores_consulted": false,
+  "global_hypothesis_known": true,
+  "class_labels_changed_after_review": false,
+  "caution": "Qualitative small sample; no inference of dataset-wide error rate or human gold accuracy."
+}

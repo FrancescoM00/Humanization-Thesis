@@ -1,0 +1,20 @@
+{
+  "stage": "bertscore",
+  "status": "executed",
+  "n_pairs": 2407,
+  "elapsed_seconds": 758.927649511,
+  "peak_rss_mib": 1631.90625,
+  "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+  "versions": {
+    "torch": "2.7.1+cpu",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1"
+  },
+  "device": "cpu",
+  "threads": 4,
+  "model_directory": "/workspace/Humanization/data/models/bertscore",
+  "metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820"
+}

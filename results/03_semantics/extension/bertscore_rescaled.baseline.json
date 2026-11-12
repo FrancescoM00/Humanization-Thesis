@@ -1,0 +1,19 @@
+{
+  "model": "FacebookAI/roberta-base",
+  "language": "en",
+  "num_layers": 10,
+  "idf": false,
+  "baseline_values": {
+    "P": 0.8146725,
+    "R": 0.8146619,
+    "F": 0.814463
+  },
+  "baseline_path": ".venv/lib/python3.12/site-packages/bert_score/rescale_baseline/en/roberta-base.tsv",
+  "baseline_sha256": "90a03f2c741848f84c96639715c35c5d61503fae0c3a6339dc57965de34c073e",
+  "transform": "(raw - baseline) / (1 - baseline), separately for P, R and F",
+  "library_equivalence": "BERTScorer rescale_with_baseline=True uses this exact affine transform after raw inference.",
+  "document_protocol": "Affine-rescaled chunk-matched approximation; not standard full-document BERTScore.",
+  "rank_and_auc_unchanged": true,
+  "n_pairs": 2621,
+  "input_sha256": "bb2fb3d2a84e1bb37bcc25ac28bdb6d82c9d4ad17c68228452ad9e3f728c93c8"
+}

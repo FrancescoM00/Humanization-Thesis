@@ -1,0 +1,91 @@
+{
+  "created_at_utc": "2026-11-11T14:28:27.262021+00:00",
+  "primary_metrics": [
+    {
+      "protocol": "cv",
+      "scope": "macro",
+      "stratum": "ALL",
+      "configuration": "C3_105",
+      "auc": 0.7825333333,
+      "ci_low": 0.7629659444,
+      "ci_high": 0.8027691296,
+      "repeat_auc_min": 0.7780111111,
+      "repeat_auc_max": 0.7854148148,
+      "n_repeats": 5,
+      "n_models": 1,
+      "n_groups": 900,
+      "n_texts": 1800
+    },
+    {
+      "protocol": "cv",
+      "scope": "macro",
+      "stratum": "ALL",
+      "configuration": "C3_100",
+      "auc": 0.7627140741,
+      "ci_low": 0.7427041296,
+      "ci_high": 0.7831337778,
+      "repeat_auc_min": 0.7597296296,
+      "repeat_auc_max": 0.7651481481,
+      "n_repeats": 5,
+      "n_models": 1,
+      "n_groups": 900,
+      "n_texts": 1800
+    }
+  ],
+  "macro_differences": [
+    {
+      "protocol": "cv",
+      "scope": "macro",
+      "stratum": "ALL",
+      "left_configuration": "C3_100",
+      "right_configuration": "C3_105",
+      "auc_difference": -0.0198192593,
+      "ci_low": -0.0319072407,
+      "ci_high": -0.0074152037,
+      "interval": "paired_source_bootstrap_fixed_predictions"
+    },
+    {
+      "protocol": "leave_domain_out",
+      "scope": "macro",
+      "stratum": "ALL",
+      "left_configuration": "C3_100",
+      "right_configuration": "C3_105",
+      "auc_difference": -0.0543037037,
+      "ci_low": -0.0720596296,
+      "ci_high": -0.0384400926,
+      "interval": "paired_source_bootstrap_fixed_predictions"
+    },
+    {
+      "protocol": "leave_generator_out",
+      "scope": "macro",
+      "stratum": "ALL",
+      "left_configuration": "C3_100",
+      "right_configuration": "C3_105",
+      "auc_difference": -0.0256884377,
+      "ci_low": -0.0399914646,
+      "ci_high": -0.0121813318,
+      "interval": "paired_source_bootstrap_fixed_predictions"
+    }
+  ],
+  "parent_C3_reproduced": true,
+  "max_abs_parent_metric_errors": {
+    "auc": 1.1102230246251565e-16,
+    "ci_low": 0.0,
+    "ci_high": 0.0
+  },
+  "bootstrap_archive_columns": [
+    "C3_105",
+    "C3_100"
+  ],
+  "n_bootstrap": 2000,
+  "bootstrap_seed": 20261112,
+  "same_partitions_and_group_weights": true,
+  "newly_selected_in_100": [
+    "pos_det"
+  ],
+  "remaining_features_guaranteed_length_independent": false,
+  "humanization_evaluated": false,
+  "independent_dataset_confirmation": false,
+  "interval_scope": "Pointwise exploratory, conditional on fixed held-out predictions; no bootstrap refitting",
+  "elapsed_seconds": 1.0274693210012629
+}

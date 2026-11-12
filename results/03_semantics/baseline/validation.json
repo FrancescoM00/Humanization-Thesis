@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+  "n_pairs": 2407,
+  "datasets": {
+    "controlled": 1200,
+    "local_control": 400,
+    "manual_sanity": 7,
+    "opai": 800
+  },
+  "controlled_conditions": {
+    "identity": 200,
+    "negation": 200,
+    "entity_substitution": 200,
+    "sentence_shuffle": 200,
+    "truncate": 200,
+    "random_deletion": 200
+  },
+  "stages": {
+    "lexical": {
+      "rows": 2407,
+      "sha256": "93435f7bed336f47b8e9b9eaa84c987d68ff6ce6974ecec8bb6f82337504cee1"
+    },
+    "embedding": {
+      "rows": 2407,
+      "sha256": "7c4d08740ad2818d996e547044d5ab89aa1d3f17f199cc78cc34825f9fd2f63e"
+    },
+    "bertscore": {
+      "rows": 2407,
+      "sha256": "c8537e1a6851fe0b5ed3d5080f3dbd86fd7b2016a35f51d45c193f680b3e3b89"
+    },
+    "nli": {
+      "rows": 2407,
+      "sha256": "d28232cf8bcc966f5d34cc889af727e69fd9b4924b6acc3b072a79c216c48a41"
+    }
+  },
+  "nli_unique_cached_predictions": 88900,
+  "embedding_segmentation_retains_all_nonwhitespace_characters": true,
+  "local_bert_protocol_counts": {
+    "unavailable": 1600,
+    "standard_sentence": 799,
+    "chunk_matched_approximation": 8
+  },
+  "nli_onnx_real_pair_parity": {
+    "n_real_cached_pairs": 128,
+    "max_probability_abs_difference": 5.602836608886719e-06,
+    "mean_probability_max_abs_difference": 5.715653514926089e-07,
+    "argmax_agreement": 1.0,
+    "entailment_threshold_0_5_agreement": 1.0,
+    "tolerance": 0.0001,
+    "precision": "float32",
+    "quantized": false,
+    "native_reference_sha256": "91947f6e3e2265eb19e5fc286d51a4db33df9e7899355203e5c61b48839db75d"
+  },
+  "bertscore_standard_reference": {
+    "n_real_local_pairs": 32,
+    "max_absolute_difference_from_standard_BERTScorer": 2.980232238769531e-07,
+    "tolerance": 1e-05,
+    "passed": true
+  }
+}

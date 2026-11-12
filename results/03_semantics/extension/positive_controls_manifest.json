@@ -1,0 +1,665 @@
+{
+  "official_repository": "https://github.com/VILA-Lab/OpAI-Bench",
+  "official_code_commit": "739d647bab87c7d3c7a86d3df6c008945af5c4a2",
+  "official_dataset": "OpAI-Bench1/OpAI-Bench",
+  "seed": 42,
+  "n_available_complete_trajectories": 4754,
+  "n_selected_trajectories": 100,
+  "n_selected_source_documents": 99,
+  "n_pairs": 300,
+  "counts_by_operation": {
+    "opai_polish": 100,
+    "opai_paraphrase": 100,
+    "opai_style": 100
+  },
+  "selected_keys": [
+    [
+      "essays-8bc1a4ef10a79be2",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-cb1da9bcb8e14b2e",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-9d80cd2bf42eb66c",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-5c2d96cc4354f05f",
+      "news",
+      "qwen3-8b"
+    ],
+    [
+      "news-02c860a46c889d07",
+      "news",
+      "gpt-5.4"
+    ],
+    [
+      "essays-010851f6a5297c0a",
+      "essays",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-edd8783910f4c11d",
+      "reports",
+      "qwen3-8b"
+    ],
+    [
+      "news-441d6ace147ad341",
+      "news",
+      "gemini-2.5-flash"
+    ],
+    [
+      "essays-8ec003170f8754f0",
+      "essays",
+      "gpt-5.4"
+    ],
+    [
+      "news-da2ab696ecc8b9ef",
+      "news",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-f5022a116cdca0d1",
+      "abstracts",
+      "gpt-5.4-nano"
+    ],
+    [
+      "reports-c4a41d2ab33c4055",
+      "reports",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-342395226eaf713d",
+      "abstracts",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-a78c899398a378f9",
+      "reports",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-23c0d902f7385c7a",
+      "reports",
+      "gpt-5.4"
+    ],
+    [
+      "abstracts-2ac87495f2c37cba",
+      "abstracts",
+      "qwen3-8b"
+    ],
+    [
+      "essays-e1bfef40852ce22e",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-e3c01865d64818a6",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-e6c1a8b8209bf159",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-4f500b362ef20aca",
+      "news",
+      "qwen3-8b"
+    ],
+    [
+      "news-00d605e90a687329",
+      "news",
+      "gpt-5.4"
+    ],
+    [
+      "essays-7e03d7524cfaace7",
+      "essays",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-6cb581e99ca59a0d",
+      "reports",
+      "qwen3-8b"
+    ],
+    [
+      "news-9eddb9e096c06a8e",
+      "news",
+      "gemini-2.5-flash"
+    ],
+    [
+      "essays-3e074d2dd0b84a7d",
+      "essays",
+      "gpt-5.4"
+    ],
+    [
+      "news-984bbb6cd9aec1df",
+      "news",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-9ec3b8f7819182ec",
+      "abstracts",
+      "gpt-5.4-nano"
+    ],
+    [
+      "reports-4e941d2c949d6fe5",
+      "reports",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-0ef529dc983cef9c",
+      "abstracts",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-96281b8d7d779062",
+      "reports",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-66b5be43c6e61900",
+      "reports",
+      "gpt-5.4"
+    ],
+    [
+      "abstracts-6d86ada0a7104dc9",
+      "abstracts",
+      "qwen3-8b"
+    ],
+    [
+      "essays-a9edd35cc1e39f13",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-aab065385910588f",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-dbf49087c9860b80",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-8bcb76ac2d5940a5",
+      "news",
+      "qwen3-8b"
+    ],
+    [
+      "news-8f19b345de397b62",
+      "news",
+      "gpt-5.4"
+    ],
+    [
+      "essays-84ba4bfb38790d5f",
+      "essays",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-e0c3a38ed7dd0c20",
+      "reports",
+      "qwen3-8b"
+    ],
+    [
+      "news-e1b29b938ce75179",
+      "news",
+      "gemini-2.5-flash"
+    ],
+    [
+      "essays-c14923955cb09bc4",
+      "essays",
+      "gpt-5.4"
+    ],
+    [
+      "news-1e5c5d0d3de5148c",
+      "news",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-570f03aa1a5c4002",
+      "abstracts",
+      "gpt-5.4-nano"
+    ],
+    [
+      "reports-d0675981e9d8da4f",
+      "reports",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-8064fa8c571e84e1",
+      "abstracts",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-b9e078d042702901",
+      "reports",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-96911a708dc16aae",
+      "reports",
+      "gpt-5.4"
+    ],
+    [
+      "abstracts-01d32963d545d784",
+      "abstracts",
+      "qwen3-8b"
+    ],
+    [
+      "essays-ed751c4ce7533aea",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-71850c50084a6c2f",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-fc816c7e623306c0",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-f0e512ea20dfdbea",
+      "news",
+      "qwen3-8b"
+    ],
+    [
+      "news-9725216834b08906",
+      "news",
+      "gpt-5.4"
+    ],
+    [
+      "essays-fd31f4a9b4f9e5fc",
+      "essays",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-9a7a3a7a1792fcc9",
+      "reports",
+      "qwen3-8b"
+    ],
+    [
+      "news-f1daf19e70c914e2",
+      "news",
+      "gemini-2.5-flash"
+    ],
+    [
+      "essays-17da7b4dbaa8abe4",
+      "essays",
+      "gpt-5.4"
+    ],
+    [
+      "news-cb8adb6da0add58c",
+      "news",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-ee703c620f3e782e",
+      "abstracts",
+      "gpt-5.4-nano"
+    ],
+    [
+      "reports-f5a4780194f12df8",
+      "reports",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-712d452d46a7b07a",
+      "abstracts",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-225ebfcd14b85008",
+      "reports",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-89e44d42e5a45a3c",
+      "reports",
+      "gpt-5.4"
+    ],
+    [
+      "abstracts-9f2fa27a2b3ac339",
+      "abstracts",
+      "qwen3-8b"
+    ],
+    [
+      "essays-d42a600e1dfc9a8f",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-c2f4ae9c7595aaad",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-64b4ddb93a95e849",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-30c275b824e268fc",
+      "news",
+      "qwen3-8b"
+    ],
+    [
+      "news-6d6927e535f38924",
+      "news",
+      "gpt-5.4"
+    ],
+    [
+      "essays-d6719809d6656628",
+      "essays",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-3c811aa2ff515e78",
+      "reports",
+      "qwen3-8b"
+    ],
+    [
+      "news-d6fcf8e66e45ea44",
+      "news",
+      "gemini-2.5-flash"
+    ],
+    [
+      "essays-cfd840bd11c921f4",
+      "essays",
+      "gpt-5.4"
+    ],
+    [
+      "news-f6c391c25489ffcb",
+      "news",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-6419afeceeef0129",
+      "abstracts",
+      "gpt-5.4-nano"
+    ],
+    [
+      "reports-985a69f49d4d7a31",
+      "reports",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-674364a61eced6c1",
+      "abstracts",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-2b218d312c748e44",
+      "reports",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-496504810c59f088",
+      "reports",
+      "gpt-5.4"
+    ],
+    [
+      "abstracts-1e8c325903df210a",
+      "abstracts",
+      "qwen3-8b"
+    ],
+    [
+      "essays-75ad44d280ac0142",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-03a949327ae22c47",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-ead4fd3a686caab9",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-c03db5cb74c93efa",
+      "news",
+      "qwen3-8b"
+    ],
+    [
+      "news-024ed633780a4b10",
+      "news",
+      "gpt-5.4"
+    ],
+    [
+      "essays-3e074d2dd0b84a7d",
+      "essays",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-055dc59b02930518",
+      "reports",
+      "qwen3-8b"
+    ],
+    [
+      "news-4736509446b87f53",
+      "news",
+      "gemini-2.5-flash"
+    ],
+    [
+      "essays-c26049669a6557c5",
+      "essays",
+      "gpt-5.4"
+    ],
+    [
+      "news-4bb3da2ea09ebe4e",
+      "news",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-a767236390a5bd5b",
+      "abstracts",
+      "gpt-5.4-nano"
+    ],
+    [
+      "reports-968ff1cb44ef87df",
+      "reports",
+      "gpt-5.4-nano"
+    ],
+    [
+      "abstracts-41fe6b9239c1065c",
+      "abstracts",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-9f22b59ef30e3385",
+      "reports",
+      "gemini-2.5-flash"
+    ],
+    [
+      "reports-2760ddbc691f7401",
+      "reports",
+      "gpt-5.4"
+    ],
+    [
+      "abstracts-4f4b64bd8f849c45",
+      "abstracts",
+      "qwen3-8b"
+    ],
+    [
+      "essays-0994ae1b06ba1306",
+      "essays",
+      "gpt-5.4-nano"
+    ],
+    [
+      "essays-27d376cca51f5ba5",
+      "essays",
+      "qwen3-8b"
+    ],
+    [
+      "abstracts-50673ec5fe8046a8",
+      "abstracts",
+      "gpt-5.4"
+    ],
+    [
+      "news-a84a1e9cce20f024",
+      "news",
+      "qwen3-8b"
+    ]
+  ],
+  "trajectory_stratum_counts": {
+    "essays|gpt-5.4-nano": 7,
+    "essays|qwen3-8b": 7,
+    "abstracts|gpt-5.4": 7,
+    "news|qwen3-8b": 7,
+    "news|gpt-5.4": 6,
+    "essays|gemini-2.5-flash": 6,
+    "reports|qwen3-8b": 6,
+    "news|gemini-2.5-flash": 6,
+    "essays|gpt-5.4": 6,
+    "news|gpt-5.4-nano": 6,
+    "abstracts|gpt-5.4-nano": 6,
+    "reports|gpt-5.4-nano": 6,
+    "abstracts|gemini-2.5-flash": 6,
+    "reports|gemini-2.5-flash": 6,
+    "reports|gpt-5.4": 6,
+    "abstracts|qwen3-8b": 6
+  },
+  "evaluation_split_pair_counts": {
+    "calibration": 147,
+    "test": 153
+  },
+  "evaluation_split_source_counts": {
+    "calibration": 48,
+    "test": 51
+  },
+  "labels_are_operation_based_proxies_not_gold": true,
+  "selection_is_independent_of_metric_scores": true,
+  "caveats": [
+    "Polish, Paraphrase and Style Rewrite are presumed preserved controls, not independently annotated truth",
+    "All versions are cumulative; adjacent pairs isolate one editing stage",
+    "All editors/versions of a source share one calibration/test split",
+    "Identity edits remain in primary analysis and are counted"
+  ],
+  "unchanged_by_operation": {
+    "opai_style": 5,
+    "opai_paraphrase": 3,
+    "opai_polish": 2
+  },
+  "source_metadata": {
+    "method": "local_official_parquet_reprojection_no_new_download",
+    "dataset": "OpAI-Bench1/OpAI-Bench",
+    "dataset_revision": "072c03c7051409346aaba05168d183cf6d863ee9",
+    "split": "test",
+    "source_files": [
+      {
+        "repository_path": "viewer/default/test/abstracts_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_gemini-2.5-flash.parquet",
+        "bytes": 5567831,
+        "sha256": "091b15daf4c12280d527966489d52dd03863ce1db2d0fe0b0227929d1b4e3852"
+      },
+      {
+        "repository_path": "viewer/default/test/abstracts_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_gpt-5.4-nano.parquet",
+        "bytes": 2432121,
+        "sha256": "f9f5ff9eceedf5132073042becfd2fa7d6ee65ab4fabebe9c22ddda1e840c3e7"
+      },
+      {
+        "repository_path": "viewer/default/test/abstracts_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_gpt-5.4.parquet",
+        "bytes": 2094410,
+        "sha256": "bbc13be5fcb8c162bc07a753959577feb596e49f9784b931c94f583abd356884"
+      },
+      {
+        "repository_path": "viewer/default/test/abstracts_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_qwen3-8b.parquet",
+        "bytes": 295900,
+        "sha256": "14a7176a97d0d1b0ce9b1306cf9c7180fcf5df0b2d77d53e4f49903599353287"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_gemini-2.5-flash.parquet",
+        "bytes": 11256053,
+        "sha256": "6de1035ff624b0057842bac9e776c3197c0f0e912473db49437ebb514e9409e9"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_gpt-5.4-nano.parquet",
+        "bytes": 4541597,
+        "sha256": "5c833df33247aa8c86f287aaec4820edcde185e4e1dae8f7a0f373f84512a992"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_gpt-5.4.parquet",
+        "bytes": 4085631,
+        "sha256": "6189e557157fb2d5d4fb04591ab7ee6b01143a357899bb977ce44caabed685b8"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_qwen3-8b.parquet",
+        "bytes": 687422,
+        "sha256": "49edf3a27951f1eb63ed7ad2256206b21b5f8660dfb66da03365c7658e0df543"
+      },
+      {
+        "repository_path": "viewer/default/test/news_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_gemini-2.5-flash.parquet",
+        "bytes": 10058639,
+        "sha256": "0d5b0f50a3b2a05eb409babb3e855d78b91a467a24967d7e7dfb7d3451416e9b"
+      },
+      {
+        "repository_path": "viewer/default/test/news_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_gpt-5.4-nano.parquet",
+        "bytes": 4146481,
+        "sha256": "fdaecc28a136de06d4234cbf096debe2664000e634caae6350b162da55957a72"
+      },
+      {
+        "repository_path": "viewer/default/test/news_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_gpt-5.4.parquet",
+        "bytes": 3608061,
+        "sha256": "8295a0115412ad69301d23d8a7e9ffea80b71e2660c11d197ceec942dc6eb7bd"
+      },
+      {
+        "repository_path": "viewer/default/test/news_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_qwen3-8b.parquet",
+        "bytes": 562132,
+        "sha256": "9d2223474e798c797cd1481242b3db6904cfc2c9de8d2e2ddb8cff31f9ef6d73"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_gemini-2.5-flash.parquet",
+        "bytes": 11432722,
+        "sha256": "d694239f5026128e0a0febc1275abc14f40b268518a3a2e411642585a23e0915"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_gpt-5.4-nano.parquet",
+        "bytes": 5196379,
+        "sha256": "ee15d9cfeebe9e41598b9eab2642e1588f64b711f6186ab97e9232a7b1443453"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_gpt-5.4.parquet",
+        "bytes": 4570773,
+        "sha256": "9217406902f980d41bee65a7c9b9a6b5975e8e950ef06d312f2927a0e1ccd54e"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_qwen3-8b.parquet",
+        "bytes": 429508,
+        "sha256": "30afee11c2c7a6eb6ffddc611a01e09655eabd1ce3cee4c4b01c8b52edf4eaf5"
+      }
+    ],
+    "source_rows": 42786,
+    "rows_retained": 28524,
+    "max_version": 5,
+    "exact_duplicate_rows_ignored": 0,
+    "original_projection_sha256": "a3afd7e9d66f331e271d2c5279d65a60eda1de58dd0d74977e41522a00b03e43"
+  }
+}

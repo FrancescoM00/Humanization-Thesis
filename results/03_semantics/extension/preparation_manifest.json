@@ -1,0 +1,96 @@
+{
+  "source_file": "/workspace/Humanization/data/semantic_full/pairs.jsonl",
+  "source_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+  "pairs_sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
+  "seed": 42,
+  "n_source_machine_documents": 200,
+  "domain_counts": {
+    "Essay": 67,
+    "Reuters": 67,
+    "WritingPrompts": 66
+  },
+  "generator_counts": {
+    "ChatGLM": 29,
+    "Dolly": 28,
+    "ChatGPT": 29,
+    "GPT4All": 28,
+    "ChatGPT-turbo": 29,
+    "StableLM": 28,
+    "Claude": 29
+  },
+  "applied_counts": {
+    "identity": 200,
+    "negation": 200,
+    "entity_substitution": 200,
+    "sentence_shuffle": 200,
+    "truncate": 200,
+    "random_deletion": 200
+  },
+  "skipped_counts": {},
+  "skip_reasons": {},
+  "n_local_controls": 400,
+  "n_manual_sanity_fixtures": 7,
+  "eligibility_selected_cohort": true,
+  "eligible_source_count": 538,
+  "opai": {
+    "status": "prepared",
+    "n_pairs": 862,
+    "n_positive_pairs": 300,
+    "n_matched_negatives": 562
+  },
+  "semantic_labels_are_automatic_hypotheses": true,
+  "code_sha256": {
+    "semantics/positive_controls.py": "455017418156bab983913347776553f33edcac9b6d84d1228ec69244b68012b4",
+    "scripts/prepare_semantic_extension.py": "67a0c9b4b39bc1abad385800d9736a1e193e584670beba749510e045a5f2c25d"
+  },
+  "n_pairs": 2621,
+  "datasets": {
+    "controlled": 1200,
+    "local_control": 400,
+    "manual_sanity": 7,
+    "opai_positive": 300,
+    "opai_matched_negative": 562,
+    "controlled_subtle": 152
+  },
+  "condition_counts": {
+    "controlled:identity": 200,
+    "controlled:negation": 200,
+    "controlled:entity_substitution": 200,
+    "controlled:sentence_shuffle": 200,
+    "controlled:truncate": 200,
+    "controlled:random_deletion": 200,
+    "local_control:identity_for_negation": 200,
+    "local_control:identity_for_entity_substitution": 200,
+    "manual_sanity:identity": 1,
+    "manual_sanity:paraphrase": 1,
+    "manual_sanity:negation": 1,
+    "manual_sanity:entity_substitution": 1,
+    "manual_sanity:sentence_shuffle": 1,
+    "manual_sanity:truncate": 1,
+    "manual_sanity:unrelated": 1,
+    "opai_positive:opai_polish": 100,
+    "opai_positive:opai_paraphrase": 100,
+    "opai_positive:opai_style": 100,
+    "opai_matched_negative:matched_entity_substitution": 251,
+    "opai_matched_negative:matched_negation": 189,
+    "opai_matched_negative:matched_number_change": 50,
+    "opai_matched_negative:matched_quantifier_strengthening": 43,
+    "opai_matched_negative:matched_hedge_removal": 24,
+    "opai_matched_negative:matched_unsupported_detail": 5,
+    "controlled_subtle:number_change": 50,
+    "controlled_subtle:quantifier_strengthening": 50,
+    "controlled_subtle:hedge_removal": 39,
+    "controlled_subtle:unsupported_detail": 13
+  },
+  "evaluation_split_pair_counts": {
+    "test": 1338,
+    "calibration": 1283
+  },
+  "evaluation_split_source_counts": {
+    "test": 192,
+    "calibration": 185
+  },
+  "positive_labels_are_presumed_not_gold": true,
+  "negative_labels_are_intended_not_gold": true,
+  "metric_score_independent_selection": true
+}

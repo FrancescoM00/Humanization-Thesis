@@ -1,0 +1,22 @@
+{
+  "stage": "bertscore",
+  "status": "executed",
+  "n_pairs": 84,
+  "elapsed_seconds": 11.775713518999964,
+  "peak_rss_mib": 1437.75,
+  "pairs_sha256": "a7965a827d497a682ccbff9b348e0e581b9c9fec8935020e265d90fcd0e2a7f3",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1",
+    "onnx": "1.23.2"
+  },
+  "device": "cuda:0",
+  "threads": 2,
+  "batch_size": 4,
+  "model_directory": "/kaggle/temp/humanization_runtime/models/bertscore",
+  "metrics_code_sha256": "6c556441b84b667837bcb631d92f7929206b33ae71a09843542b6e91c2a33ac5"
+}

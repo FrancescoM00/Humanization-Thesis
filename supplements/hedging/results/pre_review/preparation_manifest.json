@@ -1,0 +1,78 @@
+{
+  "created_at_utc": "2026-11-12T01:38:11.342785+00:00",
+  "preparation_started_utc": "2026-11-12T01:34:52.773579+00:00",
+  "protocol_sha256": "c31feb81a7f85871f7d94942d9e74eda2517b38f264489f14ed78f86c5f16d45",
+  "n_sources": 60,
+  "n_pairs": 180,
+  "n_intended_alterations": 120,
+  "n_presumed_preserved": 60,
+  "n_reserve_sources": 22,
+  "sources_per_domain": {
+    "Essay": 22,
+    "Reuters": 16,
+    "WritingPrompts": 22
+  },
+  "sources_per_generator": {
+    "GPT4All": 8,
+    "ChatGPT-turbo": 13,
+    "ChatGPT": 6,
+    "Claude": 16,
+    "StableLM": 11,
+    "Dolly": 5,
+    "ChatGLM": 1
+  },
+  "sources_per_family": {
+    "modal_lexical": 16,
+    "explicit_probable": 2,
+    "epistemic_adverb_probability": 6,
+    "modal_be": 16,
+    "modal_perfect": 7,
+    "initial_possibility_adverb": 12,
+    "explicit_possible": 1
+  },
+  "n_eligible_candidates": 82,
+  "screening": {
+    "n_raw_rows": 3000,
+    "n_excluded_raw_rows": 271,
+    "n_excluded_connected_components": 271,
+    "n_excluded_canonical_texts": 5955,
+    "filter_counts": {
+      "no_native_hedge_marker": 13715,
+      "missing_or_document_word_limits": 1567,
+      "previously_used_row_or_connected_component": 271,
+      "instruction_like_opening": 82
+    },
+    "exclusion_files": [
+      {
+        "path": "data/semantic/pairs.jsonl",
+        "sha256": "a65187a8d360a887d5f639b0dc82e8cdf058aa1f6b094208a5a24c889e50d088"
+      },
+      {
+        "path": "data/semantic_full/pairs.jsonl",
+        "sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7"
+      },
+      {
+        "path": "data/semantic_clean/pairs.jsonl",
+        "sha256": "8da5f641dd186d751558d2788615a1c22f738dc8d091e27a961ca4dbf49ab9f5"
+      },
+      {
+        "path": "data/semantic_extension/pairs.jsonl",
+        "sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f"
+      },
+      {
+        "path": "data/semantic_fairness/expanded_panel/pairs.jsonl",
+        "sha256": "d3c25fc81d2bbddb64b6a0a409e08fdc703f384151ac7def1a1b0a23edfd217e"
+      },
+      {
+        "path": "data/semantic_fairness/original_panel/pairs.jsonl",
+        "sha256": "2f7cfcd8b9f0b18d24efdc010593cd67a00906dc25c6d7ad705bac5eeba8cec7"
+      }
+    ],
+    "n_marker_prefilter_records": 3739
+  },
+  "score_independent_selection": true,
+  "human_gold_labels_available": false,
+  "synthetic_hedging_added_to_originals": false,
+  "code_sha256": "9f82314a01073be402c56e1368f29eff6bce1c3e07b48c0a4bb180dbdf21eab0",
+  "pairs_sha256": "f2a0a6be19bcb882ce0ec951dad8ff9370492777756ce6d35a6e676c5034ef85"
+}

@@ -1,0 +1,69 @@
+{
+  "protocol": "humanizer_null_controls_v1",
+  "seed": 42,
+  "noise_max_edits": 1,
+  "cohort_sha256": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68",
+  "reference_files": [
+    {
+      "file": "/kaggle/working/humanization_v2_study_protocol_v2/rewriting/rewrites.jsonl",
+      "sha256": "16325f4b9668e4ee3d1c18cd9ddad9609529f2bb58b07370e1b27302a815725d"
+    }
+  ],
+  "rows_sha256": "23c8a5a890c091ede15916c8b5206dedf52df486198749eda968a71eb67cac37",
+  "n_rows": 1764,
+  "include_rewrites": true,
+  "conditions": {
+    "dipper": 126,
+    "dipper_context3": 126,
+    "qwen14b_humanize": 126,
+    "qwen_humanize": 126,
+    "null_identity": 126,
+    "null_lexical_noise": 126,
+    "null_length__dipper": 126,
+    "null_length_noise__dipper": 126,
+    "null_length__dipper_context3": 126,
+    "null_length_noise__dipper_context3": 126,
+    "null_length__qwen14b_humanize": 126,
+    "null_length_noise__qwen14b_humanize": 126,
+    "null_length__qwen_humanize": 126,
+    "null_length_noise__qwen_humanize": 126
+  },
+  "dictionary": {
+    "also": "likewise",
+    "although": "though",
+    "however": "nevertheless",
+    "therefore": "thus",
+    "use": "utilize",
+    "uses": "utilizes",
+    "used": "utilized",
+    "using": "utilizing",
+    "help": "assist",
+    "helps": "assists",
+    "helped": "assisted",
+    "helping": "assisting",
+    "begin": "start",
+    "begins": "starts",
+    "began": "started",
+    "beginning": "starting",
+    "large": "big",
+    "big": "large"
+  },
+  "dictionary_sha256": "f03ada036803c7f7086c3e6acda2cf374e2187e42b42f46cc7960fbf6a223764",
+  "nlp_model": "core_web_sm",
+  "nlp_model_version": "3.8.0",
+  "nlp_pipes": [
+    "tok2vec",
+    "tagger",
+    "parser",
+    "attribute_ruler",
+    "lemmatizer",
+    "ner"
+  ],
+  "word_count_definition": "spaCy is_alpha, as in existing stylometry",
+  "prefix_policy": "exact alphabetic count; may end mid-sentence; no padding",
+  "longer_target_policy": "original retained, length-match comparison ineligible",
+  "failed_reference_policy": "reference_unavailable; target not imputed",
+  "calibration": "unchanged human-only cohort; no recalibration on rewrites",
+  "causal_attribution": false,
+  "semantic_gold": false
+}

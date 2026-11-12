@@ -1,0 +1,61 @@
+id,validity,reviewer_source,notes
+hedge:ee8112490d0927f296da7754,valid,assistant,Elimina 'Perhaps' e mantiene la stessa graduatoria al presente.
+hedge:c40f91ee3bd11cb4929ed753,valid,assistant,'Probably' aumenta l'impegno sulla stessa graduatoria mantenendo una riserva.
+hedge:2f78c49baf0f89a10dae2b91,valid,assistant,Esplicita la stessa possibilità relativa al difetto più significativo.
+hedge:8b2f62b0b032d07fc81fabaf,qualified,assistant,"I vincoli sono esempi progettuali da includere; 'might' può indicare opzioni, mentre il presente ne asserisce la composizione."
+hedge:407fb50253c22a55dc45f915,qualified,assistant,"'Might encompass' può elencare scelte progettuali, non un fatto incerto cui assegnare maggiore probabilità."
+hedge:16cbe5b25e5c7f9983b1ef78,qualified,assistant,La perifrasi epistemica può spostare il senso da possibili vincoli progettuali a dubbio sulla loro composizione.
+hedge:d595a74e8f654c4fa5964e3a,invalid,assistant,Lo stile più poetico è un'alternativa non adottata; 'has ... conveyed' lo presenta come già realizzato e perde il controfattuale.
+hedge:df61a572c6a88f981ad2381e,invalid,assistant,"'Has probably ... conveyed' attribuisce probabilità a un risultato avvenuto, invece che a un'alternativa stilistica non realizzata."
+hedge:dfd91a6bf31290b64114453c,invalid,assistant,La possibilità su 'has ... conveyed' non conserva il valore controfattuale dello stile alternativo nel contesto.
+hedge:ad1c6caf980d07c4cddcc208,qualified,assistant,'May arise' descrive ostacoli potenziali in generale; 'arise' può trasformarli in una regolarità già asserita.
+hedge:0045fa2b5ce9af0046cd4889,qualified,assistant,L'originale esprime possibilità generica di insorgenza; 'probably arise' può assegnare probabilità a una regolarità diversa.
+hedge:ba41c2b3e4b4e4df3834f873,qualified,assistant,La possibilità generica di ostacoli può diventare dubbio sulla generalizzazione; il seguito ne afferma già alcuni esempi.
+hedge:592f2cb1e69d8efa26f5c1c9,valid,assistant,"Asserisce la stessa relazione causale proposta fra differenze, geografia e clima."
+hedge:51639f47c0469474c199bf7a,valid,assistant,'Probably' rafforza la stessa spiegazione causale lasciandola qualificata.
+hedge:e9a7810d38a4b9662aebf0c3,valid,assistant,Conserva la possibilità della stessa relazione causale al presente.
+hedge:d57650e34575f3fd1c489a3b,qualified,assistant,Il modello è già definito statico e semplicistico; il presente può generalizzare un rischio prima espresso da 'may lead'.
+hedge:b881ac354b20dfdaa4eee935,qualified,assistant,Il rischio generico di un'analisi semplicistica non coincide necessariamente con una probabilità sulla regolarità 'leads'.
+hedge:d62d0055ba2d9181e4ac6a93,qualified,assistant,La perifrasi può spostare un rischio d'uso del modello su un dubbio generale; il carattere semplicistico è già affermato nel seguito.
+hedge:fdbfc146e042b5d96c5f2408,qualified,assistant,L'originale descrive un rischio per individui possibili; 'are subject' può affermare esposizione generale effettiva.
+hedge:beb899bcb2eda56343beaf0c,qualified,assistant,La probabilità di esposizione non coincide necessariamente con la vulnerabilità generica espressa da 'may be subject'.
+hedge:f318a1f2884a1889fc87b3b2,qualified,assistant,La perifrasi epistemica può sostituire il rischio generico di subire molestie con dubbio su un fatto generale.
+hedge:84ecbd18a93813064c076280,valid,assistant,"Asserisce la stessa preferenza attuale per un accordo futuro, eliminando 'may'."
+hedge:8fa10b2d113fdba5aa59b672,valid,assistant,"Aumenta la probabilità della stessa preferenza, conservando una riserva e il riferimento all'accordo futuro."
+hedge:672fcf2349776912fd8a8297,valid,assistant,"Parafrasa la possibilità della stessa preferenza attuale, senza cambiare l'accordo futuro."
+hedge:97948c4ad6fbe29734509452,valid,assistant,Elimina 'Perhaps' dalla stessa valutazione sulla preoccupazione più immediata.
+hedge:1ecd5ae783c488ba59b4e45f,valid,assistant,'Probably' rende più forte ma ancora qualificata la stessa graduatoria delle preoccupazioni.
+hedge:bb7ea9bfb135b54237780e23,valid,assistant,Esplicita la stessa possibilità che i dividendi siano la preoccupazione più immediata.
+hedge:ac464295286ec7ba36dc8539,qualified,assistant,Il fallimento negoziale è futuro e contingente; 'leads' può diventare una legge causale al presente anziché quell'esito futuro.
+hedge:4855f8d79bedd2ca93c94aad,qualified,assistant,'Probably leads' conserva una riserva ma lascia ambiguo il riferimento al singolo esito futuro della trattativa.
+hedge:39fe826dbcdc3fef34c7c4b2,qualified,assistant,"La possibilità è mantenuta, ma il presente 'failure leads' può generalizzare la conseguenza futura e contingente."
+hedge:f7f6023e6df47a8f4f9cf5ff,valid,assistant,Definisce senza 'may' il contenuto dello stesso adattamento aziendale descritto.
+hedge:eac70cb19d9ca25f2160ed2b,valid,assistant,"Rende probabile, ma non certo, lo stesso contenuto dell'adattamento."
+hedge:f0fcb51db652d15eb11e141f,valid,assistant,Mantiene la possibilità che l'adattamento comprenda gli stessi investimenti e accordi.
+hedge:ab2e58de3d82c71835984893,valid,assistant,"Asserisce le stesse possibili cause alternative come spiegazione, rimuovendo il solo 'may'."
+hedge:c4a5afa48c835396995d70a7,valid,assistant,'Probably' rafforza la stessa spiegazione della scontentezza mantenendo la riserva.
+hedge:153031e6dc55d105ca288a95,valid,assistant,"Conserva l'incertezza sulle stesse cause della scontentezza, senza cambiare tempo o soggetto."
+hedge:8dfb25db38bd239e3bb8688a,valid,assistant,Elimina 'probably' mantenendo il contenuto e il passato della spiegazione pensata da Sarah.
+hedge:37e88b92605ae25b85ed6594,valid,assistant,'Almost certainly' rafforza 'probably' senza eliminare del tutto l'incertezza e conserva 'was'.
+hedge:c2ea92244e0bab9ca392b619,qualified,assistant,'It is probable' introduce una valutazione al presente; nel racconto 'was probably' può essere il pensiero passato di Sarah.
+hedge:c6d2dfc9f813a24d51d39cb8,qualified,assistant,La sequenza dipende dall'ipotesi 'if I was to look your way'; 'flirt' può diventare attuale o abituale anziché eventuale.
+hedge:7ecc0ba168075db69ee42bc4,qualified,assistant,'Probably flirt' mantiene una riserva ma può perdere il valore futuro o condizionale della sequenza con 'might'.
+hedge:8e71b770371a49f6599102ab,qualified,assistant,"La possibilità è esplicita, ma il presente 'my eyes flirt' può cambiare l'eventualità condizionata in comportamento attuale o abituale."
+hedge:30b5dc4491df82cda68d541b,qualified,assistant,La scena è al passato e 'might hold' può essere pensiero riportato di Amelia; 'holds' introduce un presente non marcato.
+hedge:ee6db0985c5ce5bf00541136,qualified,assistant,"Il contenuto e la riserva restano, ma 'probably holds' può spostare al presente il pensiero collocato nella narrazione passata."
+hedge:e8a819a7dd09cacb8e3790e2,qualified,assistant,'It is possible ... holds' può trasferire al narratore presente l'incertezza di Amelia nella scena passata.
+hedge:2b6fc774d7d73a741f9ab9af,invalid,assistant,'May have been ... However' è concessivo su un vampiro già stabilito; 'has been' cambia anche il piano temporale.
+hedge:76df47f3e160038a7d73e495,invalid,assistant,Introduce probabilità su un'identità già affermata e sostituisce il passato concessivo con il present perfect.
+hedge:4ad4e692d806c41e9053ad81,invalid,assistant,Trasforma la concessione su un fatto già certo in possibilità epistemica; 'has been' altera inoltre il riferimento temporale.
+hedge:f676c8811597f8cb474f006d,valid,assistant,Rimuove 'Maybe' dalla stessa spiegazione retrospettiva conservando 'was'.
+hedge:7179afc5a1ae3fbe9fd80da5,valid,assistant,'Probably' aumenta l'impegno sulla stessa causa autobiografica e mantiene il passato.
+hedge:e84feb25bc3beedb9e88086b,valid,assistant,Conserva la possibilità della stessa causa passata nella riflessione retrospettiva del narratore.
+hedge:d2ab287de1d372a2ea00fce8,qualified,assistant,"La riflessione viene subito corretta con 'Nope, it was the flashlight'; la nuova certezza vale solo per l'ipotesi momentanea."
+hedge:d4a604df306d1b80dfe3c79a,qualified,assistant,"La maggiore probabilità riguarda un'ipotesi immediatamente corretta nel seguito, quindi l'effetto complessivo resta circoscritto."
+hedge:21e9141bf7fcd52c056a744d,qualified,assistant,"Il presente 'It is possible' può riaprire un dubbio che la narrazione passata risolve subito con 'Nope, it was the flashlight'."
+hedge:e7748e5f65d00262b856f306,valid,assistant,Nel dialogo del bambino asserisce lo stesso trucco magico eliminando 'probably'.
+hedge:f280762f8f6df5ba6064ad06,valid,assistant,'Almost certainly' rafforza l'opinione del bambino conservando una residua incertezza.
+hedge:a0aabd0a6c75c2b843541111,valid,assistant,Nel dialogo presente esplicita la stessa probabilità che si tratti di un trucco magico.
+hedge:517d7a700b73e629a4437f7d,qualified,assistant,L'inutilità del potere era già affermata dal narratore; la nuova certezza resta un giudizio momentaneo poi smentito dalla storia.
+hedge:121d0c401088f5bec45d3dea,qualified,assistant,L'affermazione di inutilità compare già prima e viene poi smentita; la probabilità più alta ha portata locale sullo sconforto.
+hedge:16ed6902cd21441e71e4ed5f,qualified,assistant,"'It is possible' può trasferire al presente il dubbio passato, già anticipato da asserzioni di inutilità e poi superato dall'azione."

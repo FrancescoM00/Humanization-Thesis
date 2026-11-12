@@ -1,0 +1,113 @@
+{
+  "n_prepared_pairs": 3500,
+  "n_evaluated_pairs": 2693,
+  "n_positive_controls": 300,
+  "n_distributed_pairs": 792,
+  "n_distributed_positive_controls": 87,
+  "n_metrics": 41,
+  "n_bootstrap": 1000,
+  "calibration_test_source_overlap": 0,
+  "primary_endpoint": "Continuous alteration ranking; no universal decision threshold.",
+  "labels_are_proxy_not_human_gold": true,
+  "DIPPER_or_other_humanizers_executed": false,
+  "partial_diagnostic_allowed": false,
+  "length_adjustment_fitted_only_on_calibration_positives": true,
+  "cohorts": {
+    "opai_matched_primary": {
+      "n_pairs": 842,
+      "n_sources": 94
+    },
+    "opai_matched_subtle_secondary": {
+      "n_pairs": 224,
+      "n_sources": 53
+    },
+    "distributed:distributed_negation:expanded_source_panel:expanded_common_5_primary:k1": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_negation:expanded_source_panel:expanded_common_5_primary:k2": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_negation:expanded_source_panel:expanded_common_5_primary:k3": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_negation:expanded_source_panel:expanded_common_5_primary:k5": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_negation:initial_source_panel:applicability_2to4_secondary:k1": {
+      "n_pairs": 72,
+      "n_sources": 28
+    },
+    "distributed:distributed_negation:initial_source_panel:applicability_2to4_secondary:k2": {
+      "n_pairs": 72,
+      "n_sources": 28
+    },
+    "distributed:distributed_negation:initial_source_panel:applicability_2to4_secondary:k3": {
+      "n_pairs": 34,
+      "n_sources": 15
+    },
+    "distributed:distributed_negation:initial_source_panel:common_5_primary:k1": {
+      "n_pairs": 48,
+      "n_sources": 9
+    },
+    "distributed:distributed_negation:initial_source_panel:common_5_primary:k2": {
+      "n_pairs": 48,
+      "n_sources": 9
+    },
+    "distributed:distributed_negation:initial_source_panel:common_5_primary:k3": {
+      "n_pairs": 48,
+      "n_sources": 9
+    },
+    "distributed:distributed_negation:initial_source_panel:common_5_primary:k5": {
+      "n_pairs": 48,
+      "n_sources": 9
+    },
+    "distributed:distributed_subtle:expanded_source_panel:expanded_common_5_primary:k1": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_subtle:expanded_source_panel:expanded_common_5_primary:k2": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_subtle:expanded_source_panel:expanded_common_5_primary:k3": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_subtle:expanded_source_panel:expanded_common_5_primary:k5": {
+      "n_pairs": 100,
+      "n_sources": 50
+    },
+    "distributed:distributed_subtle:initial_source_panel:applicability_2to4_secondary:k1": {
+      "n_pairs": 44,
+      "n_sources": 21
+    },
+    "distributed:distributed_subtle:initial_source_panel:applicability_2to4_secondary:k2": {
+      "n_pairs": 44,
+      "n_sources": 21
+    },
+    "distributed:distributed_subtle:initial_source_panel:applicability_2to4_secondary:k3": {
+      "n_pairs": 22,
+      "n_sources": 10
+    },
+    "distributed:distributed_subtle:initial_source_panel:common_5_primary:k1": {
+      "n_pairs": 76,
+      "n_sources": 12
+    },
+    "distributed:distributed_subtle:initial_source_panel:common_5_primary:k2": {
+      "n_pairs": 76,
+      "n_sources": 12
+    },
+    "distributed:distributed_subtle:initial_source_panel:common_5_primary:k3": {
+      "n_pairs": 76,
+      "n_sources": 12
+    },
+    "distributed:distributed_subtle:initial_source_panel:common_5_primary:k5": {
+      "n_pairs": 76,
+      "n_sources": 12
+    }
+  }
+}

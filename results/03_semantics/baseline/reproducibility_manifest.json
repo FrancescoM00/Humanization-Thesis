@@ -1,0 +1,207 @@
+{
+  "completed_at_utc": "2026-11-04T15:29:53.325720+00:00",
+  "software_tests": {
+    "passed": 56,
+    "duration_seconds": 12.02
+  },
+  "pip_check": "No broken requirements found.",
+  "source_files_sha256": {
+    "README.md": "96167f8cb51927bad211758b1036a2caacef63491260c1c71d82b8c13c1cd492",
+    "SEMANTIC_EXPERIMENT.md": "0f0be6d3935518e0b1ebeb2925c525d274ccdc69638f5850b051242d711effe6",
+    "THIRD_PARTY_NOTICES.md": "02e4ffcf5a6693b7ea0bae7732ce8e3da368a9752160404c97daa6a59c6fa483",
+    "requirements-lock.txt": "0bc000804e80078d0916a699e5ed825cf145996d897d6ce6bdbcab220bca98f8",
+    "requirements-semantic-lock.txt": "6fc90fdc1322db01e9013768586da175afcefa4c761942c85e3864b516236b45",
+    "requirements-semantic.txt": "936326d15722392b964d98e05dc1b1aaab6239f38e0ece1d2e33b93288ee2195",
+    "requirements.txt": "17986a143abb3c22114e02913874761a08b1104cf9219a9bb178a418832607ac",
+    "scripts/download_mgtbench.py": "40976f3b5d146cb75b14100b6cc37ccee21b9bf25a751af4f2eeaa042fe3e6b7",
+    "scripts/download_opai.py": "74a1fe937123b55760c37246286569eb8169d75467a0ee0caeb3c38529a747ff",
+    "scripts/download_semantic_models.py": "2e0ea0b3e8153557cf89cb55d2914ff436b3b1f0f19244058dc35748f9370007",
+    "scripts/initialize_nli_reference_cache.py": "37c6fde249949cdea998511f76f92af8b589c460a568032ebf10b0aba8b365f7",
+    "scripts/plan_nli_jobs.py": "9df868ebb41db7e9dabe614fda7cd37dd253bd4ccc946d7598c845e8e3eea765",
+    "scripts/precompute_nli_onnx.py": "93cc1683984688f075d1f94706df6b263e5cb36eeaec390aaf94939010cffb77",
+    "scripts/run_length_matched_style.py": "e5976726b1c010a9e37b23269b364054f88e4a29ea7a6cf27453a1c0fe92d959",
+    "scripts/run_semantic_experiment.py": "8cb7f2c1c216a0352339278db9b127f4d1b93dfd1cac57bfb1c03ae599fd1f1c",
+    "scripts/run_style_experiment.py": "e98a6c4712db4dac60d2937736ccaa5782dda127b8a1705a90154a859b6d43a9",
+    "scripts/setup.sh": "274b577fa04c17333309d01b174db30a8620b1731ad874ccb84ae514b58357f0",
+    "scripts/validate_semantic_results.py": "451c72a77e0f666954ed1792f325a74412634278f89239bf35258d90aeb4dc2c",
+    "semantics/__init__.py": "3d41cbc6218cf6d1fb9f5daa3c9204ea9a531440036c83f6dd0d72a8742edc64",
+    "semantics/metrics.py": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+    "semantics/opai.py": "c7abe7bf3b14771622820535eaf3f86584c7c47a7bb63ddff18ccdbc06843c7f",
+    "semantics/perturbations.py": "f513ed8cdbc3c03685db40fdc31556b08e1cd637eef6921f849cf78876eeb4b4",
+    "semantics/report.py": "6c6bfabbd7bca887bf485c45fe97f07b6d2731e3f52eb0f1cd7996c6d18b05b4",
+    "stylometry/__init__.py": "788c3ab5953b9d92a6c6d02b472281ac3806a71a13d5cadf070412e71af645e1",
+    "stylometry/analysis.py": "3f44fc9d7ab7302109aa88ae03ac42403480b0587871926e39f28e897e575bb1",
+    "stylometry/data.py": "a9e46fd253fea98a023ed12756b1c55dbdf337ad3b2132f09780bb905d75c968",
+    "stylometry/features.py": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
+    "stylometry/length_matching.py": "1b88b73d7f9ee0dbe3ba951213f3faf5f6ef468db86d6e4029cd061ac7d14a0d",
+    "stylometry/report.py": "93b0c2b129585b7e61ba1efcc1f3005ab1353d1b51960fad8f1abf39cf9ac325",
+    "tests/test_analysis.py": "59a75a2543912aa20d22a9836eb2c74c76306324cad731a4fd901f71a690edbe",
+    "tests/test_data.py": "275cc67daeef868d47bd352a45df6f2ab447cf0c066a493f5fdd6820412af6ad",
+    "tests/test_features.py": "8fbe68cddb7c6fdfcdf384546348bf156f8cbdbe28fe681231647499956d6b19",
+    "tests/test_length_matching.py": "2e497116973e3fc8f46f9a1a0a33ec27caf904c3d66b2cf9c2f8cc2f91e79b6d",
+    "tests/test_opai.py": "1d51e6894d75c944be87f86ee284bd08e9291b09845197705491d86503e8c627",
+    "tests/test_perturbations.py": "c5e2f3ecb42c2b75c5a8b8900248b56bec1cc1d1b43c3bbd5bdb5cfad85a5934",
+    "tests/test_semantic_metrics.py": "92976f76e31d57d57e978f59e0934d778b0b34ce9eb5c0fee692ad1872e21991"
+  },
+  "neural_results": {
+    "lexical": {
+      "stage": "lexical",
+      "status": "executed",
+      "n_pairs": 2407,
+      "elapsed_seconds": 61.451385019999975,
+      "peak_rss_mib": 214.84765625,
+      "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+      "versions": {
+        "torch": "2.7.1+cpu",
+        "transformers": "4.57.3",
+        "sentence-transformers": "5.1.2",
+        "bert-score": "0.3.13",
+        "rouge-score": "0.1.2",
+        "sacrebleu": "2.5.1"
+      },
+      "device": "cpu",
+      "threads": 4,
+      "model_directory": null,
+      "metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820"
+    },
+    "embedding": {
+      "stage": "embedding",
+      "status": "executed",
+      "n_pairs": 2407,
+      "elapsed_seconds": 165.06069209399993,
+      "peak_rss_mib": 699.8828125,
+      "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+      "versions": {
+        "torch": "2.7.1+cpu",
+        "transformers": "4.57.3",
+        "sentence-transformers": "5.1.2",
+        "bert-score": "0.3.13",
+        "rouge-score": "0.1.2",
+        "sacrebleu": "2.5.1"
+      },
+      "device": "cpu",
+      "threads": 4,
+      "model_directory": "/workspace/Humanization/data/models/embedding",
+      "metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820"
+    },
+    "bertscore": {
+      "stage": "bertscore",
+      "status": "executed",
+      "n_pairs": 2407,
+      "elapsed_seconds": 758.927649511,
+      "peak_rss_mib": 1631.90625,
+      "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+      "versions": {
+        "torch": "2.7.1+cpu",
+        "transformers": "4.57.3",
+        "sentence-transformers": "5.1.2",
+        "bert-score": "0.3.13",
+        "rouge-score": "0.1.2",
+        "sacrebleu": "2.5.1"
+      },
+      "device": "cpu",
+      "threads": 4,
+      "model_directory": "/workspace/Humanization/data/models/bertscore",
+      "metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820"
+    },
+    "nli": {
+      "stage": "nli",
+      "status": "executed",
+      "n_pairs": 2407,
+      "elapsed_seconds": 5612.536931245,
+      "peak_rss_mib": 2636.7265625,
+      "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+      "versions": {
+        "torch": "2.7.1+cpu",
+        "transformers": "4.57.3",
+        "sentence-transformers": "5.1.2",
+        "bert-score": "0.3.13",
+        "rouge-score": "0.1.2",
+        "sacrebleu": "2.5.1",
+        "onnx": "1.18.0",
+        "onnxruntime": "1.23.2",
+        "optimum-onnx": "0.1.0"
+      },
+      "device": "cpu",
+      "threads": 4,
+      "batch_size": 8,
+      "model_directory": "/workspace/Humanization/data/models/nli",
+      "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+      "precomputation": {
+        "status": "executed",
+        "backend": "onnxruntime_cpu_float32",
+        "unique_model_pairs": 88900,
+        "initial_cached_pairs": 53238,
+        "new_onnx_pairs": 35662,
+        "elapsed_seconds": 2981.4822042450005,
+        "peak_rss_mib": 2636.7265625,
+        "threads": 4,
+        "batch_size": 8,
+        "batching": "global_token_length_sorted",
+        "onnx_sha256": "752610e13db65dfadc183a17ccf399bf9bb1a52e76447fbd06addd2bab9aabd0",
+        "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+        "jobs_sha256": "cf2fbc395fdbb3811f1a2367d24f6a7f72f23629b6a381166b290950705849ed",
+        "parity": {
+          "n_real_cached_pairs": 128,
+          "max_probability_abs_difference": 5.602836608886719e-06,
+          "mean_probability_max_abs_difference": 5.715653514926089e-07,
+          "argmax_agreement": 1.0,
+          "entailment_threshold_0_5_agreement": 1.0,
+          "tolerance": 0.0001,
+          "precision": "float32",
+          "quantized": false,
+          "native_reference_sha256": "91947f6e3e2265eb19e5fc286d51a4db33df9e7899355203e5c61b48839db75d"
+        },
+        "peak_rss_snapshot_before_final_checksum_mib": 1931.7265625,
+        "kernel_memory_monitor": {
+          "pid": 8626,
+          "kernel_vm_hwm_mib": 2636.7265625,
+          "observed_rss_mib": 2636.7265625,
+          "sampling_interval_seconds": 0.05,
+          "samples": 17550,
+          "elapsed_seconds": 887.7425159570003,
+          "process_exited": true
+        }
+      },
+      "aggregation_elapsed_seconds": 16.306411740999465,
+      "resumption_history": {
+        "initial_threads": 4,
+        "initial_batch_size": 8,
+        "initial_progress": {
+          "completed_pairs": 100,
+          "total_pairs": 2407,
+          "elapsed_seconds": 236.91,
+          "peak_rss_mib": 1587.12109375
+        },
+        "reason": "Profile CPU batching while preserving saved float32 checkpoint probabilities",
+        "serial_onnx_before_parallel_profile": {
+          "phase": "unique_evidence_pairs",
+          "completed": 53222,
+          "total": 88900,
+          "elapsed_seconds": 2377.838315259,
+          "peak_rss_mib": 1881.125,
+          "max_pair_tokens_this_batch": 54
+        },
+        "serial_onnx_completed": {
+          "phase": "unique_evidence_pairs",
+          "completed": 53222,
+          "total": 88900,
+          "elapsed_seconds": 2377.838315259,
+          "peak_rss_mib": 1881.125,
+          "max_pair_tokens_this_batch": 54
+        },
+        "decision_after_parallel_profile": "Retain four-thread serial ORT: parallel sessions gave no throughput gain",
+        "cached_model_pairs_before_resume": 53238
+      },
+      "backend": "validated_float32_onnx_cache_with_native_pytorch_reference",
+      "cache_only": true,
+      "new_native_predictions_during_aggregation": 0
+    }
+  },
+  "result_validation": "validation.json",
+  "notes": [
+    "DeBERTa-v3 base retained, float32, not quantized.",
+    "No raw benchmark texts or model weights included in the archive.",
+    "Preparation hashes preserve the source code at preparation time; source_files_sha256 records the final reviewed sources."
+  ]
+}

@@ -1,0 +1,61 @@
+id,validity,reviewer_source,notes
+hedge:fcbf3428bb4c794106f79c13,qualified,assistant,May involve presenta esempi possibili di corruzione in generale; involves può trasformare variabilità generica in regola.
+hedge:86c9f45f1018f9797de2fdd0,qualified,assistant,"Probably aumenta la forza epistemica, ma may introduce esempi variabili e non una previsione su un caso preciso."
+hedge:9174fa9dd7f24669536473d7,qualified,assistant,"Possibile ripresa di may, ma la formula epistemica può cambiare la lettura generica degli esempi."
+hedge:3d4ebb8d104427d9cc4c382f,valid,assistant,Elimina probably mantenendo la valutazione presente della lunghezza del saggio.
+hedge:8234e18e84ab53cbb51dbf6a,valid,assistant,Almost certainly rafforza probably e conserva una qualificazione esplicita.
+hedge:47d02b941bb99145f9159753,valid,assistant,It is probable that riformula la medesima probabilità sulla lunghezza attuale.
+hedge:2ab6661745a307df055e18e5,valid,assistant,Rende certa la necessità dei farmaci mantenendo gli stessi sintomi e il presente.
+hedge:4cbf0b4fc681000261c50d5c,valid,assistant,Probably rafforza la possibilità di necessità dei farmaci senza eliminarne la qualificazione.
+hedge:606c7119877ba75812975050,valid,assistant,It is possible that conserva la possibilità che i farmaci siano necessari per gli stessi sintomi.
+hedge:292ac7def236ac2a2d328e65,valid,assistant,Elimina perhaps e mantiene identica la tesi presente sul fattore ritenuto più influente.
+hedge:214b005b9359353aced8033c,valid,assistant,Probably è più impegnativo di perhaps ma mantiene l’incertezza sulla stessa tesi.
+hedge:e6385201aaa5371785581f0b,valid,assistant,It is possible that riformula perhaps senza modificare il superlativo o la tesi.
+hedge:5a8129d70070bb816d422c75,qualified,assistant,Might include elenca possibili fattori fisiologici; includes può diventare una classificazione categorica.
+hedge:0a5658fce3337aad5d4307a9,qualified,assistant,Probably introduce una probabilità epistemica dove might può indicare soltanto esempi possibili.
+hedge:1f0e57d704c264de17515d97,qualified,assistant,"La parafrasi è grammaticale, ma la lettura di might come elenco esemplificativo resta ambigua."
+hedge:3ef6526ec62f47aa1268996a,qualified,assistant,May lead descrive un rischio causale generale; leads può asserire una regolarità anziché il medesimo esito incerto.
+hedge:4e5c67d9436b2b655125b5f4,qualified,assistant,"Probably rafforza l’esito, ma converte potenzialmente un rischio causale generico in probabilità fattuale."
+hedge:c3c28d147d0e7339f1ed2ef0,qualified,assistant,"È plausibile parafrasi epistemica, ma may lead ammette anche una lettura di potenzialità causale generica."
+hedge:273d3ce8717f2dee35da23ec,qualified,assistant,This riprende una compromissione dell’assistenza già espressa come eventuale; la certezza resta condizionata da tale antecedente.
+hedge:c938390f4a17739a8f51c310,qualified,assistant,"Probably aumenta l’impegno locale, ma l’antecedente this resta una situazione soltanto eventuale."
+hedge:c70d64b11725a2b291d749cf,qualified,assistant,La possibilità è conservata localmente; il riferimento this a un antecedente modale rende incerto l’ambito preciso.
+hedge:9052908ee9815f952dd0fb90,qualified,assistant,"Elimina may localmente, ma l’impatto negativo su autostima e fiducia è già affermato altrove nel testo."
+hedge:1169f88e4df9be472f461109,qualified,assistant,"Probably rafforza may, ma altre frasi presentano già gli effetti negativi come accertati."
+hedge:bcb2e4ec551689105fc169d8,qualified,assistant,"Parafrasi locale plausibile, ma l’incertezza è già indebolita dalle altre affermazioni categoriche sugli stessi effetti."
+hedge:3e9ab19333e4e56b7c36069d,valid,assistant,Afferma il requisito di dismissione eliminando may; il fine futuro dell’approvazione rimane identico.
+hedge:9b1c0736c5cf681aab3f010a,valid,assistant,Probably rafforza il possibile requisito mantenendo una qualificazione sullo stesso obbligo.
+hedge:7f1aa662d76db86ffb390e6d,valid,assistant,Conserva la possibilità del medesimo requisito necessario per ottenere approvazione.
+hedge:f05ed09705318feb4416d868,qualified,assistant,L’elenco prospetta contenuti futuri con will; is explained può riferirsi invece a una spiegazione già presente.
+hedge:bcc6b47f3917c4b6b92b737c,qualified,assistant,"Probably aumenta l’impegno, ma is explained ha riferimento temporale meno prospettico di may be explained nel contesto."
+hedge:b0cc23c28167ca11143cc529,qualified,assistant,"La possibilità resta esplicita, ma il presente is explained può spostare il riferimento dalla copertura prevista a quella attuale."
+hedge:95c51245943953ae5448218b,valid,assistant,Toglie it is likely mantenendo will shift e la stessa previsione futura.
+hedge:0883dbfa839db24b27093c47,valid,assistant,Almost certain rafforza likely e conserva una probabilità non assoluta.
+hedge:1fb72352dc6bd2ab0b46d5a7,valid,assistant,Probably riformula likely conservando il futuro will shift e il resto della tesi.
+hedge:c4366a6d306f3b3c2a9bdb26,qualified,assistant,"Are launched sostituisce un lancio eventuale futuro; at a later date consente una lettura futura, ma subject to demand conserva una condizione."
+hedge:49cebdca4e7f11f96dc3830a,qualified,assistant,"Probably rafforza may, ma are launched è temporalmente meno naturale e il lancio rimane condizionato alla domanda."
+hedge:f459f00dcb316063f2ef8d80,qualified,assistant,"Possibilità e condizione sono mantenute; il presente are launched può essere futuro grazie ad at a later date, ma resta ambiguo."
+hedge:4ff0b7c3e025d6a63cfa1447,qualified,assistant,Le società con crescita stabile sono già addotte come eccezioni concrete; la differenza non dipende soltanto da may.
+hedge:b0ce0eff194057dc09532066,qualified,assistant,"Probably rafforza may, ma gli esempi già asserti sostengono categoricamente almeno alcune differenze."
+hedge:a42d89de5148e0afb3433fcf,qualified,assistant,"La parafrasi mantiene la possibilità locale, mentre gli esempi di crescita già affermati ne riducono l’incertezza contestuale."
+hedge:58bfd9124f53226a954b2cf8,valid,assistant,May have esprime un’ipotesi su un effetto già prodotto; has doomed conserva il perfetto e rende certa l’attribuzione.
+hedge:6901fea0264a48af7e3d3492,valid,assistant,Has probably doomed rafforza may have mantenendo il perfetto e una qualificazione probabilistica.
+hedge:a81083cfb61ed99ff39347a5,valid,assistant,It is possible that con has doomed conserva la possibilità epistemica sul medesimo effetto passato.
+hedge:b205704af1aee2bb81144d88,invalid,assistant,Nel regolamento may autorizza tipi di racconto; is li asserisce come fatti invece di rimuovere incertezza epistemica.
+hedge:2be178e43be2eef54bbe2cd1,invalid,assistant,May è permissivo: probably trasforma una scelta consentita in una supposizione sul tipo del racconto.
+hedge:3714eba991cc2d732104fbab,invalid,assistant,La parafrasi epistemica perde il permesso di presentare uno dei tipi di racconto ammessi.
+hedge:8762aa3c0f6d581cf32f5dc4,valid,assistant,Elimina probably mantenendo il presente e l’esclusività della stessa eccezione.
+hedge:f4c8a385885171f75b5dc8e0,valid,assistant,Almost certainly rafforza probably e conserva una riserva sulla medesima eccezione.
+hedge:d664d6354b3eb2dac0086421,valid,assistant,It is probable that riformula la medesima probabilità senza cambiare il referente o il tempo.
+hedge:779056cb7599cac103bdaa17,qualified,assistant,Might bring appartiene alla riflessione su una ricchezza eventuale; brings può convertirla in una massima generale presente.
+hedge:de050fe23fdeb9570e25aa1b,qualified,assistant,"Probably rafforza la possibilità, ma il presente può perdere il punto di vista ipotetico e prospettico di Jenny."
+hedge:ba21f66bdd74d4d633e5f691,qualified,assistant,La possibilità è conservata se la frase è generica; il presente può però spostare la prospettiva dalla futura ricchezza ipotizzata.
+hedge:001757f8f03e77d716122a85,valid,assistant,Rende certa l’accusa nel medesimo momento narrativo passato; la successiva smentita resta compatibile con il narratore in errore.
+hedge:00ae690c77c01657fb9417d4,valid,assistant,Almost certainly rafforza la probabilità della stessa accusa mantenendo was trying.
+hedge:10afd3d28c4b0edbfbc2a6d6,qualified,assistant,"It is probable può spostare al presente narrativo una probabilità originariamente passata, poi smentita dalla scoperta del narratore."
+hedge:ccfac3757e0be06efaccc66e,invalid,assistant,Might call è una conseguenza futura temuta nel passato; calls introduce un presente abituale o un evento assertivo diverso.
+hedge:d66cafd9592d0702185d3b59,invalid,assistant,Probably calls conserva una qualificazione ma perde il futuro ipotetico nel passato espresso da might call.
+hedge:b65003c793f9b9a8f228b728,invalid,assistant,It is possible that he calls non conserva chiaramente la conseguenza futura temuta nel racconto passato; servirebbe would call.
+hedge:8fbdb55c3b778d8bf74798b1,qualified,assistant,"Elimina probably nella frase, ma l’alternativa successiva or a prank mantiene incerta l’identificazione dell’oggetto."
+hedge:573508b7eae639b38de4ea8e,valid,assistant,Almost certainly rafforza probably; resta una qualificazione compatibile con l’alternativa successiva.
+hedge:b33a170ff481065c174263ab,valid,assistant,It is probable that riformula la stessa supposizione presente del dialogo.

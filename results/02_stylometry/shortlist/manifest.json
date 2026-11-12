@@ -1,0 +1,50 @@
+{
+  "status": "completed",
+  "created_at_utc": "2026-11-11T13:37:27.042458+00:00",
+  "protocol_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
+  "input_csv": "results_length_matched/features.csv",
+  "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
+  "n_documents": 1800,
+  "n_groups": 900,
+  "n_associations": 900,
+  "n_features": 105,
+  "n_models": 206,
+  "n_fits": 7210,
+  "cv_seeds": [
+    42,
+    137,
+    271,
+    811,
+    2026
+  ],
+  "prediction_shapes": {
+    "cv": [
+      5,
+      1800,
+      206
+    ],
+    "leave_domain_out": [
+      1,
+      1800,
+      206
+    ],
+    "leave_generator_out": [
+      1,
+      1800,
+      206
+    ]
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.7.2"
+  },
+  "code_sha256": "76d1857a3377a19d693eb878403789b8bf6f656412d664f0825f1b3c3bb9fb7f",
+  "n_convergence_warnings": 0,
+  "convergence_warnings": [],
+  "elapsed_seconds": 75.98290290899968,
+  "fitting_and_preprocessing": "training rows only; no tuning; source groups disjoint",
+  "historical_fixed_panel_is_independently_validated": false,
+  "semantic_alignment_of_human_machine_rows_is_assumed": false
+}

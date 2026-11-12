@@ -1,0 +1,3 @@
+policy,n_cohort_sources,n_applied,n_skipped,coverage,n_sources_common_to_both
+v1,200,200,0,1.0,145
+clean,200,145,55,0.725,145

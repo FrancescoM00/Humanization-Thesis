@@ -1,0 +1,24 @@
+{
+  "seed": 2026,
+  "sampling": "one source per domain\u00d7generator cell, except one randomly selected WritingPrompts cell; same20sources for both perturbations",
+  "omitted_cell": [
+    "WritingPrompts",
+    "ChatGLM"
+  ],
+  "source_domain_counts": {
+    "Essay": 7,
+    "Reuters": 7,
+    "WritingPrompts": 6
+  },
+  "source_generator_counts": {
+    "ChatGLM": 2,
+    "ChatGPT": 3,
+    "ChatGPT-turbo": 3,
+    "Claude": 3,
+    "Dolly": 3,
+    "GPT4All": 3,
+    "StableLM": 3
+  },
+  "n_sources": 20,
+  "n_pairs": 40
+}

@@ -1,0 +1,67 @@
+id,validity,reviewer_source,notes
+hedge:6f438d2bfe59fc62211dab1c,valid,assistant,Elimina may e mantiene la proposta sul mix di imposte senza altri cambiamenti.
+hedge:0aed81b210f61102e9050947,valid,assistant,Probably aumenta la certezza della proposta lasciando una qualificazione.
+hedge:204e6a585feb8992e3a0b9c9,valid,assistant,It is possible that conserva la possibilità epistemica della stessa proposta.
+hedge:6c12a112e9a084e6d9685262,valid,assistant,Afferma la stessa allucinazione al passato eliminando il dubbio del narratore.
+hedge:1f66401b85412b36e9bedde1,valid,assistant,Probably rende più probabile la stessa allucinazione senza cambiare il passato.
+hedge:d310128dbc0c1be3e69a646f,qualified,assistant,"Conserva la possibilità dell’allucinazione, ma is possible può spostare la valutazione al presente del narratore."
+hedge:d628b44e778c8a65e9e9653e,qualified,assistant,May descrive anche le forme possibili di una tesi generica; is può rendere obbligatoria la lista.
+hedge:2979028d343da841bfb989ca,qualified,assistant,Probably introduce probabilità dove may può soltanto elencare forme ammissibili della tesi.
+hedge:8d2b7aa46efd044da80a498f,qualified,assistant,Possibile ambiguità di portata: forme disponibili per una tesi generica oppure dubbio su una tesi specifica.
+hedge:de5e39f533c62881ffb1eb18,valid,assistant,Rimuove perhaps mantenendo il piuccheperfetto e la stessa ipotesi sulla ruggine.
+hedge:3e10c61a55b704b3fb615b5c,valid,assistant,Probably rafforza la stessa ipotesi sulla ruggine mantenendo il piuccheperfetto.
+hedge:e7de844b755b7078d903462b,qualified,assistant,La proposizione sulla ruggine resta al passato; is possible può però cambiare il momento della valutazione narrativa.
+hedge:bbdc2e66bb24a3ae331d7bd5,qualified,assistant,May può esprimere contributi causali possibili nei singoli pazienti; il contesto già presuppone fattori che contribuiscono.
+hedge:a88d5c0cede0cce67a7f02ab,qualified,assistant,"Probably rafforza la causalità, ma resta ambigua la distinzione tra dubbio scientifico e variabilità dei pazienti."
+hedge:e09805e547fb50bebc8a8183,qualified,assistant,Possibilità sull’insieme di diversi fattori oppure contributi possibili per paziente: la portata non è del tutto certa.
+hedge:91d75f043171234472b082e4,valid,assistant,Rende certo lo stesso giudizio valutativo sul lasciare la vicenda non raccontata.
+hedge:789c2c22d381762ec8f86af3,valid,assistant,Probably rafforza il medesimo giudizio lasciando una qualificazione.
+hedge:a0b7b5c81e4c77eae8d023aa,qualified,assistant,"Mantiene il giudizio e la possibilità, ma is possible può introdurre una valutazione presente nella narrazione passata."
+hedge:c31b88d29f60e47dc777d246,valid,assistant,Rimuove may senza cambiare il rapporto causale ipotizzato tra differenza e sistemi sanitari/valori.
+hedge:3629959a9aa15e9cf01fc055,valid,assistant,Probably rafforza la stessa spiegazione causale mantenendola qualificata.
+hedge:a8d40f75eb8f4c7e1f80e1c3,valid,assistant,La possibilità epistemica della medesima spiegazione causale rimane esplicita.
+hedge:150b40d48b52392df3c65a7d,valid,assistant,Rimuove perhaps preservando il passato progressivo e lo stesso adattamento dei cittadini.
+hedge:ad6512f6859901abfebae19b,valid,assistant,Probably aumenta la certezza mantenendo il medesimo processo al passato.
+hedge:250fb29fac00846c24c979b8,qualified,assistant,Il processo passato resta invariato; is possible può spostare al presente il punto di vista epistemico del narratore.
+hedge:a6c836964c90217e56d54cde,qualified,assistant,"May può indicare un rischio causale contingente, non soltanto dubbio sulla relazione generale."
+hedge:7f617efd176a0c7a53a5a3fc,qualified,assistant,"Probably aumenta la certezza, ma può trasformare un rischio possibile in una probabilità della relazione generale."
+hedge:7babde8c1362a69d7a17afd2,qualified,assistant,La possibilità è mantenuta formalmente; resta ambigua la portata tra rischio contingente e dubbio scientifico.
+hedge:aed6b659d99a403206bbecfc,invalid,assistant,May be viewed propone una lente interpretativa; are viewed afferma invece una pratica effettiva.
+hedge:2745aea65532d660a9fb1381,invalid,assistant,Probably viewed attribuisce probabilità a una pratica effettiva anziché qualificare una possibilità interpretativa.
+hedge:4d047bd4a92b6bdf138abf75,invalid,assistant,"It is possible that are viewed riguarda ciò che avviene, mentre may be viewed offre un modo di interpretare."
+hedge:f46f1b80043e085c34f3bbdf,qualified,assistant,May differ può indicare variazioni contingenti tra prodotti; differ rischia una generalizzazione sistematica.
+hedge:1d7d74b99f41d101b51c4ee8,qualified,assistant,Probably differ passa dalla variazione possibile alla probabilità di una differenza generale.
+hedge:53707b2e1161316f90b5bc52,qualified,assistant,Possibile portata diversa: differenze in alcuni prodotti oppure dubbio sulla relazione generale con il grasso.
+hedge:b70bfad5875979b78beb67f4,qualified,assistant,They indica una classe di supervisori; may può descrivere soltanto alcuni casi anziché dubbio su tutti.
+hedge:d79b29c9c69b81ba1209893c,qualified,assistant,Probably trasforma una caratteristica possibile nella classe in una previsione sulla classe stessa.
+hedge:85077cb4d7932c5692d2dec9,qualified,assistant,"La possibilità resta, ma non è chiaro se riguardi alcuni supervisori o l’intera classe generica."
+hedge:c197db863edb013758266eb0,qualified,assistant,May lead esprime anche esiti clinici contingenti; lead può generalizzare l’effetto delle interazioni.
+hedge:6be2a6fa8eb088d5e0f45095,qualified,assistant,Probably lead introduce probabilità della relazione generale; il contesto insiste sulla dipendenza clinica degli esiti.
+hedge:06fa5dd62bff68359ac7f661,qualified,assistant,Possibilità di singoli esiti avversi e dubbio sulla relazione generale non hanno necessariamente la stessa portata.
+hedge:4fa850a9dd550f22923ccd47,qualified,assistant,May lead può descrivere esiti diversi in alcuni contesti culturali; lead generalizza la causalità.
+hedge:05e560666bdebaa1d45863e4,qualified,assistant,"Probably rafforza la causalità, ma il soggetto generico rende incerta la lettura puramente epistemica."
+hedge:c91dff8dbdc11b7f769c6f4a,qualified,assistant,Mantiene una possibilità esplicita; resta ambigua la portata fra esiti contingenti e relazione generale.
+hedge:7569b2ef03ef5dbcf74ba735,qualified,assistant,May descrive valori alternativi tra aziende; is può generalizzare la disgiunzione più/meno a ogni azienda.
+hedge:9ce854b740294260630f6612,qualified,assistant,Probably assegna probabilità a una disgiunzione che nel contesto illustra possibilità di valutazione.
+hedge:20fdc1395afa5340cf735331,qualified,assistant,Possibilità riferita a un’azienda generica o a un’azienda specifica: la portata resta incerta.
+hedge:cd23c9a501d48f1d8000b5c7,qualified,assistant,"La causalità è plausibilmente epistemica, ma il seguito già afferma un ruolo di media e aspettative nelle preoccupazioni corporee."
+hedge:b45dad913df2241929e4f37b,qualified,assistant,Probably aumenta la certezza; il contesto in seguito formula affermazioni causali molto vicine senza la stessa cautela.
+hedge:7292f4e13310080edd24ade3,qualified,assistant,"La possibilità locale è conservata, ma il contributo di media e aspettative è parzialmente già affermato nel seguito."
+hedge:a229364b4df7d5d8bb8242fa,qualified,assistant,Might descrive anche conseguenze future eventuali; has può trasformarle in una proprietà generale attuale.
+hedge:d64ef4c1ec212f2106d0c4c5,qualified,assistant,Probably has rafforza la certezza ma può spostare conseguenze eventuali verso una proprietà generale attuale.
+hedge:fcf36bd03a99e36ad339c24b,qualified,assistant,"Conserva una possibilità, ma resta ambigua la lettura temporale e generica delle conseguenze della modifica genetica."
+hedge:7a23356496660d348f17de88,qualified,assistant,May indicate distingue segnali possibili da indicatori affidabili; indicates può generalizzare oltre i singoli casi.
+hedge:72081e9c56380042389c6010,qualified,assistant,Probably aumenta la certezza ma può trasformare un possibile indizio in una regolarità generica.
+hedge:19cdf4e2c87fe5172a17e1af,qualified,assistant,Possibilità che un gesto specifico segnali disagio e dubbio sulla relazione generale hanno portata potenzialmente diversa.
+hedge:23c74e99c81a1110195798d7,qualified,assistant,May lead può descrivere conseguenze sociali contingenti o future; leads rende generale il nesso.
+hedge:4bead6cc1877495beaeba081,qualified,assistant,"Probably rafforza il nesso, ma la lettura fra previsione e possibilità causale generica resta incerta."
+hedge:40501bb5079b9e90c53dc5e4,qualified,assistant,La possibilità rimane esplicita; resta ambigua la portata fra esiti eventuali e relazione causale generale.
+hedge:e7bdc5a278c0e490eefcb397,qualified,assistant,Might include può introdurre esempi proposti; il paragrafo successivo già tratta questi temi come da rappresentare.
+hedge:273082e204dd5ff8dc26dfc8,qualified,assistant,Probably rende probabile una lista che può essere soltanto illustrativa; il seguito già riprende questi temi come dati.
+hedge:0511740e5cc493a138931d0d,qualified,assistant,"Possibilità epistemica o lista illustrativa: il seguito assume questi temi, rendendo incerta l’equivalenza contestuale."
+hedge:e6ac49940912ab408ec83009,valid,assistant,Rimuove may dalla stessa proposta di combinare due stili di leadership senza altre modifiche.
+hedge:12985e1f45f69ec87e0b08f1,valid,assistant,Probably aumenta la certezza della stessa proposta lasciando una qualificazione.
+hedge:11adc7d94e3d63ef6bfa7368,valid,assistant,It is possible that mantiene la possibilità epistemica dello stesso equilibrio ottimale.
+hedge:6ce28e3cbdbed124b5669cc2,qualified,assistant,May contribute riguarda opportunità future e capacità potenziale; contributes può generalizzare il contributo attuale.
+hedge:c75afb03b6ae06d47aed09dc,qualified,assistant,"Probably aumenta la certezza, ma il contesto lascia aperta la distinzione tra potenziale causale e previsione futura."
+hedge:5ee1c00e987ffe09716e7edc,qualified,assistant,Conserva una possibilità; innovazione potenziale e opportunità future rendono incerta la portata temporale e causale.

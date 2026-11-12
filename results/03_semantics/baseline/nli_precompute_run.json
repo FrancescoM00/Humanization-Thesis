@@ -1,0 +1,36 @@
+{
+  "status": "executed",
+  "backend": "onnxruntime_cpu_float32",
+  "unique_model_pairs": 88900,
+  "initial_cached_pairs": 53238,
+  "new_onnx_pairs": 35662,
+  "elapsed_seconds": 2981.4822042450005,
+  "peak_rss_mib": 2636.7265625,
+  "threads": 4,
+  "batch_size": 8,
+  "batching": "global_token_length_sorted",
+  "onnx_sha256": "752610e13db65dfadc183a17ccf399bf9bb1a52e76447fbd06addd2bab9aabd0",
+  "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+  "jobs_sha256": "cf2fbc395fdbb3811f1a2367d24f6a7f72f23629b6a381166b290950705849ed",
+  "parity": {
+    "n_real_cached_pairs": 128,
+    "max_probability_abs_difference": 5.602836608886719e-06,
+    "mean_probability_max_abs_difference": 5.715653514926089e-07,
+    "argmax_agreement": 1.0,
+    "entailment_threshold_0_5_agreement": 1.0,
+    "tolerance": 0.0001,
+    "precision": "float32",
+    "quantized": false,
+    "native_reference_sha256": "91947f6e3e2265eb19e5fc286d51a4db33df9e7899355203e5c61b48839db75d"
+  },
+  "peak_rss_snapshot_before_final_checksum_mib": 1931.7265625,
+  "kernel_memory_monitor": {
+    "pid": 8626,
+    "kernel_vm_hwm_mib": 2636.7265625,
+    "observed_rss_mib": 2636.7265625,
+    "sampling_interval_seconds": 0.05,
+    "samples": 17550,
+    "elapsed_seconds": 887.7425159570003,
+    "process_exited": true
+  }
+}

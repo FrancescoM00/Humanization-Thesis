@@ -1,0 +1,24 @@
+{
+  "stage": "embedding",
+  "status": "executed",
+  "n_pairs": 180,
+  "elapsed_seconds": 25.605678865998925,
+  "peak_rss_mib": 549.4375,
+  "pairs_sha256": "ef434b59f692eb48e9796e2d98231e46f80d27ea19117db44a99c4fd62d40820",
+  "versions": {
+    "torch": "2.7.1+cpu",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1",
+    "onnx": "1.18.0",
+    "onnxruntime": "1.23.2",
+    "optimum-onnx": "0.1.0"
+  },
+  "device": "cpu",
+  "threads": 4,
+  "batch_size": null,
+  "model_directory": "data/models/embedding",
+  "metrics_code_sha256": "6c556441b84b667837bcb631d92f7929206b33ae71a09843542b6e91c2a33ac5"
+}

@@ -1,0 +1,22 @@
+{
+  "stage": "embedding",
+  "status": "executed",
+  "n_pairs": 84,
+  "elapsed_seconds": 11.548798855999848,
+  "peak_rss_mib": 1482.49609375,
+  "pairs_sha256": "c36e16e4298ebef4fd3fd6ae49d8ca175dd2ad06da5bbed19703dabdf60de1e1",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1",
+    "onnx": "1.23.2"
+  },
+  "device": "cuda",
+  "threads": 2,
+  "batch_size": null,
+  "model_directory": "/kaggle/temp/humanization_runtime/models/embedding",
+  "metrics_code_sha256": "6c556441b84b667837bcb631d92f7929206b33ae71a09843542b6e91c2a33ac5"
+}

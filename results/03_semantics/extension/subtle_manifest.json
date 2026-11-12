@@ -1,0 +1,7220 @@
+{
+  "seed": 42,
+  "requested_per_type": 50,
+  "candidate_count": 900,
+  "original_cohort_source_count": 200,
+  "n_pairs": 152,
+  "counts_by_perturbation": {
+    "number_change": {
+      "eligible": 309,
+      "eligible_in_original_200": 79,
+      "selected": 50,
+      "selected_in_original_200": 50,
+      "domain_counts": {
+        "Essay": 20,
+        "Reuters": 20,
+        "WritingPrompts": 10
+      },
+      "generator_counts": {
+        "ChatGLM": 6,
+        "StableLM": 9,
+        "GPT4All": 5,
+        "ChatGPT": 7,
+        "ChatGPT-turbo": 8,
+        "Claude": 8,
+        "Dolly": 7
+      }
+    },
+    "quantifier_strengthening": {
+      "eligible": 79,
+      "eligible_in_original_200": 17,
+      "selected": 50,
+      "selected_in_original_200": 17,
+      "domain_counts": {
+        "Essay": 23,
+        "Reuters": 16,
+        "WritingPrompts": 11
+      },
+      "generator_counts": {
+        "ChatGLM": 7,
+        "ChatGPT-turbo": 13,
+        "GPT4All": 4,
+        "ChatGPT": 8,
+        "Claude": 12,
+        "StableLM": 3,
+        "Dolly": 3
+      }
+    },
+    "hedge_removal": {
+      "eligible": 39,
+      "eligible_in_original_200": 6,
+      "selected": 39,
+      "selected_in_original_200": 6,
+      "domain_counts": {
+        "Essay": 30,
+        "Reuters": 6,
+        "WritingPrompts": 3
+      },
+      "generator_counts": {
+        "ChatGPT-turbo": 7,
+        "Claude": 12,
+        "GPT4All": 5,
+        "StableLM": 7,
+        "ChatGLM": 2,
+        "ChatGPT": 3,
+        "Dolly": 3
+      }
+    },
+    "unsupported_detail": {
+      "eligible": 13,
+      "eligible_in_original_200": 7,
+      "selected": 13,
+      "selected_in_original_200": 7,
+      "domain_counts": {
+        "Reuters": 5,
+        "WritingPrompts": 8
+      },
+      "generator_counts": {
+        "ChatGLM": 1,
+        "ChatGPT-turbo": 7,
+        "Claude": 5
+      }
+    }
+  },
+  "all_requested_counts_met": false,
+  "policy": "Independent applicability by condition; prefer original200, fill from900; domain/generator balancing within each tier.",
+  "semantic_labels_are_rule_intentions_not_gold": true,
+  "screening": [
+    {
+      "source_id": "ChatGLM:f40f77a5e68b4c5368553411",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:06aa4237e792b5a35b735101",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:7ecd7f63ed1eaa450847ed29",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:66fbcb3a3f9c3fd4ceed228d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:f7662448c360a80b40ac1fc9",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:f19f2653ac5e73ee62f9aedf",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:2fcb77743679570af3ddaac2",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:5d8f7ece6a8b2d95bcf1668a",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:742cec906d2ce6114c4fda23",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:33ed8a7aaccf09e0b15a9501",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:24e0debb9a77012cfc21d2b0",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:7b6d053de4da88bded9d30e4",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:7605f842c1870c2277942404",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:be23ad4cd2a7869710afa8d1",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:36fdbeaf452eb316c3f7e258",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:60b0e42b23ab6f4fa26cf697",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:7f13ade8c75e274104823bb7",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:6b7ed8dd71cd5cc955bf5113",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:ca956c8a69c9ded5ab9a5b5b",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:a52cc12a89d583543d0aee21",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:6c82bb9875dba3bb9e2e3c79",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:ce849161b0cbeae5fa7a0621",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:74d27b269e0f4736e384b1fe",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:7f60a54d5a19b306a4e9cec3",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:32a15882e7e482776ca2eccb",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:07c69a99b81e50f5cc37c7d4",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:89144c0bee5960a407501310",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:b470d5afd8ad3b9e9a1394cb",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:d2dde1989ea57031aca1a7ba",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:43189be8cfed1e839f29cb90",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:4b973645be35aff0eaa311f4",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:609143f65044f98a85cdb2f0",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:d40c44f096772a4b4bf51439",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:28c6775d9b52db8faf268068",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:ebe4691440249b7d8e3ebaeb",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:14a0710161e414b7d7c6fb47",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:195c3432550ff643513fadd9",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:372ada8f82447ed2e1352c43",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:5f8fbd973ba46cc31d3d599f",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:cdbec1553c0d3b07f20fe8fd",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:594008f165cb7cd99b8224f5",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:40c8a5405e49d3aa644f477a",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:ad55d31b3a0bf30121328f9c",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:0ff9908ed8e8c47e19b9039c",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:ac95d5e390a243dca62265c7",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:9bab57cef0c800752909e68d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:76d5b54ee245fe72996e27eb",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:7410cbc6c3ae0192e0a1c4f3",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:58667e8407f706a0b20d0ab8",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:78ac82e76a47dd9eeddde542",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:e396b455d311baf56f3b4a3c",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:b14d4802807c4c038f4eba70",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:3f7b7cfb8e595db1ecdcabf8",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:26f29803ecf3e62060ebd831",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:3b6046316e714667ee277491",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:ac575a68e219992f630d5f56",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:18380584c647721668808d40",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:b1b088eec3aff4bb740b183a",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:14731c7bccb7b92d9517b701",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:9b94e71ce2eff4112522c465",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:c84be27cd985a08d050e8925",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:0c9c4439da806167a6738bc3",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:284d289b2f0788408279b30e",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:03e3351ec2cac2ab32d18ef2",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:4673af77ee35cb0d10e109f2",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4711490d74ee6da584f4bf8d",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:10b881654e5b819eb09d5bf5",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:1463c09d74c7da713d54cf46",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:7eb3cfe64941a614b7605858",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:934a2ff208a5b1d54b84b799",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:c4241a117065e63904f48609",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:ff03972e13702fe104144ee1",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:d2fac1b701e9dcbfb5df4855",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:3af689cb8c8fbd5fff6d1b99",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:1e53b991ec166db9b296a124",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:c85b14a2ebcdd6a7d0dddf5a",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:6eb0818c98b0cf980e82d3b5",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:b9aa4d5aa5429b798cd38ec2",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:12d0f8864146c5b3b394e804",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:5034fa22cd1fee2c1faba1c0",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:9b7e360301478d0147e06ac2",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:5f61a65c8d727630fa9bcc9b",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4da13f7a2028e008767ab3bb",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:89f8a975b9a30445621fdb39",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:6e33f805272469d41ab7b973",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:a57668460bfd4f59309998c8",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:f3750527a4faaf7bc6d86651",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:21cfb4491a7718cb26a1a456",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:4748ce14b52329ff92bbd7aa",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:b602ff038f37e79e14fe03a1",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:79743576fed12682ec68786d",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:361d7e29bb40dc4cca23cfcd",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:e919c38b3e824959cef523d7",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:d17f9f003042aa6bc9f5f76f",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:59f7a9ef1de62f9edd4ab381",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:4673464f2b7e915d91bde09e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:737e85ecfca44a0cfc3694a8",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:b6855db1f345c9cc1092a5b2",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:ae067a746d27988352f3678b",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:821e63297196f61bf8387496",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:fb8ed5cd8b6866cbeca9984b",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:79dac6234a1088def50b4de1",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:6581667e9debafc00a33d6f1",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:3c4e50732a6db12d6f32ef67",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:49c787ed09bf229deabbe480",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:debbaf30cf5c7a173637c6db",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:7b7c52a9d7aae70a7f77ec74",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:4eefc42499a0e81492cb019d",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:d52bc089d6fb234fdebf5881",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:e48c19245eaba0259323e297",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change",
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:a3284848076ca9adce25f743",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:5aac11835cfe5eb4e832e230",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:0012f56a0920c377a0efc102",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:31a0a1ffc3d6c3f9859f8a31",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:916b2bf8766d844e18949634",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:dcf1936778664590e94a8eb2",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:f7a81f0567e3b2f7798d258e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:d3d1fee9f5d9382cf26bb656",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:9905ace4e70cb388ef5ee79a",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:e2059b40d30abc69d961cfe1",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:f20ca41d389a694a1e0c9a5d",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:7b17a98a16bb929e23deeb81",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:1878180d668e78f49d69bce8",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:7f813f496f2015f511c155ad",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:2f6cdbde9e3cbfbd66c1e8cf",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:38f049bc572b602fbecc3f1f",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:6e602eb48cebbd01c192fd6a",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:dad07ddc797ed423f7997639",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:bb071ae18c518d6ef322c0c2",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:9e1443544ed050cdf91b69a1",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:611522cbce7ec88047a91455",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:2b2d91e0a7a53d42be131aab",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:fba26cf7cbc2c54945e78df0",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:988264998f4c3b421460afd1",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:344991c1a85993da7bb437db",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:1bfb56fc5b0a8b850ae0ebae",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:3bf2e4d66102bc35c974c5a8",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:80b00dd4a9b32d47b0c3fb96",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:4505d1ffb7dc664e279798b9",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:d270bdd31d50ac40126a58af",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:84dd23310e0cbd280b13368f",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:d1c85e7dc5bf1f12be45c2f8",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:e2e7417a5bee1b76226065c6",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:e03826e33730e51c6a31fbad",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:ef30a717cb965f3a22cadf71",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:abcd21c26e961b87b46f12bd",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:f0be385034b321299edb6577",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:9a13618b3e3f6c786e4a0491",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:3e806d55ecc1b2b63a7f7cc7",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:694d498da7014cedfe8003f7",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:c6e2e3ecfebfe840fa90648d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:23da51309917afe3e6abc137",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:2ce179123fbaa48a31dd824e",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:dd1ceef0e6d5a4c1de9afa19",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:6706b5831fa17d9c3d008472",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:58c2a14b16a7a5996c90c50c",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:89dda7297a354addd0f8be99",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:9c1dea355a803815e7af0f5d",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:3b44fbffd81dd5719fe43e31",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:dac6ae896e59f0348e884f41",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:489592d96124cd09863a9424",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:b499c155f06b9e2f371aeb33",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:98c498e1ddb21f611621ba84",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:c86264359f2366768f247957",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:f6e3c4becb049115df331f71",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:b301052c78e5cf92b3f9956f",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:57679ca1409dcc165220d614",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:22102486bd5e25d896f5b323",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:a280eeddb137cce6a6342170",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:8f3f3b26c60f3207bd54187a",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:f268bb3410fb2be9708b14a5",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:b89a99f2588748a60f898b5d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:ed3127bfa5aff8673301c613",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:83b18b0bd3c9990bb05ea0db",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:4ea9d0f89e5e8ce79f033f30",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:f890ad5e0c28082a7298fb37",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:14f6a5bff483a52683f4ccba",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:845de3a96199b71b3b19552a",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:8ae896c346f5b7be1df4d175",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:82b99b2c13f6fc33572ecc58",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4837a9357cd88647218beb31",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:cc28035927b37fe387b1be1c",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:24b67252978ece7a119601e7",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:aa1fc5926a571790bcf70305",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:a859166ed1b66902402d6c31",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:5bafa6fef4c4f2b56b75bc12",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:89928b50b11e0bef5472f22c",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:316c43a8ec0bb6c9ba1cecb5",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:31b0a91d9a137d8337cb5aad",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:49ca63da64e8b47dcf9c0da8",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:c17b50cb63961ea51593d56e",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4045993e08c597e77fd42d06",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:ccc3071560969ac9c5ba4021",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:c5c08a0ab5213fb627cc4221",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:9f2a336dfaf0a9854fb73488",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:607c93ec7684496ec50e4362",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:5936691ab96029b32ef527fe",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c93e431bf29739ca5782fa3e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:b9e45c4f36810e6fa3a7092e",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:ba9d6b58b8dda1d065a1da72",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:dd7adc34ede10baeeb6390e2",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:67e4c5eeab6ffa9240ece725",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:f214c3f1f59e7dc5983ce216",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:57e3333a3075e93222ba9500",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:cf87baaf2c41b750c38fc019",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:ffd36cbd08b1e64558369d78",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:52b42ee1d191d271c0e83c71",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:bb64686e32a76cfac9dfed61",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:ba82e221b273916f6c81c93f",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:d9d3c3edb60efbbbcddce896",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:68808513e6fae0dcb183a0e3",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:1ab809a457f408e8df0454a0",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:2d474f4dd0661c25c4746613",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:faa41fb88860a850ab30a19a",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:c338b7574e3ab0cfa5dfeed1",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:63e1d54e4f2d4f99b708ca93",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:f1da4e666652b6b9fc05802a",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:a3ad8e25a89072981f7e5241",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:e4616818a6dde6663ce5be7e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:e45e912f97ee7d587a84ab01",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:13e8939d19ea78e2d603c6cc",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:647ad9d2ff5f0dfc676e5504",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:c1f55dec8c38a54a378c1749",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:a2e49e52d17e72e2377acd4c",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:1c4ced2578e61a053bddbb1b",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:f875512d8361adafa8118365",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:bedbb958efaf8995d8f5c5eb",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:c57ef5f03be807083a0d8f12",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:d8b654396a433134402535ea",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:8d7b8a02c33dc6b9e8793ed5",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:dbda803b5b126300f0c7fc79",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:6cc3d375dd669c02590a77a7",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:ff88ee1abdd6fd11b7274444",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:ebb7ef8f79d447ccfc8abcdf",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:a57bc1dfbb95649fb03af5ae",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8bdb04c3c322f5d047b7aeef",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:baad442231cfb993f4b1b61d",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:3e4d296593b34db704f56678",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:de2efa61c457788f81d0d7c2",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:512ee1ae74ba1023bb024f5b",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:ae0e93942147473ad27ad821",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:4cb5165162c8b7ce3af9258c",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:c15661a4a9f39e81abea57fa",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:6c17a15ebef3aa2f4ca32f15",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:95550f5e971a5e0f7199cb3e",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:c110f7edb1791af4a03e0696",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:20550e677e42e16a487e70c4",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:8eeb3e9c95db80300fb4bedc",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:93561dbd5829e5751db6bc89",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:ac41c8fb2e9d72212bd9da23",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:b05cdbc6c022b4c60e90c891",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:3138e8a417b8db76d3451852",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:5670f2380ef67a632df5847a",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:877551866ba72447fb11aa41",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:f590ac79d0dff9a398767f5e",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:043daea598f479422d2bd59e",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:b61f0738f83962d174609c44",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:910a08b95afb1d11027b1268",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:d7af8f8397c33cc96e8828f7",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:40740910a63a20369129ac95",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8d3ae672936c3acd48e8a501",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:df36b1096121b8646a068d2a",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:46074fba64429333498ef7c7",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:06b80f01251450f83641d5ec",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:9751ae5384f6a887b06556fc",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:43f5a7fa6ee6bafe5726059b",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:caa4cb05f7ee0c7285435849",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:2f1751cc357726950130eff0",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:34d0ee724c8ef7ba47c24bfe",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:32ef28156cfbd65eb1d9b882",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:41e92e5c9809985fa2a91ed9",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:2c2891cc0558407dbdc28fa7",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:15a2aad75b4bc6445a1067a2",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8a4ce2588b637e552f5cd6cc",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:eb8031cd79bc6ec95366a6ac",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:10a7a19390b1e36eebd6dfd3",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:6c2d57759a17d5ed3b5cb81d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:0b202fb53e4a2d2639a963e5",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:110b985f894e5fd72fa210ee",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:7ebdfcf239a179c0d9b30d67",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:2f7c537137101f3648b1e6b2",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:dbdd2db77fbb65c161157aa4",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:3cf50f7edfe6990566df8a40",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:d01f6d0e155d1edcf65f082c",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:3ab3447a81a08e7503af9597",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:198bb28d01d5244b0bdf31d3",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:d2bda9a44460da8a7baf5aa9",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:3bc5c6cef9f991be28823088",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:90ae2ddf13f6443c5db587de",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:d45ea851e339d874edd1d718",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:5752bfc4ff9a450f7e9b6a97",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:5d59fafbe51d5fab7d42eb69",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:1dd93da731652d68502d65ba",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:2c44326e4eff2832c03b13fe",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:50d4144ed7eca40637d71402",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:6e6e2642f4745df66bc26019",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:8674729ec2a941edd637f2fd",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:4897989b05843e2df27e1d9d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:2fc4b0ad792884b5b4b77e80",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:17d94b2f565231e006d40b07",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:f3daaa35d88bc0e042ee218d",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:1e0ba6a60bc902a350ce0c67",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:442dc4e32227c3068ae567a8",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:78255230d8acb63f5c455f6a",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:7cd644fe221faaf06fe55293",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7629882d165bf81f9b4cf449",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:2ec79d47113929b6b37a6189",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:b546c015b3baf3e90da0dde4",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:301905d35aa7526032d50a47",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:a88346cfda99d21524d1a06d",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:5bfea195b59bff0a84f96c73",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:d5af5d69400a4643625debb1",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:a1f6788236ecc198f8fc44a6",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:239b30165aa71be558bbcd0d",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:85b27abf7ba6945e34640ba2",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:f4185b321b635d42a7004990",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:37fedd66f74570f210405c75",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:d4f3fae4b17cd720c15ce857",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:235a22833a228aa3911a185b",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:7af8661433a1c695e0234bae",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:b53ee1e1d50982c05a2413a5",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:764e89977f151ab310db9d33",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:2aea10762aa30bc77aaaea8e",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:4e19b7d80b70e0f2de850166",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:260dd7aae40891480b753bbd",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:729c431c1664c072995c59a7",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:ffdf1d8607ce2117ae3f6b71",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:5575520077f718bc0f04f8d0",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:a73e0e15adef0a8d7bbf5182",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:dd16f65592da36f4bd02e2ac",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:2692688fede97129aaecaaf3",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4536fee576d22eccb2774e8a",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:0fb1241f8978e4f5b2729850",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:cef14c95fb0b5ea395a429a4",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:358638c6b4b492220c7f9b46",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e6c4f4f5d21d864568fd8bf4",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:d0d1fe69a624d18c921bba0f",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:8b83691c9a8968000a4daada",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:8311bc80459ae37f70972b71",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:9aa429d0aa1839170a7772ad",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:db0eb4303e3e4c16b981dafe",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:d13c0f2f3239ea83e90577df",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:9ac21900af917eb8dc432327",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:0784460063acd100b4bc674d",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:18c9d890a1465f04a6bf354c",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:53ef051d480b1382bc709945",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:56d113f9babaa3daba1c49e9",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:95ad9659917200a953554558",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:90024d2d73bdfe8e5cee70dc",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:6120bccca6c1d76606fdd743",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:bd9d75222844c8e43038f291",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:66c06af915c32076571cee5c",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:8c9a1b9e7744b0c2433671c9",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:292aa969785e92e5b234df91",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:f202629e6bab675231e6b6d3",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:7cfa258869b238937385627b",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:9cd41966534065a62f6e7345",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:812747a32e55c67d2e357918",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:a3c6dd973ccb1b622286a6a8",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:62d3364910568d8f17459695",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:6466c954efded6ba336e302d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:5882b8b7f35e89ecabd54cbd",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:9328593cea0a6e7813a47295",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:866c48adee3aa83981f523d1",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7c96d3317baf731b8245a1b0",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:a3e54ca3ef9b5dcdc3e5c2b8",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:3fab3f4ed96970b8e0b0d7bf",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:28773cecdd06a23a9d5a40be",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:1cfec87038d6371a590f7999",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:e141d296dff495f0e56c2d29",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:53e80f1530a59fd70d2cfd44",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:fbbee1358572a59daff37cbb",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:e24c43bb503931bf028c6500",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:c811d6b3ea49b09147ca123e",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:d5cd4fc654e6a043c3655451",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:17dbb35900f87c8754ab926a",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:e67b7ebb5ee2535af9868b43",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:7495e7652eba0057e3871f0a",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:5f47b905b6e7f3b7938ff5c7",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:2f9c4ba94a55ef4f3220aae8",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:5427d6899e127674865ce4a9",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:a7ee3d78962981e1307b81db",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:acb647c4592e858852c002cb",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:e263cf926b4e356ee6e153fe",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:e41e3002b9e940397cbb646f",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:242811d77a1bfc4e07ec9723",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:9ec51f8da3fb27c5c6a60835",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:42b906d44a6137124263e59d",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:303874149a4e1f776c632b16",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:2a3c4422d5872fcb69a1cb6a",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:7df679cd2ed40f764c5efe6e",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:1b4d5cf41dd91857b7bea1dc",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:76f78db5c41de0e51f5ba6c8",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:71afd06ec764e346d3da4c80",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:f87db0f29a036fe7f4125305",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:be8513b28679581abed8f960",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:70a09861d9fe0b5541499fa1",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4be6fa06e2301ed746494065",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:f6c5aa2e457b02ec181d1cf0",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:cd3961380822b4b190d8096d",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:b62a7c36b43b763038acb6ea",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:2693d2ec82907175f2126f38",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:f3eeb368fff914e0756e4c11",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:cd0c24ff4776629732fdc9cc",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:6f890ff5b67062ad51c960ef",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:342eed772216427be2cda315",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:74e9f9650fab1d079a238ffc",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:3c931f8a76c442bfc6e26209",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:2a4baeac0209bdd0867df12e",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:c3ffe35575db33340727579a",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:c8518638c2d815b4b7386385",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:9a9468d4507a482f8fbd18fa",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:0e9bf275d9a822499c98cbc3",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:ea4bfba417abfb3020c9f532",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:94ceb0e0f59f20f1a1a57fd9",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:b16b7296d29d46b6b8678c17",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:387b615453f99c62ba036446",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:9b193778592cfc80e985d391",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:f9fa52c601ec453a1b337690",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:dbb2f9d712ce7f8c35c80247",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:f8c1e94307a28bd743f74a89",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:f4b5b6ce5270cbecd153512f",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:2a525232a3d3b98560a4576a",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:82bedebd8d6e72bc08fda00a",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:a2c9c7c1d7882cfa7d00749d",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "StableLM:0e14de2e6a1eaaacbbb1a890",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:622360993b6d211f37123118",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:0626f28b6e24045e7ed9f51c",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:dca341e34fa7b13580d68de5",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:bd63a6a2976bb30447b5e130",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:705a7ac88a2c8de6a0518cf1",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:1c6141882cb6454626b6801b",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:ee8458b6a81da8b818f4effa",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Claude:90af68f86d3cf72be7c947b7",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:493131f5d2cef2be819dfb8a",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:3bc6e0de3bcada63a86d5f17",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:93e0327f3f96f9a2f8b500b7",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:db0391f418d21f797779f2b3",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:3ade292484cd433f798024d5",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:7a7c872d50f8b6b9398e3803",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:3ed336b12a8dbd7701ea10ff",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c52c8db11ed657a0f847485f",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:07d0c0d7b84ada9474f7a1c4",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:1d993d1c9279c95fb1d90a1f",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:59416aaa2d350eaccc6c1618",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:9cb0d07cfb05ca88f0d107ec",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:86bc819b67a03b72403ff0e9",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:63249ecb0da223b343e8371a",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:d003b25f2e19860b60815f1c",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:399e2605c3ff07bc82c58406",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:a79a9a2b0d4f16db7f1f7d18",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:55e3b928bf0e548e08a79492",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:315c7d3bfcd61402a4a9aa51",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:59c9dbd0b10196434d8ab213",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:0a438ee4fa611f68637226e5",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:c3f3716a40ddbb6ae12c073d",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:f699334673f7402ee509f1d4",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:5aded84c357409ce9ef98e78",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:8433c9ca61a965f178c0485a",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:b784a447a094e7bab0908e21",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:85572576212f801e67ca4ee9",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e0ee9bc840a9bb2bca5298f0",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:a83ac57ac14e90dc7b829bf0",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:010b6e9f844878e1593ee14c",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:535dc53f2a409fc0b2ffe9bc",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:0adbc73358dd2be454220d79",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:b0b21777792f010cadc843a6",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:0c112a300e74d2ad8a6963e1",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT-turbo:80d1e683cb84f58374fc3e12",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:4600f8c4cccaf11f0e81cb2b",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:14b0a5adf5f5e29570291c1e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:f0bf91260568d3916046e114",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:b6c218e191f124c8cb6915c5",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7a4a40f7646208088bc10872",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:34a7adb5bd80ef4d1b53bc67",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:02c4a11ab16cff856823fcec",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:d19b50d0c0d6afdb80f6ae56",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:ca09bf818f7dfcd4a6abae5b",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:332870a9956507f222745c3b",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:e7cbdc25b02c4200b7a7ba15",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:0aa7d4cb8ef209be9b68b7ff",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:f75f5e4b0bf09e863411a9df",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:a8c26c9fab22d8ac334b85f1",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGLM:efa00a04791b6b8d26be9f51",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:3f16c3da5408edc6aa723270",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:0e57bb033521f7ce3b8574cd",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:4faad5d0313ee471d390488d",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:43ed56ad27923e1906eaf174",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:e8746bf9cba710bb12c99838",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:466c60ba8ef0bd567baf8ee3",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:6057405ef8da08a00b0fe4bf",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:2e6b76a75e0268007d771ac8",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:6218cff7f9793f459f5f3577",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:1482c6d874e8f433b69a59a9",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:d71566add2a8c2155bc54f8c",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:8ad636a91d562440ce115678",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:3f1ef710fd818ec042101c73",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:ed6a8de2b4ea55678c11fd8f",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4b7851adbb0bbc18eaf4a3de",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:62491097ec927bd5553ca563",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:750f61b7a8d516590b88065d",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:59b667c58d66514b37c6ea92",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "GPT4All:4fccce3342888067cac367bc",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:14074c628341ab2a5ef740fc",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:51d3438ae709f806c8478f25",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:f784e2ef725caf8c4a3303dc",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:e707fbf9b8c044e2582079f1",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:27f8308371b21dbd8d5663ad",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:aa995141bf51e788747eabce",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:0fe82b34ea79d3e3738bcd3b",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:f87ac47de320432fcae229a7",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:1d5bb82f5b2050a4e098b8cc",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:26d4eeac3c7e601f3af5968f",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:a46e3598df75259d3f8f0fb8",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:adb69a7d6fd849d9853ab4bd",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:481e5c9f13420de76a010e7e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "Dolly:b5aae53e3c12c05f65f490ce",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:5cf8029870f610d8ab79152e",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:3a49e3927e71b13bd06aeecb",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:e61e29d5d35f8cd82cd97dba",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:5fd81cd42fad4a58f44db093",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:b3536959789a4e3774d65f4c",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:4f275ad3dbc5a023dcc65d25",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:73514d16fdad49d94ff129f1",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e3217d2d578460035583af73",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8c8ea3ac3d73cc0ee7d553bb",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:9a5a267925b518c9661f1288",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:eca45b1d44af554e964c7648",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:4029be951b706443b53583fb",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:1f83e05c32e84152c81b2e53",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:7fca6b781681fee24f7a4d0d",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:58017206b45b9a121d7abef9",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:f448bc131aa28e20774662a0",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:39157c23b60c4bffdc482187",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:43048b73e19ce07c0282e39a",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:4b2c62ce171b9b812f7a5d2a",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7e38e01b1c5cb8943a8ff2d1",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:06c1acd91ccdada7cd59636a",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:28eb571821d77f52ba262ced",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:92e54b0f67f56128e88b77ea",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:83c00d466b5f6efe02a945b6",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:39ff51d421597a897e8f530e",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:fce332702794c8f395cb30eb",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:b9d4fa286c9689b4cd874060",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:2769f0daec0071f71fe791e6",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:de8e19707517f6cfdde979bc",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:97d91d8f541a9b42968e00bc",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:d2af4138f7dbd6f1d99f874d",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:16f0061746ca1d762df642c7",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": true
+    },
+    {
+      "source_id": "ChatGPT:af48c7f2834ad506e105fc65",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:eecdd845f25939667300ef4b",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:a0e6ca45c9973bbaabd1a34f",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:84b88b2868a55e60491e9af8",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:9dcd6d4312e5980351f2057b",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:e2f830608425dc2c4ed81163",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:8e59421d504c6c72c644819e",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:168d8dfee5765de17b8545f5",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:ff07f38d0fc166bffc1376f0",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:fec2157927180a074be170a2",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:a9d670cb4a5325ea54bda73c",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:bf3fa9d4dd7c952efa368d9e",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:cc28c7e3f2b0c37324516a2c",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4155576394fab6c1c7f88098",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:eaa658994e2b5b0e47d16a07",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:2e36205938e229a11f9f1545",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:bc6b98bc88150d49966d0766",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4454c04168c65e1cb91d99e1",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:d4940dd467d74c0de33aade1",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:25ee6cb5185f01df3db6481c",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:17b387af5b4de0114100380e",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7616981a3bbf9b25de8a4ccf",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:dabc32aef25507c6ad8f08ad",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:11414fb30d5ae4d1e6e14146",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:00b27640507645e9578bfa6d",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:315ed7553ee5620f64f9290b",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:dec60f3065ed2a5530652467",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:3bbbc1cfcb0ee41101404776",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:420d1e315646a3047002c7fc",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:2cda18bf43fa77a4add6b1ad",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:10f48bde1b8d0b4acfafafe8",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:73228d61847ed79563e99b44",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:44c0313148f786b8a546858f",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:9b5fbefc578f8fd2c0cf9607",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:91dac07960bdaa6f1901e283",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:ba4ce17bade2c905ff54652c",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:0b1716c9fde7aa99affee14d",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4e8ae0749897226b8ff70103",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e1abbf4670624d8f41dce6e9",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:e8564cb26c16c5f40c80051b",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:834d8ef9c73324b19fcebc36",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:ad84256e8579bbed8fb74239",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:6df62266aa1540ed0f9fc255",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c3450b5f9076b58816ca39c1",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:c895c132efb5778b1b9f4e61",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:dad113417bda4f3c77f265c0",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:a8f9b6283ad07dbc31a46c69",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:4bf237cfb7f5acdba9bdb01d",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:76641e3721b8334e6d8ea571",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:155fd4b49f393fe643440bf9",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:608d6477a529b46e2e00de79",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e284baea379739d852c1d6e2",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:603977764577acb112f5ae88",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:a7b7ab0b32d9be9d23f52e01",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:83dc993ce337cfa15be4222b",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4d29336b282d592c1626441f",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:ef5a5a8f3c94bd87c1b8e5e1",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:f2dfed68990d3c9b15a152ae",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:038b990894cd2e776eb8f1f0",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:f89242801816dc0afb03e9be",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:051d8c6486bdf70c4fbf151c",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:fc7ee99bd4f45d28ecc25e17",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:76795beb1c5192d1a1e8c734",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:b164b1896c8765a3cf632b41",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:2555e6b1d20680c46d3ac287",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:4edf1ab95211f3c92769ed3a",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:7b80d74e1b9b92121c6edbc5",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:6ae0affbf9795bb89ef73bbe",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:4b1e719184dedf6ffed1afaf",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:28a7998ad85435c3aa109d81",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:5a55df0d90103ebccce2539e",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:ee25004f593e66380d39380b",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:eb051890c03d519c02e82690",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:624e1579ce7f7fb881bd9a87",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:04d0ed3f65cc71d95a85c0eb",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:1140192ee388431cf011b1ef",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:047fdd6d6d46d8bde402c892",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:23e8bf1cf69fcdfb288bd4a1",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:621116f68ede584138804b23",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:25e55580b5ad8872add7a1c9",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:050c8a56d211dcb8e828a7d6",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:b9ddc6089c37f9499ad6f3e2",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:a909ba3cf01f3c60ab753b1a",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:278b8a9f18b1e5e64b12617b",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:36d36a2dea0010d77af62053",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:471dba5b78e353a38a483b05",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:acea1b79a0e63083752e69d5",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:cf929f63da97de407fca936f",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7a95389f11448e804220d05c",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:57c6a5508dd61861479c73ba",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:f7e24340224bfdece797a3de",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:f8bfed69be626d02a93880a9",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:e312876d254b2475b1c5afd4",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:763e85eed8c7d658cdabf34d",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:6480af7874077f3b2bee28f0",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:04402360303f897d6128d80a",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:4b5a0b4ecccd87470d7b9c49",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:1b89e0cd8e738e266f121f8e",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:2efd073c0b16164b25b2ecb3",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:14537a6e1989b42ef0ddaa69",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:39a48221f963cb8a903495ea",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:58fcb4664f77375e0d4255d5",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:4096e00354d8079977bcc62f",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:1d609af41063ed83650bcc40",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:dc581511bcf0fb9469d6ec08",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:12d4773e7bb4de433d2b60d8",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:7ea4b936e7efb68cb2ff6c79",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:beddee4dfb7296167069a575",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:92b86e5ecc9deab12098c569",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:92f8aa630fc054df03804598",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:7bb9d3a24690440bc1aa94ce",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:a2b865bb6d299ea7ac9f4364",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:6ee3a93fba8c1060936258ab",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:bcb6406fe7ec0a5bd15c99df",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:5d98b252c36426a1327c92ef",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:1f22f8e1542ac4aaf2b36291",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:9ead001df4a76f56315a7d93",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:b0161b473823d5a37d64d4c6",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:6fa1247c9c720a9688fc9598",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:a8a92a4206fc99495797ad70",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:1b25d9d2b1b58182fafe7fab",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:487929f61b6c0aa4b1e4fc6a",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:903e56797cf868a4ef8ff376",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:502f29016c76d63cee6e5164",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:1eb863a99691fabdb713dcb0",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:26659379b99955c666ea9c99",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:530e3be31ce34a34614e7696",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c89d9a014d2db0e7e8aeb20e",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:51146aae6946f8cb63cae79d",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:85c9d021978997b5e85e840e",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:186079c73ef77555ff0c60fd",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:74f8da991ad46792b05d60c6",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:29c1691eca846fd3eb7b41f8",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:1683a4539a6f0c085978b4d2",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:76f1d43ed04946d760d6a1af",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:d72555171b894b54a5b87270",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:45c3c5f47fc9d5b102fb358b",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:d71a0bfc5487f748eb495ce0",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:709225650f605fd14dbbc933",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:838518235d1d7097c639bb7d",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:e440691c6bccc1b2a3b3d64b",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:d3dd17f5f52f99850fcddfe0",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:e69f1e458fc156da5b6820b9",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:d631e7e9239b21e9db8fc0bb",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8005a3ddb1d7a4450b19dbf6",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:0ef193c3241a11575c3945d9",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:488b52a5c7ae905d52574eae",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:03609f9714489cd348c64a61",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:d6620276cf2c812d6c4c384e",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:1124c91bd22d20639f506df3",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:3bdccd88fd81d1e5838d6604",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:b8eaf0dd28986317d044c13d",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:6620c27cb118ca6032231121",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:72a2906c0c60cd60b7409edc",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:50079e7e2821e8df98b6935f",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:4c6fc24c7547f6a3091aa0d4",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:b29b61b78b041b4b5ff41b98",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:f85783a138d8ea496d4597f6",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "unsupported_detail"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:9d8e0e9137c2edde64db47ad",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:48a64bc8a733d3e1c17d459c",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:f6dfa2191232419bfb9540ba",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:266483db8ffb6d66cc2d8f01",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:fb39a47e4e6b1380733a1831",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:95a6227289dc4ec7d1affea2",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:c3c37b198c87eda155ce7953",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:84f625f372ef9099228d045b",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:ab3bc66477a3c16b85c87ed2",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:d960dae849fb8740db81a618",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:53b7909ee407c627746987b0",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:74881a3d3c8af12841d943b1",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:c8d80ee08b68c95c7de505cd",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:01aaba721a9ad8eb5e338abe",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:2d63b7985e4700bf5ba4bc19",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:28b75f8d7dd1298cdacdd440",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:97750a2653f3c785029b87a5",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:88e4581aa29a6fba6b184528",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:b527163fcecf511ffb99c6ee",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:a143d0d915c46f5f85864b79",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:3a054c08621ab0c491dab497",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:a5e7914af65c2621190307b7",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:54dbe40f21815e44618f93c1",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "quantifier_strengthening",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:a42f2e92d83004fb58df1c84",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:41d1027cf15c9ce7d3e41da1",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:4edbedfe4dd8b92d62aba718",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:87c889b9914ae02c0aefe0c9",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:f2234d692143e210c0258bb2",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:f402895acf80a29afe51a17f",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:1f14eb1fd8a15f86f3df8c0b",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:9b2254f8e1a36eb442974a08",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:5819a85ccf9c781500aee4a6",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:096edda61f497f9a45da77a4",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:ccaacdb6014f3fd450a460ea",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:59bfc456675a026525cef414",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:cc8a235f01d8bffd2564f7de",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c397be86cdeedfa4f4b83941",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:769bf28b2299655466769c7c",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:a2d0ceb12d1db5bee6cf9432",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:ccd4b1bf08d2ecdc2380c418",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:abc95ddf146881eea32e4def",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:58d4ab8481acf7a8ee5b9007",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:3c12f8355e98321356608485",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:7cc73feb6b7bce39c6ae390d",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:19611299dc5b7f9da67cd963",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:f4c7fe13e3beac41edcb3016",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:d7f6ea34348da73f34115f2c",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:05731e15cdf8e4d040eb39fe",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:1702112bac385e78cbfdd34c",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:b3c5a4e1982874eae304be2c",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:ffca3e05a7940a6c188d5dcc",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:467757d88a96a8dc6e7f83f0",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:0cba04e8d6d46b67db627dc5",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:abe28ad63b66b4f1193f7d79",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:5ba99e4d01c8c7bfd1d889b9",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:76d99b9a38447d8be2a9279b",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7fb043d9f897ae7a85199742",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:1165848bb1cc3b5e1745ccb8",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:55317f4db3ddf4672d271d01",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:6e5b45fdb7b41ebd5f25c52c",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:84ee76365e2d1eafbf5472d1",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:896bf6203874fd56cf097cd2",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:ec67a61ea39df0fb7e61d802",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:2bbeb0646d0ce3bb8178dbf0",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:42030061eaecaf6d97de327d",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:09eb20229bc01b59faaf411e",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:6ea43779c2298a7f792a301c",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:93c4f9193768bf04c42cee7c",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:ffab8cb28d096a76745a6e69",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:295a06ad59dcaf22cb2a9d65",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:62ec4acef99062998e2ea32e",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:0210fa92848d90deca3a3d6f",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:f226a241fc4259afb3d4643b",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:5d5e5a266e745eaae9fefe4a",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:1c15b4c5958cd40eb6c2af6f",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:ec1e33d0ca49bdcfc2fab3e4",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:e8e954e62257d3d1b9bd5d6a",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:dbf34d03f753fe30c13c1fe9",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8cc3221afda74778c955625b",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:3f8007d80140e2224cf7fb47",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:cbf4bd14fb901cbc4ef7cc47",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:a14930067ee669c79ad73a27",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:0a9b75ded1561f467784bfe1",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:10f13d94e6c8331284166b4c",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:29f73080f3306341628e383d",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:b0f7f7cf78aefd3f7e5b9ee5",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:81d4296bbce1476a18bd4a49",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:34bd39948dc5f8401b81c7d1",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:d487e9148d64d27a55757836",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:96662086d57e17c30a6fb313",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:9e1c68497183726c7e542fe8",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:a14b5bf5d9eb80c235423645",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:8a3b2f8171fa81dad438e6bd",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:8ca41254911790baaa9a17e2",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:a97ea28ca4c7dbf943cbe534",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:d4e9438479e0433922d9f38e",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:583765231157f07c96127e42",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:f9acac51fad6c2bd93d002a9",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:26568043d72f12ca3081a963",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c74833bd1da2432c8def6a33",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:7db11a97af6940a459f53322",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:8d7e6ce613a2716d45bcbe85",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:0fe9326fe3bd978c59389173",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4a13b5274bd3a70e68e6042e",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:d180e899a3d27d8751c7ac9f",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:80ede748f2d86717a9b230b5",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:d5699d314e331a09bb4cfacb",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:c5ec3f715cec371ce2a33fd7",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:73897491a535dbea126f02da",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:6bf48136b9b3d9630dbf3242",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:faa0c20a82ac8d2d46273ee6",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:575e91432c10226f92e1e86f",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:a8e9d06ad9be471e2b09cd22",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:9ecb44e21265110706211eb3",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:72879e4851cf2f25a74f22c0",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:b0f76dc9a8adecb9753bd586",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:e7284b0de399ecb5948b9914",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:957b78a88e29216b56a5630c",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:4d591363b7d76927c04f8a82",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:8a29aaffce46fa83d19127df",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:e609b3148b36be8717b11bc2",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:e528ddd38fad85e92b9dbf48",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:364a4e7bfa5667ecd867bcf8",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:9086ba99a5cac4acb36041fd",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e7a773dfd3ee29b974cd83c7",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:97375c338c5efcfd4752a172",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:ad0ca7aea79587b5958ef619",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:5d14d106d9846f3dc7b0f2dc",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:8740469e5ab8c031bafaf6c4",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:21ffdfb3f4c5cc700473bfea",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:c65910bc191b5f41657f57f0",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:19534149c36c625484826e95",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:2cdfffa4798b7b852a0f0aee",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:7bb67bed3a77765c93d87917",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:74737dd62c72cebab66d615e",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:8319b1d8582eca8087292e41",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:99f1e06dc9af357006119441",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:4bb4e5a1c723f2469d44163b",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:b20d518c3e383d5a4a3cd03c",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:7d50144a7975595be16c2a94",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:0e25e78fb96f4160b79409ea",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:c0e3c29cc249d80aa2c4d14d",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:bf1346d4bb974833bce50f5a",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:ad67e48d4ec11efc3a53b8c0",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:3510ad3dc3fafe9c048da06f",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:1447b6fbced711f34820a61a",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:89822ca6fe699c534d81bad7",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:8ff804f7203ebdec561bb6b3",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:6fa736d5c6ff7336a57a163f",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:de70d96195043d1dc5259b16",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:b5d539f00b2d0b792ea10bb0",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:086310b9c82a26a4a0d9eaa9",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:91c11dc2f09d72d964ae0337",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:8d5a44fcdc30472928a68a27",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:232920b45fc564a8ba943d88",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:e6fe56aeb66f579adc86c8ed",
+      "domain": "Reuters",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:cf7c631258ffd187afbc2c7a",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:05b3114b462e721f728c7a75",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:2917c997e2f3f2e395e87dde",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:f332202dde4982320d33f858",
+      "domain": "WritingPrompts",
+      "generator": "StableLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:736889b6e3e1a03f5da3c321",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:7c55e70ac784b81bdfb6901e",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:8c5689614a0e93deb37c4461",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:95b802d042699cc8193fc052",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:8cf15cc26cd5ffb15d7fa2fc",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [
+        "number_change",
+        "hedge_removal"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:fad5b22938aff200a9a1682d",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:04e749a5f999cd8357260aec",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:dc0f730b339cf4009fc1bd66",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change",
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:4bbeea69b6b1f9881fceb837",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:cbae563ea1be9a30e2b5e221",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:be976e02826594d3df7df551",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:4864a208f90d674c58be0f9c",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "StableLM:3fcf2908bd2c90ce2d153001",
+      "domain": "Essay",
+      "generator": "StableLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:8779f0c59eec345fe598da02",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:e68f54303bc4a141a3bf55df",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [
+        "quantifier_strengthening"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:45ff6afb85ab3752e77eca63",
+      "domain": "Essay",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:3169dc65d7a87b14606d972b",
+      "domain": "Reuters",
+      "generator": "ChatGLM",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:9db04ef7a56294d2810dc214",
+      "domain": "WritingPrompts",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:1a847305434a5a41fbcb7209",
+      "domain": "Essay",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:478571669e2165cf0c24c3aa",
+      "domain": "Reuters",
+      "generator": "ChatGPT",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGLM:490bfdd6850a82521247d6e4",
+      "domain": "WritingPrompts",
+      "generator": "ChatGLM",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:f92e7fe430607f04d13b8ac6",
+      "domain": "Essay",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:c547668c83fd89652000878e",
+      "domain": "Reuters",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT:9f7e69a9c3e9d23e56ebe7aa",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:56f607a60691de25fa4a7819",
+      "domain": "Essay",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:1bb640f6ab0e0c8f9da50f8a",
+      "domain": "Reuters",
+      "generator": "Claude",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "ChatGPT-turbo:e8664b838604d39f83878da1",
+      "domain": "WritingPrompts",
+      "generator": "ChatGPT-turbo",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:1bf2dec8d2d18425cf12e064",
+      "domain": "Essay",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:4f99c3fe1a700e76cda73060",
+      "domain": "Reuters",
+      "generator": "Dolly",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Claude:7d5983126d4d20624a967475",
+      "domain": "WritingPrompts",
+      "generator": "Claude",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:9d448c3bfa2bb64c9c4de910",
+      "domain": "Essay",
+      "generator": "GPT4All",
+      "eligible": [],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "GPT4All:b5f814a17e5dfe78e8cb80f6",
+      "domain": "Reuters",
+      "generator": "GPT4All",
+      "eligible": [
+        "number_change"
+      ],
+      "in_original_200_cohort": false
+    },
+    {
+      "source_id": "Dolly:ae407048bec4f56610bb8fd4",
+      "domain": "WritingPrompts",
+      "generator": "Dolly",
+      "eligible": [],
+      "in_original_200_cohort": false
+    }
+  ],
+  "source_file": "/workspace/Humanization/data/clean/samples.jsonl",
+  "source_sha256": "af76cb25878c7761b9ad68d4c1164d9547884c319a47996deee58163b74cc593",
+  "pairs_sha256": "fb1919a79f499ac08146ad9fc3870f9bbe4115864d8cbd1f2d414825754bfb94",
+  "code_sha256": "6f4d9eef614d23082eeea0e99e53519109e0109cf72b0a3723420886948055cc"
+}

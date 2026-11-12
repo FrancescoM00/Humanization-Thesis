@@ -1,0 +1,596 @@
+{
+  "source_format": "MGTBench mgt1 wide CSV",
+  "th_bench_code_commit": "5c1d99cefee49208206b6fa75d3a628ac9935f86",
+  "official_source": "https://drive.google.com/drive/folders/1p4iBeM4r-sUKe8TnS4DcYlxvQagcmola",
+  "n_pairs_per_domain": 300,
+  "seed": 42,
+  "min_whitespace_words": 50,
+  "clean_sentence_ends": true,
+  "generators": [
+    "ChatGPT-turbo",
+    "Claude",
+    "ChatGLM",
+    "Dolly",
+    "ChatGPT",
+    "GPT4All",
+    "StableLM"
+  ],
+  "generator_quota_per_domain": {
+    "ChatGPT-turbo": 43,
+    "Claude": 43,
+    "ChatGLM": 43,
+    "Dolly": 43,
+    "ChatGPT": 43,
+    "GPT4All": 43,
+    "StableLM": 42
+  },
+  "source_files": {
+    "Essay": {
+      "file": "Essay_LLMs.csv",
+      "sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707",
+      "rows": 1000
+    },
+    "WritingPrompts": {
+      "file": "WP_LLMs.csv",
+      "sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278",
+      "rows": 1000
+    },
+    "Reuters": {
+      "file": "Reuters_LLMs.csv",
+      "sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b",
+      "rows": 1000
+    }
+  },
+  "cleaning": [
+    "Pinned TH-Bench process_spaces spacing repair",
+    "Symmetric trailing-fragment removal to last plausible sentence-end punctuation before minimum length",
+    "Symmetric minimum whitespace-word count after tail handling",
+    "Global casefolded whitespace-normalized exact text deduplication",
+    "Machines identical to any source human excluded",
+    "No attack/humanization or fixed-word truncation",
+    "No phrase/markup/refusal stripping: these remain measurable and potentially confounding"
+  ],
+  "cleaning_status": "Locally prepared subset; NOT an officially released TH-Bench clean snapshot",
+  "split_unit": "group_id: connected shared-source-prompt/human-text groups; human/machine pairs stay together",
+  "limitations": [
+    "Near-duplicate detection beyond case/whitespace is not performed",
+    "No independent English-language verification; punctuation heuristic does not prove grammatical completeness",
+    "Text length, prompt reuse and original corpus artifacts can confound classification",
+    "These historical generators do not establish generalization to current LLMs"
+  ],
+  "diagnostics": {
+    "Essay": {
+      "eligible_unique_humans": 1000,
+      "eligible_machine_by_generator": {
+        "ChatGPT-turbo": 1000,
+        "Claude": 1000,
+        "ChatGLM": 991,
+        "Dolly": 921,
+        "ChatGPT": 1000,
+        "GPT4All": 969,
+        "StableLM": 628
+      },
+      "removed": {
+        "StableLM:short_or_missing": 372,
+        "GPT4All:short_or_missing": 31,
+        "Dolly:short_or_missing": 79,
+        "ChatGLM:short_or_missing": 9
+      }
+    },
+    "WritingPrompts": {
+      "eligible_unique_humans": 999,
+      "eligible_machine_by_generator": {
+        "ChatGPT-turbo": 998,
+        "Claude": 991,
+        "ChatGLM": 995,
+        "Dolly": 938,
+        "ChatGPT": 996,
+        "GPT4All": 962,
+        "StableLM": 878
+      },
+      "removed": {
+        "StableLM:short_or_missing": 121,
+        "Dolly:short_or_missing": 61,
+        "GPT4All:short_or_missing": 37,
+        "ChatGLM:short_or_missing": 4,
+        "ChatGPT:short_or_missing": 3,
+        "Claude:short_or_missing": 8,
+        "ChatGPT-turbo:short_or_missing": 1,
+        "human_short_or_missing": 1
+      }
+    },
+    "Reuters": {
+      "eligible_unique_humans": 998,
+      "eligible_machine_by_generator": {
+        "ChatGPT-turbo": 998,
+        "Claude": 998,
+        "ChatGLM": 989,
+        "Dolly": 848,
+        "ChatGPT": 997,
+        "GPT4All": 985,
+        "StableLM": 861
+      },
+      "removed": {
+        "StableLM:short_or_missing": 137,
+        "Dolly:short_or_missing": 150,
+        "ChatGPT:short_or_missing": 1,
+        "GPT4All:short_or_missing": 13,
+        "ChatGLM:short_or_missing": 9,
+        "duplicate_human": 2
+      }
+    }
+  },
+  "cleanup_diagnostics_all_source_rows": {
+    "Essay": {
+      "human": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 20,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 192,
+        "n_below_min_after_cleaning": 0
+      },
+      "ChatGPT-turbo": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 6,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 22,
+        "n_below_min_after_cleaning": 0
+      },
+      "Claude": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 8,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 77,
+        "n_below_min_after_cleaning": 0
+      },
+      "ChatGLM": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 932,
+        "n_no_terminal_boundary": 5,
+        "whitespace_words_removed": 12173,
+        "n_below_min_after_cleaning": 9
+      },
+      "Dolly": {
+        "n_input_nonempty": 933,
+        "n_tail_trimmed": 519,
+        "n_no_terminal_boundary": 8,
+        "whitespace_words_removed": 8389,
+        "n_below_min_after_cleaning": 79
+      },
+      "ChatGPT": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 959,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 10707,
+        "n_below_min_after_cleaning": 0
+      },
+      "GPT4All": {
+        "n_input_nonempty": 976,
+        "n_tail_trimmed": 782,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 9965,
+        "n_below_min_after_cleaning": 31
+      },
+      "StableLM": {
+        "n_input_nonempty": 865,
+        "n_tail_trimmed": 468,
+        "n_no_terminal_boundary": 26,
+        "whitespace_words_removed": 6566,
+        "n_below_min_after_cleaning": 372
+      }
+    },
+    "WritingPrompts": {
+      "human": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 155,
+        "n_no_terminal_boundary": 1,
+        "whitespace_words_removed": 1455,
+        "n_below_min_after_cleaning": 1
+      },
+      "ChatGPT-turbo": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 4,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 22,
+        "n_below_min_after_cleaning": 1
+      },
+      "Claude": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 8,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 30,
+        "n_below_min_after_cleaning": 8
+      },
+      "ChatGLM": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 882,
+        "n_no_terminal_boundary": 3,
+        "whitespace_words_removed": 8917,
+        "n_below_min_after_cleaning": 4
+      },
+      "Dolly": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 430,
+        "n_no_terminal_boundary": 4,
+        "whitespace_words_removed": 5051,
+        "n_below_min_after_cleaning": 61
+      },
+      "ChatGPT": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 764,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 7196,
+        "n_below_min_after_cleaning": 3
+      },
+      "GPT4All": {
+        "n_input_nonempty": 989,
+        "n_tail_trimmed": 731,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 7916,
+        "n_below_min_after_cleaning": 37
+      },
+      "StableLM": {
+        "n_input_nonempty": 971,
+        "n_tail_trimmed": 630,
+        "n_no_terminal_boundary": 4,
+        "whitespace_words_removed": 5581,
+        "n_below_min_after_cleaning": 121
+      }
+    },
+    "Reuters": {
+      "human": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 57,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 617,
+        "n_below_min_after_cleaning": 0
+      },
+      "ChatGPT-turbo": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 0,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 0,
+        "n_below_min_after_cleaning": 0
+      },
+      "Claude": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 33,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 180,
+        "n_below_min_after_cleaning": 0
+      },
+      "ChatGLM": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 917,
+        "n_no_terminal_boundary": 3,
+        "whitespace_words_removed": 12766,
+        "n_below_min_after_cleaning": 9
+      },
+      "Dolly": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 168,
+        "n_no_terminal_boundary": 46,
+        "whitespace_words_removed": 3223,
+        "n_below_min_after_cleaning": 150
+      },
+      "ChatGPT": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 931,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 11979,
+        "n_below_min_after_cleaning": 1
+      },
+      "GPT4All": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 123,
+        "n_no_terminal_boundary": 0,
+        "whitespace_words_removed": 1909,
+        "n_below_min_after_cleaning": 13
+      },
+      "StableLM": {
+        "n_input_nonempty": 1000,
+        "n_tail_trimmed": 513,
+        "n_no_terminal_boundary": 4,
+        "whitespace_words_removed": 6755,
+        "n_below_min_after_cleaning": 137
+      }
+    }
+  },
+  "cleanup_diagnostics_selected": {
+    "Essay": {
+      "human": {
+        "n_selected": 300,
+        "n_tail_trimmed": 4,
+        "whitespace_words_removed": 32
+      },
+      "ChatGPT-turbo": {
+        "n_selected": 43,
+        "n_tail_trimmed": 0,
+        "whitespace_words_removed": 0
+      },
+      "Dolly": {
+        "n_selected": 43,
+        "n_tail_trimmed": 27,
+        "whitespace_words_removed": 467
+      },
+      "Claude": {
+        "n_selected": 43,
+        "n_tail_trimmed": 1,
+        "whitespace_words_removed": 15
+      },
+      "ChatGLM": {
+        "n_selected": 43,
+        "n_tail_trimmed": 38,
+        "whitespace_words_removed": 501
+      },
+      "GPT4All": {
+        "n_selected": 43,
+        "n_tail_trimmed": 32,
+        "whitespace_words_removed": 465
+      },
+      "ChatGPT": {
+        "n_selected": 43,
+        "n_tail_trimmed": 42,
+        "whitespace_words_removed": 464
+      },
+      "StableLM": {
+        "n_selected": 42,
+        "n_tail_trimmed": 26,
+        "whitespace_words_removed": 205
+      }
+    },
+    "WritingPrompts": {
+      "human": {
+        "n_selected": 300,
+        "n_tail_trimmed": 41,
+        "whitespace_words_removed": 525
+      },
+      "Dolly": {
+        "n_selected": 43,
+        "n_tail_trimmed": 19,
+        "whitespace_words_removed": 174
+      },
+      "ChatGPT-turbo": {
+        "n_selected": 43,
+        "n_tail_trimmed": 0,
+        "whitespace_words_removed": 0
+      },
+      "ChatGLM": {
+        "n_selected": 43,
+        "n_tail_trimmed": 39,
+        "whitespace_words_removed": 438
+      },
+      "ChatGPT": {
+        "n_selected": 43,
+        "n_tail_trimmed": 29,
+        "whitespace_words_removed": 286
+      },
+      "GPT4All": {
+        "n_selected": 43,
+        "n_tail_trimmed": 29,
+        "whitespace_words_removed": 388
+      },
+      "Claude": {
+        "n_selected": 43,
+        "n_tail_trimmed": 1,
+        "whitespace_words_removed": 2
+      },
+      "StableLM": {
+        "n_selected": 42,
+        "n_tail_trimmed": 32,
+        "whitespace_words_removed": 288
+      }
+    },
+    "Reuters": {
+      "human": {
+        "n_selected": 300,
+        "n_tail_trimmed": 21,
+        "whitespace_words_removed": 207
+      },
+      "StableLM": {
+        "n_selected": 42,
+        "n_tail_trimmed": 26,
+        "whitespace_words_removed": 331
+      },
+      "ChatGPT": {
+        "n_selected": 43,
+        "n_tail_trimmed": 42,
+        "whitespace_words_removed": 540
+      },
+      "Dolly": {
+        "n_selected": 43,
+        "n_tail_trimmed": 5,
+        "whitespace_words_removed": 55
+      },
+      "Claude": {
+        "n_selected": 43,
+        "n_tail_trimmed": 1,
+        "whitespace_words_removed": 10
+      },
+      "ChatGPT-turbo": {
+        "n_selected": 43,
+        "n_tail_trimmed": 0,
+        "whitespace_words_removed": 0
+      },
+      "ChatGLM": {
+        "n_selected": 43,
+        "n_tail_trimmed": 41,
+        "whitespace_words_removed": 445
+      },
+      "GPT4All": {
+        "n_selected": 43,
+        "n_tail_trimmed": 4,
+        "whitespace_words_removed": 68
+      }
+    }
+  },
+  "counts": [
+    {
+      "domain": "Essay",
+      "label": 0,
+      "generator": "human",
+      "n": 300
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "ChatGLM",
+      "n": 43
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "ChatGPT",
+      "n": 43
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "ChatGPT-turbo",
+      "n": 43
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "Claude",
+      "n": 43
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "Dolly",
+      "n": 43
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "GPT4All",
+      "n": 43
+    },
+    {
+      "domain": "Essay",
+      "label": 1,
+      "generator": "StableLM",
+      "n": 42
+    },
+    {
+      "domain": "Reuters",
+      "label": 0,
+      "generator": "human",
+      "n": 300
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "ChatGLM",
+      "n": 43
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "ChatGPT",
+      "n": 43
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "ChatGPT-turbo",
+      "n": 43
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "Claude",
+      "n": 43
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "Dolly",
+      "n": 43
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "GPT4All",
+      "n": 43
+    },
+    {
+      "domain": "Reuters",
+      "label": 1,
+      "generator": "StableLM",
+      "n": 42
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 0,
+      "generator": "human",
+      "n": 300
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "ChatGLM",
+      "n": 43
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "ChatGPT",
+      "n": 43
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "ChatGPT-turbo",
+      "n": 43
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "Claude",
+      "n": 43
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "Dolly",
+      "n": 43
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "GPT4All",
+      "n": 43
+    },
+    {
+      "domain": "WritingPrompts",
+      "label": 1,
+      "generator": "StableLM",
+      "n": 42
+    }
+  ],
+  "n_rows": 1800,
+  "n_groups": 900,
+  "download_provenance": {
+    "method": "mirror",
+    "mirror_repository": "https://github.com/derek33125/AITextDetection",
+    "mirror_commit": "6f289c4cf4e3966e9442d104ea250bae43f3ff9e",
+    "official_url": "https://drive.google.com/drive/folders/1p4iBeM4r-sUKe8TnS4DcYlxvQagcmola",
+    "official_bytes_verified": false,
+    "mirror_claim": "README identifies Data_Generation as original data source; CSV schema matches official loader.",
+    "dataset_license": "Not established by mirror; upstream source corpus terms apply; no raw data redistribution intended.",
+    "files": {
+      "Reuters_LLMs.csv": {
+        "sha256": "d3a31dd8fd3b04ec333ec29ad3a929618b5a88beaf2e8338b50594957a6fa32b"
+      },
+      "Essay_LLMs.csv": {
+        "sha256": "f7ae324296b3d81b2134e873406f70a457c0383168aa7a9de83b70051ca41707"
+      },
+      "WP_LLMs.csv": {
+        "sha256": "ee787f528f2b5d4440cf9cd714ea4f81f9cf7b59086c37d90a376ba3db3a7278"
+      }
+    }
+  },
+  "samples_sha256": "af76cb25878c7761b9ad68d4c1164d9547884c319a47996deee58163b74cc593"
+}

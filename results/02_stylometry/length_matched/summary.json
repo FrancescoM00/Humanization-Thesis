@@ -1,0 +1,191 @@
+{
+  "n_texts": 1800,
+  "shortlist": [
+    "pos_num",
+    "pos_cconj",
+    "mattr_50",
+    "pos_propn"
+  ],
+  "cross_domain": [
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Essay",
+      "generator": "ALL",
+      "feature_set": "combined",
+      "n_test": 600,
+      "roc_auc": 0.6899333333333333,
+      "roc_auc_ci_low": 0.6454002777777778,
+      "roc_auc_ci_high": 0.7303327777777777,
+      "balanced_accuracy": 0.5700000000000001,
+      "macro_f1": 0.5003614955587689
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Essay",
+      "generator": "ALL",
+      "feature_set": "length_only",
+      "n_test": 600,
+      "roc_auc": 0.4984777777777778,
+      "roc_auc_ci_low": 0.45495875,
+      "roc_auc_ci_high": 0.5433952777777777,
+      "balanced_accuracy": 0.4916666666666667,
+      "macro_f1": 0.4916652546257073
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Essay",
+      "generator": "ALL",
+      "feature_set": "style",
+      "n_test": 600,
+      "roc_auc": 0.6701222222222222,
+      "roc_auc_ci_low": 0.6264819444444444,
+      "roc_auc_ci_high": 0.7124636111111111,
+      "balanced_accuracy": 0.57,
+      "macro_f1": 0.503209242618742
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Essay",
+      "generator": "ALL",
+      "feature_set": "wikipedia",
+      "n_test": 600,
+      "roc_auc": 0.5761277777777777,
+      "roc_auc_ci_low": 0.5371576388888888,
+      "roc_auc_ci_high": 0.6087730555555555,
+      "balanced_accuracy": 0.5666666666666667,
+      "macro_f1": 0.5183698672429762
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Essay",
+      "generator": "ALL",
+      "feature_set": "word_count_only",
+      "n_test": 600,
+      "roc_auc": 0.5,
+      "roc_auc_ci_low": 0.5,
+      "roc_auc_ci_high": 0.5,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.3333333333333333
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Reuters",
+      "generator": "ALL",
+      "feature_set": "combined",
+      "n_test": 600,
+      "roc_auc": 0.7581888888888889,
+      "roc_auc_ci_low": 0.7193108333333333,
+      "roc_auc_ci_high": 0.8013050000000002,
+      "balanced_accuracy": 0.7133333333333334,
+      "macro_f1": 0.7129474070695045
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Reuters",
+      "generator": "ALL",
+      "feature_set": "length_only",
+      "n_test": 600,
+      "roc_auc": 0.38012222222222225,
+      "roc_auc_ci_low": 0.33716,
+      "roc_auc_ci_high": 0.42001750000000004,
+      "balanced_accuracy": 0.47333333333333333,
+      "macro_f1": 0.3605310021045815
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Reuters",
+      "generator": "ALL",
+      "feature_set": "style",
+      "n_test": 600,
+      "roc_auc": 0.7594888888888888,
+      "roc_auc_ci_low": 0.7216313888888888,
+      "roc_auc_ci_high": 0.7958875,
+      "balanced_accuracy": 0.7,
+      "macro_f1": 0.6993452407465146
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Reuters",
+      "generator": "ALL",
+      "feature_set": "wikipedia",
+      "n_test": 600,
+      "roc_auc": 0.5372388888888889,
+      "roc_auc_ci_low": 0.5102413888888889,
+      "roc_auc_ci_high": 0.5627770833333333,
+      "balanced_accuracy": 0.5333333333333333,
+      "macro_f1": 0.41917550580133034
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "Reuters",
+      "generator": "ALL",
+      "feature_set": "word_count_only",
+      "n_test": 600,
+      "roc_auc": 0.5,
+      "roc_auc_ci_low": 0.5,
+      "roc_auc_ci_high": 0.5,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.3333333333333333
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "WritingPrompts",
+      "generator": "ALL",
+      "feature_set": "combined",
+      "n_test": 600,
+      "roc_auc": 0.5719333333333334,
+      "roc_auc_ci_low": 0.5302027777777777,
+      "roc_auc_ci_high": 0.6180361111111111,
+      "balanced_accuracy": 0.515,
+      "macro_f1": 0.4990690028145092
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "WritingPrompts",
+      "generator": "ALL",
+      "feature_set": "length_only",
+      "n_test": 600,
+      "roc_auc": 0.2812944444444445,
+      "roc_auc_ci_low": 0.23957652777777777,
+      "roc_auc_ci_high": 0.3181659722222222,
+      "balanced_accuracy": 0.42,
+      "macro_f1": 0.35685772017150463
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "WritingPrompts",
+      "generator": "ALL",
+      "feature_set": "style",
+      "n_test": 600,
+      "roc_auc": 0.5796555555555556,
+      "roc_auc_ci_low": 0.5382430555555555,
+      "roc_auc_ci_high": 0.6198697222222221,
+      "balanced_accuracy": 0.5183333333333333,
+      "macro_f1": 0.5006206243106174
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "WritingPrompts",
+      "generator": "ALL",
+      "feature_set": "wikipedia",
+      "n_test": 600,
+      "roc_auc": 0.4992055555555555,
+      "roc_auc_ci_low": 0.4692983333333333,
+      "roc_auc_ci_high": 0.5267049999999999,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.4028583181836277
+    },
+    {
+      "protocol": "leave_domain_out",
+      "domain": "WritingPrompts",
+      "generator": "ALL",
+      "feature_set": "word_count_only",
+      "n_test": 600,
+      "roc_auc": 0.5,
+      "roc_auc_ci_low": 0.5,
+      "roc_auc_ci_high": 0.5,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.3333333333333333
+    }
+  ]
+}

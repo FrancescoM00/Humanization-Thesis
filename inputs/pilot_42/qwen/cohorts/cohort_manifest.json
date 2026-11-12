@@ -1,0 +1,83 @@
+{
+  "seed": 42,
+  "per_cell": 2,
+  "reserve_per_cell": 6,
+  "calibration_per_domain": 100,
+  "metadata_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
+  "historical_manifest_sha256": "afc4b0a813f586d7c3bb16e10894b85a98b3f72500e745e469aa3c94e2512cd8",
+  "reconstructed_text_ids_verified": true,
+  "selection_uses_detector_scores": false,
+  "calibration_excludes_reserved_study_sources": true,
+  "estimand": "90\u2013180-word sentence-ended initial passages, not complete documents",
+  "panels": {
+    "smoke": {
+      "file": "smoke.jsonl",
+      "sha256": "9c6553dce584ce1ba8686efc48ef29745e16d8ae92fd26d66b0b6dcbb06eb21c",
+      "calibration_humans": 300,
+      "test_sources": 3,
+      "test_cells": {
+        "Essay/ChatGLM": 1,
+        "Reuters/ChatGLM": 1,
+        "WritingPrompts/ChatGLM": 1
+      }
+    },
+    "pilot": {
+      "file": "pilot.jsonl",
+      "sha256": "ed6b343dc972038515ff6dc4ebdfe7e1ce6ce50386cb49c5e104732da440574a",
+      "calibration_humans": 300,
+      "test_sources": 42,
+      "test_cells": {
+        "Essay/ChatGLM": 2,
+        "Essay/ChatGPT": 2,
+        "Essay/ChatGPT-turbo": 2,
+        "Essay/Claude": 2,
+        "Essay/Dolly": 2,
+        "Essay/GPT4All": 2,
+        "Essay/StableLM": 2,
+        "Reuters/ChatGLM": 2,
+        "Reuters/ChatGPT": 2,
+        "Reuters/ChatGPT-turbo": 2,
+        "Reuters/Claude": 2,
+        "Reuters/Dolly": 2,
+        "Reuters/GPT4All": 2,
+        "Reuters/StableLM": 2,
+        "WritingPrompts/ChatGLM": 2,
+        "WritingPrompts/ChatGPT": 2,
+        "WritingPrompts/ChatGPT-turbo": 2,
+        "WritingPrompts/Claude": 2,
+        "WritingPrompts/Dolly": 2,
+        "WritingPrompts/GPT4All": 2,
+        "WritingPrompts/StableLM": 2
+      }
+    },
+    "study": {
+      "file": "study.jsonl",
+      "sha256": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68",
+      "calibration_humans": 300,
+      "test_sources": 126,
+      "test_cells": {
+        "Essay/ChatGLM": 6,
+        "Essay/ChatGPT": 6,
+        "Essay/ChatGPT-turbo": 6,
+        "Essay/Claude": 6,
+        "Essay/Dolly": 6,
+        "Essay/GPT4All": 6,
+        "Essay/StableLM": 6,
+        "Reuters/ChatGLM": 6,
+        "Reuters/ChatGPT": 6,
+        "Reuters/ChatGPT-turbo": 6,
+        "Reuters/Claude": 6,
+        "Reuters/Dolly": 6,
+        "Reuters/GPT4All": 6,
+        "Reuters/StableLM": 6,
+        "WritingPrompts/ChatGLM": 6,
+        "WritingPrompts/ChatGPT": 6,
+        "WritingPrompts/ChatGPT-turbo": 6,
+        "WritingPrompts/Claude": 6,
+        "WritingPrompts/Dolly": 6,
+        "WritingPrompts/GPT4All": 6,
+        "WritingPrompts/StableLM": 6
+      }
+    }
+  }
+}

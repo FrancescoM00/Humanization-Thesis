@@ -1,0 +1,8 @@
+{
+  "protocol": "contextual_nli_calibration_selection_v1",
+  "policy_sha256": "cfdadaa8826d9821cdb471a9c5954e02c38fcd14068fb746cfda2cd9d2235e2a",
+  "labels_sha256": "ca44bf78251d78e87e0621f5f3bf1bef3d6b54e55ef427659d433889c28707b6",
+  "scores_sha256": "4c02e78803eab9948bbd5ad5b1fcc1a794e25f584b942fe282ccfabb07d19471",
+  "bootstrap": 2000,
+  "seed": 42
+}

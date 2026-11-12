@@ -1,0 +1,57 @@
+{
+  "status": "excluded_from_results",
+  "reason": "An initial attempt produced identical five-fold partitions for all seeds under sklearn 1.7.2. It was excluded before AUC analysis. No feature, model, random panel or metric choice was changed. Only group randomization was corrected before the final fits.",
+  "initial_manifest": {
+    "status": "completed",
+    "created_at_utc": "2026-11-11T13:31:28.765263+00:00",
+    "protocol_sha256": "b6767073983a71004fcba9ab9a8f22efc8b59ded2a4a8e562d37c9b9280ebc96",
+    "input_csv": "results_length_matched/features.csv",
+    "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
+    "n_documents": 1800,
+    "n_groups": 900,
+    "n_associations": 900,
+    "n_features": 105,
+    "n_models": 206,
+    "n_fits": 7210,
+    "cv_seeds": [
+      42,
+      137,
+      271,
+      811,
+      2026
+    ],
+    "prediction_shapes": {
+      "cv": [
+        5,
+        1800,
+        206
+      ],
+      "leave_domain_out": [
+        1,
+        1800,
+        206
+      ],
+      "leave_generator_out": [
+        1,
+        1800,
+        206
+      ]
+    },
+    "versions": {
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "scipy": "1.16.3",
+      "scikit-learn": "1.7.2"
+    },
+    "code_sha256": "d28ce19b1cae2bdd9b9cf81d9bc422626c5c52bec7fc8996067e229ad2fc2f29",
+    "n_convergence_warnings": 0,
+    "convergence_warnings": [],
+    "elapsed_seconds": 79.22186091900039,
+    "fitting_and_preprocessing": "training rows only; no tuning; source groups disjoint",
+    "historical_fixed_panel_is_independently_validated": false,
+    "semantic_alignment_of_human_machine_rows_is_assumed": false
+  },
+  "initial_predictions_sha256": "7f7f7e272049dfcae2898a5cb072796d232cbb2590c6566d31dbf5649c45d98b",
+  "initial_local_archive": "/tmp/shortlist_validation_initial_identical_splits_20261111",
+  "no_AUC_analysis_of_initial_attempt": true
+}

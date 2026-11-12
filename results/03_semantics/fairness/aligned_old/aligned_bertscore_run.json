@@ -1,0 +1,16 @@
+{
+  "stage": "aligned_bertscore",
+  "status": "executed",
+  "n_pairs": 2621,
+  "pairs_sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
+  "alignment_sha256": "e8990817c0005e5aedf7099d499c163cb746164ead3d0716eef8cb670e7a52c1",
+  "elapsed_seconds": 588.9988763829997,
+  "peak_rss_mib": 1492.24609375,
+  "threads": 4,
+  "batch_size": 4,
+  "model": "/workspace/Humanization/data/models/bertscore",
+  "unit_protocol": "exact existing NLI alignment chunks; no silent truncation",
+  "alignment": "maximum across all premise units; both directions",
+  "aggregation": "unweighted mean/q10/min; worst direction for bidirectional",
+  "code_sha256": "5ef41285fd9fb16d1566df649384ac0bf2f346ed9794445f0261040b5f1865ba"
+}

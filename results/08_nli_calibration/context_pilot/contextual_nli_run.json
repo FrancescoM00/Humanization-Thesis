@@ -1,0 +1,27 @@
+{
+  "protocol": "contextual_nli_v1",
+  "status": "executed",
+  "n_pairs": 19,
+  "n_comparisons": 5446,
+  "modes": [
+    "single_all",
+    "window2",
+    "window3",
+    "document"
+  ],
+  "device": "cpu",
+  "precision": "float32",
+  "max_pair_tokens": 384,
+  "hypothesis_units": "exact existing alignment units; otherwise sentence/chunks <=160 NLI tokens",
+  "premise_units": "native contiguous sentence/chunks; window2/window3 include shorter windows",
+  "document_mode": "exact full text only when actual tokenizer pair fits; incomplete coverage is not averaged",
+  "selection": "focused explanatory challenge panel, not a random accuracy or AUC sample",
+  "pairs_sha256": "6051fed6bf804f32587cb5089dcc3eb01d6c05cd1a8a82fd4f31afcfc933aa89",
+  "code_sha256": "14ade40e727324888656553fce39d32eb1833fb6dc8cc1cb4b45ea38d5847c47",
+  "elapsed_seconds": 1581.925304160999,
+  "new_evidence_scored": 5446,
+  "cache_entries": 5446,
+  "peak_rss_mib": 1549.1484375,
+  "batch_size": 2,
+  "threads": 2
+}

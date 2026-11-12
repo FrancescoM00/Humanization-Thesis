@@ -1,0 +1,10 @@
+feature,original_selected,matched_selected
+flesch_kincaid_grade,True,False
+fw_and,True,False
+mattr_50,True,True
+pos_adv,True,False
+pos_cconj,False,True
+pos_noun,True,False
+pos_num,True,True
+pos_propn,False,True
+punct_total_per100,True,False

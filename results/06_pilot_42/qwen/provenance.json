@@ -1,0 +1,26 @@
+{
+  "archive_sha256": "7a35ca521ccc4e2147b42e479fe2ac6bde1ef676ddb462137a27af046960f272",
+  "archive_file": "exports/kaggle_pilot/humanization_pilot.zip",
+  "source_pairs_sha256": "c36e16e4298ebef4fd3fd6ae49d8ca175dd2ad06da5bbed19703dabdf60de1e1",
+  "runtime": {
+    "repository_commit": "71dd61596e259a9fda89cd7d1ef4909b84c5ee79",
+    "mode": "pilot",
+    "active_systems": [
+      "identity",
+      "qwen_humanize"
+    ],
+    "torch": "2.11.0+cu130",
+    "gpus": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "requirements_sha256": "d47f409520ddc66f86a6eca8377551737ed0d146f056eb0db94bef2526b873d2",
+    "config_sha256": "86db7eb81f3d75fbfb306601395b70442659a3ea27d38b2e534991b571556d3b"
+  },
+  "n_test_sources": 42,
+  "n_pairs": 84,
+  "calibration_humans": 300,
+  "analysis": "Recorded scores only; no new humanizer, detector, embedding, BERTScore or NLI inference. Qualitative assistant review is not human gold.",
+  "audit_sampling": "21 Qwen pairs, one per domain/generator cell, plus 3 identity controls; SHA-256 rank audit21-v1:id, seed42 final shuffle; no score-based sampling",
+  "naturalness_annotations_present": false
+}

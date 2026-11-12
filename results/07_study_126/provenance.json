@@ -1,0 +1,236 @@
+{
+  "received_filename": "humanization_v2_study_protocol_v2.zip",
+  "received_sha256": "7e55e8b510df4e26ca1f7d4a61648525a088523a8cb8983bb805fa9b16476cd8",
+  "received_bytes": 27194720,
+  "sediment_file_id": "file_000000002c4082438a0f2bfd1e39f3f7",
+  "archive_in_repository": "exports/kaggle_v2_study/humanization_v2_study_protocol_v2.zip",
+  "analysis": "Saved Kaggle outputs only; no new model inference, generation, Groq requests or human labels.",
+  "runtime": {
+    "repository_commit": "3d028202a2200d1aca02b0e9f558d5f3eee1944a",
+    "mode": "study",
+    "active_systems": [
+      "identity",
+      "qwen_humanize",
+      "qwen14b_humanize",
+      "dipper",
+      "dipper_context3"
+    ],
+    "torch": "2.11.0+cu130",
+    "gpus": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "requirements_sha256": "d47f409520ddc66f86a6eca8377551737ed0d146f056eb0db94bef2526b873d2",
+    "venv_path": "/kaggle/temp/humanization_runtime/venv",
+    "hf_hub_cache": "/kaggle/temp/humanization_runtime/huggingface/hub",
+    "reuse_cached_models": false,
+    "config_sha256": "947f1aaee4739d3ed5929b05a08884027b4ce5438e4cf3c7c47d023ac3ef65cd"
+  },
+  "config_sha256": "947f1aaee4739d3ed5929b05a08884027b4ce5438e4cf3c7c47d023ac3ef65cd",
+  "cohorts_sha256": {
+    "pilot": "ed6b343dc972038515ff6dc4ebdfe7e1ce6ce50386cb49c5e104732da440574a",
+    "smoke": "9c6553dce584ce1ba8686efc48ef29745e16d8ae92fd26d66b0b6dcbb06eb21c",
+    "study": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68"
+  },
+  "rewrites_sha256": "16325f4b9668e4ee3d1c18cd9ddad9609529f2bb58b07370e1b27302a815725d",
+  "pairs_sha256": "537fceaa0ba5b8e29518b97bf789f25a8b98a5c45ba12797669eb5b24ffecfb6",
+  "n_calibration_humans": 300,
+  "n_test_sources": 126,
+  "n_reused_pilot_sources": 42,
+  "n_previously_unseen_sources": 84,
+  "n_rewrite_records_including_identity": 630,
+  "status_counts": {
+    "ok": 626,
+    "truncated": 4
+  },
+  "nonidentity_successes": 500,
+  "all_failed_sources_in_unseen84": true,
+  "failed_generations": [
+    {
+      "id": "humanizer_d9c0a04129d61c77ec442c60",
+      "source_id": "Essay:223:eceeae3f088c81ef",
+      "humanizer": "qwen_humanize",
+      "status": "truncated",
+      "metadata": {
+        "protocol": "humanizer_fixed_single_attempt_v1",
+        "model_id": "Qwen/Qwen2.5-3B-Instruct",
+        "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+        "seed": 42,
+        "original_sha256": "4b23f0bfe7e93d97c22ec5a75d67dc65b9ab33029098690e4238fc14e8914d00",
+        "input_tokens": 354,
+        "output_tokens": 512,
+        "finished_eos": false,
+        "unchanged": false,
+        "do_sample": false,
+        "num_return_sequences": 1,
+        "detector_feedback_used": false,
+        "prompt_sha256": "cc4e9109a172660e83f2c9d9cdaa8db665439b68f738487334932ea0044367da",
+        "elapsed_seconds": 22.145787765000023
+      }
+    },
+    {
+      "id": "humanizer_94d8dfcc0a2ff37c93a9065e",
+      "source_id": "Reuters:992:d3932f02b4a9e76d",
+      "humanizer": "qwen_humanize",
+      "status": "truncated",
+      "metadata": {
+        "protocol": "humanizer_fixed_single_attempt_v1",
+        "model_id": "Qwen/Qwen2.5-3B-Instruct",
+        "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+        "seed": 42,
+        "original_sha256": "e2e351a2ca34a33d3f08d8aba8e201c17ee4fc81450a8451b702106e28410ec4",
+        "input_tokens": 311,
+        "output_tokens": 512,
+        "finished_eos": false,
+        "unchanged": false,
+        "do_sample": false,
+        "num_return_sequences": 1,
+        "detector_feedback_used": false,
+        "prompt_sha256": "cc4e9109a172660e83f2c9d9cdaa8db665439b68f738487334932ea0044367da",
+        "elapsed_seconds": 22.054168645000118
+      }
+    },
+    {
+      "id": "humanizer_986f9fc0f975eda413b59e8e",
+      "source_id": "WritingPrompts:184:b88567fa0a190a58",
+      "humanizer": "dipper",
+      "status": "truncated",
+      "metadata": {
+        "protocol": "humanizer_fixed_single_attempt_v1",
+        "model_id": "kalpeshk2011/dipper-paraphraser-xxl",
+        "revision": "c1fbf7a958a2aab022e9e6f81f7a3139f9e6ee3c",
+        "seed": 42,
+        "original_sha256": "eecc8dfc4a01b3ac071f93dd66b411407cd282f4f027aaaa81b5a5cfd6a3b0d4",
+        "input_tokens": 227,
+        "output_tokens": 512,
+        "finished_eos": false,
+        "unchanged": false,
+        "do_sample": false,
+        "num_return_sequences": 1,
+        "detector_feedback_used": false,
+        "dipper_window_protocol": "entire_passage_no_prefix",
+        "lexical_diversity": 60,
+        "order_diversity": 0,
+        "elapsed_seconds": 37.80355420599972
+      }
+    },
+    {
+      "id": "humanizer_90517ebf809da20d7d99d799",
+      "source_id": "WritingPrompts:184:b88567fa0a190a58",
+      "humanizer": "dipper_context3",
+      "status": "truncated",
+      "metadata": {
+        "protocol": "humanizer_fixed_single_attempt_v1",
+        "model_id": "kalpeshk2011/dipper-paraphraser-xxl",
+        "revision": "c1fbf7a958a2aab022e9e6f81f7a3139f9e6ee3c",
+        "seed": 42,
+        "original_sha256": "eecc8dfc4a01b3ac071f93dd66b411407cd282f4f027aaaa81b5a5cfd6a3b0d4",
+        "input_tokens": 86,
+        "output_tokens": 512,
+        "finished_eos": false,
+        "unchanged": false,
+        "do_sample": false,
+        "num_return_sequences": 1,
+        "detector_feedback_used": false,
+        "dipper_window_protocol": "three_sentence_context_v2",
+        "dipper_sentence_segmentation": "spaCy en_core_web_sm parser after whitespace normalization",
+        "dipper_context_policy": "all prior rewritten windows; no rolling or dropped context",
+        "dipper_recipe_source": "https://huggingface.co/kalpeshk2011/dipper-paraphraser-xxl/blob/main/README.md",
+        "lexical_diversity": 60,
+        "order_diversity": 0,
+        "window_size_sentences": 3,
+        "n_input_sentences": 8,
+        "n_windows_expected": 3,
+        "n_windows_generated": 1,
+        "n_windows_completed": 0,
+        "input_token_aggregation": "sum of full window prompts including cumulative prefix",
+        "max_new_tokens_per_window": 512,
+        "generation_budget_scope": "per window; total generation budget grows with window count",
+        "window_generation": [
+          {
+            "window_index": 0,
+            "sentence_start": 0,
+            "sentence_end_exclusive": 3,
+            "original_window_sha256": "ebcda9d811de37d922174e5942cf85fc52770027689b8970cdf99b56a158e61c",
+            "full_prompt_sha256": "2d4aa940d9691c7b1d246b9e910238fddc586ce2fbd4e6b90c85d296dc7fb045",
+            "prefix_characters": 0,
+            "input_tokens": 86,
+            "output_tokens": 512,
+            "finished_eos": false,
+            "status": "truncated",
+            "elapsed_seconds": 38.419873652001115
+          }
+        ],
+        "elapsed_seconds": 38.419873652001115,
+        "failed_window_index": 0,
+        "window_processing_elapsed_seconds": 38.44439718600006
+      }
+    }
+  ],
+  "n_semantic_pairs": 626,
+  "naturalness_study": {
+    "dipper__dipper_context3": {
+      "status": "partial",
+      "blocked_reason": "provider_http_429",
+      "generation_post_attempts": 201,
+      "expected_orders": 250,
+      "completed_valid_orders": 100,
+      "complete_order_consistent_pairs": 15,
+      "n_selected_sources": 126,
+      "n_eligible_pairs": 125,
+      "n_generation_failure_pairs": 1,
+      "token_usage": {
+        "prompt_tokens": 49465,
+        "completion_tokens": 2900,
+        "total_tokens": 52365
+      }
+    },
+    "qwen_humanize__qwen14b_humanize": {
+      "status": "partial",
+      "blocked_reason": "request_budget_exhausted",
+      "generation_post_attempts": 256,
+      "expected_orders": 248,
+      "completed_valid_orders": 136,
+      "complete_order_consistent_pairs": 32,
+      "n_selected_sources": 126,
+      "n_eligible_pairs": 124,
+      "n_generation_failure_pairs": 2,
+      "token_usage": {
+        "prompt_tokens": 73850,
+        "completion_tokens": 3947,
+        "total_tokens": 77797
+      }
+    },
+    "qwen_humanize__dipper_context3": {
+      "status": "partial",
+      "blocked_reason": "request_budget_exhausted",
+      "generation_post_attempts": 256,
+      "expected_orders": 246,
+      "completed_valid_orders": 128,
+      "complete_order_consistent_pairs": 46,
+      "n_selected_sources": 126,
+      "n_eligible_pairs": 123,
+      "n_generation_failure_pairs": 3,
+      "token_usage": {
+        "prompt_tokens": 69571,
+        "completion_tokens": 3712,
+        "total_tokens": 73283
+      }
+    }
+  },
+  "naturalness_new_comparisons_post_attempts": 713,
+  "naturalness_new_comparisons_valid_orders": 364,
+  "human_annotation_present": false,
+  "semantic_threshold_applied": false,
+  "annotation_sampling": {
+    "available_pairs": 500,
+    "reference_pairs": 84,
+    "reference_sources": 21,
+    "selected_diagnostic_pairs": 99,
+    "diagnostic_sources": 25,
+    "diagnostic_target_met": false,
+    "total_selected_unique_pairs": 183,
+    "total_selected_unique_sources": 46,
+    "labels_present": false
+  }
+}

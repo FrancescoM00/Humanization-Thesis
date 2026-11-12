@@ -1,0 +1,19 @@
+metric,family,risk_definition
+lexical_rouge_l_f1,similarity,-lexical_rouge_l_f1
+lexical_bleu,similarity,-lexical_bleu
+embedding_cosine,similarity,-embedding_cosine
+bert_chunk_f1,similarity,-bert_chunk_f1
+bert_chunk_f1_baseline_distance,similarity,-bert_chunk_f1_baseline_distance
+bert_chunk_f1_rescaled,similarity,-bert_chunk_f1_rescaled
+nli_forward_mean,nli_directional,-nli_forward_mean
+nli_reverse_mean,nli_directional,-nli_reverse_mean
+nli_bidirectional_mean,nli_bidirectional,"-min(nli_forward_mean, nli_reverse_mean)"
+nli_forward_q10,nli_directional,-nli_forward_q10
+nli_reverse_q10,nli_directional,-nli_reverse_q10
+nli_bidirectional_q10,nli_bidirectional,"-min(nli_forward_q10, nli_reverse_q10)"
+nli_forward_min,nli_directional,-nli_forward_min
+nli_reverse_min,nli_directional,-nli_reverse_min
+nli_bidirectional_min,nli_bidirectional,"-min(nli_forward_min, nli_reverse_min)"
+nli_forward_low_support_fraction,nli_directional,nli_forward_low_support_fraction
+nli_reverse_low_support_fraction,nli_directional,nli_reverse_low_support_fraction
+nli_bidirectional_low_support_fraction,nli_bidirectional,"max(nli_forward_low_support_fraction, nli_reverse_low_support_fraction)"

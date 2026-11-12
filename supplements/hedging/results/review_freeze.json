@@ -1,0 +1,35 @@
+{
+  "created_at_utc": "2026-11-12T01:40:13.899203+00:00",
+  "before_new_nli_inference": true,
+  "selection_uses_scores": false,
+  "reviewer_source": "assistant",
+  "human_gold_labels_available": false,
+  "replacement_rule": "reject any invalid variant; first same-domain eligible reserve, else first other-domain; qualified retained",
+  "n_replaced_sources": 4,
+  "protocol_sha256": "c31feb81a7f85871f7d94942d9e74eda2517b38f264489f14ed78f86c5f16d45",
+  "input_sha256": {
+    "pre_review/all_assistant_reviews.csv": "2dbd666fc0aeb892dcdbb97b0a495fb53aadfeb3db7acf3e5f31a52466e0fadc",
+    "pre_review/candidate_reserve.jsonl": "f3c45e8e9878353182fd6869c76ac3c7576e9af36ab26256cf74b9b07bd6e645",
+    "pre_review/hedge_review_A.csv": "738eccb046be76939ed9d9404eb572a4e49a9245a4c59f6627f58c66bce466a9",
+    "pre_review/hedge_review_B.csv": "e97e4c50b7f158a3214953d90af5fb991293556583f9928ae79e391590c46fe9",
+    "pre_review/hedge_review_C.csv": "307d1082f35c88841b0940586f310c1b8766f843bd99874aed8c4d0fa6097dc0",
+    "pre_review/hedge_review_reserve.csv": "762fb697c0190239efa1999726947d4edee12eac95a63e4ed52b189e327ab47b",
+    "pre_review/human_annotation.csv": "22bd9da2883b80aca65de977ee3f7227e44470a98278d285fc8dba0510414556",
+    "pre_review/human_annotation_key.csv": "27f8b1d717289b5487e4a6462dcffe38e64f5060f5316129396ee336c5d61709",
+    "pre_review/pairs.jsonl": "f2a0a6be19bcb882ce0ec951dad8ff9370492777756ce6d35a6e676c5034ef85",
+    "pre_review/preparation_manifest.json": "990fb81eaf22a538bf6dff26eb43d6f4c9ac8f348685d2c73df67932c38367d4",
+    "pre_review/protocol.json": "c31feb81a7f85871f7d94942d9e74eda2517b38f264489f14ed78f86c5f16d45",
+    "pre_review/review_pairs.csv": "7eed658c137d8a9c0e6a87f83100acca34496b1728d18a055f3b185ec47d65a3",
+    "pre_review/sources.jsonl": "beb3402795d8e080921e9fe46207adf059884456f7c9855c1bce1ee816ad33c8"
+  },
+  "final_sha256": {
+    "sources.jsonl": "4852318fc453ceb869b68be4cf823f49f27377b6c2919cd2bf6ceb5b0479fc5a",
+    "pairs.jsonl": "ef434b59f692eb48e9796e2d98231e46f80d27ea19117db44a99c4fd62d40820",
+    "assistant_review.csv": "ff9ea32231572438a9b56629bff08586d26d0ad9b0f42c2154ed5eefd9931369",
+    "review_pairs.csv": "96dc730c787449a02389ec31d8a68c908898a82d0df806489533f0c4647ece98",
+    "human_annotation.csv": "5f00f4f8b686db4c5e94566d7fd9311555423c739289977efe92fe14467e2002",
+    "human_annotation_key.csv": "470d285675a2667e19440e52cd374fcf104d36e2283ba79de4e1eb57427d467a",
+    "preparation_manifest.json": "22f4755549448c3fbd9046841a47941e21bbae071936f308640ff3cf57f7e0ac",
+    "replacements.csv": "882075af15e0cb3cec529f2b2b76ccb6a5613a85fd5310aa467b1bda1dbc1056"
+  }
+}

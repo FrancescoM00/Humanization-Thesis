@@ -1,0 +1,10 @@
+{
+  "n_pairs": 3500,
+  "n_reused_pairs": 2621,
+  "n_original_distributed_pairs": 392,
+  "n_expanded_pairs": 487,
+  "n_new_pairs": 879,
+  "pairs_sha256": "23a395c2b253dc40a7615414593bea0b8ac4d004202aca522c36bfcd7f8f46e2",
+  "original_proxy_labels_preserved": true,
+  "expanded_sources_disjoint_from_old_99": true
+}

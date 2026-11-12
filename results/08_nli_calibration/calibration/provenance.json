@@ -1,0 +1,73 @@
+{
+  "received_filename": "nli_calibration_v1.zip",
+  "received_bytes": 6183514,
+  "received_sha256": "22669f3e6d67fc80b4b25fb98dcb975c4a70cce9b91695040e39dd08cf1f30d6",
+  "sediment_file_id": "file_0000000002088243a8b2b4a79e42ef1e",
+  "archive_in_repository": "exports/nli_context_calibration/nli_calibration_v1_received.zip",
+  "analysis": "Saved Kaggle outputs only; no new neural inference or API call.",
+  "runtime": {
+    "workflow": "nli_context_calibration_v1",
+    "bundle_sha256": "bd294a67cb698943116ba44da2c4e01721369f4abd82dc055ed4dd04dd44a714",
+    "created_at": "2026-11-10T11:10:11.977794+00:00",
+    "python": "/kaggle/working/.humanization_runtime_cache/nli_venv/bin/python",
+    "model_repository": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+    "model_revision": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
+    "model_path": "/kaggle/working/.humanization_semantic_models/nli",
+    "device": "cuda:0",
+    "precision": "float32",
+    "batch_size": 4,
+    "max_pair_tokens": 384,
+    "review_archive_exclusions": [
+      "contextual_nli_units.jsonl",
+      "contextual_probability_cache.jsonl"
+    ],
+    "excluded_files_remain_on_kaggle_for_resume": true,
+    "groq_requests": false
+  },
+  "scoring": {
+    "protocol": "contextual_nli_v1",
+    "status": "executed",
+    "n_pairs": 573,
+    "n_comparisons": 323336,
+    "modes": [
+      "single_all",
+      "window2",
+      "window3",
+      "document"
+    ],
+    "device": "cuda:0",
+    "precision": "float32",
+    "max_pair_tokens": 384,
+    "hypothesis_units": "exact existing alignment units; otherwise sentence/chunks <=160 NLI tokens",
+    "premise_units": "native contiguous sentence/chunks; window2/window3 include shorter windows",
+    "document_mode": "exact full text only when actual tokenizer pair fits; incomplete coverage is not averaged",
+    "selection": "all supplied pairs",
+    "pairs_sha256": "f7aa68eb323c326c2019cb8a5de91e3426c7f487ae49b56706c09f1b2aae37fc",
+    "code_sha256": "12af52046ee12482fbf6766e9fd35bca50013c00de8f30a154d96b31de363a6c",
+    "elapsed_seconds": 3222.218807046,
+    "new_evidence_scored": 323336,
+    "cache_entries": 323336,
+    "peak_rss_mib": 2170.20703125,
+    "batch_size": 4,
+    "threads": 2
+  },
+  "frozen_policy_sha256": "cfdadaa8826d9821cdb471a9c5954e02c38fcd14068fb746cfda2cd9d2235e2a",
+  "frozen_pairs_sha256": "f7aa68eb323c326c2019cb8a5de91e3426c7f487ae49b56706c09f1b2aae37fc",
+  "selected_mode": "window2",
+  "selected_aggregator": "min",
+  "selection_date": "2026-11-10",
+  "timing": "after study126 inspected; before reference human annotations received",
+  "labels_are_human_gold": false,
+  "test_used_for_selection": false,
+  "study_primary_application": {
+    "source": "precomputed study126 contextual_nli.csv",
+    "source_sha256": "b4cd0f965d490b0fd9f7d3c19be8b33319192fa7e5ffb37e1f237e87ac92ca93",
+    "n_attempts": 630,
+    "n_scored": 626,
+    "n_failed": 4,
+    "n_reference_pairs_scored": 84,
+    "new_inference": false,
+    "threshold": null,
+    "human_validation": false
+  }
+}

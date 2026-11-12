@@ -1,0 +1,42 @@
+{
+  "protocol": "contextual_nli_calibration_selection_v1",
+  "modes": [
+    "single_all",
+    "window2",
+    "window3",
+    "document"
+  ],
+  "aggregators": [
+    "mean",
+    "q10",
+    "min",
+    "low_support_fraction"
+  ],
+  "selected_split": "calibration",
+  "label_provenance": "operational proxies, not human gold",
+  "score_orientation": "higher means presumed preservation",
+  "bidirectional_score": "min(forward, reverse); fraction uses 1-max(forward, reverse)",
+  "low_support_threshold": 0.5,
+  "primary_requirements": {
+    "complete_labelled_coverage": 1.0,
+    "complete_identity_coverage": 1.0,
+    "identity_mean_min": 0.95,
+    "identity_q10_min": 0.9
+  },
+  "selection": "maximum pooled calibration AUC among eligible candidates",
+  "tie_tolerance": 1e-12,
+  "tie_break_modes": [
+    "single_all",
+    "window2",
+    "window3",
+    "document"
+  ],
+  "tie_break_aggregators": [
+    "mean",
+    "q10",
+    "min",
+    "low_support_fraction"
+  ],
+  "exclusions": "test pairs and their metric scores are not used for selection",
+  "interpretation": "development selection; independent human validation remains pending"
+}

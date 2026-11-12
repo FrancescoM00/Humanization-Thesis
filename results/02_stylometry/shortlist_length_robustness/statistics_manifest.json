@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-11-11T14:28:27.262021+00:00",
+  "protocol_sha256": "3a281a5cbb38bcc2245b8f5b1054105c1fa798341c711649edb71b79783e488b",
+  "code_sha256": "28371f722011e330792bcd4c5f4dd24e5d4a82a6a38bd64b25192780bd6e5e29",
+  "inputs": {
+    "documents.csv": "4b797e7fbca16d535cb7e2c87add48af8c1e4897723a8c91b2675e7764b65414",
+    "model_registry.csv": "0d211002b6c237ca8c66ca94c0d165d1eee415e032e7f6e4f5b676fd943cd103",
+    "predictions.npz": "b6dc3b92cc2775a85581e9d258e9de8e8a1c541655d2b1e7a16ae940d5f38c9e",
+    "selections.csv": "9cb9cb39b57db90d1945db6e4a8d3e3c475d264d14d6a4fe98a221e08946f5d0"
+  },
+  "parent_metrics_sha256": "762c2a5c54f0b11a9deb357d6a51ead4fe5526655ccfbdadcd0289b0b6d4f466",
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3"
+  },
+  "n_metrics": 38,
+  "n_differences": 19,
+  "parent_C3_reproduced": true,
+  "elapsed_seconds": 1.0274693210012629
+}

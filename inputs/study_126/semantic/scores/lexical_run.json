@@ -1,0 +1,22 @@
+{
+  "stage": "lexical",
+  "status": "executed",
+  "n_pairs": 626,
+  "elapsed_seconds": 5.0939799129992025,
+  "peak_rss_mib": 585.22265625,
+  "pairs_sha256": "537fceaa0ba5b8e29518b97bf789f25a8b98a5c45ba12797669eb5b24ffecfb6",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1",
+    "onnx": "1.23.2"
+  },
+  "device": "cpu",
+  "threads": 2,
+  "batch_size": null,
+  "model_directory": null,
+  "metrics_code_sha256": "6c556441b84b667837bcb631d92f7929206b33ae71a09843542b6e91c2a33ac5"
+}

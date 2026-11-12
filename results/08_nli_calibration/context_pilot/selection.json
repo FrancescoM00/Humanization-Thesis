@@ -1,0 +1,135 @@
+[
+  {
+    "id": "humanizer_f2e5b3f95dcf48c423b31a50",
+    "source_id": "WritingPrompts:285:80b9ea16794068e3",
+    "humanizer": "dipper",
+    "selection_reason": "narrative_fusion_15_to_5_assistant_review_not_gold",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_e21288fa7287adb0dbb787ef",
+    "source_id": "WritingPrompts:285:80b9ea16794068e3",
+    "humanizer": "qwen_humanize",
+    "selection_reason": "narrative_fusion_15_to_5_assistant_review_not_gold",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_2e39571e7c6c84c0fb41ce3c",
+    "source_id": "Essay:198:ee27e99f1bc3dc32",
+    "humanizer": "dipper",
+    "selection_reason": "diagnostic_list_fusion_and_omissions_mixed",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_4feaa95c9c411db4a15d0b66",
+    "source_id": "Essay:198:ee27e99f1bc3dc32",
+    "humanizer": "qwen_humanize",
+    "selection_reason": "diagnostic_list_fusion_and_omissions_mixed",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_98c982a986eae239befcadb4",
+    "source_id": "Reuters:417:b07c03bd035b9249",
+    "humanizer": "dipper",
+    "selection_reason": "legal_challenges_omission",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_934be96f948fc08f2ea4e843",
+    "source_id": "Reuters:417:b07c03bd035b9249",
+    "humanizer": "qwen_humanize",
+    "selection_reason": "legal_challenges_omission",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_04def91878c9286bd546a496",
+    "source_id": "Essay:476:30c42c3c6951daac",
+    "humanizer": "dipper",
+    "selection_reason": "largely_conservative_case_assistant_review_not_gold",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_e72a60f046748da997d1a7ca",
+    "source_id": "Essay:476:30c42c3c6951daac",
+    "humanizer": "qwen_humanize",
+    "selection_reason": "largely_conservative_case_assistant_review_not_gold",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_4cc7bdc4fc3efeb7150ba50f",
+    "source_id": "Essay:198:ee27e99f1bc3dc32",
+    "humanizer": "identity",
+    "selection_reason": "identity_one_per_domain",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_d64cc79cdf87ae7fd201be52",
+    "source_id": "Reuters:417:b07c03bd035b9249",
+    "humanizer": "identity",
+    "selection_reason": "identity_one_per_domain",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_64fb60f7effbd63bcaf067f0",
+    "source_id": "WritingPrompts:562:785eead74dc70cd2",
+    "humanizer": "identity",
+    "selection_reason": "identity_one_per_domain",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_1262d303f86a672c96ff1467",
+    "source_id": "Essay:308:a3392ef1e918715d",
+    "humanizer": "dipper",
+    "selection_reason": "observed_number_bound_change_100_to_30",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "humanizer_82c81ae99ce2c8599bc313e4",
+    "source_id": "Reuters:432:ad8ebf2ed590432b",
+    "humanizer": "dipper",
+    "selection_reason": "observed_currency_change_euros_to_francs",
+    "origin": "Kaggle pilot"
+  },
+  {
+    "id": "GPT4All:5427d6899e127674865ce4a9:negation:afcf75dfcc1eac68",
+    "source_id": "GPT4All:5427d6899e127674865ce4a9",
+    "humanizer": "",
+    "selection_reason": "hash_selected_negation_controlled_candidate_not_gold",
+    "origin": "semantic clean"
+  },
+  {
+    "id": "GPT4All:5427d6899e127674865ce4a9:identity:0b710b25d40c99c6",
+    "source_id": "GPT4All:5427d6899e127674865ce4a9",
+    "humanizer": "",
+    "selection_reason": "same_source_identity_for_negation",
+    "origin": "semantic clean"
+  },
+  {
+    "id": "Dolly:fb8ed5cd8b6866cbeca9984b:entity_substitution_clean:5c20d6642d8c2ccf",
+    "source_id": "Dolly:fb8ed5cd8b6866cbeca9984b",
+    "humanizer": "",
+    "selection_reason": "hash_selected_entity_substitution_controlled_candidate_not_gold",
+    "origin": "semantic clean"
+  },
+  {
+    "id": "Dolly:fb8ed5cd8b6866cbeca9984b:identity:09f9c7addce6cfc3",
+    "source_id": "Dolly:fb8ed5cd8b6866cbeca9984b",
+    "humanizer": "",
+    "selection_reason": "same_source_identity_for_entity_substitution",
+    "origin": "semantic clean"
+  },
+  {
+    "id": "opai:b98a038380269c1240cebb56",
+    "source_id": "abstracts-fc816c7e623306c0",
+    "humanizer": "",
+    "selection_reason": "hash_selected_opai_polish_presumed_conservative_not_gold",
+    "origin": "semantic extension"
+  },
+  {
+    "id": "opai:22fe3347988e69396be370c2",
+    "source_id": "abstracts-712d452d46a7b07a",
+    "humanizer": "",
+    "selection_reason": "hash_selected_opai_paraphrase_presumed_conservative_not_gold",
+    "origin": "semantic extension"
+  }
+]

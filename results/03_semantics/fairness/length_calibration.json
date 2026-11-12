@@ -1,0 +1,16 @@
+{
+  "fit_population": "OpAI presumed-positive calibration only",
+  "length_variable": "max_sentences",
+  "cutpoints": [
+    14,
+    23
+  ],
+  "bin_rule": "right-closed intervals: <= first cut, then <= next cut, then above",
+  "minimum_reference_sources": 5,
+  "minimum_reference_pairs": 15,
+  "quality_transform": "source-weighted mid empirical CDF of support within the length bin",
+  "primary_output_is_continuous": true,
+  "threshold_fitted": false,
+  "use": "Exploratory length-conditional reference percentile; not probability of correctness and not validated on DIPPER.",
+  "metrics": {}
+}

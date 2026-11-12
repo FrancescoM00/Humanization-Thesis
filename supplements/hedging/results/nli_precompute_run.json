@@ -1,0 +1,26 @@
+{
+  "status": "executed",
+  "backend": "onnxruntime_cpu_float32",
+  "unique_model_pairs": 5080,
+  "initial_cached_pairs": 16,
+  "new_onnx_pairs": 5064,
+  "elapsed_seconds": 295.6988252279989,
+  "peak_rss_mib": 1865.1875,
+  "threads": 4,
+  "batch_size": 8,
+  "batching": "global_token_length_sorted",
+  "onnx_sha256": "752610e13db65dfadc183a17ccf399bf9bb1a52e76447fbd06addd2bab9aabd0",
+  "pairs_sha256": "ef434b59f692eb48e9796e2d98231e46f80d27ea19117db44a99c4fd62d40820",
+  "jobs_sha256": "4b0f7b36cea533e784d7b6bbc77472483d7cf63bb8fb67f7ea3c2b5eb238740d",
+  "parity": {
+    "n_real_cached_pairs": 103,
+    "max_probability_abs_difference": 5.125999450683594e-06,
+    "mean_probability_max_abs_difference": 2.9394755736716744e-07,
+    "argmax_agreement": 1.0,
+    "entailment_threshold_0_5_agreement": 1.0,
+    "tolerance": 0.0001,
+    "precision": "float32",
+    "quantized": false,
+    "native_reference_sha256": "cf33bfc7c3f3f774332ea73f111cbc5efbfd56e5127952ae23d9e235781a345d"
+  }
+}

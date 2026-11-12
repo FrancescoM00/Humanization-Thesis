@@ -1,0 +1,167 @@
+{
+  "created_at_utc": "2026-11-12T01:41:10.234302+00:00",
+  "pairs_sha256": "ef434b59f692eb48e9796e2d98231e46f80d27ea19117db44a99c4fd62d40820",
+  "n_current_sources": 60,
+  "method": "Metadata-only comparison of raw source-row identifiers (target row or connected-component representative), generator and canonical text/prefix; no NLI scores used. Row/group overlap with a different generator is reported separately from overlap of machine originals.",
+  "cohorts": [
+    {
+      "path": "data/kaggle_received/v2_study_20261110/cohorts/study.jsonl",
+      "sha256": "84f9f6933b2ee72412d65eedbf8f1fbe70cf0139bcd3d6d395cb85250c0edb68",
+      "splits": {
+        "test": {
+          "n_cohort_rows": 126,
+          "overlapping_source_rows": 5,
+          "same_generator_count": 0,
+          "same_text_or_prefix_count": 0,
+          "sources": [
+            {
+              "source_id": "hedging:WritingPrompts:987:Claude:45c8a3949d1c2c7d",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:Reuters:196:ChatGPT-turbo:65abf1b37fd33c1e",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:Reuters:633:GPT4All:2066729a5f834a8e",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:Essay:218:Dolly:0fbe3322efecf26d",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:Reuters:99:StableLM:50df674c1197c7cf",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            }
+          ]
+        },
+        "calibration": {
+          "n_cohort_rows": 300,
+          "overlapping_source_rows": 6,
+          "same_generator_count": 0,
+          "same_text_or_prefix_count": 0,
+          "sources": [
+            {
+              "source_id": "hedging:Essay:878:ChatGPT-turbo:2b5d47842991944a",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:135:ChatGPT-turbo:35c7517f61f8a9f0",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:703:StableLM:bdcf3e829b977ecc",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:Essay:329:Claude:4e91c9751fdb6a5c",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:244:ChatGPT-turbo:c066d4c1d7a77de2",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:459:Claude:36b44470bc9b623d",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "data/kaggle_received/pilotdipper_20261109/cohorts/pilot.jsonl",
+      "sha256": "ed6b343dc972038515ff6dc4ebdfe7e1ce6ce50386cb49c5e104732da440574a",
+      "splits": {
+        "test": {
+          "n_cohort_rows": 42,
+          "overlapping_source_rows": 1,
+          "same_generator_count": 0,
+          "same_text_or_prefix_count": 0,
+          "sources": [
+            {
+              "source_id": "hedging:Reuters:99:StableLM:50df674c1197c7cf",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            }
+          ]
+        },
+        "calibration": {
+          "n_cohort_rows": 300,
+          "overlapping_source_rows": 6,
+          "same_generator_count": 0,
+          "same_text_or_prefix_count": 0,
+          "sources": [
+            {
+              "source_id": "hedging:Essay:878:ChatGPT-turbo:2b5d47842991944a",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:135:ChatGPT-turbo:35c7517f61f8a9f0",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:703:StableLM:bdcf3e829b977ecc",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:Essay:329:Claude:4e91c9751fdb6a5c",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:244:ChatGPT-turbo:c066d4c1d7a77de2",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            },
+            {
+              "source_id": "hedging:WritingPrompts:459:Claude:36b44470bc9b623d",
+              "same_generator": false,
+              "same_text_or_prefix": false
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "nli_context_calibration": {
+    "path": "data/kaggle_received/nli_calibration_20261110/bundle/inputs/pairs.jsonl",
+    "sha256": "f7aa68eb323c326c2019cb8a5de91e3426c7f487ae49b56706c09f1b2aae37fc",
+    "n_rows": 573,
+    "original_domains": [
+      "abstracts",
+      "essays",
+      "news",
+      "reports"
+    ],
+    "canonical_original_overlap": 0,
+    "n_raw_mgtbench_keys": 0
+  },
+  "previous_stylometry": [
+    {
+      "path": "results/features.csv",
+      "sha256": "6284e19237e9132b5a0f337ee60fed3540b6aa260910cce8e6e7372ac01db4d8",
+      "overlapping_source_rows": 10
+    },
+    {
+      "path": "results_length_matched/features.csv",
+      "sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
+      "overlapping_source_rows": 24
+    }
+  ]
+}

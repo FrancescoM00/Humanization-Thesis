@@ -1,0 +1,23 @@
+{
+  "stage": "lexical",
+  "status": "executed",
+  "n_pairs": 2621,
+  "n_reused_pairs": 1607,
+  "n_newly_scored_pairs": 1014,
+  "pairs_sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
+  "elapsed_seconds": 57.106269289997726,
+  "peak_rss_mib": 240.265625,
+  "device": "cpu",
+  "threads": 4,
+  "versions": {
+    "torch": "2.7.1+cpu",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1"
+  },
+  "reused_results": "/workspace/Humanization/results_semantic_full",
+  "previous_score_sha256": "93435f7bed336f47b8e9b9eaa84c987d68ff6ce6974ecec8bb6f82337504cee1",
+  "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a"
+}

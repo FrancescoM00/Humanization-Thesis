@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-11-11T13:42:43.913431+00:00",
+  "protocol_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
+  "inputs": {
+    "documents.csv": "4b797e7fbca16d535cb7e2c87add48af8c1e4897723a8c91b2675e7764b65414",
+    "model_registry.csv": "48f574c889d80a80437f6bebdb5571a65b062488ed9afbfff088ab0379584de2",
+    "predictions.npz": "0edc66bdcc82c581097b1e666a016853750f84983c3d03f3c926bc2250db540f",
+    "selections.csv": "c5a45dea39eee1b467d71e0d8458d132f590fa650dddd5dc5b63ec819ac5908d"
+  },
+  "code_sha256": "03630345e7d459f0288abfcb6ccb24def21891042d344b62fd39bbc64f5cd440",
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "threadpoolctl": "3.7.0"
+  },
+  "n_metrics": 152,
+  "n_paired_differences": 171,
+  "bootstrap_archive_columns": [
+    "C1_full105",
+    "C2_fixed4",
+    "C3_training4",
+    "C1_full100",
+    "C1_style93",
+    "word_count_only",
+    "C4_random",
+    "C4_random_matched"
+  ],
+  "elapsed_seconds": 5.082137216000774
+}

@@ -1,0 +1,105 @@
+{
+  "n_unchanged_pairs_reused": 2007,
+  "n_fresh_entity_and_local_control_pairs": 290,
+  "input_pairs_exactly_identical": true,
+  "cached_hashes_and_chunk_texts_identical": true,
+  "embedding_model_directory": "/workspace/Humanization/data/models/embedding",
+  "historical_embedding_metrics_code_sha256": "87c160f1674fb714e7fb2d0ac3c4b49a5b9f58b05a5bd5124cd853280e624820",
+  "recomputed_embedding_metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+  "current_metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+  "historical_nli_metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+  "historical_embedding_code_hash_matches": false,
+  "code_provenance_basis": "Historical embedding module hash differs and its source snapshot is unavailable; historical NLI module hash matches the current/recomputed module. Reuse the valid historical NLI evidence plan on identical pairs, exact chunks/settings and empirically equivalent embeddings; no historical embedding AST equivalence is claimed.",
+  "embedding_score_comparison_atol": 1e-06,
+  "embedding_score_comparison_rtol": 1e-06,
+  "embedding_metric_max_abs_differences": {
+    "embedding_chunk_token_budget": 0.0,
+    "embedding_cosine": 7.446644501030164e-08,
+    "embedding_modified_chunks": 0.0,
+    "embedding_original_chunks": 0.0,
+    "local_embedding_cosine": 3.3718453362752143e-07
+  },
+  "embedding_metrics_equivalent_within_tolerance": true,
+  "embedding_checkpoint_directory_matches": true,
+  "chunk_budget_and_retrieval_top_k_match": true,
+  "observed_budget_top_k": [
+    [
+      160,
+      3
+    ]
+  ],
+  "candidate_index_arrays_differ_before_freeze": 4,
+  "pairs_with_different_candidate_arrays": 3,
+  "candidate_text_sets_differ_before_freeze": 1,
+  "candidate_differences": [
+    {
+      "id": "StableLM:74d27b269e0f4736e384b1fe:random_deletion:221de0a7cad13130",
+      "direction": "forward",
+      "query_index": 4,
+      "historical_candidate_indices": [
+        1,
+        4,
+        5
+      ],
+      "recomputed_candidate_indices": [
+        1,
+        4,
+        2
+      ],
+      "candidate_text_set_differs": false
+    },
+    {
+      "id": "StableLM:74d27b269e0f4736e384b1fe:random_deletion:221de0a7cad13130",
+      "direction": "forward",
+      "query_index": 6,
+      "historical_candidate_indices": [
+        6,
+        5,
+        2
+      ],
+      "recomputed_candidate_indices": [
+        6,
+        2,
+        5
+      ],
+      "candidate_text_set_differs": false
+    },
+    {
+      "id": "StableLM:cef14c95fb0b5ea395a429a4:truncate:a3126ea6db790be5",
+      "direction": "reverse",
+      "query_index": 9,
+      "historical_candidate_indices": [
+        5,
+        6,
+        1
+      ],
+      "recomputed_candidate_indices": [
+        5,
+        1,
+        6
+      ],
+      "candidate_text_set_differs": false
+    },
+    {
+      "id": "opai:0de4ef43d71b50f2d3a0e5eb",
+      "direction": "forward",
+      "query_index": 4,
+      "historical_candidate_indices": [
+        4,
+        9,
+        7
+      ],
+      "recomputed_candidate_indices": [
+        4,
+        9,
+        6
+      ],
+      "candidate_text_set_differs": true
+    }
+  ],
+  "fresh_alignment_snapshot": "/workspace/Humanization/data/semantic_clean/alignment_recomputed.json",
+  "embedding_cosine_scores_recomputed_and_not_replaced": true,
+  "nli_not_planned_or_executed_at_freeze": true,
+  "reason": "Hold the retrieval factor fixed on identical controls; near ties can reorder after floating-point recomputation.",
+  "nli_scores_used_for_evidence_selection": false
+}

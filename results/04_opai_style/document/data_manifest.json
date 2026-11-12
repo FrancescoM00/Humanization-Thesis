@@ -1,0 +1,1287 @@
+{
+  "official_source": {
+    "method": "local_official_parquet_reprojection_no_new_download",
+    "dataset": "OpAI-Bench1/OpAI-Bench",
+    "dataset_revision": "072c03c7051409346aaba05168d183cf6d863ee9",
+    "split": "test",
+    "source_files": [
+      {
+        "repository_path": "viewer/default/test/abstracts_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_gemini-2.5-flash.parquet",
+        "bytes": 5567831,
+        "sha256": "091b15daf4c12280d527966489d52dd03863ce1db2d0fe0b0227929d1b4e3852"
+      },
+      {
+        "repository_path": "viewer/default/test/abstracts_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_gpt-5.4-nano.parquet",
+        "bytes": 2432121,
+        "sha256": "f9f5ff9eceedf5132073042becfd2fa7d6ee65ab4fabebe9c22ddda1e840c3e7"
+      },
+      {
+        "repository_path": "viewer/default/test/abstracts_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_gpt-5.4.parquet",
+        "bytes": 2094410,
+        "sha256": "bbc13be5fcb8c162bc07a753959577feb596e49f9784b931c94f583abd356884"
+      },
+      {
+        "repository_path": "viewer/default/test/abstracts_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/abstracts_qwen3-8b.parquet",
+        "bytes": 295900,
+        "sha256": "14a7176a97d0d1b0ce9b1306cf9c7180fcf5df0b2d77d53e4f49903599353287"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_gemini-2.5-flash.parquet",
+        "bytes": 11256053,
+        "sha256": "6de1035ff624b0057842bac9e776c3197c0f0e912473db49437ebb514e9409e9"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_gpt-5.4-nano.parquet",
+        "bytes": 4541597,
+        "sha256": "5c833df33247aa8c86f287aaec4820edcde185e4e1dae8f7a0f373f84512a992"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_gpt-5.4.parquet",
+        "bytes": 4085631,
+        "sha256": "6189e557157fb2d5d4fb04591ab7ee6b01143a357899bb977ce44caabed685b8"
+      },
+      {
+        "repository_path": "viewer/default/test/essays_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/essays_qwen3-8b.parquet",
+        "bytes": 687422,
+        "sha256": "49edf3a27951f1eb63ed7ad2256206b21b5f8660dfb66da03365c7658e0df543"
+      },
+      {
+        "repository_path": "viewer/default/test/news_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_gemini-2.5-flash.parquet",
+        "bytes": 10058639,
+        "sha256": "0d5b0f50a3b2a05eb409babb3e855d78b91a467a24967d7e7dfb7d3451416e9b"
+      },
+      {
+        "repository_path": "viewer/default/test/news_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_gpt-5.4-nano.parquet",
+        "bytes": 4146481,
+        "sha256": "fdaecc28a136de06d4234cbf096debe2664000e634caae6350b162da55957a72"
+      },
+      {
+        "repository_path": "viewer/default/test/news_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_gpt-5.4.parquet",
+        "bytes": 3608061,
+        "sha256": "8295a0115412ad69301d23d8a7e9ffea80b71e2660c11d197ceec942dc6eb7bd"
+      },
+      {
+        "repository_path": "viewer/default/test/news_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/news_qwen3-8b.parquet",
+        "bytes": 562132,
+        "sha256": "9d2223474e798c797cd1481242b3db6904cfc2c9de8d2e2ddb8cff31f9ef6d73"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_gemini-2.5-flash.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_gemini-2.5-flash.parquet",
+        "bytes": 11432722,
+        "sha256": "d694239f5026128e0a0febc1275abc14f40b268518a3a2e411642585a23e0915"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_gpt-5.4-nano.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_gpt-5.4-nano.parquet",
+        "bytes": 5196379,
+        "sha256": "ee15d9cfeebe9e41598b9eab2642e1588f64b711f6186ab97e9232a7b1443453"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_gpt-5.4.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_gpt-5.4.parquet",
+        "bytes": 4570773,
+        "sha256": "9217406902f980d41bee65a7c9b9a6b5975e8e950ef06d312f2927a0e1ccd54e"
+      },
+      {
+        "repository_path": "viewer/default/test/reports_qwen3-8b.parquet",
+        "local_file": "/workspace/Humanization/data/opai/official_parquet/reports_qwen3-8b.parquet",
+        "bytes": 429508,
+        "sha256": "30afee11c2c7a6eb6ffddc611a01e09655eabd1ce3cee4c4b01c8b52edf4eaf5"
+      }
+    ],
+    "source_rows": 42786,
+    "rows_retained": 28524,
+    "max_version": 5,
+    "exact_duplicate_rows_ignored": 0,
+    "original_projection_sha256": "a3afd7e9d66f331e271d2c5279d65a60eda1de58dd0d74977e41522a00b03e43"
+  },
+  "seed": 42,
+  "n_selected_trajectories": 200,
+  "n_unique_sources": 188,
+  "candidate_complete_trajectories": 4754,
+  "n_pairs": 1000,
+  "n_unique_full_texts": 1160,
+  "selected_trajectories": [
+    {
+      "source_id": "essays-8bc1a4ef10a79be2",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-cb1da9bcb8e14b2e",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-9d80cd2bf42eb66c",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-5c2d96cc4354f05f",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-02c860a46c889d07",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-010851f6a5297c0a",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-edd8783910f4c11d",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-441d6ace147ad341",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-8ec003170f8754f0",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-da2ab696ecc8b9ef",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-f5022a116cdca0d1",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-c4a41d2ab33c4055",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-342395226eaf713d",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-a78c899398a378f9",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-23c0d902f7385c7a",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-2ac87495f2c37cba",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-e1bfef40852ce22e",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-e3c01865d64818a6",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-e6c1a8b8209bf159",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-4f500b362ef20aca",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-00d605e90a687329",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-7e03d7524cfaace7",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-6cb581e99ca59a0d",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-9eddb9e096c06a8e",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-3e074d2dd0b84a7d",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-984bbb6cd9aec1df",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-9ec3b8f7819182ec",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-4e941d2c949d6fe5",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-0ef529dc983cef9c",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-96281b8d7d779062",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-66b5be43c6e61900",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-6d86ada0a7104dc9",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-a9edd35cc1e39f13",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-aab065385910588f",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-dbf49087c9860b80",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-8bcb76ac2d5940a5",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-8f19b345de397b62",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-84ba4bfb38790d5f",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-e0c3a38ed7dd0c20",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-e1b29b938ce75179",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-c14923955cb09bc4",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-1e5c5d0d3de5148c",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-570f03aa1a5c4002",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-d0675981e9d8da4f",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-8064fa8c571e84e1",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-b9e078d042702901",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-96911a708dc16aae",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-01d32963d545d784",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-ed751c4ce7533aea",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-71850c50084a6c2f",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-fc816c7e623306c0",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-f0e512ea20dfdbea",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-9725216834b08906",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-fd31f4a9b4f9e5fc",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-9a7a3a7a1792fcc9",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-f1daf19e70c914e2",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-17da7b4dbaa8abe4",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-cb8adb6da0add58c",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-ee703c620f3e782e",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-f5a4780194f12df8",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-712d452d46a7b07a",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-225ebfcd14b85008",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-89e44d42e5a45a3c",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-9f2fa27a2b3ac339",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-d42a600e1dfc9a8f",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-c2f4ae9c7595aaad",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-64b4ddb93a95e849",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-30c275b824e268fc",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-6d6927e535f38924",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-d6719809d6656628",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-3c811aa2ff515e78",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-d6fcf8e66e45ea44",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-cfd840bd11c921f4",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-f6c391c25489ffcb",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-6419afeceeef0129",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-985a69f49d4d7a31",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-674364a61eced6c1",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-2b218d312c748e44",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-496504810c59f088",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-1e8c325903df210a",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-75ad44d280ac0142",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-03a949327ae22c47",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-ead4fd3a686caab9",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-c03db5cb74c93efa",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-024ed633780a4b10",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-3e074d2dd0b84a7d",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-055dc59b02930518",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-4736509446b87f53",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-c26049669a6557c5",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-4bb3da2ea09ebe4e",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-a767236390a5bd5b",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-968ff1cb44ef87df",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-41fe6b9239c1065c",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-9f22b59ef30e3385",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-2760ddbc691f7401",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-4f4b64bd8f849c45",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-0994ae1b06ba1306",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-27d376cca51f5ba5",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-50673ec5fe8046a8",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-a84a1e9cce20f024",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-fdcfc584c74741ef",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-c26049669a6557c5",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-ccc315d4018dc11b",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-f0e512ea20dfdbea",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-8b1f33abb750e48c",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-9c9408ad56dca381",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-7e44128a3da92f31",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-47aec854cec7ed86",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-2f0f62614e98a254",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-d6dc8e324b6d4419",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-93963961465cdabf",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-d9321dc0ce7e0eed",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-5308e0d5c42385b0",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-a210e5c2bd6ac66f",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-2710ff93a5533f4d",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-f2dbc0e6ae38f76b",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-8d74417b94345b11",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-eac1fc2f0381cf96",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-ffd99b590b5eef89",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-44524400c10a2836",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-7e3f9bf4e53f06ed",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-76a250503dbd04f8",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-a28bd2edf60feea9",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-70314bf98c9e6f4a",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-298ec9aeb2413813",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-70314bf98c9e6f4a",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-c4a41d2ab33c4055",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-af9be032920388c4",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-821cb12860112bb2",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-2f855012a8eb5f0f",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-8a8ab2ef483dc331",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-b4b3297d3dd11d48",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-ba595aa7c93c0210",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-d5526c58f5ef6d3d",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-2bf4ad59f83db429",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-9e53741da0489f2b",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-10a6dd3e02c04770",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-7e630eff33a066d1",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-89c33d8f599b0a7d",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-2919232fcc9b8f69",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-c9d9f935e70ef94d",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-9376c5d5fafa6262",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-0386bcfcf278cd73",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-16e49647d6c42507",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-9ddd7a2b453f5fc0",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-66d2cfd7cb4936cd",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-a00911549a465205",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-e237fe6108ba37bb",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-4f74abe8616ac84f",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-967fdf621115902f",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-3156d7a701dad578",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-9b60091c8c959ff5",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-9c0c290450f69a4e",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-a84a1e9cce20f024",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-852d47706994df44",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-79740935f7deb80b",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-10dee46664d9f62d",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-bb3aca2fd03b95f6",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-7188c534d5b3c989",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-cc0d5f8cd6a634b5",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-0f791d4e37c08b19",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-91d51bcf0b4320ad",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-2a77a08496693f47",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-3f037ed1ef70a769",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-8f4ae830582a06b7",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-935999a8916e906b",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-96281b8d7d779062",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-4e3c2feaaf29405e",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-e112b5d9de54ac9e",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-26757de2ebdcf413",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-062e20b1e79894c0",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-0bf529ca6db42a69",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-103511bfe411c465",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-c805e39a4b7b34a8",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-5a866377099fe6e9",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-a2a23b262e211303",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-9504c095dc44a968",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-9e1d122aadbb9dbe",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-c7b59c36a05ca64e",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-fdcfc584c74741ef",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-51a0434aec670ac9",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-f0b0a39a8b1dd069",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-c37276abe8389601",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-bada2d6d3e49a0f6",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "essays-1889b3a1e1e318ef",
+      "domain": "essays",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-b4b3297d3dd11d48",
+      "domain": "news",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-f6f25302b8027058",
+      "domain": "abstracts",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "reports-af792da19d73e72f",
+      "domain": "reports",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "abstracts-2ac87495f2c37cba",
+      "domain": "abstracts",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-843e551986585c39",
+      "domain": "reports",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-6cb581e99ca59a0d",
+      "domain": "reports",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "abstracts-7e6422138790d00b",
+      "domain": "abstracts",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "essays-7e03d7524cfaace7",
+      "domain": "essays",
+      "generator": "gpt-5.4-nano"
+    },
+    {
+      "source_id": "essays-dc70c6dbb9a5c56c",
+      "domain": "essays",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "abstracts-eaf07f6dbfd0e1ca",
+      "domain": "abstracts",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "news-ec177159f270b676",
+      "domain": "news",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-f7e96637ba890701",
+      "domain": "news",
+      "generator": "gpt-5.4"
+    },
+    {
+      "source_id": "essays-ed6c8880c62295d9",
+      "domain": "essays",
+      "generator": "gemini-2.5-flash"
+    },
+    {
+      "source_id": "reports-864d6e0e2f55002c",
+      "domain": "reports",
+      "generator": "qwen3-8b"
+    },
+    {
+      "source_id": "news-8f90217a25ac5a26",
+      "domain": "news",
+      "generator": "gemini-2.5-flash"
+    }
+  ],
+  "stratum_counts": {
+    "essays|gpt-5.4-nano": 13,
+    "essays|qwen3-8b": 13,
+    "abstracts|gpt-5.4": 13,
+    "news|qwen3-8b": 13,
+    "news|gpt-5.4": 13,
+    "essays|gemini-2.5-flash": 13,
+    "reports|qwen3-8b": 13,
+    "news|gemini-2.5-flash": 13,
+    "essays|gpt-5.4": 12,
+    "news|gpt-5.4-nano": 12,
+    "abstracts|gpt-5.4-nano": 12,
+    "reports|gpt-5.4-nano": 12,
+    "abstracts|gemini-2.5-flash": 12,
+    "reports|gemini-2.5-flash": 12,
+    "reports|gpt-5.4": 12,
+    "abstracts|qwen3-8b": 12
+  },
+  "operations": [
+    [
+      0,
+      1,
+      "polish"
+    ],
+    [
+      1,
+      2,
+      "paraphrase"
+    ],
+    [
+      2,
+      3,
+      "style"
+    ],
+    [
+      3,
+      4,
+      "compress"
+    ],
+    [
+      4,
+      5,
+      "expand"
+    ]
+  ],
+  "selection": "seeded round-robin domain \u00d7 editor, same trajectories in all stages",
+  "source_unit": "document_hash_id; editors averaged before inference",
+  "full_document_primary": true,
+  "prefix_control": "same source and stage, exact lexical counts 90\u2013180, closest to 150, parsed sentence ends",
+  "versions": {
+    "spacy": "3.8.7",
+    "en-core-web-sm": "3.8.0",
+    "textstat": "0.7.10",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3"
+  },
+  "extractor_sha256": "cfad42bc393cf34ea27747db8fefe6f8264a1ca08b54aac419d7edc36a0016d7",
+  "feature_schema": {
+    "n_words": "Count of alphabetic spaCy tokens (lexical words).",
+    "n_characters": "Original text length in Unicode code points.",
+    "n_sentences": "Count of spaCy sentences containing at least one lexical word.",
+    "sentence_length_mean": "Mean lexical words per nonempty spaCy sentence.",
+    "sentence_length_std": "Population SD of lexical words per sentence (ddof=0).",
+    "sentence_length_cv": "Sentence-length population SD divided by its mean.",
+    "mattr_50": "Mean TTR over all width-50 lexical-word windows; NaN below 50 words.",
+    "ttr": "Unique casefolded lexical words / lexical words; length-sensitive diagnostic.",
+    "hapax_ratio": "Types occurring exactly once / lexical words; length-sensitive.",
+    "word_length_mean": "Mean number of Unicode characters per lexical word.",
+    "punct_comma_per100": "Literal character count per 100 lexical words.",
+    "punct_period_per100": "Literal character count per 100 lexical words.",
+    "punct_semicolon_per100": "Literal character count per 100 lexical words.",
+    "punct_colon_per100": "Literal character count per 100 lexical words.",
+    "punct_question_per100": "Literal character count per 100 lexical words.",
+    "punct_exclamation_per100": "Literal character count per 100 lexical words.",
+    "punct_em_dash_per100": "Literal character count per 100 lexical words.",
+    "punct_hyphen_per100": "Literal character count per 100 lexical words.",
+    "punct_parenthesis_per100": "Literal character count per 100 lexical words.",
+    "punct_double_quote_per100": "Literal character count per 100 lexical words.",
+    "punct_total_per100": "spaCy punctuation-token count per 100 lexical words.",
+    "pos_adj": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_adp": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_adv": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_aux": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_cconj": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_det": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_intj": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_noun": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_num": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_part": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_pron": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_propn": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_sconj": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_sym": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_verb": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "pos_x": "UPOS share of non-space, non-punctuation spaCy tokens.",
+    "fw_a": "Casefolded literal word count / lexical words.",
+    "fw_an": "Casefolded literal word count / lexical words.",
+    "fw_the": "Casefolded literal word count / lexical words.",
+    "fw_and": "Casefolded literal word count / lexical words.",
+    "fw_or": "Casefolded literal word count / lexical words.",
+    "fw_but": "Casefolded literal word count / lexical words.",
+    "fw_if": "Casefolded literal word count / lexical words.",
+    "fw_because": "Casefolded literal word count / lexical words.",
+    "fw_although": "Casefolded literal word count / lexical words.",
+    "fw_while": "Casefolded literal word count / lexical words.",
+    "fw_of": "Casefolded literal word count / lexical words.",
+    "fw_to": "Casefolded literal word count / lexical words.",
+    "fw_in": "Casefolded literal word count / lexical words.",
+    "fw_on": "Casefolded literal word count / lexical words.",
+    "fw_at": "Casefolded literal word count / lexical words.",
+    "fw_for": "Casefolded literal word count / lexical words.",
+    "fw_with": "Casefolded literal word count / lexical words.",
+    "fw_from": "Casefolded literal word count / lexical words.",
+    "fw_by": "Casefolded literal word count / lexical words.",
+    "fw_as": "Casefolded literal word count / lexical words.",
+    "fw_that": "Casefolded literal word count / lexical words.",
+    "fw_which": "Casefolded literal word count / lexical words.",
+    "fw_who": "Casefolded literal word count / lexical words.",
+    "fw_this": "Casefolded literal word count / lexical words.",
+    "fw_these": "Casefolded literal word count / lexical words.",
+    "fw_it": "Casefolded literal word count / lexical words.",
+    "fw_its": "Casefolded literal word count / lexical words.",
+    "fw_they": "Casefolded literal word count / lexical words.",
+    "fw_their": "Casefolded literal word count / lexical words.",
+    "fw_he": "Casefolded literal word count / lexical words.",
+    "fw_she": "Casefolded literal word count / lexical words.",
+    "fw_we": "Casefolded literal word count / lexical words.",
+    "fw_our": "Casefolded literal word count / lexical words.",
+    "fw_you": "Casefolded literal word count / lexical words.",
+    "fw_your": "Casefolded literal word count / lexical words.",
+    "fw_i": "Casefolded literal word count / lexical words.",
+    "fw_my": "Casefolded literal word count / lexical words.",
+    "fw_is": "Casefolded literal word count / lexical words.",
+    "fw_are": "Casefolded literal word count / lexical words.",
+    "fw_was": "Casefolded literal word count / lexical words.",
+    "fw_were": "Casefolded literal word count / lexical words.",
+    "fw_be": "Casefolded literal word count / lexical words.",
+    "fw_been": "Casefolded literal word count / lexical words.",
+    "fw_have": "Casefolded literal word count / lexical words.",
+    "fw_has": "Casefolded literal word count / lexical words.",
+    "fw_had": "Casefolded literal word count / lexical words.",
+    "fw_do": "Casefolded literal word count / lexical words.",
+    "fw_does": "Casefolded literal word count / lexical words.",
+    "fw_did": "Casefolded literal word count / lexical words.",
+    "fw_can": "Casefolded literal word count / lexical words.",
+    "fw_could": "Casefolded literal word count / lexical words.",
+    "fw_will": "Casefolded literal word count / lexical words.",
+    "fw_would": "Casefolded literal word count / lexical words.",
+    "fw_should": "Casefolded literal word count / lexical words.",
+    "fw_may": "Casefolded literal word count / lexical words.",
+    "fw_might": "Casefolded literal word count / lexical words.",
+    "fw_must": "Casefolded literal word count / lexical words.",
+    "fw_not": "Casefolded literal word count / lexical words.",
+    "fw_total": "Share of lexical words in the fixed function-word inventory.",
+    "flesch_reading_ease": "textstat Flesch reading ease, en_US syllabification.",
+    "flesch_kincaid_grade": "textstat Flesch-Kincaid grade, en_US syllabification.",
+    "syllables_per_word": "textstat syllables divided by spaCy lexical words, en_US.",
+    "wiki_ai_vocabulary_per1000": "Fixed AI-vocabulary lemma occurrences per 1000 lexical words.",
+    "wiki_emphasis_per1000": "Fixed thesis emphasis phrase occurrences per 1000 lexical words.",
+    "wiki_conclusion_per1000": "Fixed conclusion/caveat phrase occurrences per 1000 lexical words.",
+    "wiki_chat_per1000": "Fixed conversational phrase occurrences per 1000 lexical words.",
+    "wiki_negative_parallelism_per1000": "Sentence-level not ... but / rather than regex matches per 1000 words.",
+    "wiki_markdown_per1000": "Markdown heading/bullet/bold marker occurrences per 1000 words."
+  },
+  "elapsed_seconds": 57.4583142320007,
+  "prefix_matched_pairs": 336,
+  "n_summary_rows": 1050
+}

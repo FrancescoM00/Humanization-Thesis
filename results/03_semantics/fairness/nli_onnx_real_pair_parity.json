@@ -1,0 +1,11 @@
+{
+  "n_real_cached_pairs": 128,
+  "max_probability_abs_difference": 5.602836608886719e-06,
+  "mean_probability_max_abs_difference": 5.715653514926089e-07,
+  "argmax_agreement": 1.0,
+  "entailment_threshold_0_5_agreement": 1.0,
+  "tolerance": 0.0001,
+  "precision": "float32",
+  "quantized": false,
+  "native_reference_sha256": "91947f6e3e2265eb19e5fc286d51a4db33df9e7899355203e5c61b48839db75d"
+}

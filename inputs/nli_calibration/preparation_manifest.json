@@ -1,0 +1,25 @@
+{
+  "protocol": "contextual_nli_calibration_selection_v1",
+  "preparation": "calibration only; no neural inference",
+  "n_positive": 139,
+  "n_negative": 297,
+  "n_identity": 137,
+  "n_labelled": 436,
+  "n_pairs": 573,
+  "n_source_groups": 46,
+  "excluded_test_rows": 1338,
+  "excluded_matched_test_positive": 141,
+  "excluded_matched_test_negative": 265,
+  "test_source_overlap": 0,
+  "labels_are_human_gold": false,
+  "source_files": {
+    "pairs_sha256": "918420c191e9c6ea5629151efc65e5f3e91c9836577a744261b12e0fe62d426f",
+    "alignment_sha256": "e8990817c0005e5aedf7099d499c163cb746164ead3d0716eef8cb670e7a52c1"
+  },
+  "files_sha256": {
+    "pairs.jsonl": "f7aa68eb323c326c2019cb8a5de91e3426c7f487ae49b56706c09f1b2aae37fc",
+    "alignment.json": "4e15536ae13b4596f4e21575b561c0628b251445388db4112a28a81fe257602d",
+    "labels.csv": "ca44bf78251d78e87e0621f5f3bf1bef3d6b54e55ef427659d433889c28707b6",
+    "policy.json": "cfdadaa8826d9821cdb471a9c5954e02c38fcd14068fb746cfda2cd9d2235e2a"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "exploratory_full_sample_selection_requires_independent_validation",
+  "features": [
+    "fw_and",
+    "punct_total_per100",
+    "pos_num",
+    "flesch_kincaid_grade",
+    "pos_adv",
+    "pos_noun",
+    "mattr_50"
+  ],
+  "rule": {
+    "min_abs_g_each_domain": 0.3,
+    "min_generator_sign_fraction": 0.7142857142857143,
+    "max_spearman": 0.85,
+    "maximum_size": 12
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "stage": "nli",
+  "status": "executed",
+  "n_pairs": 2407,
+  "elapsed_seconds": 5612.536931245,
+  "peak_rss_mib": 2636.7265625,
+  "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+  "versions": {
+    "torch": "2.7.1+cpu",
+    "transformers": "4.57.3",
+    "sentence-transformers": "5.1.2",
+    "bert-score": "0.3.13",
+    "rouge-score": "0.1.2",
+    "sacrebleu": "2.5.1",
+    "onnx": "1.18.0",
+    "onnxruntime": "1.23.2",
+    "optimum-onnx": "0.1.0"
+  },
+  "device": "cpu",
+  "threads": 4,
+  "batch_size": 8,
+  "model_directory": "/workspace/Humanization/data/models/nli",
+  "metrics_code_sha256": "84e21aaca0129e5141d2185fbbc85c03bd57d38bc887a5f54041f5ebf0fe808a",
+  "precomputation": {
+    "status": "executed",
+    "backend": "onnxruntime_cpu_float32",
+    "unique_model_pairs": 88900,
+    "initial_cached_pairs": 53238,
+    "new_onnx_pairs": 35662,
+    "elapsed_seconds": 2981.4822042450005,
+    "peak_rss_mib": 2636.7265625,
+    "threads": 4,
+    "batch_size": 8,
+    "batching": "global_token_length_sorted",
+    "onnx_sha256": "752610e13db65dfadc183a17ccf399bf9bb1a52e76447fbd06addd2bab9aabd0",
+    "pairs_sha256": "5081d5aa5253b81ad99fa0ae087343016abada0ff6d13e981f866072269c3ba7",
+    "jobs_sha256": "cf2fbc395fdbb3811f1a2367d24f6a7f72f23629b6a381166b290950705849ed",
+    "parity": {
+      "n_real_cached_pairs": 128,
+      "max_probability_abs_difference": 5.602836608886719e-06,
+      "mean_probability_max_abs_difference": 5.715653514926089e-07,
+      "argmax_agreement": 1.0,
+      "entailment_threshold_0_5_agreement": 1.0,
+      "tolerance": 0.0001,
+      "precision": "float32",
+      "quantized": false,
+      "native_reference_sha256": "91947f6e3e2265eb19e5fc286d51a4db33df9e7899355203e5c61b48839db75d"
+    },
+    "peak_rss_snapshot_before_final_checksum_mib": 1931.7265625,
+    "kernel_memory_monitor": {
+      "pid": 8626,
+      "kernel_vm_hwm_mib": 2636.7265625,
+      "observed_rss_mib": 2636.7265625,
+      "sampling_interval_seconds": 0.05,
+      "samples": 17550,
+      "elapsed_seconds": 887.7425159570003,
+      "process_exited": true
+    }
+  },
+  "aggregation_elapsed_seconds": 16.306411740999465,
+  "resumption_history": {
+    "initial_threads": 4,
+    "initial_batch_size": 8,
+    "initial_progress": {
+      "completed_pairs": 100,
+      "total_pairs": 2407,
+      "elapsed_seconds": 236.91,
+      "peak_rss_mib": 1587.12109375
+    },
+    "reason": "Profile CPU batching while preserving saved float32 checkpoint probabilities",
+    "serial_onnx_before_parallel_profile": {
+      "phase": "unique_evidence_pairs",
+      "completed": 53222,
+      "total": 88900,
+      "elapsed_seconds": 2377.838315259,
+      "peak_rss_mib": 1881.125,
+      "max_pair_tokens_this_batch": 54
+    },
+    "serial_onnx_completed": {
+      "phase": "unique_evidence_pairs",
+      "completed": 53222,
+      "total": 88900,
+      "elapsed_seconds": 2377.838315259,
+      "peak_rss_mib": 1881.125,
+      "max_pair_tokens_this_batch": 54
+    },
+    "decision_after_parallel_profile": "Retain four-thread serial ORT: parallel sessions gave no throughput gain",
+    "cached_model_pairs_before_resume": 53238
+  },
+  "backend": "validated_float32_onnx_cache_with_native_pytorch_reference",
+  "cache_only": true,
+  "new_native_predictions_during_aggregation": 0
+}

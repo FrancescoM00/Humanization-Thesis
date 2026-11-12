@@ -1,0 +1,35 @@
+{
+  "unchanged_nonentity_input_pairs": 2007,
+  "unchanged_metric_columns": 61,
+  "semantic_metrics_unchanged_within_tolerance": true,
+  "atol": 1e-06,
+  "rtol": 1e-06,
+  "runtime_counters_excluded": [
+    "bert_unique_chunk_pairs_scored_cumulative",
+    "bert_unique_chunks_encoded_cumulative",
+    "embedding_unique_chunks_encoded_cumulative",
+    "nli_new_pairs_scored",
+    "nli_unique_pairs_scored_cumulative"
+  ],
+  "coverage": [
+    {
+      "policy": "v1",
+      "n_cohort_sources": 200,
+      "n_applied": 200,
+      "n_skipped": 0,
+      "coverage": 1.0,
+      "n_sources_common_to_both": 145
+    },
+    {
+      "policy": "clean",
+      "n_cohort_sources": 200,
+      "n_applied": 145,
+      "n_skipped": 55,
+      "coverage": 0.725,
+      "n_sources_common_to_both": 145
+    }
+  ],
+  "comparison_uses_common_sources": true,
+  "bootstrap": 1000,
+  "labels_are_not_gold_semantic_annotations": true
+}

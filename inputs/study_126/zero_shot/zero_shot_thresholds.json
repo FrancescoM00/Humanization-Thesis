@@ -1,0 +1,11 @@
+{
+  "binoculars_falcon7b": {
+    "threshold": 0.9046559856180912,
+    "calibration_n": 300,
+    "target_fpr": 0.05,
+    "calibration_fpr": 0.05,
+    "decision": "AI iff raw Binoculars ratio < threshold; ties are human",
+    "score_is_probability": false,
+    "orientation": "lower_is_more_ai_like"
+  }
+}

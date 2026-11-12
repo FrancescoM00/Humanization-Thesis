@@ -1,0 +1,56 @@
+{
+  "status": "completed",
+  "created_at_utc": "2026-11-11T14:24:18.985646+00:00",
+  "protocol_sha256": "3a281a5cbb38bcc2245b8f5b1054105c1fa798341c711649edb71b79783e488b",
+  "input_sha256": "b61cf98d66f960a2497c5ba5ba5cfb479289d48de94b3605b96009952532b68c",
+  "parent_protocol_sha256": "6610118f4d4e81373f02f58365dcc27a21a35fdb01a9394b2f65af33e9826bc6",
+  "parent_predictions_sha256": "0edc66bdcc82c581097b1e666a016853750f84983c3d03f3c926bc2250db540f",
+  "parent_splits_sha256": "90c945d6c6acd10d40b86b8832f68a17fd69bc0660468a7e557bc932c698db76",
+  "parent_results": "results_shortlist_validation",
+  "n_documents": 1800,
+  "n_groups": 900,
+  "n_candidate_features": 100,
+  "n_selected_features": 4,
+  "excluded_features": [
+    "n_words",
+    "n_characters",
+    "n_sentences",
+    "ttr",
+    "hapax_ratio"
+  ],
+  "n_fits": 35,
+  "n_new_fits": 35,
+  "n_refitted_parent_models": 0,
+  "copied_C3_105_predictions_identical": true,
+  "saved_parent_splits_reused": true,
+  "prediction_shapes": {
+    "cv": [
+      5,
+      1800,
+      2
+    ],
+    "leave_domain_out": [
+      1,
+      1800,
+      2
+    ],
+    "leave_generator_out": [
+      1,
+      1800,
+      2
+    ]
+  },
+  "n_convergence_warnings": 0,
+  "convergence_warnings": [],
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.7.2"
+  },
+  "code_sha256": "f7ab7f517e282e60a0d9bfe9c7518790f752dbc4cf4efdb893e4f0c4dd41a35a",
+  "reused_selection_code_sha256": "76d1857a3377a19d693eb878403789b8bf6f656412d664f0825f1b3c3bb9fb7f",
+  "elapsed_seconds": 4.362450416001593,
+  "all_length_dependence_eliminated": false,
+  "humanization_quality_evaluated": false
+}

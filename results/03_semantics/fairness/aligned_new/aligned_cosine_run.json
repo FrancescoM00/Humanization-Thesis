@@ -1,0 +1,16 @@
+{
+  "stage": "aligned_cosine",
+  "status": "executed",
+  "n_pairs": 879,
+  "pairs_sha256": "9bf1a3876eda82dd7495fb95f1df3c7505b6e3afd636a526cacc5d33b6983a2a",
+  "alignment_sha256": "3077c3ab76e0c485fbc3ec2fa65c25767e4fcc2e15e93d8611955677cf2cac9c",
+  "elapsed_seconds": 0.266795892999653,
+  "peak_rss_mib": 222.5859375,
+  "threads": 4,
+  "batch_size": 4,
+  "model": "cached MiniLM sentence similarities",
+  "unit_protocol": "exact existing NLI alignment chunks; no silent truncation",
+  "alignment": "maximum across all premise units; both directions",
+  "aggregation": "unweighted mean/q10/min; worst direction for bidirectional",
+  "code_sha256": "5ef41285fd9fb16d1566df649384ac0bf2f346ed9794445f0261040b5f1865ba"
+}

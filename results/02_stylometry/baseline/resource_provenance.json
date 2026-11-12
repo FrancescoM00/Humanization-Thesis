@@ -1,0 +1,6 @@
+{
+  "resource": "NLTK cmudict",
+  "path_relative_to_venv": "nltk_data/corpora/cmudict/cmudict",
+  "sha256": "cad209c39eb87677d64e93d97f8eed10b7e6f9bdd42de8e7ca8efc8e17d62e8a",
+  "retrieval": "NLTK downloader through configured HTTPS proxy, TLS and artifact verification enabled"
+}

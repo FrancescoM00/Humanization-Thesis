@@ -1,0 +1,39 @@
+{
+  "openai_roberta_base": {
+    "threshold": 0.9706076979637146,
+    "calibration_n": 300,
+    "target_fpr": 0.05,
+    "calibration_fpr": 0.05,
+    "decision": "AI iff score > threshold; ties are classified human"
+  },
+  "fakespot_roberta_base_raw": {
+    "threshold": 0.9611806273460388,
+    "calibration_n": 300,
+    "target_fpr": 0.05,
+    "calibration_fpr": 0.05,
+    "decision": "AI iff score > threshold; ties are classified human"
+  },
+  "radar_vicuna": {
+    "threshold": 0.794653058052063,
+    "calibration_n": 300,
+    "target_fpr": 0.05,
+    "calibration_fpr": 0.05,
+    "decision": "AI iff score > threshold; ties are classified human"
+  },
+  "majority_vote": {
+    "threshold": 0.5,
+    "calibration_n": 300,
+    "target_fpr": null,
+    "calibration_fpr": 0.016666666666666666,
+    "decision": "AI iff at least two of three calibrated detectors vote AI"
+  },
+  "binoculars_falcon7b": {
+    "threshold": 0.9046559856180912,
+    "calibration_n": 300,
+    "target_fpr": 0.05,
+    "calibration_fpr": 0.05,
+    "decision": "AI iff raw Binoculars ratio < threshold; ties are human",
+    "score_is_probability": false,
+    "orientation": "lower_is_more_ai_like"
+  }
+}
