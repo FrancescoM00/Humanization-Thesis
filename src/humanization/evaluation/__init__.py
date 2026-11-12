@@ -1,1 +1,1 @@
-"""evaluation components for reproducible humanization experiments."""
+"""Componenti di valutazione per esperimenti riproducibili di humanization."""

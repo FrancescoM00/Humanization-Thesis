@@ -1,4 +1,4 @@
-"""Compute aligned cosine/BERTScore maxima and mean/q10/min per direction."""
+"""Calcola i massimi allineati di coseno/BERTScore e media/q10/minimo per direzione."""
 from __future__ import annotations
 import argparse
 import hashlib

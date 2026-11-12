@@ -1,4 +1,4 @@
-"""Run fixed rewriting systems on a frozen desktop cohort, with safe resume."""
+"""Esegue sistemi di riscrittura fissi su una coorte congelata, consentendo una ripresa sicura."""
 from __future__ import annotations
 import argparse
 import json

@@ -1,4 +1,4 @@
-"""Prepare subtle semantic alterations from existing MGTBench machine texts."""
+"""Prepara alterazioni semantiche sottili da testi macchina MGTBench già disponibili."""
 from __future__ import annotations
 import argparse
 import hashlib

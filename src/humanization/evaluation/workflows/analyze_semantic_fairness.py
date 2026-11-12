@@ -1,4 +1,4 @@
-"""Compare equally aggregated similarities/NLI, distributed errors and length."""
+"""Confronta similarità e NLI aggregati allo stesso modo, errori distribuiti e lunghezza."""
 from __future__ import annotations
 import argparse
 import json

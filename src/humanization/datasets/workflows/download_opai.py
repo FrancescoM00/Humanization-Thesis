@@ -1,4 +1,4 @@
-"""Resolve and save the exact public OpAI-Bench release revision before download."""
+"""Identifica e salva la revisione pubblica esatta di OpAI-Bench prima del download."""
 import argparse
 import json
 import os

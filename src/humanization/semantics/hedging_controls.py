@@ -1,8 +1,8 @@
-"""Native epistemic-caution challenges with score-independent source selection.
+"""Prove su cautele epistemiche già presenti, con fonti selezionate senza usare gli score.
 
-Rules provide intended experimental labels, not human gold labels. A triple
-removes the target caution, strengthens commitment while retaining caution, and
-paraphrases the original caution. No generative or NLI model is used here.
+Le regole forniscono etichette sperimentali intenzionali, non etichette umane
+certe. Ogni terna rimuove la cautela scelta, rafforza l'affermazione mantenendo
+una cautela e parafrasa la cautela originale. Non si usano modelli generativi o NLI.
 """
 from __future__ import annotations
 
@@ -78,7 +78,7 @@ def _subject(sentence):
         return None
     if any(t.pos_ in {"VERB", "AUX"} and "Fin" in t.morph.get("VerbForm")
            for t in subject.subtree):
-        return None  # Parser errors can put a reporting verb inside the subject.
+        return None  # Errori del parser possono inserire un verbo dichiarativo nel soggetto.
     return subject
 
 
@@ -86,7 +86,7 @@ def _number(subject):
     word = subject.text.casefold()
     if (any(t.dep_ == "conj" for t in subject.children)
             and any(t.text.casefold() in {"or", "nor"} for t in subject.subtree)):
-        return None  # Disjunctive/parenthetic coordination has uncertain agreement.
+        return None  # La coordinazione disgiuntiva o parentetica ha accordo incerto.
     if word == "i":
         return "first"
     if word in {"you", "we", "they", "these", "those"} or any(c.dep_ == "conj" for c in subject.children):
@@ -94,7 +94,7 @@ def _number(subject):
     if word in {"he", "she", "it", "this", "that"}:
         return "singular"
     number = subject.morph.get("Number")
-    # Plural-looking proper names such as United States have uncertain agreement.
+    # Nomi propri apparentemente plurali, come United States, hanno accordo incerto.
     if subject.pos_ == "PROPN" and number == ["Plur"]:
         return None
     return "singular" if number == ["Sing"] else "plural" if number == ["Plur"] else None
@@ -126,18 +126,19 @@ def _retain_outer_space(original, body):
 
 
 def sentence_triplet(sentence: Any) -> dict | None:
-    """Return one conservative native-caution triple, or reject the sentence.
+    """Restituisce una terna prudente su una cautela già presente, oppure scarta la frase.
 
-    Complete/partial refer to the target proposition, not all claims in a text.
-    Ambiguous permissions, ability, multiple hedges and polarity changes are
-    excluded; the remaining semantic readings still require textual review.
+    Completa e parziale si riferiscono alla proposizione bersaglio, non a tutte
+    le affermazioni del testo. Si escludono permessi ambigui, capacità, cautele
+    multiple e cambiamenti di polarità; le interpretazioni rimaste richiedono
+    comunque una verifica del testo.
     """
     if not _safe(sentence):
         return None
     raw = sentence.text
     stripped = raw.strip()
     tokens = [t for t in sentence if not t.is_space]
-    # An explicit proposition-level wrapper supplies a clear possibility scope.
+    # Una cornice esplicita a livello di proposizione chiarisce la portata della possibilità.
     match = re.match(r"It is (possible|probable|likely) that\s+(.+\.)$", stripped, re.I)
     if match:
         marker, clause = match.group(1).lower(), match.group(2)
@@ -153,7 +154,7 @@ def sentence_triplet(sentence: Any) -> dict | None:
         family = "explicit_possible" if marker == "possible" else "explicit_probable"
     else:
         if any(t.dep_ in {'ccomp', 'relcl', 'advcl', 'acl'} for t in tokens):
-            return None  # Do not put an independently asserted clause under a new wrapper.
+            return None  # Non inserisce una proposizione affermata indipendentemente in una nuova cornice.
         subject = _subject(sentence)
         if subject is None:
             return None
@@ -168,15 +169,15 @@ def sentence_triplet(sentence: Any) -> dict | None:
             if base.tag_ != "VB" or base.pos_ not in {"VERB", "AUX"}:
                 return None
             if base.lemma_ == "be" and any(c.lemma_ == "able" for c in base.children):
-                return None  # Keep ability constructions outside this targeted panel.
+                return None  # Esclude da questo pannello mirato le costruzioni che esprimono capacità.
             if any(t.text.casefold() in _HEDGES and t != modal for t in tokens):
                 return None
             subject_tokens = list(subject.subtree)
             start, end = min(t.idx for t in subject_tokens), max(t.idx+len(t.text) for t in subject_tokens)
             if raw[:start-sentence.start_char].strip() or sentence.doc.text[end:modal.idx].strip():
                 return None
-            # May+state/perfect is usually epistemic. Lexical may is restricted
-            # to inanimate subjects and non-permission outcome predicates.
+            # May con stato o perfetto è solitamente epistemico. Il may lessicale è limitato
+            # a soggetti inanimati e predicati di esito che non esprimono permessi.
             human_subject = (subject.ent_type_ == "PERSON" or subject.lemma_.casefold() in _HUMAN_SUBJECTS
                              or subject.text.casefold() in {"i", "you", "he", "she", "we", "they"})
             epistemic_aux = (base.lemma_ == "be" or (base.lemma_ == "have" and base.dep_ == "aux"))
@@ -184,7 +185,7 @@ def sentence_triplet(sentence: Any) -> dict | None:
                 if human_subject or base.lemma_ not in _SAFE_MAY_VERBS:
                     return None
             if modal.text.casefold() == "may" and human_subject and base.lemma_ == "be" and sentence.root != base:
-                return None  # "Guests may be seated" may grant permission.
+                return None  # "Guests may be seated" può esprimere un permesso.
             if subject.text.casefold() in {"i", "you", "we"}:
                 return None
             finite = _finite(base, _number(subject))
@@ -195,7 +196,7 @@ def sentence_triplet(sentence: Any) -> dict | None:
             auxiliary = base.lemma_ == "be" or (base.lemma_ == "have" and base.dep_ == "aux")
             partial_words = finite + " probably" if auxiliary else "probably " + finite
             partial_raw = raw[:a] + partial_words + raw[b:]
-            # The positive is a genuine rephrasing of the same possibility.
+            # Il positivo riformula effettivamente la stessa possibilità.
             complete = complete_raw.strip()
             partial = partial_raw.strip()
             first = tokens[0]
@@ -224,7 +225,7 @@ def sentence_triplet(sentence: Any) -> dict | None:
             subject_start = min(t.idx for t in subject.subtree)-sentence.start_char
             introductory = raw[b:subject_start] if initial else raw[:subject_start]
             if introductory.strip():
-                return None  # Avoid moving reporting/introductory adjuncts inside the new wrapper.
+                return None  # Evita di spostare aggiunti dichiarativi o introduttivi nella nuova cornice.
             complete = (raw[:a]+raw[b:]).strip()
             if initial:
                 complete = _case_start(complete, True)
@@ -243,7 +244,7 @@ def sentence_triplet(sentence: Any) -> dict | None:
 
 
 def collect_exclusions(paths, root: Path):
-    """Collect raw-row keys and canonical previous text hashes from old inputs."""
+    """Raccoglie le chiavi delle righe grezze e gli hash canonici dei testi già usati dagli input precedenti."""
     rows, hashes, manifest = set(), set(), []
     def visit(value):
         if isinstance(value, dict):
@@ -330,20 +331,20 @@ def load_machine_records(raw_dir: Path, exclusion_files, root: Path,
 
 
 def discover_candidates(records, nlp=None, seed=20261111, max_per_cell=10, max_per_domain=None):
-    """Parse score-independent queues, retaining native eligible source triples."""
+    """Analizza code indipendenti dagli score e conserva le terne di fonti con cautele già presenti e ammissibili."""
     if nlp is None: nlp=load_perturbation_nlp()
     cells=defaultdict(list)
     for record in records: cells[(record['domain'],record['generator'])].append(record)
     queues={key:deque(sorted(items,key=lambda r:_stable_hex(seed,r['source_id']))) for key,items in sorted(cells.items())}
     accepted=Counter(); accepted_domains=Counter(); diagnostics=[]; candidates=[]; accepted_groups=set()
-    # Eligibility is evaluated in a deterministic balanced stream. A cell cap
-    # bounds parsing work without using scores or changing experimental labels.
+    # L'ammissibilità è valutata in un flusso deterministico bilanciato. Un limite per cella
+    # limita il parsing senza usare score o cambiare le etichette sperimentali.
     def stream():
         while any(queues.values()):
             progressed=False
             for key,queue in queues.items():
-                # Different generators from one raw-row/source component are
-                # not independent sources and must not consume separate caps.
+                # Generatori diversi della stessa componente riga grezza/fonte
+                # non sono fonti indipendenti e non devono occupare quote separate.
                 while queue and queue[0]['source_group_id'] in accepted_groups:
                     skipped=queue.popleft()
                     diagnostics.append({**{k:skipped[k] for k in ('source_id','domain','generator','source_row')},
@@ -367,7 +368,7 @@ def discover_candidates(records, nlp=None, seed=20261111, max_per_cell=10, max_p
         for index,sentence in enumerate(doc.sents):
             triple=sentence_triplet(sentence)
             if triple is not None:
-                # Reject exact duplicate support already asserted elsewhere.
+                # Scarta il supporto esattamente duplicato già affermato altrove.
                 other=canonical(doc.text[:sentence.start_char]+' '+doc.text[sentence.end_char:])
                 if canonical(triple['complete']).rstrip('.') in other: continue
                 choices.append((index,sentence,triple))
@@ -442,8 +443,8 @@ def prepare_panel(protocol_path:Path, output:Path, root:Path):
                                              protocol.get('max_unique_candidates_per_domain'))
     n=int(protocol.get('n_sources',60));seed=int(protocol.get('seed',20261111))
     def fail_preparation(message):
-        # Preserve applicability diagnostics when a registered quota cannot be
-        # met. These are candidates, not a completed panel or metric results.
+        # Conserva la diagnostica di applicabilità quando non è possibile raggiungere
+        # una quota prevista. Questi sono candidati, non un pannello completo o risultati delle metriche.
         output.mkdir(parents=True,exist_ok=True)
         stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         failure={'status':'incomplete_no_pairs_exported','reason':message,

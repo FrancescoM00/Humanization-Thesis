@@ -1,4 +1,4 @@
-"""Assemble frozen fairness panels and seed reusable caches without inference."""
+"""Assembla i pannelli congelati del confronto equo e inizializza cache riutilizzabili senza inferenza."""
 from __future__ import annotations
 import argparse
 import hashlib

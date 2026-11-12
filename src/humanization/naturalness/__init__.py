@@ -1,1 +1,1 @@
-"""naturalness components for reproducible humanization experiments."""
+"""Componenti per valutare la naturalezza in esperimenti di riscrittura riproducibili."""

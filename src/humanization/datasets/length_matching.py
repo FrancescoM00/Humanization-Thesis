@@ -1,8 +1,9 @@
-"""Exact word-count controls using sentence-ended, source-aligned prefixes.
+"""Controlla il numero esatto di parole con prefissi allineati per fonte e conclusi a fine frase.
 
-No human is matched to another source's generation. One generator is selected
-per original source row, so the existing paired tests and source-disjoint CV
-remain meaningful. Prefix counts use the extractor's spaCy is_alpha definition.
+Un testo umano non viene abbinato alla generazione di un'altra fonte. Si seleziona
+un generatore per ogni riga originale, mantenendo validi i test appaiati e la
+cross-validation con fonti separate. Le parole dei prefissi seguono la definizione
+spaCy is_alpha usata dall'estrattore.
 """
 from __future__ import annotations
 
@@ -24,12 +25,12 @@ from humanization.stylometry.features import load_nlp
 
 def sentence_prefixes(text: str, tokenizer, minimum: int = 90,
                       maximum: int = 180) -> dict[int, str]:
-    """Sentence-ended initial prefixes indexed by exact lexical word count.
+    """Indicizza i prefissi iniziali conclusi a fine frase per numero esatto di parole lessicali.
 
-    Only input spacing and an incomplete trailing fragment are repaired. Prefix
-    cuts are punctuation heuristics with decimal/abbreviation guards, not a
-    guarantee of grammatical completeness. Characters inside a prefix remain
-    unchanged; words are never cut at arbitrary counts or padded.
+    Si correggono soltanto gli spazi e un eventuale frammento finale incompleto.
+    I tagli usano la punteggiatura, con controlli per decimali e abbreviazioni,
+    senza garantire la completezza grammaticale. I caratteri interni restano
+    invariati: le parole non vengono troncate a conteggi arbitrari né aggiunte.
     """
     text = trim_incomplete_tail(process_spaces(text))
     if not text:
@@ -48,8 +49,8 @@ def sentence_prefixes(text: str, tokenizer, minimum: int = 90,
             token = preceding.group(1) if preceding else ""
             if token.casefold() in ABBREVIATIONS or re.fullmatch(r"(?:[A-Za-z]\.)*[A-Za-z]", token):
                 continue
-        # Choose the first valid ending at each word count, avoiding following
-        # punctuation-only paragraphs that cannot change the lexical length.
+        # Sceglie la prima chiusura valida per ogni conteggio di parole, evitando successivi
+        # paragrafi di sola punteggiatura che non cambiano la lunghezza lessicale.
         prefixes.setdefault(n, text[:match.end()].rstrip())
     return prefixes
 
@@ -95,7 +96,7 @@ def prepare_length_matched_dataset(raw_dir: Path | str, output_dir: Path | str,
                                    n_pairs: int = 300, seed: int = 42,
                                    minimum: int = 90, maximum: int = 180,
                                    target: int = 150, model: str = "en_core_web_sm"):
-    """Save exact length-matched samples and provenance; fail if infeasible."""
+    """Salva campioni con lunghezza esattamente abbinata e provenienza; si interrompe se impossibile."""
     if not 50 <= minimum <= target <= maximum:
         raise ValueError("Require 50 <= minimum <= target <= maximum (MATTR uses 50 words).")
     if n_pairs < len(GENERATORS):
@@ -200,7 +201,7 @@ def prepare_length_matched_dataset(raw_dir: Path | str, output_dir: Path | str,
 
 
 def length_balance(features: pd.DataFrame) -> pd.DataFrame:
-    """Signed pooled-SD mean gap and KS diagnostic per domain and generator."""
+    """Scarto medio con segno diviso per la SD combinata e diagnostica KS per dominio e generatore."""
     rows = []
     scopes = [("pooled", "ALL", "ALL", features)]
     scopes += [("domain", d, "ALL", s) for d, s in features.groupby("domain")]

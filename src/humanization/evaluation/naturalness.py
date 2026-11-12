@@ -1,8 +1,9 @@
-"""Optional Groq pairwise naturalness judge; plans are offline by default.
+"""Giudice Groq opzionale di naturalezza a coppie; i piani sono offline per default.
 
-The model judges writing, not detector evasion or semantic fidelity. AB/BA
-decisions are retained separately. API decisions and assistant proxy ratings
-are never relabelled as human annotations.
+Il modello giudica la scrittura, non l'evasione dei detector o la fedeltà
+semantica. Le decisioni AB/BA sono conservate separatamente. Le decisioni API
+e le valutazioni sostitutive dell'assistente non vengono mai presentate
+come annotazioni umane.
 """
 from __future__ import annotations
 from collections import Counter
@@ -22,7 +23,7 @@ from humanization.naturalness.pairwise import _read_csv
 
 
 def evaluate_orders(rows):
-    """Position preference and AB/BA consistency, without assuming human gold."""
+    """Preferenza di posizione e coerenza AB/BA, senza assumere un riferimento umano."""
     valid=[row for row in rows if row.get('status')=='ok']
     pairs=summarize_orders(rows)
     complete=[row for row in pairs if row['completed_orders']==2]
@@ -41,7 +42,7 @@ def canonical_preference(preference, order):
     return 'system_a' if (preference == 'A') == (order == 'AB') else 'system_b'
 
 def summarize_orders(rows):
-    """Keep disagreement explicit; never choose the favorable presentation order."""
+    """Mantiene esplicito il disaccordo; non sceglie l'ordine di presentazione favorevole."""
     by_source = {}
     for row in rows:
         if row.get('status') != 'ok':
@@ -65,10 +66,11 @@ def _kappa(predicted, reference):
     return None if pe == 1 else (po - pe) / (1 - pe)
 
 def validate_ratings(plan, judgments, ratings_csv, rating_key_csv, *, label_source):
-    """Compare paired preferences to 1–5 ratings from an explicit source.
+    """Confronta le preferenze a coppie con valutazioni da 1 a 5 di provenienza esplicita.
 
-    Assistant labels can be used as proxy diagnostics, never as human gold.
-    Only complete, order-consistent judge pairs enter agreement; report coverage.
+    Le etichette dell'assistente servono come diagnostica sostitutiva, mai come
+    riferimento umano. Solo le coppie complete e coerenti fra ordini entrano nel
+    calcolo della concordanza; va riportata anche la copertura.
     """
     if label_source not in {'human', 'assistant_proxy', 'other_proxy'}:
         raise ValueError('Explicit label_source must be human, assistant_proxy, or other_proxy')

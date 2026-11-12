@@ -1,4 +1,4 @@
-"""Analyze the candidate-pool robustness check without fitting any model."""
+"""Analizza il controllo di robustezza delle feature candidate senza addestrare modelli."""
 from __future__ import annotations
 import argparse
 import json

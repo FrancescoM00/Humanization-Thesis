@@ -1,4 +1,4 @@
-"""Evaluate positive semantic controls and select an NLI aggregator on calibration."""
+"""Valuta i controlli semantici positivi e seleziona un aggregatore NLI sulla calibrazione."""
 from __future__ import annotations
 import argparse
 import json

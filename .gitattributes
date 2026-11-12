@@ -1,4 +1,4 @@
-# Keep source code stable and preserve the exact bytes of frozen research data.
+# Mantiene stabile il codice e conserva i byte originali dei dati sperimentali.
 * text=auto eol=lf
 *.csv -text -whitespace
 *.jsonl -text -whitespace
@@ -6,3 +6,12 @@
 *.npz -text
 *.pdf -text
 *.png -text
+
+# Nello ZIP di consegna la guida è soltanto il README principale.
+data/README.md export-ignore
+data/**/README.md export-ignore
+docs/**/README.md export-ignore
+results/**/README.md export-ignore
+docs/methodology.md export-ignore
+docs/organization.md export-ignore
+docs/reproducibility.md export-ignore

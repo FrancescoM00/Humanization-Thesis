@@ -1,8 +1,9 @@
-"""Refit C3 after excluding five diagnostics, reusing the saved source splits.
+"""Riaddestra C3 escludendo cinque indicatori e riusando le partizioni salvate delle fonti.
 
-The previous C3 probabilities are copied, not retrained. Only the candidate
-pool changes; supervised selection and all preprocessing remain training-only.
-Excluding five diagnostics is not a claim of eliminating every length effect.
+Le probabilità precedenti di C3 sono copiate, non ristimate. Cambia solo
+l'insieme delle feature candidate; selezione supervisionata e preprocessing
+restano limitati al training. Escludere cinque indicatori non implica
+l'eliminazione di ogni effetto della lunghezza.
 """
 from __future__ import annotations
 
@@ -34,11 +35,12 @@ PREDICTION_PROTOCOLS = ("cv", "leave_domain_out", "leave_generator_out")
 
 
 def load_saved_splits(documents: pd.DataFrame, membership: pd.DataFrame):
-    """Recover exact parent train/test indices without generating new folds.
+    """Recupera gli indici esatti di training e test precedenti senza generare nuovi fold.
 
-    Every saved split must assign every source group exactly once. Whole-group
-    membership and held-out domain/generator protection are checked on the
-    original document order returned by ``prepare_documents``.
+    Ogni partizione salvata deve assegnare ogni gruppo di fonte esattamente una
+    volta. L'integrità dei gruppi e la protezione del dominio/generatore escluso
+    sono verificate sull'ordine originale dei documenti restituito da
+    ``prepare_documents``.
     """
     required = {*SPLIT_KEYS, "group_id", "role"}
     if required - set(membership):
@@ -94,7 +96,7 @@ def _verified_hash(path: Path, expected: str | None, description: str) -> str:
 
 
 def run_robustness(protocol_path: Path, output: Path, root: Path) -> dict:
-    """Fit only C3_100, retaining parent C3_105 and exact parent memberships."""
+    """Addestra solo C3_100, conservando C3_105 e le esatte appartenenze alle partizioni precedenti."""
     started = time.monotonic()
     protocol_path, output, root = protocol_path.resolve(), output.resolve(), root.resolve()
     protocol_bytes = protocol_path.read_bytes()

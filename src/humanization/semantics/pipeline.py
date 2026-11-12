@@ -1,4 +1,4 @@
-"""Compute per-pair semantic scores or reanalyse previously computed scores."""
+"""Calcola score semantici per coppia o rianalizza score già calcolati."""
 import json
 from humanization.configuration import path,output,record
 

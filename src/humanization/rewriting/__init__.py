@@ -1,1 +1,1 @@
-"""rewriting components for reproducible humanization experiments."""
+"""Componenti di riscrittura per esperimenti riproducibili di humanization."""

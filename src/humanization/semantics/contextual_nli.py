@@ -1,9 +1,10 @@
-"""Compare NLI evidence contexts without changing the historical sentence scorer.
+"""Confronta i contesti delle evidenze NLI senza cambiare il precedente calcolo per frase.
 
-Hypothesis units remain fixed. Premises are individual units, contiguous unions
-of up to two/three units, or the exact whole document when the tokenizer pair
-fits. No evidence is truncated. Increasing the candidate set raises maximum
-support by construction; a higher score is not evidence of better accuracy.
+Le unità dell'ipotesi restano fisse. Le premesse sono unità singole, unioni
+contigue di fino a due o tre unità, oppure l'intero documento esatto quando
+la coppia rientra nei limiti del tokenizer. Nessuna evidenza viene troncata.
+Aumentare i candidati alza per costruzione il supporto massimo: un punteggio
+più alto non dimostra una maggiore accuratezza.
 """
 from __future__ import annotations
 
@@ -22,7 +23,7 @@ def digest_pair(pair):
 
 
 def contiguous_contexts(units, max_units):
-    """All nonempty contiguous windows of width 1..max_units, native order."""
+    """Tutte le finestre contigue non vuote di ampiezza 1..max_units, nell'ordine originale."""
     if max_units < 1 or not units or any(not text.strip() for text in units):
         raise ValueError('Require nonempty units and a positive window width')
     return list(dict.fromkeys(' '.join(units[start:start+width])
@@ -37,12 +38,13 @@ def pair_length(tokenizer, premise, hypothesis):
 
 def build_plan(pair, alignment, tokenizer, *, max_pair_tokens=384, modes=MODES,
                length_cache=None):
-    """Plan exact tokenizer-checked comparisons, recording missing coverage.
+    """Pianifica confronti esatti verificati dal tokenizer e registra la copertura mancante.
 
-    Existing alignment units are reused verbatim when supplied. Their original
-    hashes are checked. Missing alignments use the same sentence/chunk helper as
-    the existing scorer, at 160 tokens per hypothesis unit. An optional shared
-    cache stores exact pair lengths for this tokenizer, never approximations.
+    Se fornite, le unità di allineamento esistenti vengono riusate senza modifiche,
+    verificandone gli hash originali. Per gli allineamenti mancanti si usa la stessa
+    funzione di segmentazione del calcolo esistente, con 160 token per unità
+    dell'ipotesi. Una cache condivisa opzionale conserva le lunghezze esatte delle
+    coppie per questo tokenizer, mai approssimazioni.
     """
     from humanization.semantics.metrics import sentence_chunks
 
@@ -84,7 +86,7 @@ def build_plan(pair, alignment, tokenizer, *, max_pair_tokens=384, modes=MODES,
 
 
 def summarize_units(units, *, low_support_threshold=.5):
-    """Incomplete document coverage never yields a selectively averaged score."""
+    """Una copertura incompleta del documento non produce mai una media dei soli casi disponibili."""
     groups = {}
     for row in units:
         groups.setdefault((row['id'], row['direction'], row['mode']), []).append(row)
@@ -131,7 +133,7 @@ def score_plan(plan, predict, labels, *, low_support_threshold=.5):
 
 
 class LocalNLIPredictor:
-    """Local base checkpoint, explicit float32, separate resumable pair cache."""
+    """Checkpoint base locale, float32 esplicito e cache separata delle coppie riprendibile."""
     def __init__(self, modelpath, tokenizer, *, device='cpu', batch_size=2,
                  threads=2, max_pair_tokens=384, cache_path=None, progress=None):
         import torch

@@ -1,7 +1,8 @@
-"""Run fixed, non-adaptive rewriting systems and preserve unsuccessful attempts.
+"""Esegue sistemi di riscrittura fissi e non adattivi, conservando i tentativi falliti.
 
-The identity system requires only the Python standard library. Neural models
-are imported lazily, loaded one at a time, and never queried through a detector.
+Il sistema identità richiede soltanto la libreria standard di Python. I modelli
+neurali sono importati quando servono, caricati uno alla volta e mai interrogati
+attraverso un detector.
 """
 from __future__ import annotations
 from collections import Counter
@@ -31,7 +32,7 @@ def dipper_prompt(text: str, lexical_diversity: int, order_diversity: int) -> st
     return f'lexical = {100 - lexical_diversity}, order = {100 - order_diversity} <sent> {normalized} </sent>'
 
 def dipper_context_prompt(text: str, prefix: str, lexical_diversity: int, order_diversity: int) -> str:
-    """Model-card format: all previous rewritten context precedes <sent>."""
+    """Formato della scheda del modello: tutto il contesto già riscritto precede <sent>."""
     prompt = dipper_prompt(text, lexical_diversity, order_diversity)
     prefix = ' '.join(prefix.split())
     if not prefix:
@@ -49,19 +50,20 @@ def _dipper_sentences(text: str) -> list[str]:
     return [sentence.text.strip() for sentence in _dipper_sentence_nlp()(normalized).sents if sentence.text.strip()]
 
 class _DipperWindowGenerationError(RuntimeError):
-    """Retain completed windows if a later model call raises an exception."""
+    """Conserva le finestre completate se una chiamata successiva al modello genera un errore."""
 
     def __init__(self, rewrite_row: dict):
         super().__init__('DIPPER window generation failed; inspect the notebook error output.')
         self.rewrite_row = rewrite_row
 
 def _rewrite_dipper_context(source: dict, system: dict, seed: int, tokenizer, model, device) -> dict:
-    """Three-sentence windows with cumulative rewritten prefix, no truncation.
+    """Usa finestre di tre frasi con prefisso riscritto cumulativo, senza troncamento.
 
-    The public recipe's context placement/inverse codes are retained. Sentence
-    splitting (spaCy), NF4 loading, greedy decoding and max_new_tokens per window
-    are explicit experimental choices, not a claim of full paper replication.
-    A partial output remains auditable but never enters successful pairs.
+    Conserva la posizione del contesto e i codici inversi della procedura pubblica.
+    La suddivisione in frasi con spaCy, il caricamento NF4, la decodifica greedy e
+    max_new_tokens per finestra sono scelte sperimentali esplicite: non implicano
+    una replica completa dell'articolo. Un risultato parziale resta ispezionabile,
+    ma non viene mai incluso tra le coppie prodotte con successo.
     """
     import torch
     row = _base_row(source, system, seed)

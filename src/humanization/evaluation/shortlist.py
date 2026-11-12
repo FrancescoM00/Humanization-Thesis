@@ -1,10 +1,10 @@
-"""Training-only feature selection and grouped validation of a compact panel.
+"""Selezione delle feature sul solo training e validazione per gruppi di un insieme compatto.
 
-The fixed historical panel is deliberately labelled exploratory. This module
-validates a new selection procedure; it does not undo its earlier selection on
-the complete sample. Human/machine rows are design associations, not assumed
-semantic paraphrases. All preprocessing and supervised selection use training
-rows only.
+L'insieme fisso precedente è esplicitamente esplorativo. Questo modulo valida
+una nuova procedura di selezione; non annulla la precedente selezione sul
+campione completo. Le righe umano/macchina sono associazioni del disegno
+sperimentale, non parafrasi semantiche presunte. Tutto il preprocessing e la
+selezione supervisionata usano esclusivamente le righe di training.
 """
 from __future__ import annotations
 
@@ -41,11 +41,11 @@ def sha256(path: Path) -> str:
 
 
 def prepare_documents(frame: pd.DataFrame) -> pd.DataFrame:
-    """Validate the frozen design and add the paired machine generator to humans.
+    """Valida il disegno congelato e associa agli umani il generatore macchina abbinato.
 
-    This particular experiment supports exactly one human and one machine per
-    source group. Stop if the input changes rather than silently changing its
-    weighting or the downstream clustered uncertainty calculation.
+    Questo esperimento ammette esattamente un umano e un testo macchina per gruppo
+    di fonte. Se l'input cambia, si interrompe: non vengono modificati implicitamente
+    né i pesi né il successivo calcolo dell'incertezza per gruppi.
     """
     required = {"id", "pair_id", "group_id", "domain", "generator", "label", "n_words"}
     missing = required.union(FEATURE_SCHEMA).difference(frame.columns)
@@ -80,12 +80,12 @@ def select_training_features(
     n_features: int = 4,
     max_abs_spearman: float = 0.85,
 ) -> tuple[list[str], pd.DataFrame]:
-    """Rank observed training-only |Hedges g| and greedily prune redundancy.
+    """Ordina i valori osservati di |g di Hedges| sul solo training e riduce la ridondanza.
 
-    Correlations use medians estimated on these same training rows. Undefined
-    effects, including zero pooled within-class variance, cannot enter the
-    ranking. Exact ranking ties use the feature name. No validation rows or
-    historical shortlist membership influence this selection.
+    Le correlazioni usano mediane stimate sulle stesse righe di training. Gli effetti
+    non definiti, anche per varianza aggregata entro classe nulla, non entrano nella
+    graduatoria. Le parità esatte sono risolte per nome della feature. Né le righe
+    di validazione né l'appartenenza alla shortlist precedente influenzano la selezione.
     """
     if n_features < 1 or not 0 < max_abs_spearman <= 1:
         raise ValueError("Invalid selection settings")
@@ -119,7 +119,7 @@ def select_training_features(
     }).set_index("feature", drop=False)
     candidates = report.loc[report.eligible].reset_index(drop=True).sort_values(
         ["abs_g", "feature"], ascending=[False, True])
-    # Fill from training only. A fully missing column is ineligible regardless.
+    # Imputa solo dal training. Una colonna interamente mancante è comunque esclusa.
     corr = x.fillna(x.median()).fillna(0.0).corr(method="spearman").abs()
     selected: list[str] = []
     for rank, name in enumerate(candidates.feature, start=1):
@@ -143,7 +143,7 @@ def build_model_registry(
     features: list[str], n_random_subsets: int = 100, random_seed: int = 20261111,
     fixed_features: tuple[str, ...] = FIXED_FEATURES,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Draw unique random panels without inspecting any text values or labels."""
+    """Estrae insiemi casuali distinti senza esaminare valori dei testi o etichette."""
     if not set(fixed_features).issubset(features):
         raise ValueError("The historical fixed panel is absent from the candidate pool")
     models = []
@@ -186,14 +186,14 @@ def build_model_registry(
 
 
 def iter_validation_splits(documents: pd.DataFrame, cv_seeds=DEFAULT_CV_SEEDS, n_splits: int = 5):
-    """Yield common grouped folds and one genuine holdout per domain/generator."""
+    """Produce fold comuni per gruppi e un test escluso effettivo per dominio/generatore."""
     all_indices = np.arange(len(documents))
     groups = documents.group_id.astype(str).to_numpy()
     for repeat, seed in enumerate(cv_seeds):
-        # When every group contains [one human, one machine], sklearn 1.7.2
-        # can produce identical splits for different seeds: shuffling identical
-        # per-group class counts does not change their order. Randomly relabel
-        # whole groups first, without using feature values or changing pairing.
+        # Quando ogni gruppo contiene [un umano, un testo macchina], sklearn 1.7.2
+        # può produrre partizioni identiche con semi diversi: mescolare conteggi di
+        # classe identici per gruppo non cambia il loro ordine. Si rietichettano quindi
+        # prima i gruppi casualmente, senza usare feature o modificare gli abbinamenti.
         unique_groups = np.unique(groups)
         permutation = np.random.default_rng(int(seed)).permutation(len(unique_groups))
         randomized_codes = dict(zip(unique_groups, permutation))
@@ -213,7 +213,7 @@ def iter_validation_splits(documents: pd.DataFrame, cv_seeds=DEFAULT_CV_SEEDS, n
 
 
 def run_validation(protocol_path: Path, output: Path, root: Path) -> dict:
-    """Run fixed settings once, preserving all prior experiments."""
+    """Esegue una volta le impostazioni fisse, conservando gli esperimenti precedenti."""
     started = time.monotonic()
     protocol_path, output, root = protocol_path.resolve(), output.resolve(), root.resolve()
     protocol_bytes = protocol_path.read_bytes()

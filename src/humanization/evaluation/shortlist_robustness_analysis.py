@@ -1,8 +1,9 @@
-"""Paired analysis of the 100-candidate robustness check for C3.
+"""Analisi appaiata del controllo di robustezza di C3 con 100 feature candidate.
 
-The 105-candidate predictions are reused exactly from the preceding experiment.
-Bootstrap draws intentionally follow its order and cache keys, allowing the old
-C3 AUCs and intervals to be checked without fitting that model again.
+Le predizioni con 105 candidate sono riutilizzate esattamente dall'esperimento
+precedente. Le estrazioni bootstrap seguono intenzionalmente il suo ordine e
+le sue chiavi di cache, consentendo di verificare AUC e intervalli del precedente
+C3 senza addestrarlo nuovamente.
 """
 from __future__ import annotations
 from humanization.paths import project_root
@@ -35,7 +36,7 @@ PROTOCOL_LABELS = {"cv": "Validazione ripetuta", "leave_domain_out": "Dominio es
 
 def selection_tables(parent_selections: pd.DataFrame, new_selections: pd.DataFrame,
                      candidate_features) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Selection counts are descriptive; overlapping training sets are not trials."""
+    """I conteggi di selezione sono descrittivi; training sovrapposti non sono prove indipendenti."""
     all_features = list(FEATURE_SCHEMA)
     parts, families = [], []
     for config, source in (("C3_105", parent_selections), ("C3_100", new_selections)):
@@ -68,7 +69,7 @@ def selection_tables(parent_selections: pd.DataFrame, new_selections: pd.DataFra
 
 def analyze_results(results: Path | str, protocol_path: Path | str | None = None,
                     root: Path | str | None = None) -> dict:
-    """Compute exactly paired AUC differences using saved held-out predictions."""
+    """Calcola differenze di AUC esattamente appaiate dalle predizioni salvate sui test esclusi."""
     started = time.monotonic()
     results = Path(results).resolve()
     root = Path(root).resolve() if root else project_root()
@@ -232,7 +233,7 @@ def _interval(row):
 
 
 def write_report(results: Path | str, protocol_path: Path | str | None = None) -> Path:
-    """Export a concise Italian report and standalone figures from actual outputs."""
+    """Esporta un report italiano sintetico e figure autonome dagli output effettivi."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt

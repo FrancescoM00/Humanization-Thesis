@@ -1,4 +1,4 @@
-"""Evaluate saved per-text outputs, independently of model execution."""
+"""Valuta gli output salvati per testo, indipendentemente dall'esecuzione dei modelli."""
 import json
 from humanization.configuration import path,output,record
 from .study import analyze_study,pilot_pair_comparison,compare_reference

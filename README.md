@@ -1,77 +1,146 @@
-# Humanization
+# Humanization — codice e risultati degli esperimenti
 
-Progetto Python per valutare le riscritture di testi generati da modelli linguistici. La cartella può essere estratta dallo ZIP e aperta direttamente in **Visual Studio Code**. Comprende codice, configurazioni, CSV originali e dati intermedi per riprodurre le analisi già eseguite.
+Questo ZIP raccoglie il codice usato per la parte sperimentale della tesi, i dati e i risultati delle esecuzioni già svolte. Il lavoro studia se la riscrittura di un testo generato da un modello linguistico ne riduce la rilevabilità, quanto ne conserva il significato e come ne modifica lo stile.
 
-Il flusso è: **dati → riscrittura → score individuali di stile, semantica e detection → evaluation → risultati**. La naturalezza è un modulo opzionale. La produzione di testi e score è separata dal calcolo delle metriche finali.
+**Per consultare il lavoro basta questo README e i report collegati sotto.** Non occorre installare Python o eseguire gli script per leggere i risultati. La cartella può essere aperta in Visual Studio Code; tabelle CSV e figure PDF si possono aprire anche separatamente.
 
-## Aprire ed eseguire il progetto
+## 1. Contenuto dello ZIP
 
-1. Estrarre lo ZIP in una cartella, per esempio `Humanization/`.
-2. In VS Code scegliere **File → Apri cartella** e selezionarla, oppure aprire `Humanization.code-workspace`.
-3. Installare le estensioni Python e Python Debugger suggerite. Usare **Python 3.12**.
-4. Aprire il terminale nella cartella del progetto e creare l'ambiente:
+```text
+Humanization/
+├── README.md                  Questa guida alla consegna
+├── requirements.txt           Dipendenze Python
+├── pyproject.toml             Configurazione del package Python
+├── Humanization.code-workspace
+├── .vscode/                   Configurazioni per aprire ed eseguire il progetto in VS Code
+├── configs/                   Parametri degli esperimenti e percorsi dei file
+│   └── protocols/             Regole fissate per shortlist e controllo delle cautele
+├── data/
+│   ├── raw/
+│   │   ├── mgtbench/          Essay_LLMs.csv, Reuters_LLMs.csv e WP_LLMs.csv originali
+│   │   └── opai/              Parquet ufficiali di OpAI-Bench
+│   ├── processed/             Campioni usati, coppie, riscritture e score individuali
+│   └── resources/             Risorse linguistiche locali
+├── src/humanization/          Implementazione dei metodi, divisa per componente
+├── experiments/               Script numerati per avviare le analisi
+├── results/
+│   ├── published/             Risultati delle esecuzioni già svolte
+│   └── new_runs/              Creata quando si esegue una nuova analisi
+├── tests/                     Controlli sul codice
+├── tools/                     Script per costruire lo ZIP
+├── requirements/              Profili delle dipendenze CPU e GPU
+├── docs/                      Registri tecnici di controllo e provenienza
+└── THIRD_PARTY_NOTICES.md      Attribuzioni e riferimenti ai progetti esterni
+```
+
+I CSV MGTBench contengono testi umani e testi prodotti da diversi generatori nei domini Essay, Reuters e WritingPrompts. I testi umani servono per il confronto stilistico e per calibrare i detector. **Negli esperimenti di riscrittura si parte invece da un testo macchina e se ne valuta la versione riscritta.** Per «fonte» si intende quel testo originale: più riscritture dello stesso originale non costituiscono fonti indipendenti.
+
+`data/processed/` conserva gli input effettivamente impiegati: non è necessario ricostruire i campioni per leggere i risultati. In particolare, `study_126/` contiene le riscritture e gli score dello studio su 126 originali; `pilot_42/` quelli delle prove preliminari su 42 originali. I file `SOURCE.json` documentano la provenienza dei dati ufficiali.
+
+## 2. Cosa fanno gli script principali
+
+Gli script di `experiments/` sono i punti di avvio. Leggono i parametri da `configs/` e richiamano le funzioni di `src/humanization/`.
+
+| Script | Cosa fa | Risultati già disponibili |
+| --- | --- | --- |
+| `00_data.py` | Controlla i tre CSV MGTBench e prepara i campioni quando richiesto. | Input utilizzati in `data/processed/`. |
+| `01_stylometry.py` | Estrae le feature stilistiche; esegue confronti umano/macchina, regressione logistica e analisi della selezione delle feature. | `results/published/02_stylometry/` |
+| `02_semantic_validation.py` | Calcola le metriche semantiche o rianalizza gli score salvati delle coppie originale/modificato. | `results/published/03_semantics/` |
+| `03_opai_editing.py` | Misura come cambia lo stile nelle operazioni OpAI, sul documento intero e sulle sole frasi modificate. | `results/published/04_opai_style/` |
+| `04_rewriting.py` | Produce le riscritture con Qwen e DIPPER, oppure recupera quelle già salvate. Registra anche i fallimenti. | Testi in `data/processed/study_126/rewriting/rewrites.jsonl`. |
+| `05_detection.py` | Calcola gli score dei detector sugli originali, sulle riscritture e sugli umani di calibrazione. | Score in `data/processed/study_126/detection/` e `zero_shot/`. |
+| `06_naturalness.py` | Prepara e analizza confronti di naturalezza; può interrogare un giudice remoto solo con attivazione esplicita. | Prove esplorative in `data/processed/naturalness_reference/`; non costituiscono validazione umana. |
+| `07_evaluation.py` | Riunisce gli score e calcola prestazioni dei detector, confronti fra riscrittori, intervalli e riepiloghi semantici/stilistici. | `results/published/07_study_126/` e confronto fra pilot. Gestisce anche le analisi NLI e cautele già salvate. |
+
+La separazione è questa: **riscrittura → misure sui testi → aggregazione e confronto dei risultati**. I primi due passaggi producono testi e score individuali; `evaluation` costruisce le tabelle finali.
+
+### Dove sono implementati i metodi
+
+| Componente in `src/humanization/` | File principali e funzione |
+| --- | --- |
+| `datasets/` | `mgtbench.py` legge e prepara MGTBench; `opai.py` legge i dati di editing. |
+| `stylometry/` | `features.py` calcola le 105 feature con spaCy, textstat e MATTR; `touched.py` e `opai.py` gestiscono lo stile nelle porzioni modificate. |
+| `semantics/` | `perturbations.py`, `subtle_perturbations.py` e `hedging_controls.py` costruiscono le alterazioni; `positive_controls.py` prepara i controlli di significato conservato. `metrics.py`, `nli.py`, `contextual_nli.py` e `aligned_similarity.py` calcolano le misure. |
+| `rewriting/` | `qwen.py` e `dipper.py` gestiscono le due famiglie di riscrittori; `pipeline.py` organizza generazione e salvataggio; `controls.py` prepara i controlli nulli. |
+| `detection/` | `roberta.py` gestisce i classificatori; `binoculars.py` implementa il detector zero-shot. |
+| `naturalness/` | `pairwise.py` prepara i confronti nei due ordini; `groq.py` gestisce il servizio remoto. Modulo opzionale. |
+| `evaluation/` | `study.py` analizza lo studio; `detection.py` calcola le metriche di rilevazione; `shortlist*.py` analizza selezione e stabilità delle feature; `hedging.py` analizza le cautele. Gli altri moduli gestiscono aggregazioni, statistica e report. |
+
+Le sottocartelle `workflows/` collegano questi metodi per le singole analisi: ad esempio `run_semantic_experiment.py` esegue le fasi semantiche e `analyze_semantic_extension.py` ne analizza i risultati. Tutti i percorsi della tabella sono relativi alla componente indicata.
+
+I modelli principali sono Qwen2.5-3B-Instruct, Qwen2.5-14B-Instruct e DIPPER XXL per la riscrittura; OpenAI RoBERTa, Fakespot, RADAR e Binoculars per la detection. Per la semantica si usano ROUGE-L, BLEU, embedding MiniLM, BERTScore con RoBERTa-base e DeBERTa-v3-base addestrato su NLI. Revisioni dei checkpoint e parametri sono conservati nelle configurazioni e nei manifest. «DIPPER a tre frasi» indica finestre di tre frasi, non tre applicazioni successive del modello; «identità» indica il testo lasciato invariato come controllo.
+
+## 3. Dove leggere i risultati già ottenuti
+
+**Tutti i percorsi di questa tabella partono da `results/published/`.** Ogni riga identifica il tipo di esperimento; il report collegato spiega campione, metodo, risultati e limiti. I nomi tecnici delle cartelle sono mantenuti per collegare senza ambiguità codice, input e risultati.
+
+| Esperimento | Cartella | Report e tabelle da consultare |
+| --- | --- | --- |
+| Confronto stilometrico iniziale umano/macchina | `02_stylometry/baseline/` | [Report](results/published/02_stylometry/baseline/report.md), `feature_effects.csv`, `classifier_metrics.csv`. |
+| Stilometria con lunghezza abbinata: 300 umani e 300 macchina per ciascuno dei tre domini | `02_stylometry/length_matched/` | [Report](results/published/02_stylometry/length_matched/report.md), `features.csv`, `classifier_metrics.csv`. |
+| Verifica delle quattro feature: tutte le feature, shortlist fissa, selezione sul training e quaterne casuali | `02_stylometry/shortlist/` | [Report PDF](results/published/02_stylometry/shortlist/report.pdf), `metrics.csv`, `paired_differences.csv`, `selection_frequency.csv`. |
+| Robustezza della selezione escludendo cinque indicatori sensibili alla lunghezza: 105 contro 100 candidati | `02_stylometry/shortlist_length_robustness/` | [Report PDF](results/published/02_stylometry/shortlist_length_robustness/report.pdf), `metrics.csv`, `selection_comparison.csv`. |
+| Validazione semantica iniziale: negazioni, entità, frasi mescolate, troncamento, cancellazione e asimmetria OpAI | `03_semantics/baseline/` | [Report](results/published/03_semantics/baseline/report.md), `metric_summary.csv` e figure PDF. |
+| Sostituzioni di entità corrette dopo la revisione degli esempi | `03_semantics/entity_clean/` | [Confronto fra le due politiche](results/published/03_semantics/entity_clean/entity_policy_comparison.md), `entity_policy_summary.csv`. |
+| Controllo sulle sole 34 sostituzioni di date, importi e percentuali | `03_semantics/entity_clean/numeric34/` | [Report](results/published/03_semantics/entity_clean/numeric34/report.md), `summary.csv`. |
+| Controlli positivi OpAI, alterazioni sottili e confronto degli aggregatori semantici | `03_semantics/extension/` | [Confronto degli aggregatori](results/published/03_semantics/extension/aggregator_report.md), `metric_auc.csv`, `auc_by_stratum.csv`. |
+| Confronto equo fra metriche: allineamento per frase, errori su più frasi, effetto della lunghezza e guardie lessicali | `03_semantics/fairness/` | [Report](results/published/03_semantics/fairness/report.md), `fair_metric_auc.csv`, `distributed_auc.csv`; analisi delle guardie in `guards_full/`. |
+| Variazione dello stile dopo Polish, Paraphrase, Style Rewrite, Compress ed Expand | `04_opai_style/` | [Documento intero](results/published/04_opai_style/document/report.md) e [sole frasi modificate](results/published/04_opai_style/touched/report.md); `touched/distance_summary.csv`. |
+| Prove preliminari su 42 originali: baseline 3B e DIPPER sul passaggio intero | `06_pilot_42/` | [Pilot 3B](results/published/06_pilot_42/qwen/report.md), [pilot DIPPER e confronto appaiato](results/published/06_pilot_42/dipper/paired_comparison.md). |
+| Studio su 126 originali: quattro configurazioni di riscrittura, controlli nulli e quattro detector | `07_study_126/` | [Detection](results/published/07_study_126/detection_analysis.md), [semantica e stile](results/published/07_study_126/semantic_style.md), `detection_overall.csv`, `nli_primary_summary.csv`, `style_summary.csv`. |
+| Scelta della modalità NLI su controlli positivi, alterazioni e identità | `08_nli_calibration/calibration/` | [Report](results/published/08_nli_calibration/calibration/report.md), `candidate_summary.csv`, `auc_by_condition.csv`. |
+| Estensione mirata delle alterazioni di cautela, con soglia storica invariata | `hedging/` | [Report PDF](results/published/hedging/report.pdf), `metrics.csv`, `directional_summary.csv`. |
+
+Nello studio su 126 originali, 42 erano già presenti nei pilot e 84 sono aggiuntivi. Le quattro configurazioni di riscrittura sono la baseline Qwen 3B, Qwen 14B, DIPPER sul passaggio intero e DIPPER a finestre di tre frasi; l'identità serve da riferimento. Le annotazioni indipendenti richieste ai colleghi non sono ancora incluse: le revisioni dell'assistente sono indicate come tali e non valgono come giudizi umani indipendenti.
+
+Nei risultati di detection, **TPR** è la quota di testi macchina rilevati, **FPR** la quota di umani erroneamente rilevati e **ASR** la quota di originali già rilevati che, dopo riscrittura, eludono il detector. Nelle analisi delle feature e delle metriche semantiche, **AUC** misura la capacità di separare i due gruppi dichiarati nel report.
+
+I file `report.md` sono leggibili in VS Code con l'anteprima Markdown; dove disponibile, `report.pdf` contiene la versione impaginata. I CSV riportano i valori numerici, i PDF delle figure mostrano i grafici e i JSON conservano parametri e informazioni dell'esecuzione. `predictions.npz` contiene predizioni numeriche compresse. Le coppie e le riscritture in formato JSONL hanno una registrazione per riga.
+
+## 4. Comandi facoltativi per riprodurre alcune analisi
+
+Questa parte serve solo a chi desidera eseguire il codice. Usare **Python 3.12**, aprire il terminale nella cartella estratta e predisporre l'ambiente:
 
 ```bash
 python -m venv .venv
 ```
 
-Attivarlo con `source .venv/bin/activate` su Linux/macOS oppure `.venv\Scripts\Activate.ps1` in PowerShell. Poi:
+Attivazione: `source .venv/bin/activate` su Linux/macOS oppure `.venv\Scripts\Activate.ps1` in PowerShell. Poi:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-In **Python: Select Interpreter** scegliere l'interprete della `.venv` appena creata. I comandi seguenti partono dalla radice del progetto:
+**Verificare i CSV ufficiali**, senza modificarli:
 
 ```bash
-python experiments/00_data.py --config configs/datasets.yaml --mode reproduce
-python experiments/07_evaluation.py --config configs/evaluation.yaml --mode reproduce
+python experiments/00_data.py --mode reproduce
 ```
 
-Il secondo comando ricalcola le metriche dai punteggi individuali salvati, confrontandole con i risultati pubblicati. Non esegue nuovamente riscrittori o detector e non effettua chiamate al giudice. In VS Code si può anche scegliere il task **Humanization: riproduci evaluation** oppure avviare la corrispondente configurazione con F5.
+**Ricalcolare le tabelle dello studio sui riscrittori e il confronto dei pilot** dai testi e dagli score salvati:
 
-## Organizzazione
+```bash
+python experiments/07_evaluation.py --mode reproduce --output results/new_runs/esempio_evaluation
+```
 
-| Cartella | Funzione |
-| --- | --- |
-| `configs/` | Parametri YAML, percorsi di input/output e preset dei modelli |
-| `data/raw/mgtbench/` | I tre CSV originali, conservati senza modifiche |
-| `data/raw/opai/` | File originali OpAI quando disponibili o scaricati |
-| `data/processed/` | Campioni, coppie e punteggi intermedi congelati |
-| `src/humanization/` | Package con dataset, stilometria, semantica, riscrittura, detection, naturalezza ed evaluation |
-| `experiments/` | Comandi che collegano configurazioni e moduli |
-| `results/published/` | Risultati di riferimento già ottenuti |
-| `results/new_runs/` | Output delle nuove esecuzioni |
-| `docs/` | Metodo, flusso e istruzioni di riproduzione |
-| `tests/` | Verifiche del codice e dei protocolli |
+I risultati sono in `esempio_evaluation/study_126/` e `esempio_evaluation/pilot_42/`; `reproduction_check.csv` confronta i valori con le tabelle di riferimento.
 
-La [guida all'organizzazione](docs/organization.md) descrive quali moduli producono gli score e quali calcolano le metriche.
+**Ricalcolare il confronto fra selezione da 105 e da 100 feature candidate** dalle predizioni salvate:
 
-## Esperimenti e flusso completo
+```bash
+python experiments/01_stylometry.py --mode reproduce --analysis shortlist_100 --output results/new_runs/esempio_stilometria
+```
 
-| Comando | Scopo |
-| --- | --- |
-| `00_data.py` | Verificare e preparare i dati |
-| `01_stylometry.py` | Estrarre feature e valutare i segnali stilistici |
-| `02_semantic_validation.py` | Calcolare e verificare le misure semantiche |
-| `03_opai_editing.py` | Studiare le modifiche OpAI, anche nelle porzioni riscritte |
-| `04_rewriting.py` | Produrre riscritture con i preset configurati |
-| `05_detection.py` | Produrre score dei detector per originali e riscritture |
-| `06_naturalness.py` | Preparare, eseguire o valutare confronti di naturalezza |
-| `07_evaluation.py` | Aggregare score, calcolare ASR, intervalli e confronti |
+Si ottengono `report.md`, `metrics.csv`, `paired_differences.csv` e le tabelle delle selezioni.
 
-`--mode reproduce` utilizza gli input congelati; le modalità di calcolo e riproduzione degli output salvati sono indicate da `--help`. Per una nuova esecuzione, i percorsi YAML devono collegare gli output della riscrittura agli input degli scorer e poi a quelli di evaluation. La [guida di riproduzione](docs/reproducibility.md) spiega l'ordine e i requisiti.
+**Rianalizzare i controlli positivi e le alterazioni semantiche** dagli score salvati:
 
-La riproduzione delle tabelle usa CPU e punteggi inclusi. Eseguire nuovamente i modelli richiede i checkpoint e risorse adeguate; i pesi non sono nello ZIP. Per GPU usare `requirements/gpu.txt` con un PyTorch CUDA compatibile. La naturalezza tramite servizio esterno richiede una chiave in una variabile d'ambiente e un'esecuzione esplicita: non è necessaria per il percorso di riproduzione principale.
+```bash
+python experiments/02_semantic_validation.py --mode reproduce --output results/new_runs/esempio_semantica
+```
 
-Il [metodo](docs/methodology.md) distingue etichette intenzionali, revisioni dell'assistente e annotazioni umane. Le configurazioni scientifiche eseguibili sono in `configs/` e `configs/protocols/`; i dati di riferimento e i relativi SHA-256 permettono di controllare gli input usati. Attribuzioni e termini delle fonti: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Questi esempi usano CPU e dati inclusi: ricalcolano le analisi senza eseguire nuovamente i modelli. Gli output vanno in `results/new_runs/` e non sostituiscono i risultati già consegnati. Le opzioni di ogni script si consultano con `python experiments/NOME_SCRIPT.py --help`.
 
-La [nota sulla provenienza](docs/provenance/README.md) distingue i documenti portabili dalle evidenze originali conservate separatamente.
+Per nuove inferenze sono disponibili modalità `compute`, configurazioni GPU in `requirements/gpu.txt` e parametri nei file YAML. I pesi dei modelli, l'ambiente virtuale e le credenziali non sono nello ZIP; generare nuovi testi o score richiede download e risorse adeguate. La naturalezza remota richiede anche una chiave e l'attivazione esplicita delle chiamate. Tutto questo non è necessario per consultare i risultati o per eseguire gli esempi sopra.
 
-## Consegna ZIP
-
-Per generare la consegna con cartella radice `Humanization/`, eseguire `python tools/build_delivery.py`: crea `dist/Humanization.zip`. Il comando seleziona esplicitamente codice, configurazioni, dati, risultati di riferimento, guide e test, includendo anche i Parquet OpAI e la risorsa linguistica CMUdict. Pesi, ambiente virtuale, credenziali e nuovi run rimangono fuori dallo ZIP.
-
-La verifica comprende la suite di test, l'esecuzione dei comandi dalla cartella estratta e il confronto numerico delle tabelle: 209 colonne per lo studio e 15 per il pilot, con tolleranza 1e-12. Gli esiti sono registrati in `docs/validation/`. Riprodurre le tabelle dai punteggi inclusi non richiede nuove inferenze o richieste al provider.
-
-Lo ZIP completo è di circa **160 MiB** perché comprende anche i Parquet ufficiali OpAI e gli input congelati. Una nuova esecuzione dei modelli richiede ulteriori download di checkpoint, non inclusi in questa dimensione.
+Attribuzioni scientifiche e condizioni delle risorse esterne sono in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Per ricostruire lo ZIP della consegna: `python tools/build_delivery.py` produce `dist/Humanization.zip`.

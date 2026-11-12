@@ -1,4 +1,4 @@
-"""Compare single-unit, contiguous-window and whole-document NLI premises."""
+"""Confronta premesse NLI a unità singole, finestre contigue e documento intero."""
 from __future__ import annotations
 import argparse
 import csv
@@ -27,7 +27,7 @@ def csv_rows(path):
         return list(csv.DictReader(f))
 
 def focused_pilot(root=ROOT):
-    """Fixed explanatory challenge panel, explicitly not a random accuracy test."""
+    """Pannello fisso di prove esplicative, distinto esplicitamente da un test casuale di accuratezza."""
     dipper_dir = root / 'data/processed/pilot_42/dipper'
     pairs = jsonl(dipper_dir / 'semantic/pairs.jsonl')
     alignment = json.loads((dipper_dir / 'semantic/alignment.json').read_text())

@@ -1,4 +1,4 @@
-"""Source-cluster bootstrap and interval calculations; no model inference."""
+"""Bootstrap per gruppi di fonte e calcolo degli intervalli, senza inferenza dei modelli."""
 from collections import defaultdict
 import hashlib,math,json
 import numpy as np
@@ -9,7 +9,7 @@ def digest_seed(*parts):
     return int(hashlib.sha256(value.encode()).hexdigest()[:8], 16)
 
 def historical_seed(parts, seed):
-    """Retain the historical seed at42, while allowing an explicit new run seed."""
+    """Conserva il seme precedente con valore 42, consentendo un nuovo seme esplicito."""
     return digest_seed(*parts) if seed == 42 else digest_seed(seed, *parts)
 
 def bootstrap_mean(values, groups, seed, draws):

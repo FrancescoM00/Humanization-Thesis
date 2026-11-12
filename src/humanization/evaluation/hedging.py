@@ -1,9 +1,10 @@
-"""Frozen-threshold evaluation of a dedicated hedging stress test.
+"""Valutazione a soglia congelata di un test dedicato alle espressioni di cautela.
 
-The primary score is the historical bidirectional document minimum. Its
-support threshold is never fitted here. Rule intent and assistant review are
-kept separate from independent human labels; AUC always uses alteration risk
-``-support`` and is not flipped after observing a value below one half.
+Lo score primario è il minimo bidirezionale sul documento usato in precedenza.
+La soglia di supporto non viene mai stimata qui. L'intento delle regole e la
+revisione dell'assistente restano distinti dalle etichette umane indipendenti;
+l'AUC usa sempre il rischio di alterazione ``-support`` e non viene invertita
+se il valore osservato è inferiore a un mezzo.
 """
 from __future__ import annotations
 
@@ -64,12 +65,12 @@ def load_panel(pairs_path: Path | str, scores_path: Path | str) -> pd.DataFrame:
     scores = pd.read_csv(scores_path)
     if "id" not in scores or scores.id.duplicated().any():
         raise ValueError("Score IDs must be unique")
-    # A frozen numerical threshold is meaningful only for its old score.
+    # Una soglia numerica congelata ha senso solo per lo score sul quale era stata definita.
     for column, expected in (("nli_retrieval_mode", "top_k_cosine"),
                              ("nli_retrieval_top_k", 3), ("nli_max_pair_tokens", 384)):
         if column in scores and not scores[column].eq(expected).all():
             raise ValueError(f"Historical threshold cannot be transferred to different {column}")
-    # Accommodate the historical scorer names and an explicit equivalent alias.
+    # Ammette i nomi precedenti degli scorer e un alias equivalente esplicito.
     for prefix in ("nli_forward", "nli_reverse", "local_nli_forward", "local_nli_reverse"):
         if prefix+"_min" not in scores and prefix+"_entailment_min" in scores:
             scores[prefix+"_min"] = scores[prefix+"_entailment_min"]
@@ -102,7 +103,7 @@ def load_review(path: Path | str | None) -> pd.DataFrame:
     if "id" not in review or "validity" not in review:
         raise ValueError("Review requires id and validity fields")
     if "reviewer_source" not in review:
-        # Unspecified provenance must not be silently promoted to human.
+        # Una provenienza non specificata non deve diventare implicitamente umana.
         review["reviewer_source"] = "unspecified"
     review["reviewer_source"] = review.reviewer_source.astype(str).str.lower()
     review["validity"] = review.validity.astype(str).str.lower()
@@ -131,7 +132,7 @@ def _source_weights(frame):
 
 
 def wilson95(successes: int, total: int) -> tuple[float, float]:
-    """Secondary binomial interval, used only for one observation per source."""
+    """Intervallo binomiale secondario, usato solo con una osservazione per fonte."""
     if total < 1 or successes < 0 or successes > total:
         raise ValueError("Wilson counts require 0 <= successes <= total and total > 0")
     z = 1.959963984540054
@@ -146,9 +147,9 @@ def wilson95(successes: int, total: int) -> tuple[float, float]:
 
 def grouped_metrics(frame: pd.DataFrame, score_column: str, threshold: float | None,
                     rng: np.random.Generator, n_bootstrap=2000, weight_cache=None):
-    """Source-weighted AUC and operating point with paired cluster bootstrap."""
+    """AUC ponderata per fonte e punto operativo con bootstrap appaiato per gruppi."""
     part = frame[np.isfinite(pd.to_numeric(frame[score_column], errors="coerce"))].copy()
-    # For the local diagnostics, missing units must not create unmatched corpora.
+    # Nella diagnostica locale, le unità mancanti non devono creare corpora non abbinati.
     part = _matched_cohort(part, "all")
     labels = part.is_altered.to_numpy(dtype=int)
     n0, n1 = int((labels == 0).sum()), int((labels == 1).sum())

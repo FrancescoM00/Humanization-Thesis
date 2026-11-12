@@ -67,7 +67,7 @@ def test_exact_length_cache_preserves_plan_and_budget_across_pairs():
     first_calls = tokenizer.calls
     assert build_plan(pair, alignment, tokenizer, max_pair_tokens=11, length_cache=cache) == baseline
     assert tokenizer.calls == first_calls
-    # The cache stores lengths, not a decision at one particular token budget.
+    # La cache conserva le lunghezze, non la decisione relativa a uno specifico limite di token.
     larger = build_plan(pair, alignment, tokenizer, max_pair_tokens=30, length_cache=cache)
     assert larger == build_plan(pair, alignment, Tokenizer(), max_pair_tokens=30)
 

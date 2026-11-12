@@ -1,4 +1,4 @@
-"""Real execution-profile paths and standalone packaging regression checks."""
+"""Percorsi reali dei profili di esecuzione e test di regressione del pacchetto autonomo."""
 import hashlib
 import json
 from pathlib import Path

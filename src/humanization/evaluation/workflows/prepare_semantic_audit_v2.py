@@ -1,9 +1,9 @@
-"""Prepare independent annotation forms with separate reference/diagnostic arms.
+"""Prepara schede di annotazione indipendenti con gruppi di riferimento e diagnostica separati.
 
-Reference sources are sampled without using scores. Diagnostics are enriched
-for low NLI and cosine/NLI disagreement; they are not a population test set.
-All rewrites of a selected source remain together and the two arms are disjoint
-by source group. No model inference or annotation is performed here.
+Le fonti di riferimento sono campionate senza usare gli score. La diagnostica
+include più casi con NLI basso o disaccordo coseno/NLI: non è un test della
+popolazione. Tutte le riscritture di una fonte selezionata restano unite e i
+due gruppi sono disgiunti per fonte. Qui non si eseguono inferenze o annotazioni.
 """
 from __future__ import annotations
 import argparse
@@ -22,7 +22,7 @@ def rank(seed, namespace, value):
     return hashlib.sha256(f'{seed}:{namespace}:{value}'.encode()).hexdigest()
 
 def read_pairs(path):
-    """Prefer the actual semantic input inside legacy ZIPs with stale rewrites."""
+    """Preferisce l’input semantico effettivo negli ZIP storici con riscritture non aggiornate."""
     path = Path(path)
     if path.suffix.lower() == '.zip':
         with zipfile.ZipFile(path) as archive:

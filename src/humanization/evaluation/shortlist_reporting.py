@@ -1,4 +1,4 @@
-"""Readable report and standalone figures from the saved shortlist tables."""
+"""Report leggibile e figure autonome dalle tabelle salvate della shortlist."""
 from __future__ import annotations
 
 import json
@@ -67,7 +67,7 @@ def write_report(results: Path | str, protocol_path: Path | str | None = None) -
         pivot.columns = ["C1 Full", "C2 Fixed*", "C3 Training"]
         return markdown_table(pivot.rename_axis("Test escluso").reset_index())
 
-    # Export standard scientific figures separately from the PDF report.
+    # Esporta le figure scientifiche standard separatamente dal report PDF.
     colors = ["#22577a", "#b6483e", "#21816b", "#777777", "#7953a3"]
     fig, axes = plt.subplots(1, 3, figsize=(12.0, 4.0), sharey=True)
     y = np.arange(len(MAIN))

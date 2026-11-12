@@ -1,4 +1,4 @@
-"""Process memory metadata on POSIX and Windows; unrelated to metric formulas."""
+"""Informazioni sulla memoria del processo in POSIX e Windows, separate dalle formule delle metriche."""
 try:
     from resource import RUSAGE_SELF,getrusage
 except ImportError:

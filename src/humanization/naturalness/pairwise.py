@@ -1,8 +1,9 @@
-"""Optional Groq pairwise naturalness judge; plans are offline by default.
+"""Giudice opzionale Groq per confrontare la naturalezza di due testi; i piani
+vengono preparati senza connessione per impostazione predefinita.
 
-The model judges writing, not detector evasion or semantic fidelity. AB/BA
-decisions are retained separately. API decisions and assistant proxy ratings
-are never relabelled as human annotations.
+Il modello valuta la scrittura, non l’evasione dei detector o la fedeltà semantica.
+I giudizi negli ordini AB/BA vengono conservati separatamente. I giudizi API e le
+valutazioni dell’assistente non vengono mai presentati come annotazioni umane.
 """
 from __future__ import annotations
 from collections import Counter
@@ -31,12 +32,13 @@ def _read_csv(path):
         return list(csv.DictReader(handle))
 
 def load_pairs(rewrite_paths, humanizer_a, humanizer_b, *, source_key=None, max_pairs=3, seed=42, failure_policy='error', selection_report=None):
-    """Select sources before checking outputs; failures are never replaced.
+    """Seleziona le fonti prima di controllare gli output; i fallimenti non vengono sostituiti.
 
-    The default preserves strict historical behavior. ``failure_policy='report'``
-    requires an explicit report dictionary and returns only judgeable pairs,
-    while preserving the full selected-source denominator in that report.
-    Missing conditions and inconsistent source metadata remain integrity errors.
+    L’impostazione predefinita mantiene il comportamento rigoroso originario.
+    ``failure_policy='report'`` richiede un dizionario esplicito per il resoconto
+    e restituisce soltanto le coppie valutabili, conservando nel resoconto il
+    denominatore completo delle fonti selezionate. Condizioni mancanti e metadati
+    incoerenti delle fonti rimangono errori di integrità.
     """
     if humanizer_a == humanizer_b or max_pairs < 1:
         raise ValueError('Require two different systems and max_pairs >= 1')
@@ -92,7 +94,7 @@ def load_pairs(rewrite_paths, humanizer_a, humanizer_b, *, source_key=None, max_
     return pairs
 
 def make_plan(pairs, model, *, reasoning_effort='none', max_completion_tokens=200, max_input_characters=30000):
-    """Create both orders without importing a client or consulting credentials."""
+    """Prepara entrambi gli ordini senza importare un client o leggere le credenziali."""
     if not model.strip() or reasoning_effort != 'none':
         raise ValueError("An explicit model and reasoning_effort='none' are required")
     if not 32 <= max_completion_tokens <= 200:

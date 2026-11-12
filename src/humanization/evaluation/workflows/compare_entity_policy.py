@@ -1,10 +1,11 @@
-"""Compare entity policies on the same cohort and reject unrelated changes.
+"""Confronta le politiche sulle entità nella stessa coorte e rifiuta modifiche estranee.
 
-Normally reads already computed pairs and scores without mutating inputs.
-The explicit --freeze-unchanged-alignment mode instead reuses historical
-retrieval on identical pairs before NLI planning, preserving fresh entity
-retrieval. No mode performs model inference or edits historical results.
-Runtime counters are not semantic metrics.
+Di norma legge coppie e score già calcolati senza modificare gli input.
+La modalità esplicita --freeze-unchanged-alignment riusa invece il recupero
+precedente sulle coppie identiche prima della pianificazione NLI, mantenendo
+un nuovo recupero per le entità. Nessuna modalità esegue inferenze dei modelli
+o modifica risultati precedenti. I contatori di esecuzione non sono metriche
+semantiche.
 """
 from __future__ import annotations
 import argparse
@@ -43,7 +44,7 @@ def unchanged_pairs(old, new):
     return sorted(a)
 
 def freeze_unchanged_alignment(args, old, new, ids):
-    """Freeze a controlled factor before NLI, without selecting model scores."""
+    """Congela un fattore controllato prima del NLI, senza selezionare score dei modelli."""
     if sorted(ids) != unchanged_pairs(old, new):
         raise ValueError('Freeze IDs must be exactly the validated identical non-entity pairs')
     blockers = [args.clean_data / 'nli_jobs.jsonl']

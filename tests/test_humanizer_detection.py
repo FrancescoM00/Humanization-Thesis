@@ -23,8 +23,8 @@ def fixture_data():
                          'modified': 'Rewritten sample.' if i != 1 else '',
                          'status': 'ok' if i != 1 else 'generation_error'})
     rows = text_records(cohort, rewrites)
-    # Original positives t0,t1; t0 evades, t1 generation fails. t2 was already
-    # undetected and must never enlarge the ASR denominator or numerator.
+    # Originali positivi t0 e t1; t0 evade, la generazione di t1 fallisce. t2 era già
+    # non rilevato e non deve mai aumentare il denominatore o il numeratore dell'ASR.
     score = {('cal', 'calibration_human'): .2,
              ('t0', 'human'): .1, ('t1', 'human'): .1, ('t2', 'human'): .3,
              ('t0', 'machine'): .9, ('t1', 'machine'): .8, ('t2', 'machine'): .1,
@@ -70,7 +70,7 @@ def test_conditional_asr_counts_failed_generation_and_excludes_preexisting_evasi
     assert result.complete_pairs == 2
     assert result.human_test_fpr == pytest.approx(1 / 3)
     assert macro.loc[macro.domain == 'overall', 'macro_mean_asr'].iloc[0] == .5
-    # Arbitrary machine test scores cannot alter the human-only threshold.
+    # Punteggi macchina arbitrari nel test non possono alterare la soglia basata sui soli umani.
     changed = scores.copy()
     changed.loc[changed.role == 'machine', 'score'] = .01
     new_thresholds, zero, _ = summarize_detection(cohort, rewrites, changed,
@@ -168,7 +168,7 @@ def test_detector_covers_all_chunks_and_reuses_identity_score(monkeypatch, tmp_p
 
         def __call__(self, input_ids, attention_mask):
             self.calls += 1
-            # Six payload tokens -> p(Fake)=.9; three -> p(Fake)=.1.
+            # Sei token di contenuto -> p(Fake)=.9; tre -> p(Fake)=.1.
             values = [math.log(9) if length.item() == 8 else -math.log(9)
                       for length in attention_mask.sum(axis=1)]
             return SimpleNamespace(logits=torch.tensor([[x, 0.] for x in values]))

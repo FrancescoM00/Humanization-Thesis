@@ -1,10 +1,10 @@
-"""Progressive, sentence-local corruptions on the same OpAI edited outputs.
+"""Alterazioni progressive di singole frasi sugli stessi testi modificati di OpAI.
 
-Each anchor has nested K=1/2/3/5 changes. The main panel requires five
-applicable distinct sentences before any score is inspected. An applicability
-panel with two to four sentences is labelled separately and must not be pooled
-as though it had a five-sentence counterpart. Labels are rule intentions, not
-human semantic gold.
+Ogni testo di riferimento ha modifiche annidate con K=1/2/3/5. Il pannello
+principale richiede cinque frasi distinte modificabili prima di esaminare
+qualsiasi punteggio. Un pannello di applicabilità con due-quattro frasi viene
+etichettato separatamente e non va unito come se avesse una versione con cinque
+frasi. Le etichette indicano l'intento delle regole, non giudizi semantici umani.
 """
 from __future__ import annotations
 
@@ -25,9 +25,9 @@ FAMILIES = ('distributed_negation', 'distributed_subtle')
 
 
 def _candidate(sentence, condition, transform, positive, seed):
-    # as_doc preserves the already computed POS/dependency/NER annotations.
-    # Restricting the input means repeated numbers in other sentences cannot
-    # silently turn a requested K-sentence edit into more than K edits.
+    # as_doc conserva le annotazioni POS/dipendenze/NER già calcolate.
+    # Limitando l'input, numeri ripetuti in altre frasi non possono
+    # trasformare silenziosamente una modifica di K frasi in più di K modifiche.
     local = sentence.as_doc()
     rng = _rng(seed, positive['id'], str(sentence.start_char), condition)
     change = transform(local, rng)
@@ -41,13 +41,13 @@ def _candidate(sentence, condition, transform, positive, seed):
         if condition == 'number_change' and re.search(
                 r'\b(?:league|division|formula|world\s+war|grade|class)\s+$',
                 local.text[max(0, start-30):start], re.I):
-            return None  # League Two denotes an identifier, not a quantity.
+            return None  # League Two indica un identificatore, non una quantità.
         edits.append({**edit, 'start_char': sentence.start_char + start,
                       'end_char': sentence.start_char + end})
     if not edits:
         return None
-    # Span.as_doc() may append the whitespace after the final token even
-    # though Span.text/end_char exclude it. Targets must match exact offsets.
+    # Span.as_doc() può aggiungere lo spazio dopo l'ultimo token anche
+    # se Span.text/end_char lo escludono. I bersagli devono rispettare gli offset esatti.
     target_original = sentence.text
     local_edits = [{**edit,'start_char':edit['start_char']-sentence.start_char,
                     'end_char':edit['end_char']-sentence.start_char} for edit in edits]
@@ -90,14 +90,14 @@ def sentence_candidates(doc, positive, seed):
                       parser_sentence_index=parser_index)
         by_unit[family].setdefault(unit_index, []).append(change)
     for index, sentence in enumerate(sentences):
-        # Duplicate untouched assertions were a problem in the first pilot.
-        # Reject exact duplicates and the previously ambiguous existential scope.
+        # Nel primo pilot le affermazioni invariate duplicate erano problematiche.
+        # Scarta i duplicati esatti e la portata esistenziale già risultata ambigua.
         if normalized[re.sub(r'\s+', ' ', sentence.text).strip().casefold()] != 1:
             continue
         if not re.search(r'\bone\s+of\b', sentence.text, re.I):
             change = _candidate(sentence, 'negation', _negation, positive, seed)
             if change is not None:
-                # "has not also ..." was an unnecessarily ambiguous target.
+                # "has not also ..." era un bersaglio inutilmente ambiguo.
                 if not re.search(r"\b(?:has|have|had|is|are|was|were)\s+not\s+also\b",
                                  change['modified'], re.I):
                     register('distributed_negation', change, index)
@@ -119,8 +119,8 @@ def _ordered_changes(options, positive, family, seed):
     rng.shuffle(options)
     chosen = []
     for choices in options:
-        # Choose among available rules without putting a chosen rule type
-        # systematically first at K=1. Record composition so it can be checked.
+        # Sceglie tra le regole disponibili senza mettere sistematicamente
+        # per primo un tipo di regola a K=1. Registra la composizione per poterla verificare.
         selected = rng.choice(sorted(choices, key=lambda x: x['condition']))
         chosen.append(selected)
     return chosen

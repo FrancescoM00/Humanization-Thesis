@@ -1,4 +1,4 @@
-"""Extract lexical guard changes and evaluate their held-out complement to NLI."""
+"""Estrae le variazioni delle guardie lessicali e valuta il loro contributo al NLI sul test escluso."""
 from __future__ import annotations
 import argparse
 import hashlib
@@ -44,7 +44,7 @@ def fit_model(calibration, features):
     return (scaler, model)
 
 def apply_frozen_models(pairs, guards, scores, models):
-    """Score every supplied pair; never fill missing NLI from a guard/label."""
+    """Valuta ogni coppia fornita; non sostituisce NLI mancanti con guardie o etichette."""
     from scipy.special import expit
     predicted = guards.merge(scores[['id', 'nli_forward_min', 'nli_reverse_min']], on='id', how='left', validate='one_to_one')
     predicted['risk_nli_min'] = 1 - predicted[['nli_forward_min', 'nli_reverse_min']].min(axis=1, skipna=False)

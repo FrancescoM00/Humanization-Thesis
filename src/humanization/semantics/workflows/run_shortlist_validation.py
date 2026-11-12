@@ -1,4 +1,4 @@
-"""Run the frozen grouped shortlist experiment on cached numeric features."""
+"""Esegue l'esperimento congelato della shortlist per gruppi sulle feature numeriche in cache."""
 from __future__ import annotations
 import argparse
 import json

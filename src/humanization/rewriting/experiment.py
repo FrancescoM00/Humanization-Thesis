@@ -1,4 +1,4 @@
-"""Produce new rewrites or explicitly replay the frozen reference rewrites."""
+"""Produce nuove riscritture oppure riutilizza esplicitamente quelle di riferimento congelate."""
 import json,shutil
 from humanization.configuration import path,output,record,model_config
 from .pipeline import run_humanizers

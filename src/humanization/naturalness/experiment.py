@@ -1,4 +1,4 @@
-"""Offline judge replay, local AB/BA preparation and explicit API execution."""
+"""Rilettura dei giudizi salvati, preparazione locale degli ordini AB/BA e chiamate API esplicite."""
 import json
 import pandas as pd
 from humanization.configuration import path,output,record

@@ -5,7 +5,7 @@ from humanization.semantics.aligned_similarity import candidate_support, directi
 
 
 def test_maxima_use_all_units_and_direction_is_correct():
-    # The best evidence changes positions; positional alignment would fail.
+    # La migliore evidenza cambia posizione; un allineamento per posizione fallirebbe.
     forward, reverse = matrix_support([[.2, .8, .1], [.9, .3, .4]])
     np.testing.assert_allclose(forward, [.9, .8, .4])
     np.testing.assert_allclose(reverse, [.8, .9])

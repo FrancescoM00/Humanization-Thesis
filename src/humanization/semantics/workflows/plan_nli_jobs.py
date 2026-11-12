@@ -1,4 +1,4 @@
-"""Enumerate exact NLI evidence jobs without running the neural model."""
+"""Elenca i confronti esatti delle evidenze NLI senza eseguire il modello neurale."""
 import argparse
 import hashlib
 import json

@@ -1,9 +1,10 @@
-"""Open detector evaluation with human-only calibration and conditional ASR.
+"""Valuta detector aperti con calibrazione sui soli umani e ASR condizionato.
 
-Detector scores are token-weighted means over non-overlapping, complete chunks.
-They are model scores, not calibrated probabilities of human authorship. Each
-detector receives its own frozen threshold; a three-model majority vote combines
-binary decisions, never raw scores. Failed generations remain in ASR denominators.
+Gli score dei detector sono medie pesate per token di blocchi completi non
+sovrapposti. Sono punteggi del modello, non probabilità calibrate di paternità
+umana. Ogni detector ha una propria soglia fissata; il voto di maggioranza dei
+tre modelli combina decisioni binarie, mai score grezzi. Le generazioni fallite
+rimangono nei denominatori dell'ASR.
 """
 from __future__ import annotations
 from collections import defaultdict
@@ -62,7 +63,7 @@ def validate_inputs(cohort, rewrites):
     return by_id
 
 def text_records(cohort, rewrites):
-    """Include calibration humans, paired test controls, and successful rewrites."""
+    """Include umani di calibrazione, controlli di test appaiati e riscritture riuscite."""
     sources = validate_inputs(cohort, rewrites)
     rows = []
     for source in cohort:

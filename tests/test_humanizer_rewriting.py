@@ -1,4 +1,4 @@
-"""Meaningful checks of output validity and provenance-bound rewrite resume."""
+"""Verifiche della validità degli output e della ripresa delle riscritture vincolata alla provenienza."""
 import json
 import os
 from pathlib import Path
@@ -125,7 +125,7 @@ def test_cuda_alias_and_explicit_gpu_select_an_integer_without_downloading(
     monkeypatch.setattr(torch.cuda, 'current_device', lambda: current)
 
     def set_device(index):
-        # Reproduce the strict API which rejected torch.device('cuda').
+        # Riproduce l'API rigorosa che rifiutava torch.device('cuda').
         assert isinstance(index, int)
         selected.append(index)
 

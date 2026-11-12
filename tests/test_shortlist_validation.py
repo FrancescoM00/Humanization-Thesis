@@ -1,7 +1,7 @@
-"""Checks of training-only selection, source-disjoint splits and paired AUC.
+"""Verifiche della selezione sul solo training, delle partizioni con fonti separate e dell'AUC appaiata.
 
-These fixtures exercise the failure modes of the new experiment. They do not
-use the historical corpus or rerun any language models.
+Queste fixture verificano i possibili errori del nuovo esperimento. Non usano
+il corpus storico e non rieseguono modelli linguistici.
 """
 
 from contextlib import redirect_stdout
@@ -38,8 +38,8 @@ def toy_frame(pairs_per_domain=8):
             generator = "A" if pair % 2 else "B"
             for label in (0, 1):
                 features = {name: float(rng.normal()) for name in FEATURE_SCHEMA}
-                # All four fixed features remain numeric. The first is a
-                # deliberately spurious effect confined to the held-out domain.
+                # Tutte le quattro feature fisse restano numeriche. La prima rappresenta un
+                # effetto deliberatamente spurio, limitato al dominio escluso dal training.
                 features["pos_num"] = (1000 * label + rng.normal()) if domain == "WritingPrompts" else 0.0
                 for name in ("pos_cconj", "mattr_50", "pos_propn"):
                     features[name] += label
@@ -61,8 +61,8 @@ class TrainingSelectionTests(unittest.TestCase):
                               "noise": rng.normal(size=len(y)), "constant": 0.0,
                               "missing": np.nan})
         selected, report = select_training_features(frame, list(frame.columns[1:]), n_features=3)
-        # Exact tie-breaking picks alpha, and both +1 and -1 redundant copies
-        # must be removed before filling the remaining two slots.
+        # La regola esatta di spareggio sceglie alpha; entrambe le copie ridondanti +1 e -1
+        # devono essere rimosse prima di riempire i due posti rimanenti.
         self.assertEqual(selected, ["alpha", "other", "noise"])
         indexed = report.set_index("feature")
         self.assertEqual(indexed.loc["beta", "reason"], "correlated_with_selected")
@@ -109,8 +109,8 @@ class GroupedDesignTests(unittest.TestCase):
                 self.assertNotIn(info["held_out"], set(documents.iloc[train].domain))
         for values in counts.values():
             self.assertTrue(np.all(values == 1))
-        # Identical class composition in every group must not make repeated
-        # StratifiedGroupKFold seeds silently reproduce the same partition.
+        # Una composizione identica delle classi in ogni gruppo non deve far sì che semi
+        # diversi di StratifiedGroupKFold riproducano implicitamente la stessa partizione.
         self.assertNotEqual(sorted(partitions[42]), sorted(partitions[137]))
 
     def test_unsupported_duplicate_group_or_unmatched_length_stops(self):

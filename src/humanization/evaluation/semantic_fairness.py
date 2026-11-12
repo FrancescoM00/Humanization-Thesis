@@ -1,7 +1,8 @@
-"""Fair aggregation, distributed errors and length diagnostics on frozen sources.
+"""Aggregazione equa, errori distribuiti e diagnostica della lunghezza su fonti congelate.
 
-All primary scores are continuous. Calibration is used only to fit optional
-length-conditional reference percentiles; it is never used to flip an AUC.
+Tutti gli score primari sono continui. La calibrazione serve solo a stimare
+percentili di riferimento opzionali condizionati alla lunghezza; non viene
+mai usata per invertire un'AUC.
 """
 from __future__ import annotations
 
@@ -32,7 +33,7 @@ DISPLAY = {'nli': 'NLI', 'aligned_cosine': 'Coseno allineato',
 
 
 def merge_score_tables(paths):
-    """Coalesce disjoint or matching ID rows without silently replacing scores."""
+    """Unisce righe con ID disgiunti o coincidenti senza sostituire gli score implicitamente."""
     output = None
     for path in paths:
         path = Path(path)
@@ -179,7 +180,7 @@ def _rho_point(a, b):
 
 
 def _source_rho(part, metric, length, rng, n_bootstrap):
-    # Each original source has one vote after averaging editors and operations.
+    # Ogni fonte originale ha un voto dopo la media su editor e operazioni.
     values = part[['source_group', metric, length]].dropna().groupby('source_group')[[metric, length]].mean()
     point = _rho_point(values[length].to_numpy(), values[metric].to_numpy())
     draws = []
@@ -256,7 +257,7 @@ def _weighted_quantile(values, weights, quantiles):
 
 
 def length_percentiles(frame, quality, output):
-    """Fit reference percentiles on calibration positives only, never a cutoff."""
+    """Stima i percentili di riferimento sui soli positivi di calibrazione, mai una soglia."""
     calibration = frame[(frame.dataset == 'opai_positive') & (frame.evaluation_split == 'calibration')]
     if calibration.empty:
         return pd.DataFrame(index=frame.index), None

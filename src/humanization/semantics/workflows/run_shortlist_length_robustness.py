@@ -1,4 +1,4 @@
-"""Refit C3 on 100 candidates, keeping the exact previous train/test splits."""
+"""Ristima C3 su 100 candidati mantenendo esattamente le precedenti partizioni di training e test."""
 from __future__ import annotations
 import argparse
 import json

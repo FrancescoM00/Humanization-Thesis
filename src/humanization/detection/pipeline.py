@@ -1,9 +1,10 @@
-"""Open detector evaluation with human-only calibration and conditional ASR.
+"""Valuta detector aperti con calibrazione sui soli umani e ASR condizionato.
 
-Detector scores are token-weighted means over non-overlapping, complete chunks.
-They are model scores, not calibrated probabilities of human authorship. Each
-detector receives its own frozen threshold; a three-model majority vote combines
-binary decisions, never raw scores. Failed generations remain in ASR denominators.
+I punteggi dei detector sono medie pesate per token su blocchi completi e non
+sovrapposti. Sono punteggi dei modelli, non probabilità calibrate di paternità
+umana. Ogni detector usa una propria soglia congelata; il voto di maggioranza
+fra tre modelli combina decisioni binarie, mai punteggi grezzi. Le generazioni
+fallite restano nei denominatori dell'ASR.
 """
 from __future__ import annotations
 from collections import defaultdict

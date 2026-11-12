@@ -1,4 +1,4 @@
-# All paths are relative to the extracted project root.
+# Tutti i percorsi sono relativi alla cartella principale del progetto estratto.
 mode: reproduce
 scope: both
 raw_dir: data/raw/opai

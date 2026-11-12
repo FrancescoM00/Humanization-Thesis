@@ -1,4 +1,4 @@
-"""Stage-isolated semantic experiment; pending neural stages are never imputed."""
+"""Esperimento semantico con fasi isolate; le fasi neurali non eseguite non vengono mai imputate."""
 from __future__ import annotations
 import argparse
 from collections import Counter

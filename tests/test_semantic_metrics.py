@@ -1,7 +1,7 @@
-"""Semantic metric plumbing: coverage, direction, model labels and caching.
+"""Componenti delle metriche semantiche: copertura, direzione, etichette dei modelli e cache.
 
-Neural-model tests use deterministic fake logits/embeddings, not downloaded
-checkpoints. They validate the protocol, not a model's semantic competence.
+I test dei modelli neurali usano logit ed embedding simulati e deterministici,
+senza scaricare checkpoint. Verificano il protocollo, non la capacità semantica del modello.
 """
 
 import json
@@ -218,7 +218,7 @@ class NeuralPlumbingTests(unittest.TestCase):
 
 class BertDevicePlacementTests(unittest.TestCase):
     def check_document_and_aligned_paths(self, device):
-        """Match upstream: GPU token vectors, but CPU masks and IDF weights."""
+        """Riproduce il codice di riferimento: vettori dei token sulla GPU, maschere e pesi IDF sulla CPU."""
         import torch
         from humanization.semantics.aligned_similarity import aligned_bert_scores
 
@@ -253,8 +253,8 @@ class BertDevicePlacementTests(unittest.TestCase):
                 patch('bert_score.utils.get_bert_embedding', side_effect=embeddings):
             document = bert_scores(pairs, path, device=device)
             aligned, _ = aligned_bert_scores(pairs, alignment, path, device=device)
-        # Token-level expected scores are known; moving weights cannot change
-        # the score definition or replace identity inference with a constant.
+        # I punteggi attesi a livello di token sono noti; spostare i pesi non può cambiare
+        # la definizione del punteggio né sostituire l'inferenza sull'identità con una costante.
         np.testing.assert_allclose(document.bert_chunk_f1, [1, 2/3], atol=1e-6)
         np.testing.assert_allclose(aligned.aligned_bert_f1_bidirectional_min, [1, 2/3], atol=1e-6)
 

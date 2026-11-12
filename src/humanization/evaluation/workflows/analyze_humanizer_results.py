@@ -1,4 +1,4 @@
-"""Regenerate pilot/study thesis summaries from saved per-text scores, without models."""
+"""Rigenera i riepiloghi di pilot e studio dai punteggi salvati per testo, senza modelli."""
 from pathlib import Path
 import argparse
 import json

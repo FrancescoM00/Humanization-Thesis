@@ -1,4 +1,4 @@
-"""Keep the original 126-source panel and declare input handling before inference."""
+"""Conserva il pannello originale di 126 fonti e dichiara il trattamento degli input prima dell'inferenza."""
 from __future__ import annotations
 
 import csv
@@ -17,7 +17,7 @@ KNOWN_INSTRUCTION_SOURCES = {
     'Essay:245:198f5b62c8f94655',
     'Reuters:903:3d3ffb6dca295be8',
 }
-# Candidate flags only, never exclusions or gold input-type labels.
+# Soltanto segnalazioni candidate, mai esclusioni o etichette certe sul tipo di input.
 LEADING_TASK = re.compile(r'^\s*(?:\d+[.)]\s*)?(?:write|discuss|describe|explain|compose|provide|create|compare|analy[sz]e)\b', re.I)
 TASK_CUE = re.compile(r'\b(?:write\s+(?:a|an|one)|\d+\s+words?|APA\s+format|MLA\s+format|cite\s+\w+\s+sources?)\b', re.I)
 

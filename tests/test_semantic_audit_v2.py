@@ -25,7 +25,7 @@ def make_frame(per_cell=6):
                                 original=f'Original {source}.', modified=f'Rewrite {pair_id}.',
                                 status='ok')
                     pairs.append(pair)
-                    # Includes contradiction-like, low-NLI-only and other strata.
+                    # Include strati simili a contraddizioni, con sola NLI bassa e di altro tipo.
                     scores[pair_id] = dict(id=pair_id, embedding_cosine=.95 if index % 3 == 0 else .7,
                                            nli_worst_direction_min=.02 if index % 3 != 2 else .8)
     candidates, _ = candidates_from_inputs(pairs, scores)
@@ -106,7 +106,7 @@ def test_pilot_capacity_is_explicit_and_forms_are_blind_independent_copies(tmp_p
     with zipfile.ZipFile(output/'annotation_forms.zip') as archive:
         assert set(archive.namelist()) == {
             'semantic_audit_annotator_A.csv', 'semantic_audit_annotator_B.csv', 'ISTRUZIONI.md'}
-    # Identical inputs can resume; changing the sampling decision cannot overwrite.
+    # Input identici consentono la ripresa; una decisione di campionamento diversa non può sovrascrivere i dati.
     prepare_audit([pair_path], [score_path], output)
     with pytest.raises(ValueError, match='Refusing to overwrite'):
         prepare_audit([pair_path], [score_path], output, seed=43)

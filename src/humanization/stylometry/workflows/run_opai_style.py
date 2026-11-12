@@ -1,4 +1,4 @@
-"""Paired stylometry across five adjacent, official OpAI editing stages."""
+"""Stilometria appaiata fra cinque fasi ufficiali adiacenti di editing OpAI."""
 from __future__ import annotations
 import argparse
 from collections import Counter
@@ -37,7 +37,7 @@ def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
 
 def prefixes(doc, minimum=90, maximum=180):
-    """Unchanged opening prefixes, ending at a parsed punctuation boundary."""
+    """Prefissi iniziali invariati, conclusi a un confine di punteggiatura analizzato."""
     found, n_words = ({}, 0)
     for sent in doc.sents:
         n_words += sum((token.is_alpha for token in sent))

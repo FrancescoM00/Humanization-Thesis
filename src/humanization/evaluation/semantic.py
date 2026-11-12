@@ -1,9 +1,10 @@
-"""Compare semantic scores with positive controls, keeping source groups intact.
+"""Confronta gli score semantici con controlli positivi, mantenendo unite le fonti.
 
-The class of interest is an intended semantic alteration. Similarity/support
-scores therefore receive a fixed minus sign; unsupported fractions keep their
-sign. Scores are never flipped after seeing an AUC below 0.5. Operation names
-and rule-based corruptions are proxy labels, not human semantic gold labels.
+La classe di interesse è un'alterazione semantica intenzionale. Gli score di
+similarità e supporto ricevono quindi un segno meno fisso; le quote non
+supportate mantengono il proprio segno. Gli score non vengono mai invertiti
+dopo aver osservato un'AUC inferiore a 0,5. I nomi delle operazioni e le
+corruzioni a regole sono etichette sostitutive, non un riferimento semantico umano.
 """
 from __future__ import annotations
 
@@ -32,7 +33,7 @@ MATCHED_SUBTLE = {'matched_number_change', 'matched_quantifier_strengthening',
 def _group_key(pair):
     meta = pair.get('metadata', {})
     key = pair.get('source_group_id') or meta.get('source_group_id') or pair['source_id']
-    # Prefix corpora so unrelated IDs can never accidentally become one source.
+    # Aggiunge un prefisso ai corpora per non unire accidentalmente ID di fonti diverse.
     family = 'opai' if pair.get('dataset', '').startswith('opai') else 'mgtbench'
     return family + ':' + str(key)
 
@@ -72,7 +73,7 @@ def _metadata(pairs, seed):
                         'length_ratio': len(pair['modified'].split()) / len(pair['original'].split())})
     for row in records:
         group = row['source_group']
-        # Deterministic split is independent of all scores and alteration labels.
+        # La partizione deterministica è indipendente da score ed etichette di alterazione.
         if group not in splits:
             key = hashlib.sha256(f'{seed}:{group}'.encode()).digest()
             splits[group] = 'calibration' if int.from_bytes(key[:8], 'big') % 2 == 0 else 'test'
@@ -84,7 +85,7 @@ def _metadata(pairs, seed):
 
 
 def _metric_scores(frame):
-    """Return alteration-oriented scores and their fixed display definitions."""
+    """Restituisce score orientati all'alterazione e le relative definizioni di visualizzazione fisse."""
     risk = pd.DataFrame(index=frame.index)
     definitions = []
     metrics = [name for name in CORE_METRICS if name in frame]
@@ -104,8 +105,8 @@ def _metric_scores(frame):
         if forward in frame and reverse in frame:
             name = 'nli_bidirectional_' + aggregator
             values = frame[[forward, reverse]].apply(pd.to_numeric, errors='coerce')
-            # Requiring preservation in both directions: weakest support, or
-            # largest unsupported fraction, governs the bidirectional score.
+            # Richiedendo conservazione in entrambe le direzioni, lo score bidirezionale
+            # dipende dal supporto più debole o dalla maggiore quota non supportata.
             if aggregator == 'low_support_fraction':
                 risk[name] = values.max(axis=1, skipna=False)
                 definition = f'max({forward}, {reverse})'
@@ -117,8 +118,8 @@ def _metric_scores(frame):
 
 
 def _source_weights(frame):
-    # Each source receives equal total weight *within each class*. A source
-    # with several editors or corruptions must not dominate either class.
+    # Ogni fonte ha lo stesso peso totale *entro ciascuna classe*. Una fonte
+    # con più editor o corruzioni non deve dominare nessuna delle due classi.
     return 1 / frame.groupby(['source_group', 'is_altered']).id.transform('count').to_numpy()
 
 
@@ -150,14 +151,14 @@ def source_bootstrap_auc(frame, score, rng, n_bootstrap=1000):
             'n_altered': int(labels.sum()), 'n_sources': len(unique),
             'n_preserved_sources': n_preserved_sources, 'n_altered_sources': n_altered_sources}
     if min(n_preserved_sources, n_altered_sources) < 5:
-        # One altered source can give a degenerate [1,1] bootstrap interval.
+        # Una sola fonte alterata può dare un intervallo bootstrap degenere [1,1].
         return {**base, 'ci_low': np.nan, 'ci_high': np.nan, 'valid_bootstrap_draws': 0,
                 'uncertainty_note': 'insufficient_sources_for_bootstrap_interval'}
     order = np.argsort(values, kind='stable')
     starts = np.r_[0, np.flatnonzero(np.diff(values[order])) + 1]
     draws = []
-    # Multinomial counts are a cluster bootstrap: all rows of a resampled
-    # source travel together, including both classes in the matched cohort.
+    # I conteggi multinomiali realizzano un bootstrap per gruppi: tutte le righe
+    # della fonte ricampionata restano unite, incluse le due classi della coorte abbinata.
     for begin in range(0, n_bootstrap, 100):
         counts = rng.multinomial(len(unique), np.full(len(unique), 1 / len(unique)),
                                  size=min(100, n_bootstrap - begin))
@@ -208,7 +209,7 @@ def _threshold(frame, score, target_fpr=.1):
     weights = _source_weights(part)
     order = np.argsort(values, kind='stable')
     cumulative = np.cumsum(weights[order]) / weights.sum()
-    # Strict greater-than at this observed quantile is conservative with ties.
+    # Il confronto strettamente maggiore su questo quantile è conservativo in caso di parità.
     return float(values[order[min(np.searchsorted(cumulative, 1 - target_fpr), len(values) - 1)]])
 
 
@@ -244,7 +245,7 @@ def analyze_semantic_extension(pairs, scores, output, *, seed=42, n_bootstrap=10
         frame = frame.merge(review[['id', 'controlled_test_validity']], on='id', how='left', validate='one_to_one')
     risk, definitions = _metric_scores(frame)
     definitions.to_csv(output / 'metric_definitions.csv', index=False)
-    # Export labels, grouping and split, without benchmark texts.
+    # Esporta etichette, gruppi e partizioni, senza i testi del benchmark.
     metadata.to_csv(output / 'evaluation_pairs.csv', index=False)
     split_overlap = set(frame.loc[frame.evaluation_split == 'calibration', 'source_group']) & set(
         frame.loc[frame.evaluation_split == 'test', 'source_group'])
@@ -328,8 +329,8 @@ def analyze_semantic_extension(pairs, scores, output, *, seed=42, n_bootstrap=10
     thresholds.to_csv(output / 'false_positive_rates.csv', index=False)
     pd.DataFrame(operating_strata).to_csv(output / 'operating_points_by_operation.csv', index=False)
     primary = 'opai_matched_primary' if 'opai_matched_primary' in cohorts else 'mixed_corpus_secondary'
-    # This population includes every presumed-positive OpAI rewrite, including
-    # those with no applicable matched corruption. Do not retune thresholds.
+    # Questa popolazione comprende ogni riscrittura OpAI presunta positiva, anche
+    # quelle senza corruzione abbinata applicabile. Le soglie non vanno riadattate.
     all_positive_fpr_rows = []
     all_positive = frame[(frame.dataset == 'opai_positive') & (frame.is_altered == 0)]
     primary_thresholds = thresholds[(thresholds.cohort == primary) & (thresholds.split == 'calibration')]
@@ -390,7 +391,7 @@ def analyze_semantic_extension(pairs, scores, output, *, seed=42, n_bootstrap=10
 def _correlations(frame, risk, output):
     names = [name for name in risk if name in CORE_METRICS or name.startswith('bert_chunk_f1')
              or name.startswith('nli_bidirectional_')]
-    # Show preservation orientation for all columns (high = more preserved).
+    # Mostra tutte le colonne orientate alla conservazione (alto = più conservato).
     values = -risk[names]
     values.corr(method='spearman').to_csv(output / 'metric_spearman.csv')
     corr = values.corr(method='spearman')

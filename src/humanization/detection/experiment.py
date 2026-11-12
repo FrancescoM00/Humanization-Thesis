@@ -1,4 +1,4 @@
-"""Produce individual detector scores; ASR and intervals are evaluated later."""
+"""Produce punteggi individuali dei detector; ASR e intervalli sono calcolati successivamente."""
 import hashlib,json
 import pandas as pd
 from humanization.configuration import path,output,record,model_config

@@ -1,4 +1,4 @@
-"""Semantic scope and grammatical guards for the additional rule challenges."""
+"""Ambito semantico e controlli grammaticali delle ulteriori trasformazioni a regole."""
 import random
 
 import pytest
@@ -29,8 +29,8 @@ def test_quantity_rule_changes_counts_but_never_year_or_ordinal(nlp):
 
 def test_quantifier_rule_avoids_nonquantitative_idiom(nlp):
     change = quantifier_strengthening(nlp('Some students completed the examination without difficulty.'), random.Random(1))
-    # Negative-scope guards can conservatively reject "without"; use the
-    # simple affirmative counterpart for the intended scope probe.
+    # I controlli sull'ambito negativo possono rifiutare prudenzialmente "without"; si usa
+    # la semplice variante affermativa per la verifica dell'ambito prevista.
     assert change is None
     change = quantifier_strengthening(nlp('Some students completed the examination successfully.'), random.Random(1))
     assert change['modified'] == 'All students completed the examination successfully.'
@@ -46,7 +46,7 @@ def test_hedge_removal_preserves_subject_agreement(nlp):
 
 def test_added_detail_is_attached_to_untimed_event(nlp):
     change = unsupported_detail(nlp('The company announced its new product yesterday.'), random.Random(1))
-    assert change is None  # Existing temporal context excluded.
+    assert change is None  # Contesto temporale già presente escluso.
     doc = nlp('Microsoft announced its new product publicly.')
     change = unsupported_detail(doc, random.Random(1))
     assert change is not None and ' at ' in change['modified']

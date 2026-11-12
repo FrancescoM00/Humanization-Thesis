@@ -1,4 +1,4 @@
-"""Checks of order handling, budgets, model identity and reference provenance."""
+"""Verifiche della gestione dell'ordine, dei limiti di richieste, dell'identità del modello e della provenienza dei riferimenti."""
 import csv
 import json
 

@@ -1,8 +1,9 @@
-"""Optional Groq pairwise naturalness judge; plans are offline by default.
+"""Giudice opzionale Groq per confrontare la naturalezza di due testi; i piani
+vengono preparati senza connessione per impostazione predefinita.
 
-The model judges writing, not detector evasion or semantic fidelity. AB/BA
-decisions are retained separately. API decisions and assistant proxy ratings
-are never relabelled as human annotations.
+Il modello valuta la scrittura, non l’evasione dei detector o la fedeltà semantica.
+I giudizi negli ordini AB/BA vengono conservati separatamente. I giudizi API e le
+valutazioni dell’assistente non vengono mai presentati come annotazioni umane.
 """
 from __future__ import annotations
 from collections import Counter
@@ -21,7 +22,7 @@ SYSTEM_PROMPT = 'You evaluate the naturalness of English writing. Compare passag
 
 
 def parse_judgment(response, requested_model):
-    """Reject truncation, model changes, reasoning fields and malformed ratings."""
+    """Rifiuta risposte troncate, cambi di modello, campi di ragionamento e giudizi malformati."""
     if response.get('model') != requested_model:
         raise ValueError('Provider returned a different model; no implicit fallback is accepted')
     choices = response.get('choices', [])
@@ -51,7 +52,7 @@ class APIError(RuntimeError):
         self.retry_after = retry_after
 
 def _safe_provider_error(response, api_key):
-    """Expose a bounded provider reason, never the credential or all headers."""
+    """Mostra una descrizione limitata dell’errore del fornitore, senza credenziali o intestazioni complete."""
     body = response.text[:16384]
     try:
         data = json.loads(body)
@@ -68,7 +69,7 @@ def _safe_provider_error(response, api_key):
     return ' '.join(detail.split())[:800] or 'No provider detail returned'
 
 class GroqClient:
-    """Only the fixed Groq host receives the environment-provided secret."""
+    """Solo l’host Groq prestabilito riceve la chiave fornita dall’ambiente."""
 
     def __init__(self, api_key=None, *, timeout=120, session=None):
         import requests

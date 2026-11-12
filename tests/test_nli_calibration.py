@@ -1,4 +1,4 @@
-"""Calibration split isolation and deterministic context/aggregator selection."""
+"""Separazione della partizione di calibrazione e selezione deterministica di contesto e aggregatore."""
 import csv
 import hashlib
 import json

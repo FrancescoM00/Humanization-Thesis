@@ -1,8 +1,9 @@
-"""Binoculars with human-only calibration and complete, declared token coverage.
+"""Binoculars con calibrazione sui soli umani e copertura completa e dichiarata dei token.
 
-The score is a ratio, not a probability: lower means more AI-like. The numerator
-is performer observed-token NLL; the denominator is observer-to-performer
-cross-entropy. No classifier threshold or majority vote is silently reused.
+Il punteggio è un rapporto, non una probabilità: valori più bassi indicano un
+testo più simile a quelli IA. Il numeratore è la NLL dei token osservati secondo
+il performer; il denominatore è l'entropia incrociata dall'observer al performer.
+Non riutilizza implicitamente soglie dei classificatori o voti di maggioranza.
 """
 from __future__ import annotations
 import gc
@@ -26,11 +27,12 @@ UPSTREAM_COMMIT = 'c8ae2f90d50ee696418bc71d8d9e5020e5f9d7b8'
 DEFAULT_MODELS = {'observer_model_id': 'tiiuae/falcon-7b', 'observer_revision': 'ec89142b67d748a1865ea4451372db8313ada0d8', 'performer_model_id': 'tiiuae/falcon-7b-instruct', 'performer_revision': '8782b5c5d8c9290412416618f36a133653e85285'}
 
 def token_windows(ids, max_tokens=512):
-    """One boundary token overlaps; every next-token target is scored once.
+    """Sovrappone un token al confine; valuta ogni token successivo una sola volta.
 
-    The denominator mask excludes the repeated first token of later windows.
-    Its last-position cross-entropy is retained, matching upstream Binoculars
-    for a single window. The first token is not an observed-token NLL target.
+    La maschera del denominatore esclude il primo token ripetuto delle finestre
+    successive. Conserva l'entropia incrociata dell'ultima posizione, come il
+    Binoculars originale per una singola finestra. Il primo token non è un
+    obiettivo della NLL dei token osservati.
     """
     if len(ids) < 2 or max_tokens < 2:
         raise ValueError('Binoculars needs at least two tokens and context size >= 2')
@@ -43,13 +45,14 @@ def token_windows(ids, max_tokens=512):
         start = end - 1
 
 def binoculars_components(observer_logits, performer_logits, input_ids, attention_mask, *, cross_entropy_mask=None, positions_per_batch=32):
-    """Sufficient statistics, accumulating in FP32 even with FP16 model weights.
+    """Calcola statistiche sufficienti accumulando in FP32 anche con pesi del modello FP16.
 
-    Masks refer to real tokens, including genuine EOS tokens. The NLL mask
-    requires both the predictor and target positions to be real. As upstream,
-    cross-entropy uses all real positions, including the final position; callers
-    may mask repeated context positions when extending to multiple windows.
-    Only bounded logit slices move between model devices.
+    Le maschere riguardano i token effettivi, compresi i veri token EOS. La
+    maschera NLL richiede posizioni effettive sia per il predittore sia per il
+    token obiettivo. Come nella versione originale, l'entropia incrociata usa
+    tutte le posizioni effettive, inclusa l'ultima; chi chiama la funzione può
+    mascherare il contesto ripetuto quando usa più finestre. Fra i dispositivi
+    dei modelli si spostano soltanto porzioni di logit di dimensione limitata.
     """
     import torch
     import torch.nn.functional as F
@@ -112,7 +115,7 @@ def _settings(detector):
     return settings
 
 def cached_weight_snapshot(repo_id, revision, roots):
-    """Read a pinned snapshot only when config and every weight shard exist."""
+    """Legge una revisione fissata del modello solo se esistono la configurazione e tutte le parti dei pesi."""
     for root in roots:
         snapshot = Path(root) / ('models--' + repo_id.replace('/', '--')) / 'snapshots' / revision
         if not (snapshot / 'config.json').is_file():
@@ -130,7 +133,7 @@ def cached_weight_snapshot(repo_id, revision, roots):
     return None
 
 def select_writable_cache(candidates, *, missing_models, min_free_bytes=None):
-    """Probe another filesystem rather than changing permissions on a mount."""
+    """Prova un altro filesystem anziché cambiare i permessi di un volume montato."""
     needed = missing_models * 15 * 2 ** 30 if min_free_bytes is None else min_free_bytes
     failures = []
     for candidate in candidates:

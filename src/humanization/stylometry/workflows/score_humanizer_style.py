@@ -1,7 +1,8 @@
-"""Describe humanizer style with scales fitted on separate human controls.
+"""Descrive lo stile dei riscrittori con scale adattate su controlli umani separati.
 
-No detector score enters feature selection or calibration. Distances are style
-changes, not probabilities of human authorship, naturalness or correctness.
+Gli score dei detector non entrano nella selezione delle feature né nella
+calibrazione. Le distanze misurano cambiamenti di stile, non probabilità di
+paternità umana, naturalezza o correttezza.
 """
 from __future__ import annotations
 import argparse
@@ -28,7 +29,7 @@ def read_jsonl(path):
     return [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
 
 def validate_inputs(cohort, pairs):
-    """Reject source leakage and pairs that do not belong to the frozen test."""
+    """Rifiuta contaminazioni fra fonti e coppie esterne al test fissato."""
     if not cohort or len({r['id'] for r in cohort}) != len(cohort):
         raise ValueError('Require nonempty cohort with unique IDs')
     groups = {}
@@ -67,7 +68,7 @@ def validate_inputs(cohort, pairs):
     return (calibration, valid)
 
 def fit_scales(calibration, features):
-    """Equal source weight; missing/constant calibration features are excluded."""
+    """Attribuisce uguale peso alle fonti; esclude le feature di calibrazione mancanti o costanti."""
     rows = []
     for row in calibration:
         rows.append({'source_group_id': row['source_group_id'], **features[digest(row['human'])]})
@@ -105,7 +106,7 @@ def style_table(pairs, features, names, means, scales):
     return pd.DataFrame(rows)
 
 def review_forms(cohort, pairs, output, per_cell, seed):
-    """Export separate blinded annotation forms and keys; never automatic gold."""
+    """Esporta schede di annotazione cieca e chiavi separate, senza produrre etichette di riferimento automatiche."""
     rng = random.Random(seed)
     cells = {}
     for pair in pairs:

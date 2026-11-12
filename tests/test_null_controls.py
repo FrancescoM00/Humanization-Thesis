@@ -47,8 +47,8 @@ def test_exact_word_prefix_retains_contraction_suffix_and_declares_sentence_cut(
     assert lexical_count(nlp.make_doc(prefix)) == 2
     assert metadata['hard_cut'] is True
     assert metadata['cut_at_sentence_boundary'] is False
-    # A proper boundary can be preserved while exactly matching five lexical
-    # words: I/ca/use/tools (50 is not an alphabetic lexical word).
+    # Si può conservare un confine corretto abbinando esattamente cinque parole
+    # lessicali: I/ca/use/tools (50 non è una parola lessicale alfabetica).
     prefix, metadata = prefix_at_word_count(text, 4, nlp)
     assert prefix == "I can't use 50 tools."
     assert lexical_count(nlp.make_doc(prefix)) == 4
@@ -72,7 +72,7 @@ def test_minimal_noise_preserves_count_protected_entities_numbers_modals_and_neg
     untouched, metadata = minimal_lexical_noise('Acme may not visit the large corporation in 2020.', nlp)
     assert untouched == 'Acme may not visit the large corporation in 2020.'
     assert metadata['noise_eligible'] is False
-    # Lowercase matching does not accidentally change proper names or substrings.
+    # L'abbinamento in minuscolo non modifica accidentalmente nomi propri o sottostringhe.
     untouched, _ = minimal_lexical_noise('Use Useless Large.', nlp)
     assert untouched == 'Use Useless Large.'
 
@@ -103,8 +103,8 @@ def test_generation_keeps_longer_target_ineligible_and_never_imputes_failed_refe
     assert unavailable['status'] == 'reference_unavailable'
     assert unavailable['metadata']['target_n_words'] is None
     assert unavailable['modified'] == ''
-    # Conditions are complete for each test source, even when length control
-    # is inapplicable, and every identity remains separate from the writer.
+    # Le condizioni sono complete per ogni fonte di test, anche quando il controllo
+    # di lunghezza non è applicabile; ogni identità resta distinta dal riscrittore.
     assert {r['humanizer'] for r in controls} == {
         'writer', 'null_identity', 'null_lexical_noise',
         'null_length__writer', 'null_length_noise__writer'}
@@ -146,8 +146,8 @@ def test_control_comparison_uses_eligible_common_baseline_not_noop_or_failed_row
     for row in controls:
         if row['status'] != 'ok':
             continue
-        # The valid short writer evades; its equally long original prefix does
-        # not. Longer output t1 is ineligible for the length comparison.
+        # La riscrittura breve valida evade; il prefisso originale della stessa lunghezza
+        # non evade. L'output t1, più lungo, non è ammissibile al confronto di lunghezza.
         score = .1 if row['humanizer'] == 'writer' else .9
         scores.append(dict(detector='d', source_id=row['source_id'], role='rewrite',
                            humanizer=row['humanizer'], score=score,

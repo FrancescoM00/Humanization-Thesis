@@ -1,7 +1,7 @@
-"""Failure-mode checks for reusing fixed splits while excluding diagnostics.
+"""Verifica dei possibili errori nel riuso di partizioni fisse escludendo gli indicatori diagnostici.
 
-All fixtures are synthetic. The historical corpus and its predictions are not
-fitted or modified by these tests.
+Tutte le fixture sono sintetiche. Questi test non addestrano modelli sul corpus
+storico né modificano il corpus o le sue predizioni.
 """
 from contextlib import redirect_stdout
 import io
@@ -28,9 +28,9 @@ def synthetic_features():
             for label in (0, 1):
                 values = {name: float(rng.normal()) for name in FEATURE_SCHEMA}
                 values["n_words"] = float(120 + pair)
-                # The excluded feature is deliberately the easiest predictor.
+                # La feature esclusa è deliberatamente il predittore più semplice.
                 values["ttr"] = 1000 * label + float(rng.normal(scale=.01))
-                # A second strong effect exists only in the held-out domain.
+                # Un secondo effetto forte esiste soltanto nel dominio escluso dal training.
                 values["pos_num"] = (500 * label + float(rng.normal())) if domain == "WritingPrompts" else 0.0
                 for name in ("mattr_50", "pos_cconj", "pos_propn", "punct_total_per100"):
                     values[name] += label

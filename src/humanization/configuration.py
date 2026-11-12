@@ -1,4 +1,4 @@
-"""Small shared YAML/path utilities for the documented experiment entry points."""
+"""Utilità condivise per leggere YAML e percorsi negli script degli esperimenti."""
 from pathlib import Path
 from types import SimpleNamespace
 import json
@@ -48,7 +48,7 @@ def copy_reference(source,destination):
 
 
 def model_config(config,directory):
-    """Materialize the exact configured presets for existing model adapters."""
+    """Prepara gli adattatori dei modelli usando esattamente le impostazioni configurate."""
     filename=output(directory)/'model_presets.json'
     filename.write_text(json.dumps(config,indent=2,ensure_ascii=False)+'\n')
     return filename

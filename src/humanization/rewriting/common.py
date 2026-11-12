@@ -1,7 +1,8 @@
-"""Run fixed, non-adaptive rewriting systems and preserve unsuccessful attempts.
+"""Esegue sistemi di riscrittura fissi e non adattivi, conservando i tentativi falliti.
 
-The identity system requires only the Python standard library. Neural models
-are imported lazily, loaded one at a time, and never queried through a detector.
+Il sistema identità richiede soltanto la libreria standard di Python. I modelli
+neurali sono importati quando servono, caricati uno alla volta e mai interrogati
+attraverso un detector.
 """
 from __future__ import annotations
 from collections import Counter
@@ -43,7 +44,7 @@ def pair_id(system: str, source_id: str) -> str:
     return 'humanizer_' + _digest(payload)[:24]
 
 def generation_status(text: str, generated_tokens: int, max_new_tokens: int, finished_eos: bool) -> str:
-    """A generation at the token limit without EOS is never a valid rewrite."""
+    """Una generazione che raggiunge il limite di token senza EOS non è mai una riscrittura valida."""
     if not text.strip():
         return 'generation_error'
     if generated_tokens >= max_new_tokens and (not finished_eos):

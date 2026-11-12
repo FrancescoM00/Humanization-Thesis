@@ -1,9 +1,10 @@
-"""Open detector evaluation with human-only calibration and conditional ASR.
+"""Valutazione dei detector aperti con calibrazione sui soli umani e ASR condizionato.
 
-Detector scores are token-weighted means over non-overlapping, complete chunks.
-They are model scores, not calibrated probabilities of human authorship. Each
-detector receives its own frozen threshold; a three-model majority vote combines
-binary decisions, never raw scores. Failed generations remain in ASR denominators.
+Gli score dei detector sono medie ponderate per token su segmenti completi e
+non sovrapposti. Sono punteggi del modello, non probabilità calibrate di paternità
+umana. Ogni detector ha una propria soglia congelata; il voto di maggioranza
+fra tre modelli combina decisioni binarie, mai score grezzi. Le generazioni
+fallite restano nei denominatori dell'ASR.
 """
 from __future__ import annotations
 from collections import defaultdict
@@ -21,11 +22,12 @@ import pandas as pd
 from humanization.datasets.records import read_jsonl, digest, text_records, _score_key
 
 def calibrate_threshold(scores, target_fpr=0.05):
-    """Freeze a conservative empirical human quantile, with strict score > t.
+    """Fissa un quantile empirico conservativo degli umani, con confronto stretto score > t.
 
-    At most floor(n * target_fpr) calibration texts exceed the threshold, also
-    with tied scores. This is an empirical calibration bound, not a guarantee on
-    future human texts. No machine or rewritten score enters this calculation.
+    Al massimo floor(n * target_fpr) testi di calibrazione superano la soglia,
+    anche in presenza di punteggi uguali. È un limite empirico di calibrazione,
+    non una garanzia sui futuri testi umani. Nessuno score macchina o riscritto
+    entra in questo calcolo.
     """
     values = np.asarray(scores, dtype=float)
     if values.ndim != 1 or not len(values) or (not np.isfinite(values).all()):
@@ -37,7 +39,7 @@ def calibrate_threshold(scores, target_fpr=0.05):
     return {'threshold': threshold, 'calibration_n': len(values), 'target_fpr': target_fpr, 'calibration_fpr': float(np.mean(values > threshold)), 'decision': 'AI iff score > threshold; ties are classified human'}
 
 def summarize_detection(cohort, rewrites, scores, config):
-    """Return thresholds, per-classifier summaries, and a raw-score-free macro."""
+    """Restituisce soglie, riepiloghi per classificatore e una macro senza score grezzi."""
     expected_rows = text_records(cohort, rewrites)
     expected = {_score_key(row) for row in expected_rows}
     expected_metadata = {_score_key(row): row for row in expected_rows}
@@ -121,7 +123,7 @@ def summarize_detection(cohort, rewrites, scores, config):
     return (thresholds, summary, pd.DataFrame(macro))
 
 def calibrate_low_threshold(scores, target_fpr=0.05):
-    """Conservative lower human quantile; score < threshold means AI."""
+    """Quantile inferiore conservativo degli umani; score < soglia indica IA."""
     values = np.asarray(scores, dtype=float)
     if values.ndim != 1 or not len(values) or (not np.isfinite(values).all()) or np.any(values <= 0):
         raise ValueError('Calibration needs finite positive Binoculars ratios')

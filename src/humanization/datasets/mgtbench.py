@@ -1,7 +1,8 @@
-"""Prepare a small, balanced, paired MGTBench sample without hiding provenance.
+"""Prepara un piccolo campione MGTBench bilanciato e appaiato, conservandone la provenienza.
 
-Input is the original wide CSV schema used by TH-Bench's ``mgt1`` loader,
-not the machine-only length-bin CSVs emitted by its attack script.
+L'input usa lo schema CSV originale con colonne affiancate del caricatore
+``mgt1`` di TH-Bench, non i CSV di soli testi macchina divisi per lunghezza
+prodotti dal suo script di attacco.
 """
 from __future__ import annotations
 
@@ -32,7 +33,7 @@ def sha256_file(path: Path) -> str:
 
 
 def canonical(text: str) -> str:
-    """Only for duplicate/group detection; never used as model input."""
+    """Serve solo a rilevare duplicati e gruppi; non viene mai usato come input del modello."""
     return re.sub(r"\s+", " ", text).strip().casefold()
 
 
@@ -41,11 +42,11 @@ def text_hash(text: str) -> str:
 
 
 def process_spaces(text: str) -> str:
-    """The exact spacing repair from the pinned TH-Bench mgt1 loader.
+    """Applica esattamente la correzione degli spazi del caricatore TH-Bench mgt1 alla revisione fissata.
 
-    It does NOT lowercase, remove punctuation, strip AI vocabulary, trim
-    incomplete sentences or remove chatbot boilerplate. Those interventions
-    could erase the very style signal being measured.
+    NON converte in minuscolo, rimuove punteggiatura o lessico associato all'IA,
+    tronca frasi incomplete o elimina formule tipiche dei chatbot. Tali interventi
+    potrebbero cancellare proprio il segnale stilistico da misurare.
     """
     for old, new in [
         (" ,", ","), (" .", "."), (" ?", "?"), (" !", "!"),
@@ -63,20 +64,20 @@ def _cell(value: object) -> str:
 
 
 def trim_incomplete_tail(text: str) -> str:
-    """Keep through the last plausible sentence-ending mark, symmetrically.
+    """Conserva il testo fino all'ultima plausibile fine frase, con la stessa regola per entrambe le classi.
 
-    This punctuation heuristic is NOT grammatical completeness verification.
-    Decimal points and ordinary internal abbreviations/initials are ignored.
-    Quotes/brackets immediately after an ending mark stay in the retained text.
-    When there is no plausible ending, return an empty string so the subsequent
-    minimum-length filter excludes the text rather than inventing punctuation.
+    Questa euristica sulla punteggiatura NON verifica la completezza grammaticale.
+    Ignora punti decimali e comuni abbreviazioni o iniziali interne. Le virgolette
+    e parentesi subito dopo il segno finale restano nel testo. Se non trova una
+    chiusura plausibile restituisce una stringa vuota: il filtro di lunghezza
+    minima escluderà il testo senza inventare punteggiatura.
     """
     text = text.rstrip()
     for match in reversed(list(TERMINAL_BOUNDARY.finditer(text))):
         prefix = text[:match.end()]
-        # Preserve an already terminated text, including abbreviations used at
-        # the end of a sentence (e.g. "He lives in the U.S."). Internal titles
-        # such as "Dr. Smith" must not become artificial sentence boundaries.
+        # Conserva un testo già concluso, comprese le abbreviazioni usate alla
+        # fine della frase (es. "He lives in the U.S."). Titoli interni
+        # come "Dr. Smith" non devono diventare confini di frase artificiali.
         if match.end() != len(text) and text[match.start()] == ".":
             before = text[:match.start()]
             token_match = re.search(r"([\w.]+)$", before)
@@ -89,10 +90,10 @@ def trim_incomplete_tail(text: str) -> str:
 
 def _choose_pairs(candidates: list[dict], quotas: dict[str, int], rng: np.random.Generator,
                   used_texts: set[str]) -> list[tuple[dict, str]]:
-    """Randomized matching enforces generator quotas and one machine per human.
+    """L'abbinamento casuale rispetta le quote dei generatori e assegna un testo macchina a ogni umano.
 
-    Identical generated strings are forbidden globally. If a tentative matching
-    repeats a machine string, ban that row/generator edge and solve again.
+    Stringhe generate identiche sono vietate nell'intero campione. Se un tentativo
+    ripete un testo macchina, esclude quell'associazione riga/generatore e riprova.
     """
     slots = [gen for gen, n in quotas.items() for _ in range(n)]
     if len(candidates) < len(slots):
@@ -131,15 +132,16 @@ def prepare_dataset(data_dir: Path | str, output_dir: Path | str, n_pairs: int =
                     seed: int = 42, min_words: int = 50,
                     generators: list[str] | None = None,
                     clean_sentence_ends: bool = True) -> tuple[pd.DataFrame, dict]:
-    """Save samples.jsonl + manifest.json and return (records, manifest).
+    """Salva samples.jsonl e manifest.json e restituisce (records, manifest).
 
-    Each domain has ``n_pairs`` humans and ``n_pairs`` machines, with one
-    randomly assigned valid generator per source pair and near-equal generator
-    quotas. Human texts are not replicated seven times. ``group_id`` links
-    repeated prompts and human texts and must be respected during splitting.
-    The default removes trailing incomplete fragments BEFORE the symmetric
-    minimum-word filter. Disable only for an explicitly labelled sensitivity
-    run; the default remains a locally specified cleaning protocol.
+    Ogni dominio contiene ``n_pairs`` testi umani e altrettanti testi macchina,
+    con un generatore valido assegnato casualmente a ogni coppia di origine e
+    quote quasi uguali per generatore. I testi umani non vengono replicati sette
+    volte. ``group_id`` collega prompt ripetuti e testi umani e deve essere
+    rispettato nelle partizioni. Per impostazione predefinita elimina i frammenti
+    finali incompleti PRIMA del filtro simmetrico sul numero minimo di parole.
+    Disabilitare la regola soltanto per un'analisi di sensibilità esplicitamente
+    indicata; il protocollo di pulizia predefinito è definito localmente.
     """
     data_dir, output_dir = Path(data_dir), Path(output_dir)
     generators = list(GENERATORS if generators is None else generators)
@@ -180,8 +182,8 @@ def prepare_dataset(data_dir: Path | str, output_dir: Path | str, n_pairs: int =
             prepared[domain][origin] = cells
             cleanup_diagnostics[domain][origin] = dict(counts)
 
-    # A machine output copied verbatim from ANY source human is not usable as a
-    # label-independent stylometric comparison. Remove the ambiguous machine.
+    # Un output macchina identico a QUALSIASI testo umano di origine non è utilizzabile
+    # per un confronto stilometrico indipendente dalle etichette: lo si esclude.
     all_human_hashes = {text_hash(c["text"]) for texts in prepared.values()
                         for c in texts["human"] if c["text"]}
     seen_humans, candidates_by_domain, diagnostics = set(), {}, {}
@@ -248,7 +250,7 @@ def prepare_dataset(data_dir: Path | str, output_dir: Path | str, n_pairs: int =
                                 "domain": domain, "generator": origin, "label": label,
                                 "text": text, "source_row": candidate["source_row"],
                                 "source_id": candidate["source_id"]})
-    # Connected components link shared source prompts even when human texts differ.
+    # Le componenti connesse collegano prompt condivisi anche quando i testi umani differiscono.
     parent = {p: p for p in grouping_keys}
     def find(item):
         while parent[item] != item:

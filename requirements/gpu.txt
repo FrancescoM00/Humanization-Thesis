@@ -12,6 +12,6 @@ optimum-onnx==0.1.0
 onnx==1.18.0
 onnxruntime==1.23.2
 
-# Install a suitable CUDA-enabled torch build before this profile.
+# Installare una versione di torch compatibile con CUDA prima di questo profilo.
 accelerate==1.11.0
 bitsandbytes==0.48.2

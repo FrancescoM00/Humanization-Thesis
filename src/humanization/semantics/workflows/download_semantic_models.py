@@ -1,6 +1,7 @@
-"""Download public, revision-pinned model files over verified HTTPS.
+"""Scarica file pubblici di modelli con revisione fissata tramite HTTPS verificato.
 
-Never edits network policy, logs signed redirect URLs, or enables remote code.
+Non modifica mai le regole di rete, non registra URL di redirect firmati e
+non abilita codice remoto.
 """
 from __future__ import annotations
 import argparse
