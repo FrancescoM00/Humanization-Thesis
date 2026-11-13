@@ -31,7 +31,7 @@ Humanization/
 └── THIRD_PARTY_NOTICES.txt      Attribuzioni e riferimenti ai progetti esterni
 ```
 
-I CSV MGTBench contengono testi umani e testi prodotti da diversi generatori nei domini Essay, Reuters e WritingPrompts. I testi umani servono per il confronto stilistico e per calibrare i detector. **Negli esperimenti di riscrittura si parte invece da un testo macchina e se ne valuta la versione riscritta.** Per «fonte» si intende quel testo originale: più riscritture dello stesso originale non costituiscono fonti indipendenti.
+I CSV MGTBench contengono testi umani e testi prodotti da diversi generatori nei domini Essay, Reuters e WritingPrompts. I testi umani servono per il confronto stilistico e per calibrare i detector. **Negli esperimenti di riscrittura si parte invece da un testo macchina e se ne valuta la versione riscritta.** 
 
 `data/processed/` conserva gli input effettivamente impiegati: non è necessario ricostruire i campioni per leggere i risultati. In particolare, `study_126/` contiene le riscritture e gli score dello studio su 126 originali; `pilot_42/` quelli delle prove preliminari su 42 originali. I file `SOURCE.json` documentano la provenienza dei dati ufficiali.
 
