@@ -1,10 +1,8 @@
 """Similarità tra frasi o segmenti con la stessa aggregazione del caso peggiore usata dall'NLI.
 
-Le unità di allineamento sono i segmenti di frase già definiti entro il limite
-di MiniLM e usati nella fase NLI. Per ogni unità dell'ipotesi si conserva la
-similarità massima rispetto a *tutte* le unità della premessa. Si valutano entrambe
-le direzioni; media, q10 e minimo non sono pesati sulle unità dell'ipotesi,
-seguendo la convenzione di aggregazione dell'NLI.
+Per ogni unità dell'ipotesi si conserva la similarità massima rispetto a 
+tutte le unità della premessa. Si valutano entrambe
+le direzioni.
 """
 from __future__ import annotations
 
@@ -21,7 +19,7 @@ from humanization.semantics.metrics import (_cached_chunks, _cpu_threads, _hash,
                       _records, _release_device_cache, _resolve_device)
 
 
-BERT_F1_BASELINE = .814463  # RoBERTa-base ufficiale inglese, livello 10.
+BERT_F1_BASELINE = .814463  
 AGGREGATORS = ('mean', 'q10', 'min')
 
 
@@ -53,7 +51,7 @@ def matrix_support(matrix):
 
 
 def candidate_support(matrix, forward_candidates, reverse_candidates):
-    """Limita i massimi esattamente alle stesse evidenze recuperate per l'NLI."""
+   
     values = np.asarray(matrix, dtype=float)
     if len(forward_candidates) != values.shape[1] or len(reverse_candidates) != values.shape[0]:
         raise ValueError('Candidate lists must cover every hypothesis unit')
@@ -74,7 +72,6 @@ def unit_record(pair, item, forward, reverse, metric):
 
 
 def aligned_cosine_scores(pairs, alignment, progress_callback=None):
-    """Riusa la cache del coseno top-k: contiene il massimo globale esatto (k>=1)."""
     rows, units = [], []
     records = list(_records(pairs))
     for index, pair in enumerate(records, 1):
@@ -133,7 +130,7 @@ def aligned_bert_scores(pairs, alignment, modelpath, *, num_layers=10, batch_siz
         return hashes[text]
 
     def pair_key(a, b):
-        # F1 grezzo è simmetrico a modello/IDF fissi. Riusa le coppie trasposte.
+        
         return tuple(sorted((key_for(a), key_for(b))))
 
     def ensure_embeddings(texts):
