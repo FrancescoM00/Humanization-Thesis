@@ -1,4 +1,4 @@
-"""Produce nuove riscritture oppure riutilizza esplicitamente quelle di riferimento congelate."""
+"""Produce nuove riscritture oppure riutilizza esplicitamente quelle di riferimento."""
 import json,shutil
 from humanization.configuration import path,output,record,model_config
 from .pipeline import run_humanizers
