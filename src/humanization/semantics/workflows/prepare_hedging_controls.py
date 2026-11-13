@@ -1,4 +1,4 @@
-"""Prepara il pannello congelato delle cautele già presenti senza modelli NLI o generativi."""
+"""Prepara l'esperimento delle cautele già presenti senza modelli NLI o generativi."""
 from __future__ import annotations
 import argparse
 import json
