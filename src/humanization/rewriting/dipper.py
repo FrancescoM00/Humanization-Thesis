@@ -1,9 +1,3 @@
-"""Esegue sistemi di riscrittura fissi e non adattivi, conservando i tentativi falliti.
-
-Il sistema identità richiede soltanto la libreria standard di Python. I modelli
-neurali sono importati quando servono, caricati uno alla volta e mai interrogati
-attraverso un detector.
-"""
 from __future__ import annotations
 from collections import Counter
 from datetime import datetime, timezone
@@ -58,12 +52,6 @@ class _DipperWindowGenerationError(RuntimeError):
 
 def _rewrite_dipper_context(source: dict, system: dict, seed: int, tokenizer, model, device) -> dict:
     """Usa finestre di tre frasi con prefisso riscritto cumulativo, senza troncamento.
-
-    Conserva la posizione del contesto e i codici inversi della procedura pubblica.
-    La suddivisione in frasi con spaCy, il caricamento NF4, la decodifica greedy e
-    max_new_tokens per finestra sono scelte sperimentali esplicite: non implicano
-    una replica completa dell'articolo. Un risultato parziale resta ispezionabile,
-    ma non viene mai incluso tra le coppie prodotte con successo.
     """
     import torch
     row = _base_row(source, system, seed)
