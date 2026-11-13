@@ -1,10 +1,6 @@
 """Segnalazioni lessicali fisse per modifiche semantiche, indipendenti dagli output NLI.
 
-Queste regole rilevano cambiamenti nel contenuto affermato, non la verità dei
-fatti. Gli inventari sono fissati prima di valutare gli score. Le segnalazioni
-numeriche confrontano multinsiemi di valori normalizzati: sostituire 20 con 30
-è rilevabile anche se entrambi i testi contengono un solo numero. La
-normalizzazione dei cardinali e ordinali inglesi è volutamente limitata.
+Queste regole rilevano cambiamenti nel contenuto.
 """
 from __future__ import annotations
 
@@ -53,7 +49,7 @@ def _decimal_string(number):
 
 
 def _cardinal_words(words):
-    """Analizza un piccolo sottoinsieme grammaticale; scarta elenchi come 'one two'."""
+    """Analizza un piccolo sottoinsieme grammaticale."""
     total, current, previous, last_scale = 0, 0, '', 10**15
     seen = False
     for word in words:
@@ -95,8 +91,7 @@ def numeric_values(doc):
     """Restituisce un multinsieme normalizzato di numeri e unità senza dedurne la verità.
 
     Le date non vengono scartate silenziosamente: cambiare un anno può essere
-    significativo. Non è presente un analizzatore generale per aritmetica,
-    notazione scientifica o conversione delle unità.
+    significativo.
     """
     tokens, values, index = list(doc), Counter(), 0
     word_numbers = set(UNITS) | set(TENS) | set(SCALES)
@@ -173,8 +168,7 @@ def inventory_delta(original, modified):
                        prefix + '_signed_count_delta': after - before,
                        prefix + '_absolute_count_delta': abs(after - before),
                        prefix + '_lost_items': sum(removed.values()), prefix + '_gained_items': sum(added.values())})
-        # Per le cautele usa il totale delle affermazioni, evitando segnalazioni quando
-        # una cautela sostituisce un'altra. Le altre famiglie confrontano il multinsieme canonico.
+        
         result[prefix + '_change'] = abs(after - before) if family == 'hedge' else max(sum(removed.values()), sum(added.values()))
         result[prefix + '_count_loss'] = max(before - after, 0)
         result[prefix + '_count_gain'] = max(after - before, 0)
