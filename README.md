@@ -139,6 +139,4 @@ python experiments/02_semantic_validation.py --mode reproduce --output results/n
 
 Questi esempi usano CPU e dati inclusi: ricalcolano le analisi senza eseguire nuovamente i modelli. Gli output vanno in `results/new_runs/` e non sostituiscono i risultati già consegnati. Le opzioni di ogni script si consultano con `python experiments/NOME_SCRIPT.py --help`.
 
-Per nuove inferenze sono disponibili modalità `compute`, configurazioni GPU in `requirements/gpu.txt` e parametri nei file YAML. I pesi dei modelli, l'ambiente virtuale e le credenziali non sono nello ZIP; generare nuovi testi o score richiede download e risorse adeguate. La naturalezza remota richiede anche una chiave e l'attivazione esplicita delle chiamate. Tutto questo non è necessario per consultare i risultati o per eseguire gli esempi sopra.
-
-Attribuzioni scientifiche e condizioni delle risorse esterne sono in [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt). Per ricostruire lo ZIP della consegna: `python tools/build_delivery.py` produce `dist/Humanization.zip`.
+Per nuove inferenze sono disponibili modalità `compute`, configurazioni GPU in `requirements/gpu.txt` e parametri nei file YAML. 
