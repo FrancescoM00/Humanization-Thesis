@@ -1,10 +1,8 @@
 """Alterazioni progressive di singole frasi sugli stessi testi modificati di OpAI.
 
-Ogni testo di riferimento ha modifiche annidate con K=1/2/3/5. Il pannello
+Ogni testo di riferimento ha modifiche annidate con K=1/2/3/5. L'esperimento
 principale richiede cinque frasi distinte modificabili prima di esaminare
-qualsiasi punteggio. Un pannello di applicabilità con due-quattro frasi viene
-etichettato separatamente e non va unito come se avesse una versione con cinque
-frasi. Le etichette indicano l'intento delle regole, non giudizi semantici umani.
+qualsiasi punteggio.
 """
 from __future__ import annotations
 
@@ -25,9 +23,6 @@ FAMILIES = ('distributed_negation', 'distributed_subtle')
 
 
 def _candidate(sentence, condition, transform, positive, seed):
-    # as_doc conserva le annotazioni POS/dipendenze/NER già calcolate.
-    # Limitando l'input, numeri ripetuti in altre frasi non possono
-    # trasformare silenziosamente una modifica di K frasi in più di K modifiche.
     local = sentence.as_doc()
     rng = _rng(seed, positive['id'], str(sentence.start_char), condition)
     change = transform(local, rng)
@@ -41,13 +36,12 @@ def _candidate(sentence, condition, transform, positive, seed):
         if condition == 'number_change' and re.search(
                 r'\b(?:league|division|formula|world\s+war|grade|class)\s+$',
                 local.text[max(0, start-30):start], re.I):
-            return None  # League Two indica un identificatore, non una quantità.
+            return None  
         edits.append({**edit, 'start_char': sentence.start_char + start,
                       'end_char': sentence.start_char + end})
     if not edits:
         return None
-    # Span.as_doc() può aggiungere lo spazio dopo l'ultimo token anche
-    # se Span.text/end_char lo escludono. I bersagli devono rispettare gli offset esatti.
+    
     target_original = sentence.text
     local_edits = [{**edit,'start_char':edit['start_char']-sentence.start_char,
                     'end_char':edit['end_char']-sentence.start_char} for edit in edits]
@@ -90,8 +84,7 @@ def sentence_candidates(doc, positive, seed):
                       parser_sentence_index=parser_index)
         by_unit[family].setdefault(unit_index, []).append(change)
     for index, sentence in enumerate(sentences):
-        # Nel primo pilot le affermazioni invariate duplicate erano problematiche.
-        # Scarta i duplicati esatti e la portata esistenziale già risultata ambigua.
+       
         if normalized[re.sub(r'\s+', ' ', sentence.text).strip().casefold()] != 1:
             continue
         if not re.search(r'\bone\s+of\b', sentence.text, re.I):
@@ -119,8 +112,6 @@ def _ordered_changes(options, positive, family, seed):
     rng.shuffle(options)
     chosen = []
     for choices in options:
-        # Sceglie tra le regole disponibili senza mettere sistematicamente
-        # per primo un tipo di regola a K=1. Registra la composizione per poterla verificare.
         selected = rng.choice(sorted(choices, key=lambda x: x['condition']))
         chosen.append(selected)
     return chosen
