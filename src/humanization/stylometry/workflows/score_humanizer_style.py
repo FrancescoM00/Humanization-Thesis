@@ -117,7 +117,6 @@ def review_forms(cohort, pairs, output, per_cell, seed):
         semantic_key.append({'review_id': review_id, **{key: pair[key] for key in ['id', 'source_id', 'source_group_id', 'domain', 'humanizer']}})
     for name, rows in [('semantic_review_form', semantic), ('semantic_review_key', semantic_key)]:
         pd.DataFrame(rows).to_csv(output / (name + '.csv'), index=False)
-    (output / 'review_instructions.md').write_text('# Annotazione manuale esplorativa\n\nConsegnare al valutatore soltanto i file `*_review_form.csv`, non le chiavi. La semantica richiede di confrontare originale e riscrittura: yes conserva tutte le informazioni rilevanti, partial presenta una perdita/aggiunta/modifica, no altera il contenuto principale. Specificare error_type e motivazione; usare notes per i casi ambigui.\n\nL’ordine è casuale. Le chiavi separate conservano condizioni e fonti per l’analisi successiva. Annotazioni vuote non sono gold.\n')
     return {'semantic_pairs': len(semantic)}
 
 def _argument_error(message):

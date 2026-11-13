@@ -21,7 +21,7 @@ import pandas as pd
 from humanization.evaluation.stylometric import effect_tables, evaluate, shortlist_features
 from humanization.stylometry.features import FEATURE_GROUPS, FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES, WIKIPEDIA_FEATURES, extract_records
 from humanization.datasets.length_matching import length_balance, prepare_length_matched_dataset
-from humanization.evaluation.reporting import markdown_table, write_report
+from humanization.stylometry.plots import save_style_outputs
 
 def _argument_error(message):
     raise ValueError(message)
@@ -77,19 +77,7 @@ def run(args):
     controls = metrics[metrics.feature_set == 'word_count_only']
     if not controls.roc_auc.sub(0.5).abs().lt(1e-12).all():
         raise RuntimeError('Pure word-count control is not exactly at chance; inspect paired folds and OOF predictions.')
-    write_report(df, effects, metrics, shortlist, robustness, manifest, out)
-    report_path = out / 'report.md'
-    report = report_path.read_text()
-    report = report.replace('# Esperimento esplorativo: componente stilometrica', '# Esperimento stilometrico con controllo esatto della lunghezza')
-    report = report.replace('Non si usano troncamenti a un numero fisso di parole; il manifest documenta l’eventuale rimozione simmetrica delle code senza terminazione di frase plausibile.', f'Si conservano prefissi iniziali terminati con punteggiatura di frase, tra {args.minimum} e {args.maximum} parole lessicali, scegliendo conteggi ESATTAMENTE uguali nella coppia originale e vicini a {args.target}. Non si taglia a metà parola o frase. Questo controllo riguarda brevi passaggi iniziali, non l’intero documento.')
-    report += '\n## Controllo della lunghezza: cosa è stato pareggiato\n\n'
-    report += 'Ogni umano resta associato al generatore della stessa riga originale: gli abbinamenti non introducono dipendenze tra sorgenti diverse. '
-    report += 'La selezione con costo minimo rispetta quote 43/42 per generatore. Il conteggio di parole alfabetiche spaCy è esattamente uguale entro coppia: '
-    report += 'SMD=0 e KS=0 in tutti i domini e generatori. Si conservano gruppi di origine/prompt disgiunti nelle valutazioni.\n\n'
-    report += markdown_table(balance[(balance.scope == 'domain') & (balance.measure == 'n_words')]) + '\n\n'
-    report += '`word_count_only` misura soltanto il numero di parole: ROC-AUC=0.5 in tutti i protocolli. '
-    report += 'Il vecchio controllo `length_only` contiene anche caratteri e frasi: a parità di parole, questi esprimono lunghezza media delle parole e delle frasi, cioè componenti stilistiche volutamente non pareggiate.\n\n'
-    report += 'La scelta di prefissi con endpoint corrispondenti condiziona la selezione; lunghezza controllata non significa assenza di ogni confondente né prova causale di stile umano.\n'
+    save_style_outputs(df, effects, metrics, shortlist, out)
     old_metrics_path = ROOT / 'results/published/02_stylometry/baseline/classifier_metrics.csv'
     if old_metrics_path.exists():
         old = pd.read_csv(old_metrics_path)
@@ -97,10 +85,6 @@ def run(args):
         comparison = old[keys + ['roc_auc', 'macro_f1']].merge(metrics[keys + ['roc_auc', 'macro_f1']], on=keys, suffixes=('_original', '_length_matched'))
         comparison['auc_change'] = comparison.roc_auc_length_matched - comparison.roc_auc_original
         comparison.to_csv(out / 'comparison_with_original.csv', index=False)
-        report += '\n## Confronto con l’esperimento precedente\n\n'
-        report += markdown_table(comparison[(comparison.protocol == 'leave_domain_out') & comparison.feature_set.isin(['style', 'wikipedia', 'combined'])]) + '\n\n'
-        report += 'I due esperimenti usano campioni e passaggi differenti: la differenza di AUC è descrittiva, non una stima causale dell’effetto della sola lunghezza.\n'
-    report_path.write_text(report)
     old_shortlist = ROOT / 'results/published/02_stylometry/baseline/shortlist.json'
     previous = json.loads(old_shortlist.read_text()).get('features', []) if old_shortlist.exists() else []
     pd.DataFrame([{'feature': f, 'original_selected': f in previous, 'matched_selected': f in shortlist} for f in sorted(set(previous).union(shortlist))]).to_csv(out / 'shortlist_before_after.csv', index=False)

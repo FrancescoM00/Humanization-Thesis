@@ -105,7 +105,7 @@ def test_pilot_capacity_is_explicit_and_forms_are_blind_independent_copies(tmp_p
     assert [r['review_id'] for r in forms[0]] != [r['review_id'] for r in forms[1]]
     with zipfile.ZipFile(output/'annotation_forms.zip') as archive:
         assert set(archive.namelist()) == {
-            'semantic_audit_annotator_A.csv', 'semantic_audit_annotator_B.csv', 'ISTRUZIONI.md'}
+            'semantic_audit_annotator_A.csv', 'semantic_audit_annotator_B.csv', 'annotation_schema.json'}
     # Input identici consentono la ripresa; una decisione di campionamento diversa non può sovrascrivere i dati.
     prepare_audit([pair_path], [score_path], output)
     with pytest.raises(ValueError, match='Refusing to overwrite'):

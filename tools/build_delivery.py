@@ -11,7 +11,7 @@ ROOT_FILES=('README.md','requirements.txt','pyproject.toml',
 INCLUDE_TREES=('.vscode','configs','requirements','src','experiments','tools',
                'data/raw/mgtbench','data/raw/opai','data/processed','data/resources','results/published')
 EXCLUDED_PARTS={'.git','.venv','.cache','.pytest_cache','__pycache__','generated'}
-EXCLUDED_SUFFIXES={'.pyc','.pyo','.log','.safetensors','.onnx','.pt','.bin'}
+EXCLUDED_SUFFIXES={'.pyc','.pyo','.log','.safetensors','.onnx','.pt','.bin','.pdf','.tex'}
 
 
 def delivery_files(root=ROOT):
@@ -20,7 +20,7 @@ def delivery_files(root=ROOT):
         tree=root/name
         if tree.exists():files.update(p for p in tree.rglob('*') if p.is_file())
     return sorted(p for p in files if not EXCLUDED_PARTS.intersection(p.relative_to(root).parts)
-                  and p.suffix not in EXCLUDED_SUFFIXES and not p.name.endswith('_progress.json')
+                  and p.suffix.lower() not in EXCLUDED_SUFFIXES and not p.name.endswith('_progress.json')
                   and p.name!='.env'
                   and (p.suffix.lower()!='.md' or p==root/'README.md'))
 
@@ -50,6 +50,8 @@ def build(root=ROOT,target=None):
         markdown=[name for name in archive.namelist() if name.lower().endswith('.md')]
         if markdown!=['Humanization/README.md']:
             raise RuntimeError('La consegna deve contenere soltanto README.md come file Markdown')
+        if any(Path(name).suffix.lower() in {'.pdf','.tex'} for name in archive.namelist()):
+            raise RuntimeError('La consegna contiene un PDF o un file di impaginazione')
     print(f'{target}: {len(files)} project files, {target.stat().st_size/1024**2:.1f} MiB')
     return target
 

@@ -128,7 +128,7 @@ def run(args):
     args.output.mkdir(parents=True, exist_ok=True)
     if args.stage == 'all':
         pending = []
-        stages = ['prepare', 'lexical', 'embedding', 'bertscore', 'nli', 'report']
+        stages = ['prepare', 'lexical', 'embedding', 'bertscore', 'nli', 'summarize']
         common = ['--input', str(args.input), '--data-dir', str(args.data_dir), '--output', str(args.output), '--models', str(args.models), '--n', str(args.n), '--seed', str(args.seed), '--threads', str(args.threads), '--nli-batch-size', str(args.nli_batch_size), '--device', args.device]
         common += ['--entity-policy', args.entity_policy]
         if args.opai_file:
@@ -144,15 +144,15 @@ def run(args):
                 if name == 'nli' and any((p['stage'] == 'embedding' for p in pending)):
                     pending.append({'stage': name, 'reason': 'Sentence evidence retrieval stage unavailable'})
                     continue
-            if name == 'report':
+            if name == 'summarize':
                 write_json(args.output / 'pending_stages.json', pending)
             subprocess.run([sys.executable, str(Path(__file__).resolve()), '--stage', name, *common], check=True)
         return
     if args.stage == 'prepare':
         prepare(args)
-    elif args.stage == 'report':
-        from humanization.evaluation.semantic_reporting import write_semantic_report
-        write_semantic_report(read_jsonl(args.data_dir / 'pairs.jsonl'), args.output, args.seed)
+    elif args.stage == 'summarize':
+        from humanization.evaluation.semantic_tables import export_semantic_tables
+        export_semantic_tables(read_jsonl(args.data_dir / 'pairs.jsonl'), args.output, args.seed)
     else:
         stage(args)
 

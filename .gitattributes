@@ -18,3 +18,8 @@
 /docs export-ignore
 /docs/** export-ignore
 /THIRD_PARTY_NOTICES* export-ignore
+
+# I grafici della consegna sono immagini, senza PDF o sorgenti di impaginazione.
+*.pdf export-ignore
+*.PDF export-ignore
+*.tex export-ignore
