@@ -1,11 +1,4 @@
-"""Piccoli cambiamenti verificabili di fatti o portata, senza modello generativo.
 
-Le etichette sperimentali descrivono l'intento della regola: non sono giudizi
-annotati di verità né etichette certe di contraddizione NLI. In particolare,
-rafforzare ``some`` in ``all`` o togliere incertezza aggiunge in genere
-un'affermazione non supportata. Ogni modifica usa gli offset del documento
-originale e conserva un bersaglio locale.
-"""
 from __future__ import annotations
 
 from collections import Counter
@@ -124,8 +117,6 @@ def number_change(doc: Any, rng: random.Random) -> dict[str, Any] | None:
                 eligible.setdefault(token.text.casefold(), (token, replacement))
     candidates = []
     for value, (token, replacement) in eligible.items():
-        # Scarta stringhe ripetute se un'occorrenza è una data o un altro
-        # contesto non ammissibile. Altrimenti cambia coerentemente ogni valore esatto.
         occurrences = [t for t in doc if t.text.casefold() == value]
         if not occurrences or any(_numeric_replacement(t) is None for t in occurrences):
             continue
@@ -155,8 +146,6 @@ def quantifier_strengthening(doc: Any, rng: random.Random) -> dict[str, Any] | N
             noun = token.head
             if noun.pos_ not in {'NOUN', 'PROPN'} or noun.morph.get('Number') != ['Plur']:
                 continue
-            # Limita a soggetti/oggetti della principale, escludendo espressioni come "for
-            # some time" e portate indirette come "some of the people".
             if noun.dep_ not in {'nsubj', 'nsubjpass', 'dobj', 'obj'} or noun.head != sentence.root:
                 continue
             if any(t.text.casefold() in {'if', 'unless', 'whether'} for t in sentence):
@@ -190,8 +179,6 @@ def hedge_removal(doc: Any, rng: random.Random) -> dict[str, Any] | None:
         if root.pos_ not in {'VERB', 'AUX'}:
             continue
         for token in sentence:
-            # Solo avverbi interni alla frase: evita virgole isolate e di lasciare
-            # per errore un'iniziale minuscola dopo aver eliminato "Perhaps".
             if token.text.casefold() in {'possibly', 'probably', 'perhaps', 'apparently'} and token.dep_ == 'advmod' and token.head == root:
                 if token.i <= sentence.start or token.i + 1 >= sentence.end:
                     continue
@@ -215,8 +202,6 @@ def hedge_removal(doc: Any, rng: random.Random) -> dict[str, Any] | None:
                 start, end = token.idx, root.idx + len(root.text)
                 candidates.append((sentence, [_edit(start, end, doc.text[start:end], replacement)], 'modal_may_might_be_to_finite_be'))
             elif root.pos_ == 'VERB' and root.tag_ == 'VB' and root.i == token.i + 1:
-                # Il do-support enfatico mantiene l'accordo senza dover dedurre una
-                # flessione irregolare: "may grow" -> "does grow".
                 if root.lemma_ in {'have', 'do'} or any(c.dep_ in {'aux', 'auxpass'} and c != token for c in root.children):
                     continue
                 candidates.append((sentence, [_edit(token.idx, token.idx + len(token.text), token.text, auxiliary)], 'epistemic_modal_to_assertive_do_support'))
@@ -257,10 +242,6 @@ def unsupported_detail(doc: Any, rng: random.Random) -> dict[str, Any] | None:
         end = last.idx + len(last.text)
         if last.is_punct or (end < len(doc.text) and not doc.text[end].isspace()):
             continue
-        # Delimita l'aggiunto subito dopo il soggetto della principale, perché
-        # non si leghi ambiguamente a un oggetto finale o a una subordinata. Richiedere
-        # un attore nominato o un arrivo/una partenza fisici evita di attribuire tempi ad
-        # affermazioni astratte come "the hoplite ethos introduced social attitudes".
         clock = rng.choice(clocks)
         edit = _edit(end, end, '', ', at ' + clock + ',')
         candidates.append((sentence, edit, clock))
@@ -284,12 +265,6 @@ TRANSFORMS = {
 def generate_subtle_pairs(records: Iterable[dict[str, Any]], *, n_per_type: int = 50,
                           seed: int = 42, preferred_source_ids: set[str] | None = None,
                           nlp: Any = None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    """Verifica una volta, preferisce le fonti della coorte originale e completa da candidati più ampi.
-
-    Ogni tipo è campionato indipendentemente dai testi modificabili; non si
-    impone che tutte e quattro le condizioni siano applicabili. Il
-    bilanciamento avviene prima per dominio e poi per generatore.
-    """
     records = select_base_records(records, n=10**9, seed=seed)
     preferred_source_ids = set(preferred_source_ids or ())
     nlp = load_perturbation_nlp() if nlp is None else nlp
