@@ -1,7 +1,4 @@
-"""Prove su cautele epistemiche già presenti, con fonti selezionate senza usare gli score.
-
-Le regole forniscono etichette sperimentali intenzionali, non etichette umane
-certe. Ogni terna rimuove la cautela scelta, rafforza l'affermazione mantenendo
+"""Prove su cautele. Ogni terna rimuove la cautela scelta, rafforza l'affermazione mantenendo
 una cautela e parafrasa la cautela originale. Non si usano modelli generativi o NLI.
 """
 from __future__ import annotations
@@ -127,11 +124,6 @@ def _retain_outer_space(original, body):
 
 def sentence_triplet(sentence: Any) -> dict | None:
     """Restituisce una terna prudente su una cautela già presente, oppure scarta la frase.
-
-    Completa e parziale si riferiscono alla proposizione bersaglio, non a tutte
-    le affermazioni del testo. Si escludono permessi ambigui, capacità, cautele
-    multiple e cambiamenti di polarità; le interpretazioni rimaste richiedono
-    comunque una verifica del testo.
     """
     if not _safe(sentence):
         return None
@@ -176,8 +168,6 @@ def sentence_triplet(sentence: Any) -> dict | None:
             start, end = min(t.idx for t in subject_tokens), max(t.idx+len(t.text) for t in subject_tokens)
             if raw[:start-sentence.start_char].strip() or sentence.doc.text[end:modal.idx].strip():
                 return None
-            # May con stato o perfetto è solitamente epistemico. Il may lessicale è limitato
-            # a soggetti inanimati e predicati di esito che non esprimono permessi.
             human_subject = (subject.ent_type_ == "PERSON" or subject.lemma_.casefold() in _HUMAN_SUBJECTS
                              or subject.text.casefold() in {"i", "you", "he", "she", "we", "they"})
             epistemic_aux = (base.lemma_ == "be" or (base.lemma_ == "have" and base.dep_ == "aux"))
@@ -225,7 +215,7 @@ def sentence_triplet(sentence: Any) -> dict | None:
             subject_start = min(t.idx for t in subject.subtree)-sentence.start_char
             introductory = raw[b:subject_start] if initial else raw[:subject_start]
             if introductory.strip():
-                return None  # Evita di spostare aggiunti dichiarativi o introduttivi nella nuova cornice.
+                return None  
             complete = (raw[:a]+raw[b:]).strip()
             if initial:
                 complete = _case_start(complete, True)
@@ -244,7 +234,6 @@ def sentence_triplet(sentence: Any) -> dict | None:
 
 
 def collect_exclusions(paths, root: Path):
-    """Raccoglie le chiavi delle righe grezze e gli hash canonici dei testi già usati dagli input precedenti."""
     rows, hashes, manifest = set(), set(), []
     def visit(value):
         if isinstance(value, dict):
@@ -337,14 +326,11 @@ def discover_candidates(records, nlp=None, seed=20261111, max_per_cell=10, max_p
     for record in records: cells[(record['domain'],record['generator'])].append(record)
     queues={key:deque(sorted(items,key=lambda r:_stable_hex(seed,r['source_id']))) for key,items in sorted(cells.items())}
     accepted=Counter(); accepted_domains=Counter(); diagnostics=[]; candidates=[]; accepted_groups=set()
-    # L'ammissibilità è valutata in un flusso deterministico bilanciato. Un limite per cella
-    # limita il parsing senza usare score o cambiare le etichette sperimentali.
+    
     def stream():
         while any(queues.values()):
             progressed=False
             for key,queue in queues.items():
-                # Generatori diversi della stessa componente riga grezza/fonte
-                # non sono fonti indipendenti e non devono occupare quote separate.
                 while queue and queue[0]['source_group_id'] in accepted_groups:
                     skipped=queue.popleft()
                     diagnostics.append({**{k:skipped[k] for k in ('source_id','domain','generator','source_row')},
@@ -368,7 +354,6 @@ def discover_candidates(records, nlp=None, seed=20261111, max_per_cell=10, max_p
         for index,sentence in enumerate(doc.sents):
             triple=sentence_triplet(sentence)
             if triple is not None:
-                # Scarta il supporto esattamente duplicato già affermato altrove.
                 other=canonical(doc.text[:sentence.start_char]+' '+doc.text[sentence.end_char:])
                 if canonical(triple['complete']).rstrip('.') in other: continue
                 choices.append((index,sentence,triple))
@@ -443,8 +428,6 @@ def prepare_panel(protocol_path:Path, output:Path, root:Path):
                                              protocol.get('max_unique_candidates_per_domain'))
     n=int(protocol.get('n_sources',60));seed=int(protocol.get('seed',20261111))
     def fail_preparation(message):
-        # Conserva la diagnostica di applicabilità quando non è possibile raggiungere
-        # una quota prevista. Questi sono candidati, non un pannello completo o risultati delle metriche.
         output.mkdir(parents=True,exist_ok=True)
         stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         failure={'status':'incomplete_no_pairs_exported','reason':message,
