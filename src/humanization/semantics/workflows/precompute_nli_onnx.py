@@ -1,9 +1,4 @@
-"""Popola la cache invariata delle probabilità NLI con ORT float32 validato.
 
-Ordina globalmente per lunghezza in token per ridurre il padding. Cambia
-la pianificazione, non il recupero delle evidenze, le etichette, i pesi
-del modello o l'aggregazione.
-"""
 import argparse
 import hashlib
 import json
