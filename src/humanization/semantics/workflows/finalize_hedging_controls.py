@@ -1,4 +1,4 @@
-"""Congela il pannello delle cautele dopo la revisione dell'assistente senza score e prima dell'inferenza."""
+"""Congela l'esprimento delle cautele dopo la revisione dell'assistente senza score e prima dell'inferenza."""
 from __future__ import annotations
 import argparse
 from collections import Counter
