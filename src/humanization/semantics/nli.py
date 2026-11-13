@@ -9,9 +9,7 @@ def nli_scores(pairs, modelpath, alignment_cache=None, *, max_pair_tokens=384, l
     """Supporto direzionale di frasi o segmenti tramite entailment massimo sulle evidenze.
 
     Forward: l'originale implica il modificato; reverse: il modificato implica
-    l'originale. I riepiloghi di contraddizione usano l'evidenza con supporto migliore;
-    retrieved_contradiction_max conserva anche il massimo su tutti i
-    candidati.
+    l'originale.
     """
     from .metrics import sentence_chunks, _cached_chunks, _cpu_threads, _identity, _local, _model_path, _nli_direction, _records, _release_device_cache, _resolve_device, resolve_nli_labels
     import torch
