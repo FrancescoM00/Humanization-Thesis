@@ -46,7 +46,7 @@ Gli script di `experiments/` sono i punti di avvio. Leggono i parametri da `conf
 | `02_semantic_validation.py` | Calcola le metriche semantiche o rianalizza gli score salvati delle coppie originale/modificato. | `results/published/03_semantics/` |
 | `03_opai_editing.py` | Misura come cambia lo stile nelle operazioni OpAI, sul documento intero e sulle sole frasi modificate. | `results/published/04_opai_style/` |
 | `04_rewriting.py` | Produce le riscritture con Qwen e DIPPER, oppure recupera quelle già salvate. Registra anche i fallimenti. | Testi in `data/processed/study_126/rewriting/rewrites.jsonl`. |
-| `05_detection.py` | Calcola gli score dei detector sugli originali, sulle riscritture e sugli umani di calibrazione. | Score in `data/processed/study_126/detection/` e `zero_shot/`. |
+| `05_detection.py` | Calcola gli score dei detector sugli originali, sulle riscritture e sui testi umani usati per la calibrazione. | Score in `data/processed/study_126/detection/` e `zero_shot/`. |
 | `06_naturalness.py` | Prepara e analizza confronti di naturalezza; può interrogare un giudice remoto solo con attivazione esplicita. | Prove esplorative in `data/processed/naturalness_reference/`; non costituiscono validazione umana. |
 | `07_evaluation.py` | Riunisce gli score e calcola prestazioni dei detector, confronti fra riscrittori, intervalli e riepiloghi semantici/stilistici. | `results/published/07_study_126/` e confronto fra pilot. Gestisce anche le analisi NLI e cautele già salvate. |
 
