@@ -1,9 +1,3 @@
-"""Esegue sistemi di riscrittura fissi e non adattivi, conservando i tentativi falliti.
-
-Il sistema identità richiede soltanto la libreria standard di Python. I modelli
-neurali sono importati quando servono, caricati uno alla volta e mai interrogati
-attraverso un detector.
-"""
 from __future__ import annotations
 from collections import Counter
 from datetime import datetime, timezone
