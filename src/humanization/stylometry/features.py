@@ -1,17 +1,4 @@
 """Feature stilistiche fisse e interpretabili a livello di documento.
-
-Qui non si adattano modelli, ricavano dizionari dai dati o scaricano modelli.
-Le parole lessicali sono token spaCy con ``is_alpha``, normalizzati con casefold
-senza lemmatizzazione. Le lunghezze delle frasi contano tali parole ed escludono
-le frasi prive di esse. Le proporzioni POS usano invece tutti i token diversi
-da spazi e punteggiatura, conservando numeri e frammenti di contrazioni. I tassi
-di punteggiatura contano caratteri letterali ogni 100 parole lessicali; anche
-le frequenze delle parole funzionali usano questo denominatore.
-
-Le feature tratte da Wikipedia sono esplicitamente indicatori approssimativi:
-la loro presenza non prova la paternità IA e non rende misurabili affermazioni
-semantiche come un'analisi priva di supporto. Il dizionario è stato definito dalla
-tesi fornita prima di esaminare gli effetti.
 """
 
 from __future__ import annotations
@@ -39,7 +26,7 @@ FUNCTION_WORDS = (
     "might", "must", "not",
 )
 
-# I lemmi coprono le flessioni comuni, ma il vocabolario rimane fisso.
+
 WIKIPEDIA_AI_LEMMAS = frozenset({
     "delve", "intricate", "tapestry", "landscape", "pivotal", "crucial",
     "foster", "showcase", "underscore", "highlight",
@@ -62,7 +49,7 @@ PUNCTUATION_CHARACTERS = {
     "parenthesis": "()", "double_quote": '\"“”',
 }
 
-# Feature -> famiglia generale. Esportata per analisi di esclusione prestabilite.
+
 FEATURE_GROUPS: dict[str, str] = {}
 FEATURE_SCHEMA: dict[str, str] = {}
 
@@ -120,23 +107,17 @@ for _name, _description in {
 }.items():
     _register(_name, "wikipedia", _description)
 
-# I modelli prestabiliti possono usare questa colonna condivisa insieme alle colonne wiki_.
+
 WIKIPEDIA_FEATURES = tuple(
     name for name, group in FEATURE_GROUPS.items() if group == "wikipedia"
 ) + ("punct_em_dash_per100",)
 
-# Le conserva per la diagnostica; la valutazione può escludere le misure globali
-# di diversità sensibili alla lunghezza dal modello primario basato solo sullo stile.
+
 LENGTH_SENSITIVE_FEATURES = ("n_words", "n_characters", "n_sentences", "ttr", "hapax_ratio")
 
 
 def mattr(tokens: Sequence[str], window: int = 50) -> float:
-    """Calcola esattamente il MATTR a finestra scorrevole in tempo O(N) e memoria O(window).
-
-    I token devono essere già normalizzati. Restituisce NaN per N < window:
-    una finestra minore cambierebbe la quantità stimata e renderebbe i confronti
-    dipendenti dalla lunghezza.
-    """
+  
     if window <= 0:
         raise ValueError("MATTR window must be a positive integer")
     n_tokens = len(tokens)
@@ -155,11 +136,7 @@ def mattr(tokens: Sequence[str], window: int = 50) -> float:
 
 
 def load_nlp(model: str = "en_core_web_sm") -> Any:
-    """Carica la pipeline inglese spaCy installata; se manca si interrompe senza scaricarla.
-
-    Mantiene parser e lemmatizzatore per i confini delle frasi e la ricerca nel
-    vocabolario fisso. Disabilita soltanto NER, non necessario per queste feature.
-    """
+    
     import spacy
 
     nlp = spacy.load(model, disable=["ner"])
@@ -170,8 +147,7 @@ def load_nlp(model: str = "en_core_web_sm") -> Any:
 
 @lru_cache(maxsize=1)
 def _readability() -> Any:
-    # Verifica il corpus NLTK *prima* che textstat possa avviarne il download automatico.
-    # Installazione e provenienza spettano allo script di configurazione, non all’estrattore.
+   
     import nltk
     from humanization.paths import project_root
     nltk.data.path.insert(0,str(project_root()/"data/resources/nltk_data"))
@@ -190,11 +166,7 @@ def _readability() -> Any:
                 "readability features; automatic downloads are disabled."
             ) from exc
     textstat.set_lang("en_US")
-    # textstat 0.7.10 chiama sempre nltk.download dentro get_cmudict.
-    # Inizializza la cache ordinaria della funzione con il corpus locale verificato,
-    # sostituendo solo il download con un controllo della presenza locale. Formule e
-    # dizionario rimangono esattamente quelli di textstat en_US. Questa inizializzazione
-    # usa un solo thread, in accordo con il funzionamento di extract_records.
+    
     def preinstalled_only(package: str, *args: Any, **kwargs: Any) -> bool:
         if package != "cmudict":
             raise RuntimeError(f"Unexpected textstat corpus request: {package}")
@@ -216,11 +188,7 @@ def extract_features(doc: Any, text: str | None = None) -> dict[str, float]:
     """Estrae tutte le feature di ``FEATURE_SCHEMA`` da un documento già analizzato.
 
     Input senza parole lessicali hanno feature normalizzate NaN e conteggi zero.
-    La SD della lunghezza delle frasi è zero se il documento ha una sola frase.
-    La punteggiatura totale conta token di punteggiatura spaCy; i singoli segni
-    contano caratteri letterali, quindi non devono necessariamente sommarsi.
-    Le espressioni regolari degli indicatori retorici si applicano dentro ogni
-    frase, evitando corrispondenze fra frammenti non collegati di frasi diverse.
+   
     """
     text = doc.text if text is None else text
     words = [token for token in doc if token.is_alpha]
@@ -272,8 +240,7 @@ def extract_features(doc: Any, text: str | None = None) -> dict[str, float]:
     else:
         features.update({name: math.nan for name, group in FEATURE_GROUPS.items() if group == "readability"})
 
-    # Usa le forme letterali solo quando un Doc fornito esplicitamente nei test è privo
-    # di lemmi; in produzione load_nlp conserva il lemmatizzatore addestrato.
+    
     lemmas = [(token.lemma_ or token.text).casefold() for token in words]
     negative_parallelism = 0
     for sentence in sentence_spans:
@@ -296,12 +263,7 @@ def extract_records(
     model: str = "en_core_web_sm",
     batch_size: int = 32,
 ) -> list[dict[str, Any]]:
-    """Conserva ogni record di input aggiungendo le feature di ``record['text']``.
-
-    L'elaborazione usa un solo processo e mantiene l'ordine per riproducibilità.
-    Il chiamante può conservare la tabella in cache; i testi originali non vengono
-    modificati né accorciati.
-    """
+   
     records = list(records)
     nlp = load_nlp(model)
     results = []
