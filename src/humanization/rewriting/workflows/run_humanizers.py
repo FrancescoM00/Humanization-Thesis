@@ -1,4 +1,4 @@
-"""Esegue sistemi di riscrittura fissi su una coorte congelata, consentendo una ripresa sicura."""
+"""Esegue sistemi di riscrittura fissi su un campione fisso."""
 from __future__ import annotations
 import argparse
 import json
