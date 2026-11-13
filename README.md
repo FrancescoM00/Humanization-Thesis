@@ -89,11 +89,11 @@ I modelli principali sono Qwen2.5-3B-Instruct, Qwen2.5-14B-Instruct e DIPPER XXL
 | Scelta della modalità NLI su controlli positivi, alterazioni e identità | `08_nli_calibration/calibration/` | [Confronto delle modalità](results/published/08_nli_calibration/calibration/candidate_summary.csv), [AUC per alterazione](results/published/08_nli_calibration/calibration/auc_by_condition.csv). |
 | Estensione mirata delle alterazioni di cautela, con soglia storica invariata | `hedging/` | [Metriche e intervalli](results/published/hedging/metrics.csv), [supporto nelle due direzioni](results/published/hedging/directional_summary.csv), [grafico delle distribuzioni](results/published/hedging/support_distributions.pdf). |
 
-Nello studio su 126 originali, 42 erano già presenti nei pilot e 84 sono aggiuntivi. Le quattro configurazioni di riscrittura sono la baseline Qwen 3B, Qwen 14B, DIPPER sul passaggio intero e DIPPER a finestre di tre frasi; l'identità serve da riferimento. Le annotazioni indipendenti richieste ai colleghi non sono ancora incluse: le revisioni dell'assistente sono indicate come tali e non valgono come giudizi umani indipendenti.
+Nello studio su 126 originali, 42 erano già presenti nei pilot e 84 sono aggiuntivi. Le quattro configurazioni di riscrittura sono la baseline Qwen 3B, Qwen 14B, DIPPER sul passaggio intero e DIPPER a finestre di tre frasi.
 
 Nei risultati di detection, **TPR** è la quota di testi macchina rilevati, **FPR** la quota di umani erroneamente rilevati e **ASR** la quota di originali già rilevati che, dopo riscrittura, eludono il detector. Nelle analisi delle feature e delle metriche semantiche, **AUC** misura la capacità di separare i due gruppi dell’esperimento, per esempio umano/macchina o significato conservato/alterato.
 
-I CSV riportano i valori numerici, i PDF delle figure mostrano i grafici e i JSON conservano parametri e informazioni dell'esecuzione. `predictions.npz` contiene predizioni numeriche compresse. Le coppie e le riscritture in formato JSONL hanno una registrazione per riga.
+I CSV riportano i valori numerici, i PDF delle figure mostrano i grafici e i JSON conservano parametri e informazioni dell'esecuzione.
 
 ## 4. Comandi facoltativi per riprodurre alcune analisi
 
