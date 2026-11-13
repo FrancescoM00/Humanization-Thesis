@@ -1,9 +1,3 @@
-"""Esegue sistemi di riscrittura fissi e non adattivi, conservando i tentativi falliti.
-
-Il sistema identità richiede soltanto la libreria standard di Python. I modelli
-neurali sono importati quando servono, caricati uno alla volta e mai interrogati
-attraverso un detector.
-"""
 from __future__ import annotations
 from collections import Counter
 from datetime import datetime, timezone
@@ -25,7 +19,6 @@ DIPPER_TOKENIZER_REVISION = '3db67ab1af984cf10548a73467f0e5bca2aaaeb2'
 DIPPER_WINDOW_PROTOCOLS = {'entire_passage_no_prefix', 'three_sentence_context_v2'}
 
 def _cached_hf_roots() -> list[Path]:
-    """Legge le cache esistenti senza provare a scrivere né modificare le impostazioni globali di Hugging Face."""
     from huggingface_hub import constants
     candidates = [os.environ.get('HF_HUB_CACHE'), os.environ.get('HUMANIZATION_HF_READ_CACHE'), constants.HF_HUB_CACHE, Path(os.environ.get('HF_HOME', str(Path.home() / '.cache/huggingface'))) / 'hub', project_root() / '.cache/huggingface/hub', Path(tempfile.gettempdir()) / 'humanization/huggingface/hub', Path.home() / '.cache/huggingface/hub']
     return list(dict.fromkeys((Path(root) for root in candidates if root)))
