@@ -1,9 +1,4 @@
-"""Controlli positivi OpAI tra versioni adiacenti ed errori controllati nelle stesse modifiche.
 
-I nomi delle operazioni indicano la conservazione del significato prevista,
-non etichette semantiche certe verificate indipendentemente. Non si usano
-API di editing né nuovi testi generati.
-"""
 from __future__ import annotations
 
 from collections import Counter, defaultdict
@@ -72,12 +67,10 @@ def _sha256_file(path):
 
 
 def load_local_opai_trajectories(opai_dir=Path('data/opai'), max_version=5):
-    """Legge la versione Parquet locale già verificata, senza operazioni di rete.
-
+    """
     Restituisce ``(trajectories, provenance)``. Le chiavi delle traiettorie
     sono ``(document_id, domain, generator)`` e quelle delle versioni sono
-    interi. La provenienza salvata dal downloader fissa gli hash dei
-    16 shard ufficiali.
+    interi. 
     """
     import pyarrow.parquet as pq
 
@@ -123,12 +116,7 @@ def load_local_opai_trajectories(opai_dir=Path('data/opai'), max_version=5):
 
 
 def assign_source_splits(pairs, seed=42):
-    """Assegna metà dei gruppi di fonte per dominio alla calibrazione, poi al test.
-
-    Tutti gli editor, le versioni e le perturbazioni di una stessa fonte umana
-    restano nella stessa partizione. Queste partizioni sperimentali sono
-    distinte da quelle originali del dataset OpAI.
-    """
+    
     source_domains = {}
     for pair in pairs:
         group = pair.get('source_group_id') or pair['source_id']
@@ -154,13 +142,7 @@ def assign_source_splits(pairs, seed=42):
 
 
 def select_positive_controls(trajectories, n=100, seed=42, require_through_version=5):
-    """Seleziona traiettorie comuni bilanciate per dominio×editor, poi tutte le modifiche.
-
-    Candidati ordinati e rotazione con seme coincidono con i primi n elementi
-    della selezione più ampia dello studio stilistico se seme e caricamento
-    sono gli stessi. La selezione è indipendente dagli score semantici e
-    dall'applicabilità delle modifiche.
-    """
+   
     required = set(range(require_through_version + 1))
     candidates = [dict(key=key, domain=key[1], generator=key[2])
                   for key, versions in sorted(trajectories.items()) if required.issubset(versions)]
@@ -219,14 +201,7 @@ def select_positive_controls(trajectories, n=100, seed=42, require_through_versi
 
 
 def make_matched_negative_controls(positives, seed=42, nlp=None, n_per_subtle=50):
-    """Altera ciascun output positivo effettivo mantenendo il riferimento originale.
-
-    Un negativo confronta il testo prima dell'editing con lo *stesso output
-    modificato* più un errore controllato. Il positivo appaiato confronta lo
-    stesso testo iniziale con l'output modificato non alterato. I bersagli
-    locali isolano l'alterazione aggiuntiva nell'output dopo l'editing,
-    senza inventare un allineamento all'input.
-    """
+   
     from humanization.semantics.perturbations import load_perturbation_nlp, _negation, _entity_substitution, _rng
     from humanization.semantics.subtle_perturbations import TRANSFORMS
 
@@ -239,8 +214,7 @@ def make_matched_negative_controls(positives, seed=42, nlp=None, n_per_subtle=50
         screened_entities = [entity for entity in doc.ents if _conservative_entity(entity)]
         transforms = [('negation', _negation), ('entity_substitution', _entity_substitution)] + list(TRANSFORMS.items())
         for condition, function in transforms:
-            # Limita soltanto la sostituzione di entità. Le regole per numeri/date e le altre
-            # modifiche sottili devono conservare l'intera annotazione NER originale.
+            
             doc.set_ents(screened_entities if condition == 'entity_substitution' else original_entities)
             rng = _rng(seed, positive['id'], doc.text, 'matched_' + condition)
             change = function(doc, rng)
@@ -276,8 +250,6 @@ def make_matched_negative_controls(positives, seed=42, nlp=None, n_per_subtle=50
                 negatives.append(pair)
     subtle_selection = {}
     for condition, candidates in subtle_candidates.items():
-        # Seleziona solo in base all'applicabilità e alla rotazione dominio×editor
-        # già esistente. Non esamina mai score NLI o di similarità.
         chosen = _balanced_selection(candidates, n_per_subtle, random.Random(f'{seed}|{condition}|matched-selection'))
         negatives.extend(chosen)
         subtle_selection[condition] = {
