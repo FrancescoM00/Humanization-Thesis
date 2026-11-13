@@ -1,9 +1,5 @@
 """Distanze e corrispondenze originali delle frasi per la stilometria locale OpAI.
 
-La versione Parquet pubblica omette gli sentence_ids espliciti ma conserva
-l'array ordinato delle frasi del costruttore. Si usa tale corrispondenza solo
-dopo aver verificato cardinalità costante, ricostruzione esatta del testo e
-tutti i riferimenti v0 invariati.
 """
 from __future__ import annotations
 
@@ -33,7 +29,7 @@ def normalize_whitespace(text):
 
 
 def validate_native_lineage(versions):
-    """Verifica la corrispondenza posizionale pubblicata senza abbinamenti approssimativi."""
+    
     if set(range(6)) - set(versions):
         raise ValueError('All adjacent versions v0..v5 are required')
     counts = {len(row['sentences']) for row in versions.values()}
