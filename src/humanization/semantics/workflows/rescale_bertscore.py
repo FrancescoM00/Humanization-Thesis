@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""Applica agli score grezzi salvati l'esatta trasformazione affine della baseline della libreria.
-
-Gli score documentali restano approssimazioni basate sui segmenti. Il
-riscalamento è monotono e non cambia gli ordinamenti F1 o la ROC-AUC.
-Non richiede inferenze aggiuntive.
-"""
 from __future__ import annotations
 import argparse
 import hashlib
