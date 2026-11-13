@@ -1,9 +1,5 @@
-"""Costruisce localmente un pannello OpAI più ampio di alterazioni distribuite con fonti disgiunte.
+"""Costruisce localmente un esperimento OpAI più ampio di alterazioni distribuite con fonti disgiunte.
 
-Il pannello originale di 392 coppie non viene modificato. La selezione usa
-soltanto l'identità della fonte, la partizione deterministica ereditata o
-nuova e l'applicabilità alle frasi, non gli score semantici. Per ogni fonte
-si fissa un editor prima della verifica.
 """
 from __future__ import annotations
 import argparse
