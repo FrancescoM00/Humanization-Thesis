@@ -66,9 +66,9 @@ La separazione è questa: **riscrittura → misure sui testi → aggregazione e 
 
 Le sottocartelle `workflows/` collegano questi metodi per le singole analisi: ad esempio `run_semantic_experiment.py` esegue le fasi semantiche e `analyze_semantic_extension.py` ne analizza i risultati. Tutti i percorsi della tabella sono relativi alla componente indicata.
 
-I modelli principali sono Qwen2.5-3B-Instruct, Qwen2.5-14B-Instruct e DIPPER XXL per la riscrittura; OpenAI RoBERTa, Fakespot, RADAR e Binoculars per la detection. Per la semantica si usano ROUGE-L, BLEU, embedding MiniLM, BERTScore con RoBERTa-base e DeBERTa-v3-base addestrato su NLI. Revisioni dei checkpoint e parametri sono conservati nelle configurazioni e nei manifest. «DIPPER a tre frasi» indica finestre di tre frasi, non tre applicazioni successive del modello; «identità» indica il testo lasciato invariato come controllo.
+I modelli principali sono Qwen2.5-3B-Instruct, Qwen2.5-14B-Instruct e DIPPER XXL per la riscrittura; OpenAI RoBERTa, Fakespot, RADAR e Binoculars per la detection. Per la semantica si usano ROUGE-L, BLEU, embedding MiniLM, BERTScore con RoBERTa-base e DeBERTa-v3-base addestrato su NLI. «DIPPER a tre frasi» indica finestre di tre frasi, non tre applicazioni successive del modello; «identità» indica il testo lasciato invariato come controllo.
 
-## 3. Dove leggere i risultati già ottenuti
+## 3. Risultati già ottenuti
 
 **Tutti i percorsi di questa tabella partono da `results/published/`.** Ogni riga identifica il tipo di esperimento e indica le tabelle e i grafici da aprire. I nomi tecnici delle cartelle collegano codice, input e risultati; i file JSON conservano parametri e informazioni delle esecuzioni.
 
