@@ -1,17 +1,8 @@
 """Metriche lessicali, embedding ed entailment bidirezionale senza troncamento.
 
 Le coppie contengono ``id``, ``original``, ``modified`` e, nelle prove locali,
-``target_original``/``target_modified``. I bersagli locali sono confrontati
-direttamente, senza recupero di evidenze. Tutti i percorsi dei modelli devono
-essere directory locali esistenti: il modulo non scarica modelli. Ogni fase
-pubblica carica soltanto il proprio modello.
+``target_original``/``target_modified``. 
 
-Il BERTScore documentale è un'*approssimazione esplicita basata sui segmenti*:
-i migliori abbinamenti sono aggregati separatamente per precisione e richiamo.
-Il BERTScore locale è quello standard quando entrambe le frasi bersaglio entrano
-in un segmento. IDF e riscalamento rispetto alla baseline sono disattivati.
-Il coseno documentale confronta medie degli embedding normalizzati di frasi o
-segmenti, pesate per token, anziché documenti troncati.
 """
 from __future__ import annotations
 import gc
@@ -90,10 +81,9 @@ def _sentences(text):
     return [sent.text.strip() for sent in _SENTENCIZER(text).sents if sent.text.strip()]
 
 def token_chunks(text, tokenizer, max_tokens=160):
-    """Suddivide il testo originale senza decodificare sottoparole o byte UTF-8 incompleti.
+    """Suddivide il testo originale senza decodificare sottoparole o byte incompleti.
 
-    Preferisce gli offset originali di spazi e caratteri e verifica il limite di
-    token. Conserva tutti i caratteri non bianchi, anche quando occorre dividere
+    Conserva tutti i caratteri non blank, anche quando occorre dividere
     parole molto lunghe.
     """
     if max_tokens < 1:
@@ -151,11 +141,10 @@ def _weights(chunks, tokenizer):
     return np.array([max(1, len(tokenizer.encode(t, add_special_tokens=False))) for t in chunks], dtype=float)
 
 def lexical_scores(pairs):
-    """ROUGE-L F1 sull'intero documento (stemming Porter) e BLEU di frase diviso per 100.
+    """ROUGE-L F1 sull'intero documento  e BLEU di frase diviso per 100.
 
     BLEU usa il tokenizer 13a di SacreBLEU, smoothing esponenziale, ordine
-    effettivo e il testo originale come unico riferimento. Non è una stima
-    del BLEU di corpus.
+    effettivo e il testo originale come unico riferimento. 
     """
     from rouge_score.rouge_scorer import RougeScorer
     from sacrebleu import sentence_bleu
@@ -183,12 +172,9 @@ def _top_candidates(similarities, top_k):
     return (forward, reverse)
 
 def embedding_scores(pairs, modelpath, *, chunk_tokens=160, top_k=3, batch_size=16, n_threads=4, progress_callback=None, device='cpu'):
-    """Restituisce (score, cache di allineamento delle evidenze serializzabile in JSON) con MiniLM.
-
-    L'allineamento recupera i top-k segmenti originali per ogni segmento
-    modificato e viceversa. Il recupero da solo non dimostra l'entailment.
-    Nessun punteggio è imposto per controlli, identità, negazioni o
-    sostituzioni di entità.
+    """
+    recupera i top-k segmenti originali per ogni segmento
+    modificato e viceversa. 
     """
     from sentence_transformers import SentenceTransformer
     _cpu_threads(n_threads)
@@ -248,14 +234,7 @@ def _cached_chunks(pair, cache):
     return item
 
 def bert_scores(pairs, modelpath, *, num_layers=10, chunk_tokens=160, batch_size=8, n_threads=4, progress_callback=None, device='cpu'):
-    """Approssimazione BERTScore con abbinamento dei segmenti; confronto diretto dei bersagli locali.
-
-    Per la precisione documentale ogni segmento modificato sceglie il segmento
-    originale con BERTScore F1 massimo e contribuisce con la sua precisione.
-    Per il richiamo si esegue l'analoga selezione inversa. Le medie pesate per
-    numero di token producono P/R; la loro media armonica fornisce
-    l'approssimazione riportata. Si considera ogni coppia di segmenti,
-    senza limitarsi all'allineamento per posizione.
+    """Approssimazione BERTScore con abbinamento dei segmenti.
     """
     from bert_score import BERTScorer
     from bert_score.utils import get_bert_embedding
@@ -349,7 +328,7 @@ def bert_scores(pairs, modelpath, *, num_layers=10, chunk_tokens=160, batch_size
     return pd.DataFrame(rows)
 
 def resolve_nli_labels(config, label_map=None):
-    """Ricava le etichette semantiche dalla configurazione del checkpoint, senza presumerne l'ordine."""
+   
     if label_map is not None:
         labels = {str(k).lower(): int(v) for k, v in label_map.items()}
     else:
