@@ -1,7 +1,7 @@
 # Humanization — codice e risultati degli esperimenti
 
 Questo ZIP raccoglie il codice usato per la parte sperimentale della tesi, i dati e i risultati delle esecuzioni già svolte. Il lavoro studia se la riscrittura di un testo generato da un modello linguistico ne riduce la rilevabilità, quanto ne conserva il significato e come ne modifica lo stile.
-
+N.B.: La parte che riguarda la naturalness è ancora da progettare e ben definire.
 
 ## 1. Contenuto dello ZIP
 
@@ -61,7 +61,7 @@ La separazione è questa: **riscrittura → misure sui testi → aggregazione e 
 | `semantics/` | `perturbations.py`, `subtle_perturbations.py` e `hedging_controls.py` costruiscono le alterazioni; `positive_controls.py` prepara i controlli di significato conservato. `metrics.py`, `nli.py`, `contextual_nli.py` e `aligned_similarity.py` calcolano le misure. |
 | `rewriting/` | `qwen.py` e `dipper.py` gestiscono le due famiglie di riscrittori; `pipeline.py` organizza generazione e salvataggio; `controls.py` prepara i controlli nulli. |
 | `detection/` | `roberta.py` gestisce i classificatori; `binoculars.py` implementa il detector zero-shot. |
-| `naturalness/` | `pairwise.py` prepara i confronti nei due ordini; `groq.py` gestisce il servizio remoto. Modulo opzionale. |
+| `naturalness/` | `pairwise.py` prepara i confronti nei due ordini. |
 | `evaluation/` | `study.py` analizza lo studio; `detection.py` calcola le metriche di rilevazione; `shortlist*.py` analizza selezione e stabilità delle feature; `hedging.py` analizza le cautele. Gli altri moduli gestiscono aggregazioni, statistica e report. |
 
 Le sottocartelle `workflows/` collegano questi metodi per le singole analisi: ad esempio `run_semantic_experiment.py` esegue le fasi semantiche e `analyze_semantic_extension.py` ne analizza i risultati. Tutti i percorsi della tabella sono relativi alla componente indicata.
