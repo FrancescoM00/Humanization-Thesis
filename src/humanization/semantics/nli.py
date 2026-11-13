@@ -1,4 +1,4 @@
-"""Punteggi neurali di entailment su unità di frase allineate, senza classifica finale dei sistemi."""
+"""Punteggi neurali di entailment su unità di frase allineate."""
 from pathlib import Path
 from collections import defaultdict,OrderedDict
 import gc,hashlib,json,re
@@ -9,16 +9,9 @@ def nli_scores(pairs, modelpath, alignment_cache=None, *, max_pair_tokens=384, l
     """Supporto direzionale di frasi o segmenti tramite entailment massimo sulle evidenze.
 
     Forward: l'originale implica il modificato; reverse: il modificato implica
-    l'originale. Si usano le evidenze top-k se presenti in cache, altrimenti
-    si confrontano tutte le evidenze. Il mancato supporto nel recupero non
-    prova una contraddizione o un errore fattuale. I riepiloghi di
-    contraddizione usano l'evidenza con supporto migliore;
-    retrieved_contradiction_max conserva anche il massimo su *tutti* i
-    candidati. I bersagli locali modificati evitano recupero e diluizione.
-    Una cache opzionale JSONL delle probabilità salva ogni batch di inferenza.
-    L'intestazione la lega al percorso, alla configurazione e ai metadati dei
-    pesi del checkpoint locale: un checkpoint diverso viene rifiutato,
-    evitando di riusare score non più validi.
+    l'originale. I riepiloghi di contraddizione usano l'evidenza con supporto migliore;
+    retrieved_contradiction_max conserva anche il massimo su tutti i
+    candidati.
     """
     from .metrics import sentence_chunks, _cached_chunks, _cpu_threads, _identity, _local, _model_path, _nli_direction, _records, _release_device_cache, _resolve_device, resolve_nli_labels
     import torch
