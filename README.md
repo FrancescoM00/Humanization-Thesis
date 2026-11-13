@@ -26,9 +26,7 @@ Humanization/
 │   ├── published/             Risultati delle esecuzioni già svolte
 │   └── new_runs/              Creata quando si esegue una nuova analisi
 ├── tools/                     Script per costruire lo ZIP
-├── requirements/              Profili delle dipendenze CPU e GPU
-├── docs/                      Registri tecnici di controllo e provenienza
-└── THIRD_PARTY_NOTICES.txt      Attribuzioni e riferimenti ai progetti esterni
+└── requirements/              Profili delle dipendenze CPU e GPU
 ```
 
 I CSV MGTBench contengono testi umani e testi prodotti da diversi generatori nei domini Essay, Reuters e WritingPrompts. I testi umani servono per il confronto stilistico e per calibrare i detector. **Negli esperimenti di riscrittura si parte invece da un testo macchina e se ne valuta la versione riscritta.** 

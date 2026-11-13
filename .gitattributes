@@ -11,3 +11,10 @@
 *.md export-ignore
 *.MD export-ignore
 /README.md -export-ignore
+
+# Materiale di sviluppo escluso dalla consegna al professore.
+/tests export-ignore
+/tests/** export-ignore
+/docs export-ignore
+/docs/** export-ignore
+/THIRD_PARTY_NOTICES* export-ignore

@@ -6,9 +6,9 @@ import re
 import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
-ROOT_FILES=('README.md','requirements.txt','pyproject.toml','THIRD_PARTY_NOTICES.txt',
+ROOT_FILES=('README.md','requirements.txt','pyproject.toml',
             'Humanization.code-workspace','.gitignore','.gitattributes','.env.example')
-INCLUDE_TREES=('.vscode','configs','requirements','src','experiments','tests','tools','docs',
+INCLUDE_TREES=('.vscode','configs','requirements','src','experiments','tools',
                'data/raw/mgtbench','data/raw/opai','data/processed','data/resources','results/published')
 EXCLUDED_PARTS={'.git','.venv','.cache','.pytest_cache','__pycache__','generated'}
 EXCLUDED_SUFFIXES={'.pyc','.pyo','.log','.safetensors','.onnx','.pt','.bin'}
