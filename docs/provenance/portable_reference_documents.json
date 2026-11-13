@@ -5,7 +5,7 @@
     {
       "file": "data/raw/mgtbench/SOURCE.json",
       "reference_document_sha256": "02071465d5efeb13e4871ba0bb0e190771345a48e050ea8a4fd868fb32240a3a",
-      "portable_document_sha256": "240305af26797ee320461d00145b2befe3d093f63fbdfa2003cb4f346891b2bd",
+      "portable_document_sha256": "65d32cf540b7d32382822190dd0a92ddb64c69a208f57546196abcc4f97f81ba",
       "scope": "portable reference description; not a new inference"
     },
     {
