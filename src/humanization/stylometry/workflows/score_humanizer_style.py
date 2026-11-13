@@ -1,9 +1,3 @@
-"""Descrive lo stile dei riscrittori con scale adattate su controlli umani separati.
-
-Gli score dei detector non entrano nella selezione delle feature né nella
-calibrazione. Le distanze misurano cambiamenti di stile, non probabilità di
-paternità umana, naturalezza o correttezza.
-"""
 from __future__ import annotations
 import argparse
 from collections import Counter
