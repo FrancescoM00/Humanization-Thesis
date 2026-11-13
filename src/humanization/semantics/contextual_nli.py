@@ -1,11 +1,3 @@
-"""Confronta i contesti delle evidenze NLI senza cambiare il precedente calcolo per frase.
-
-Le unità dell'ipotesi restano fisse. Le premesse sono unità singole, unioni
-contigue di fino a due o tre unità, oppure l'intero documento esatto quando
-la coppia rientra nei limiti del tokenizer. Nessuna evidenza viene troncata.
-Aumentare i candidati alza per costruzione il supporto massimo: un punteggio
-più alto non dimostra una maggiore accuratezza.
-"""
 from __future__ import annotations
 
 import hashlib
@@ -23,7 +15,7 @@ def digest_pair(pair):
 
 
 def contiguous_contexts(units, max_units):
-    """Tutte le finestre contigue non vuote di ampiezza 1..max_units, nell'ordine originale."""
+    
     if max_units < 1 or not units or any(not text.strip() for text in units):
         raise ValueError('Require nonempty units and a positive window width')
     return list(dict.fromkeys(' '.join(units[start:start+width])
@@ -38,14 +30,7 @@ def pair_length(tokenizer, premise, hypothesis):
 
 def build_plan(pair, alignment, tokenizer, *, max_pair_tokens=384, modes=MODES,
                length_cache=None):
-    """Pianifica confronti esatti verificati dal tokenizer e registra la copertura mancante.
-
-    Se fornite, le unità di allineamento esistenti vengono riusate senza modifiche,
-    verificandone gli hash originali. Per gli allineamenti mancanti si usa la stessa
-    funzione di segmentazione del calcolo esistente, con 160 token per unità
-    dell'ipotesi. Una cache condivisa opzionale conserva le lunghezze esatte delle
-    coppie per questo tokenizer, mai approssimazioni.
-    """
+    
     from humanization.semantics.metrics import sentence_chunks
 
     if max_pair_tokens < 4 or not modes or any(mode not in MODES for mode in modes):
@@ -86,7 +71,6 @@ def build_plan(pair, alignment, tokenizer, *, max_pair_tokens=384, modes=MODES,
 
 
 def summarize_units(units, *, low_support_threshold=.5):
-    """Una copertura incompleta del documento non produce mai una media dei soli casi disponibili."""
     groups = {}
     for row in units:
         groups.setdefault((row['id'], row['direction'], row['mode']), []).append(row)
@@ -133,7 +117,7 @@ def score_plan(plan, predict, labels, *, low_support_threshold=.5):
 
 
 class LocalNLIPredictor:
-    """Checkpoint base locale, float32 esplicito e cache separata delle coppie riprendibile."""
+    
     def __init__(self, modelpath, tokenizer, *, device='cpu', batch_size=2,
                  threads=2, max_pair_tokens=384, cache_path=None, progress=None):
         import torch
