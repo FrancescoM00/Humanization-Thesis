@@ -1,4 +1,3 @@
-"""Ristima C3 su 100 candidati mantenendo esattamente le precedenti partizioni di training e test."""
 from __future__ import annotations
 import argparse
 import json
