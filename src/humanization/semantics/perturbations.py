@@ -1,16 +1,11 @@
 """Prove deterministiche e verificabili per le metriche di conservazione semantica.
 
-Queste trasformazioni forniscono *condizioni sperimentali*, non etichette
-semantiche certe. Una negazione inserita è candidata alla contraddizione;
-la sostituzione di entità cambia un referente superficiale senza risolvere
-la coreferenza; mescolare le frasi può conservare tutte le proposizioni;
+Una negazione inserita è candidata alla contraddizione;
+mescolare le frasi può conservare tutte le proposizioni;
 troncamento e cancellazione possono eliminare informazioni anziché
 contraddirle. ``sanity_fixtures`` fornisce un piccolo insieme separato,
 definito manualmente, con direzioni NLI attese esplicite.
 
-Tutti gli offset indicano posizioni di caratteri Unicode nel documento
-originale, salvo indicazione esplicita di una chiave. Non si scaricano
-modelli o risorse.
 """
 
 from __future__ import annotations
@@ -51,13 +46,6 @@ ENTITY_REPLACEMENTS = {
     "ORDINAL": ("third", "seventh", "eleventh"),
 }
 
-# Politica clean delle entità (v2), derivata dalla revisione manuale di 40 perturbazioni
-# (results/published/03_semantics/extension/review40.md e revisione dello studente). Conservata come
-# condizione separata per mantenere riproducibili i risultati pubblicati della v1.
-# Esclusi volutamente: ORG (NER confonde azienda/prodotto/malattia/acronimo/testata
-# e le tre sostituzioni non sono compatibili per sottotipo), LOC (granularità
-# diversa, ad esempio Earth -> un lago), TIME (interferisce con morning/evening) e
-# DATE:relative (interferisce con il tempo verbale: "we are seeing tomorrow").
 CLEAN_ENTITY_KEYS = frozenset({
     "PERSON", "GPE", "GPE:article", "MONEY", "PERCENT", "CARDINAL:digit",
     "CARDINAL:word", "ORDINAL", "DATE:year", "DATE:calendar", "DATE:weekday",
@@ -92,7 +80,7 @@ def _rng(seed: int, source_id: str, text: str, perturbation: str) -> random.Rand
 
 
 def load_perturbation_nlp(model: str = "en_core_web_sm") -> Any:
-    """Carica tutti i componenti, incluso NER; genera un errore anziché scaricarli automaticamente."""
+    
     import spacy
 
     nlp = spacy.load(model)
@@ -105,14 +93,7 @@ def load_perturbation_nlp(model: str = "en_core_web_sm") -> Any:
 def select_base_records(
     records: Iterable[dict[str, Any]], n: int = 200, seed: int = 42,
 ) -> list[dict[str, Any]]:
-    """Seleziona testi macchina unici, bilanciando prima il dominio e poi il generatore.
-
-    L'ordinamento SHA-256 produce un campione indipendente dall'ordine di input
-    e dalla casualizzazione degli hash di Python. L'allocazione a rotazione
-    differisce al massimo di uno tra domini ugualmente popolati e, in ogni
-    dominio, tra celle di modello ugualmente popolate. Restituisce meno di n
-    elementi solo se i testi unici ammissibili sono meno di n.
-    """
+    
     if n < 0:
         raise ValueError("n must be nonnegative")
     candidates = sorted(
@@ -128,9 +109,7 @@ def select_base_records(
         seen.add(text_hash)
         groups[str(record["domain"])][str(record["generator"])].append(record)
 
-    # Calcola prima le quote per dominio. Ruotare il ciclo dei generatori di ogni dominio
-    # secondo i conteggi già assegnati bilancia anche i totali globali dei generatori
-    # quando in ogni dominio è disponibile lo stesso insieme di generatori.
+
     domain_capacities = {domain: sum(len(items) for items in generators.values())
                          for domain, generators in sorted(groups.items())}
     domain_targets = {domain: 0 for domain in domain_capacities}
@@ -176,21 +155,7 @@ def select_applicable_records(
     records: Iterable[dict[str, Any]], n: int = 200, seed: int = 42,
     nlp: Any = None, batch_size: int = 16,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    """Verifica l'effettiva applicabilità e campiona dalla sottopopolazione ammissibile.
-
-    Ogni fonte selezionata deve ammettere tutte e cinque le condizioni diverse
-    dall'identità, usando le *stesse* funzioni prudenti e i generatori casuali
-    per condizione della produzione delle coppie. Questo orienta volutamente
-    la popolazione verso testi con una proposizione affermativa semplice e
-    un'entità nominale o numerica supportata. Il manifest registra tale
-    distorsione, le esclusioni e i conteggi per cella. Non si inventano fonti
-    né si allentano i criteri per riempire una quota: meno di n fonti
-    ammissibili producono un campione minore e ``target_count_met=False``.
-
-    La verifica usa un passaggio spaCy completo sui documenti macchina unici.
-    La produzione delle coppie è separata, così i record mantenuti restano
-    serializzabili in JSON.
-    """
+    
     records = list(records)
     candidates = select_base_records(records, n=len(records), seed=seed)
     nlp = load_perturbation_nlp() if nlp is None else nlp
@@ -280,17 +245,14 @@ def _negation(doc: Any, rng: random.Random) -> dict[str, Any] | None:
         subjects = [child for child in root.children if child.dep_ in {"nsubj", "nsubjpass"}]
         if not subjects:
             continue
-        # "Some people left" e "Some people did not leave" possono essere entrambe vere;
-        # le portate esistenziali/universali del soggetto restano fuori da questa prova semplice.
+        
         if any(token.text.casefold() in _AMBIGUOUS_SUBJECT_QUANTIFIERS
                for subject in subjects for token in subject.subtree):
             continue
-        # Il parser può unire un titolo senza punteggiatura alla frase successiva.
-        # Evita di modificare quel bersaglio su più righe, meno controllato.
+       
         if len([line for line in sentence.text.splitlines() if line.strip()]) > 1:
             continue
-        # Evita domande, citazioni, modali e proposizioni incassate o coordinate:
-        # rendono più difficile interpretare l'inversione sintattica locale.
+        
         if any(token.text in {'"', "“", "”", "?", "!"} or token.tag_ == "MD" for token in sentence):
             continue
         if any(token.dep_ in _CLAUSAL_DEPENDENCIES or (token.dep_ == "conj" and token.pos_ in {"VERB", "AUX"}) for token in sentence):
@@ -303,7 +265,7 @@ def _negation(doc: Any, rng: random.Random) -> dict[str, Any] | None:
         if auxiliaries:
             auxiliary = auxiliaries[0]
             if not auxiliary.text.isalpha():
-                continue  # Non deduce l'espansione delle contrazioni ambigue.
+                continue 
             edit = _edit(auxiliary.idx, auxiliary.idx + len(auxiliary.text), auxiliary.text, auxiliary.text + " not", token_index=auxiliary.i)
             rule = "finite_auxiliary_not"
         elif root.pos_ == "AUX" and root.lemma_ == "be" and root.morph.get("VerbForm") == ["Fin"]:
@@ -341,8 +303,7 @@ def _replacement_key(entity: Any) -> str | None:
     lowered = text.casefold()
     external_article = entity.doc[entity.start - 1].text.casefold() if entity.start else None
     if external_article in {"a", "an"}:
-        # Sostituire "IBM" in "an IBM unit" richiederebbe anche di cambiare an/a,
-        # aggiungendo un confondente grammaticale esterno all'entità nominata.
+        
         return None
     if external_article == "the":
         if label in {"GPE", "ORG", "LOC"}:
@@ -362,8 +323,7 @@ def _replacement_key(entity: Any) -> str | None:
             return "DATE:calendar"
         return None
     if label == "CARDINAL":
-        # Passare dal singolare al plurale introdurrebbe un confondente grammaticale
-        # inutile. Limita questa condizione numerica opzionale ai casi non ambigui >1.
+        
         if re.fullmatch(r"\d+", text) and int(text) > 1:
             return "CARDINAL:digit"
         if lowered in {"two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"}:
@@ -388,9 +348,7 @@ def _entity_substitution(doc: Any, rng: random.Random) -> dict[str, Any] | None:
         return None
     entity, key, replacements = rng.choice(candidates)
     replacement = rng.choice(replacements)
-    # Cambia coerentemente ogni occorrenza superficiale esatta, ignorando maiuscole/minuscole,
-    # anche se NER non ha etichettato una ripetizione. Non si dichiara di risolvere
-    # il collegamento tra entità né pronomi/coreferenze.
+
     matches = list(re.finditer(r"(?<!\w)" + re.escape(entity.text) + r"(?!\w)", doc.text, re.I))
     edits = [_edit(match.start(), match.end(), match.group(), replacement) for match in matches]
     sentence = entity.sent
@@ -421,42 +379,33 @@ def _clean_candidate_key(entity: Any) -> str | None:
     """Chiave di sostituzione per la politica clean, oppure None se lo span non è sicuro."""
     text = entity.text.strip()
     if "\n" in entity.text or not text:
-        return None  # Span NER che attraversa il confine tra titolo e frase
+        return None  
     if re.search(r"(?:['’]s|['’])$", text, re.I):
-        return None  # La sostituzione non deve inglobare un marcatore possessivo adiacente.
+        return None  
     if entity.label_ == "ORDINAL" and not re.fullmatch(
             r"\d+(?:th|st|nd|rd)|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth|"
             r"thirteenth|fourteenth|fifteenth|twentieth", text, re.I):
-        return None  # "Firstly", "first of all", "second" come unità di tempo
+        return None  
     if entity.label_ == "PERSON" and (text.isupper() or not _PERSON_NAME.fullmatch(text)):
-        return None  # ad esempio COVID-19 erroneamente etichettato come persona
+        return None  
     if entity.label_ == "PERSON" and len(entity) == 1 and entity.start == entity.sent.start:
-        return None  # maiuscola iniziale di frase: "Lockdowns" non è una persona
+        return None  
     if entity.label_ == "MONEY" and not re.search(r"\d", text):
-        return None  # "millions of dollars" non è sostituibile con "$83 million"
+        return None  
     if entity.label_ == "MONEY" and entity.start and entity.doc[entity.start - 1].text in {"$", "€", "£", "¥"}:
-        return None  # NER ha omesso un simbolo di valuta esterno: evita di produrre $$83 million.
+        return None  
     if entity.label_ == "GPE" and (text.isupper() or "." in text) and len(text) <= 6:
-        return None  # abbreviazione come US/UK: la sostituzione potrebbe indicare la stessa entità
+        return None  
     if entity.label_ == "CARDINAL" and any(t.text == "," for t in entity.doc[entity.end:entity.end + 5]):
-        return None  # "two main characters, A and B": il conteggio appartiene a un elenco enumerato
+        return None  
     key = _replacement_key(entity)
     return key if key in CLEAN_ENTITY_KEYS else None
 
 
 def _entity_substitution_clean(doc: Any, rng: random.Random) -> dict[str, Any] | None:
-    """Scambio limitato a entità non ambigue e compatibili per tipo.
-
-    Rispetto a ``_entity_substitution`` esclude ORG/LOC/TIME/date relative e
-    span con ritorni a capo. Per una PERSON composta da più parole sostituisce
-    anche le menzioni del solo cognome con quello sostitutivo: evita che
-    resti "Looney said" dopo aver cambiato "Bernard Looney" in "Alex Morgan".
-    La coreferenza oltre la corrispondenza esatta del cognome resta irrisolta.
-    """
+    
     candidates, seen = [], set()
-    # Una stringa superficiale è ammissibile solo se tutte le istanze NER superano i controlli
-    # (ad esempio "two" prima di un elenco con virgole). Ausiliari, verbi e nomi comuni
-    # omografi minuscoli non sono alias di un nome proprio con maiuscola.
+    
     unsafe = {entity.text.casefold() for entity in doc.ents if _clean_candidate_key(entity) is None}
     for entity in doc.ents:
         key = _clean_candidate_key(entity)
@@ -480,14 +429,14 @@ def _entity_substitution_clean(doc: Any, rng: random.Random) -> dict[str, Any] |
                         partial_name = True
                         break
                 if partial_name:
-                    break  # Non trasforma Alison Cooper in Alison Alex Morgan.
+                    break  
             if key in {"DATE:month", "DATE:weekday"} and not any(
                     other.label_ == "DATE" and other.start_char <= match.start()
                     and match.end() <= other.end_char for other in doc.ents):
-                continue  # Parole ambigue per mesi/giorni richiedono evidenza positiva DATE.
+                continue 
             if entity.label_ in {"PERSON", "GPE", "DATE"}:
                 if any(t.pos_ in {"AUX", "VERB"} for t in mention):
-                    continue  # May/may, Will/will e March/march non sono menzioni equivalenti.
+                    continue  
                 if (any(c.isupper() for c in entity.text) and match.group().islower()
                         and any(t.pos_ != "PROPN" for t in mention)):
                     continue
@@ -514,10 +463,10 @@ def _entity_substitution_clean(doc: Any, rng: random.Random) -> dict[str, Any] |
                 continue
             mention = doc.char_span(m.start(), m.end(), alignment_mode="expand")
             if mention is not None and any(t.ent_type_ in _NON_PERSON_ENT_TYPES for t in mention):
-                continue  # ad esempio l'azienda "McDonald's" non deve diventare "Chen's"
+                continue  
             if any(other.label_ == "PERSON" and other.start_char <= m.start() < other.end_char
                    and other.text.casefold() != parts[-1].casefold() for other in doc.ents):
-                continue  # Jane Looney non è una menzione del solo cognome di Bernard Looney.
+                continue  
             if mention is not None and any(t.pos_ in {"AUX", "VERB"} for t in mention):
                 continue
             spans.append((m.start(), m.end(), new_parts[-1]))
@@ -617,14 +566,7 @@ def generate_perturbation_pairs(
     records: Iterable[dict[str, Any]], seed: int = 42, nlp: Any = None,
     batch_size: int = 16, conditions: Iterable[str] = PERTURBATIONS,
 ) -> list[dict[str, Any]]:
-    """Genera tutte e sei le condizioni per fonte, incluse righe esplicite dei casi saltati.
-
-    Filtrare ``status == 'applied'`` prima del calcolo delle metriche. Le righe
-    saltate contengono ``modified=None`` e una motivazione, non una falsa
-    trasformazione identità. Le righe di negazione ed entità espongono la frase
-    modificata per le prove locali e le coppie dell'intero documento. Ogni
-    trasformazione usa un proprio generatore casuale con seme SHA.
-    """
+    
     records = list(records)
     conditions = tuple(conditions)
     allowed = set(PERTURBATIONS) | {"entity_substitution_clean"}
@@ -691,13 +633,7 @@ def generate_perturbation_pairs(
 
 
 def sanity_fixtures() -> list[dict[str, Any]]:
-    """Piccoli controlli manuali di relazione, separati dalle prove documentali senza etichette.
-
-    Le direzioni attese descrivono premessa→ipotesi per originale→modificato
-    e per l'inverso. Assumono letture letterali ordinarie con un singolo
-    referente. Sono controlli di plausibilità, non stime dell'accuratezza
-    del modello sul corpus.
-    """
+    
     fixtures = [
         ("identity", "The committee approved the proposal.", "The committee approved the proposal.", "entailment", "entailment"),
         ("paraphrase", "The committee approved the proposal.", "The proposal was approved by the committee.", "entailment", "entailment"),
