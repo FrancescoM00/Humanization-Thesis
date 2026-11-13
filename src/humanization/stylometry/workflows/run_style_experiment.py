@@ -20,7 +20,7 @@ os.environ.setdefault('XDG_CACHE_HOME', str(ROOT / '.cache'))
 import pandas as pd
 from humanization.evaluation.stylometric import effect_tables, evaluate, shortlist_features
 from humanization.stylometry.features import FEATURE_GROUPS, FEATURE_SCHEMA, LENGTH_SENSITIVE_FEATURES, WIKIPEDIA_FEATURES, extract_records
-from humanization.evaluation.reporting import write_report
+from humanization.stylometry.plots import save_style_outputs
 
 def _argument_error(message):
     raise ValueError(message)
@@ -74,7 +74,7 @@ def run(args):
     predictions.to_csv(out / 'predictions.csv', index=False)
     metadata = {'utc_started': utc_started, 'seed': args.seed, 'clean_sentence_ends': not args.keep_incomplete, 'pairs_per_domain': args.pairs, 'bootstrap_replicates': args.bootstrap, 'folds': args.folds, 'feature_sets': feature_sets, 'versions': versions, 'sample_sha256': sample_hash, 'extractor_sha256': extractor_hash, 'code_sha256': {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((ROOT / 'src/humanization/stylometry').glob('*.py'))}, 'elapsed_seconds': round(time.monotonic() - start, 2), 'shortlist_is_exploratory': True}
     (out / 'run_metadata.json').write_text(json.dumps(metadata, indent=2), encoding='utf-8')
-    write_report(df, effects, metrics, shortlist, robustness, manifest, out)
+    save_style_outputs(df, effects, metrics, shortlist, out)
     print(metrics[['protocol', 'domain', 'generator', 'feature_set', 'roc_auc', 'macro_f1']].to_string(index=False), flush=True)
     print('Exploratory shortlist:', ', '.join(shortlist) or '(none)', flush=True)
     print('Results:', out, flush=True)

@@ -286,15 +286,6 @@ def pilot_pair_comparison(qwen_run, dipper_run, output, draws=5000, seed=42):
         rows.append({'detector': detector, 'n_test_sources': len(qwen), 'baseline_detected': len(ids), 'qwen_successes': int(qa.sum()), 'dipper_successes': int(da.sum()), 'qwen_asr': float(qa.mean()), 'dipper_asr': float(da.mean()), 'delta_asr_dipper_minus_qwen': float(da.mean() - qa.mean()), 'paired_delta_ci95_low': lo, 'paired_delta_ci95_high': hi, 'both_evasion': int((qa & da).sum()), 'qwen_only_evasion': int((qa & ~da).sum()), 'dipper_only_evasion': int((~qa & da).sum()), 'neither_evasion': int((~qa & ~da).sum()), 'bootstrap_draws': draws, 'bootstrap_seed': seed})
     frame = pd.DataFrame(rows)
     frame.to_csv(Path(output) / 'paired_asr_comparison.csv', index=False)
-    text = '# Confronto appaiato Qwen 3B e DIPPER sul pilot\n\n'
-    text += 'ASR condizionata agli originali già rilevati; i fallimenti restano insuccessi. '
-    text += f'Intervalli percentile per gruppo, {draws} ricampionamenti, seed {seed}.\n\n'
-    text += '| Detector | Originali rilevati | ASR Qwen | ASR DIPPER | Differenza DIPPER−Qwen | IC 95% differenza |\n'
-    text += '| --- | ---: | ---: | ---: | ---: | --- |\n'
-    for row in frame.itertuples(index=False):
-        text += f'| {row.detector} | {row.baseline_detected} | {100 * row.qwen_asr:.1f}% | {100 * row.dipper_asr:.1f}% | {100 * row.delta_asr_dipper_minus_qwen:+.1f} pp | [{100 * row.paired_delta_ci95_low:+.1f}; {100 * row.paired_delta_ci95_high:+.1f}] pp |\n'
-    text += '\nI valori sono sulla scala 0–1. Gli intervalli sono esplorativi e mantengono fisse le soglie.\n'
-    (Path(output) / 'paired_comparison.md').write_text(text)
     ids = set(qwen.index)
     qframe = merged_pair_scores(qwen_run, ids)
     dframe = merged_pair_scores(dipper_run, ids)

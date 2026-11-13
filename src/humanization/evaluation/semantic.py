@@ -2,7 +2,6 @@
 """
 from __future__ import annotations
 
-from collections import Counter
 import hashlib
 import json
 from pathlib import Path
@@ -13,7 +12,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from humanization.evaluation.reporting import markdown_table
 
 
 POSITIVE_OPERATIONS = {'opai_polish', 'opai_paraphrase', 'opai_style', 'opai_style_rewrite'}
@@ -373,7 +371,7 @@ def analyze_semantic_extension(pairs, scores, output, *, seed=42, n_bootstrap=10
                           'all_positive_controls_n_pairs': len(all_positive)}
     (output / 'aggregator_selection.json').write_text(json.dumps(selection_manifest, indent=2) + '\n')
     _correlations(frame, risk, output)
-    _report(frame, auc_table, thresholds, definitions, selection_manifest, output)
+    _plot_aggregator_auc(auc_table, selection_manifest, output)
     return selection_manifest
 
 
@@ -400,130 +398,15 @@ def _correlations(frame, risk, output):
     fig.colorbar(image, ax=ax, shrink=.8)
     fig.tight_layout()
     fig.savefig(output / 'metric_spearman.png', dpi=170)
-    fig.savefig(output / 'metric_spearman.pdf')
     plt.close(fig)
     primary = _cohorts(frame).get('opai_matched_primary')
     if primary is not None:
         (-risk.loc[primary.index, names]).corr(method='spearman').to_csv(output / 'metric_spearman_opai_matched.csv')
 
 
-def _report(frame, auc_table, thresholds, definitions, selection, output):
+def _plot_aggregator_auc(auc_table, selection, output):
     primary = selection['primary_cohort']
     main = auc_table[(auc_table.cohort == primary) & (auc_table.split == 'test')]
-    selected = next((item for item in selection['selections'] if item['cohort'] == primary), None)
-    count_table = frame.groupby(['dataset', 'perturbation', 'evaluation_split']).agg(
-        n_pairs=('id', 'size'), n_sources=('source_group', 'nunique')).reset_index()
-    operating = thresholds[(thresholds.cohort == primary) & (thresholds.split == 'test')]
-    reviewed = auc_table[(auc_table.cohort.str.startswith('reviewed_')) & (auc_table.split == 'all') &
-                         auc_table.metric.isin(CORE_METRICS + ['nli_bidirectional_' + name for name in AGGREGATORS])]
-    subtle = auc_table[(auc_table.cohort == 'opai_matched_subtle_secondary') & (auc_table.split == 'test') &
-                       auc_table.metric.isin(CORE_METRICS + ['nli_bidirectional_' + name for name in AGGREGATORS])]
-    subtle_selection = next((item for item in selection['selections'] if item['cohort'] == 'opai_matched_subtle_secondary'), None)
-    matched_negatives = frame[frame.dataset == 'opai_matched_negative']
-    easy_count = int(matched_negatives.perturbation.isin(['matched_negation', 'matched_entity_substitution']).sum())
-    heldout_counts = Counter(matched_negatives.loc[matched_negatives.evaluation_split == 'test', 'perturbation'])
-    all_positive_fpr = pd.read_csv(output / 'positive_controls_all_fpr.csv')
-    all_positive_test = all_positive_fpr[(all_positive_fpr.split == 'test') & (all_positive_fpr.operation == 'all')]
-    linked_positive_n = int((_cohorts(frame)[primary].is_altered == 0).sum())
-    selection_text = ('Nessun aggregatore selezionabile: mancano entrambe le classi in calibration.' if selected is None else
-                      f"Aggregatore scelto usando soltanto calibration: **{selected['selected_metric']}**. "
-                      'Le prestazioni test riportate sotto non partecipano alla scelta. La scelta resta esplorativa perché le etichette sono proxy.')
-    lines = ['# Controlli positivi e scelta dell’aggregatore semantico', '',
-             'Il confronto valuta la separazione fra modifiche presumibilmente conservative (Polish, Paraphrase, Style Rewrite OpAI) '
-             'e alterazioni intenzionali. Le etichette operative e le regole **non sono gold label umane**. '
-             'Identità, fixture e shuffle sono esclusi dall’AUC principale; lo shuffle può cambiare coerenza senza cambiare le proposizioni.', '',
-             '## Disegno e campione', '', markdown_table(count_table), '',
-             'L’unità di split e bootstrap è il documento sorgente: editor, operazioni e versioni della stessa fonte viaggiano insieme. '
-             'Ogni fonte riceve uguale peso entro ciascuna classe. Il test è separato dalla calibrazione; nessuna inversione del segno viene fatta dopo aver osservato l’AUC.', '',
-             ('Il confronto principale **opai_matched_primary** usa gli stessi originali e le stesse trasformazioni OpAI: '
-              'un negativo è la versione positiva ulteriormente corrotta, e conserva lo stesso originale del positivo. '
-              'Si includono soltanto positivi collegati ad almeno un negativo applicabile. Questo riduce il confondente del corpus, '
-              'ma la separazione può ancora dipendere dalle perturbazioni artificiali.' if primary == 'opai_matched_primary' else
-              '**Limite principale:** positivi OpAI e negativi MGTBench provengono da corpora diversi; un’AUC elevata può riflettere corpus, dominio, lunghezza o editor. '
-              'Questa AUC non basta a stimare gli errori sugli humanizer.'), '',
-             'Le analisi mixed_corpus_secondary e subtle_cross_corpus_secondary conservano il confondente OpAI/MGTBench e sono diagnostiche. '
-             'I domini senza entrambe le classi non producono un’AUC di dominio. '
-             'L’AUC aggregata dipende dalla composizione osservata dei tipi di alterazione; non stima una prevalenza reale degli errori degli humanizer. '
-             'Le AUC stratificate evitano che un buon risultato sulle negazioni nasconda errori su numeri, quantificatori o cautele.', '',
-             (f'Nel campione OpAI appaiato, **{easy_count}/{len(matched_negatives)} negativi** sono negazioni o sostituzioni di entità. '
-              'La metrica principale assegna uguale peso alle fonti entro ciascuna classe, ma rimane dipendente dalla composizione degli errori. '
-              'Il confronto separato dei soli sottili sotto riduce questa dominanza.' if len(matched_negatives) else ''), '',
-             '## AUC sul test separato', '',
-             'Classe 1 = alterazione intenzionale; un valore più alto dello score di rischio significa maggiore alterazione. '
-             'AUC 0,5 indica ranking casuale; valori inferiori non sono ribaltati. IC 95% bootstrap percentile per fonte. '
-             'Nei campioni appaiati finiti il ricampionamento può spostare gli IC, soprattutto per AUC deboli vicino a 0,5, '
-             'e un IC percentile può non contenere la stima puntuale. Non usare questi intervalli per dichiarare '
-             'ROUGE/BERTScore superiori al caso o piccole differenze fra aggregatori come dimostrate.', '',
-             markdown_table(main[['metric', 'n_pairs', 'n_sources', 'auc', 'ci_low', 'ci_high']]), '',
-             selection_text, '',
-             'Il confronto di tutti gli aggregatori sul test è descrittivo; il valore del solo aggregatore scelto in calibration è la valutazione successiva alla scelta. '
-             'La conservazione richiede entrambe le direzioni: per mean/q10/min si prende il supporto minore tra forward e reverse; '
-             'per la quota non supportata si prende la maggiore.', '',
-             '## Controllo difficile entro fonte: sole alterazioni sottili OpAI', '',
-             ('Il cohort opai_matched_subtle_secondary contiene cambi numerici, rafforzamenti di quantificatori, '
-              'rimozioni di cautele e aggiunte di dettagli non supportati, insieme agli **esatti positivi collegati**. '
-              'Usa gli split per fonte già fissati e non introduce confronti OpAI/MGTBench. La sua selezione in calibration è esplorativa, '
-              'non una ricerca di un aggregatore universale.' if len(subtle) else 'Nessun confronto appaiato sottile disponibile.'), '',
-             markdown_table(subtle[['metric', 'n_pairs', 'n_sources', 'auc', 'ci_low', 'ci_high']]) if len(subtle) else '', '',
-             (f"Aggregatore scelto soltanto sulla calibrazione dei sottili: **{subtle_selection['selected_metric']}**. "
-              'La scelta e la soglia principali vengono inoltre trasferite a questo test senza riottimizzazione nella sezione successiva.'
-              if subtle_selection else ''), '',
-             (f"Nel test ci sono soltanto **{heldout_counts.get('matched_unsupported_detail', 0)} aggiunte di dettaglio** e "
-              f"**{heldout_counts.get('matched_hedge_removal', 0)} rimozioni di cautela**. "
-              'Un’AUC su un solo caso non è conclusiva; gli IC bootstrap sono omessi quando una classe ha meno di cinque fonti. '
-              'Fra cinque e nove fonti i risultati sono esplicitamente piccoli campioni esplorativi. '
-              '`auc_by_stratum.csv` conserva i conteggi di coppie e fonti per ciascuna classe e la nota di incertezza.'
-              if len(subtle) else ''), '',
-             '## Falsi allarmi sulle buone riscritture', '',
-             f'Per ciascuna metrica la soglia è fissata sui soli positivi di calibration, mirando a FPR ≤ {selection["target_calibration_false_positive_rate"]:.0%}. '
-             'Si segnala alterazione solo quando il rischio supera strettamente la soglia; i pareggi sono conservativi. '
-             'Sul test si misurano FPR (riscritture presunte buone segnalate) e sensibilità alle alterazioni. Non sono tassi su parafrasi certificate da annotatori.', '',
-             markdown_table(operating[['metric', 'threshold', 'false_positive_rate', 'sensitivity', 'balanced_accuracy']]), '',
-             'I falsi allarmi per Polish, Paraphrase e Style separatamente e la sensibilità per tipo di alterazione '
-             'sono in `operating_points_by_operation.csv`, sempre con soglia fissata dalla calibrazione globale.', '',
-             '### Allarmi su tutti i controlli positivi OpAI', '',
-             f'Il confronto AUC principale usa {linked_positive_n} positivi collegati a una corruzione applicabile. '
-             f'Per misurare gli allarmi sull’intera popolazione positiva, `positive_controls_all_fpr.csv` include tutti '
-             f'i {selection["all_positive_controls_n_pairs"]} positivi OpAI, anche quelli senza negativo appaiato: '
-             'calibration e test, nel complesso e separatamente per Polish, Paraphrase e Style. '
-             'La soglia è **quella già fissata sulla calibrazione principale** e non viene ricalibrata su questa popolazione più ampia. '
-             f'La FPR di calibrazione sull’intera popolazione non è quindi forzata al {selection["target_calibration_false_positive_rate"]:.0%}; il test resta separato. '
-             'Sono allarmi su riscritture presumibilmente conservative, non falsi allarmi certificati da annotazione umana.', '',
-             markdown_table(all_positive_test[['metric', 'n_presumed_preserved', 'n_sources', 'false_positive_rate', 'n_alerts']]), '',
-             '## Trasferimento della scelta primaria', '',
-             'La stessa metrica e la stessa soglia scelte in calibration sul confronto principale vengono applicate anche '
-             'ai test secondari, senza riottimizzazione. I confronti MGTBench/OpAI restano confusi dal corpus e servono come diagnostica.', '',
-             markdown_table(pd.DataFrame(selection['selected_primary_transfer'])[
-                 ['test_cohort', 'selected_metric', 'auc', 'ci_low', 'ci_high', 'false_positive_rate', 'sensitivity']])
-             if selection['selected_primary_transfer'] else 'Nessun trasferimento valutabile.', '',
-             '## Sensibilità alla revisione diretta delle perturbazioni', '',
-             ('Sono disponibili 40 coppie lette direttamente dall’assistente senza usare i punteggi individuali, '
-              '**non un’annotazione umana né un gold indipendente**. L’analisi principale conserva tutti i casi intenzionalmente alterati. '
-              'Le tabelle secondarie sotto limitano soltanto i negativi al sottocampione revisionato: prima valid, poi valid+qualified. '
-              'I positivi restano i controlli OpAI, quindi permane il confondente fra corpora; il piccolo campione non consente '
-              'di correggere o certificare le altre perturbazioni. Non viene scelto un nuovo aggregatore su questi sottocampioni.'
-              if len(reviewed) else 'Nessuna revisione testuale con validità esplicita disponibile per questa esecuzione.'), '',
-             markdown_table(reviewed[['cohort', 'metric', 'n_altered', 'n_preserved', 'auc', 'ci_low', 'ci_high']]) if len(reviewed) else '', '',
-             ('Un piccolo audit testuale dei positivi è documentato separatamente in [positive_review9.md](positive_review9.md). '
-              'Anche questo è un giudizio dell’assistente, non annotazione umana. Alcune riscritture possono modificare specificità o agency: '
-              'la FPR resta quindi un tasso di allarmi sui positivi presunti, non un tasso su parafrasi certificate.'
-              if (output / 'positive_review9.md').is_file() else ''), '',
-             '## Correlazioni e lettura delle metriche', '',
-             '![Correlazioni Spearman](metric_spearman.png)', '',
-             'La correlazione è descrittiva, non source-weighted, ed è calcolata sulle coppie valutate senza identità ripetute; '
-             'può essere guidata dalle differenze fra condizioni. La matrice del solo confronto OpAI appaiato è disponibile separatamente. '
-             'BLEU resta nel report per confrontabilità; se ridondante con ROUGE-L e poco discriminante, può diventare una misura secondaria.', '',
-             'Il rescaling BERTScore è una trasformazione affine crescente per ciascuno score con baseline fissa: ne cambia la scala '
-             'e la distanza dalla baseline, **non il ranking e quindi non l’AUC**. Per l’approssimazione documentale a chunk '
-             'la lettura resta distinta dal BERTScore standard su una frase.', '',
-             'L’NLI è supporto aggregato, non una prova logica. Forward basso è compatibile con aggiunte non supportate o modifiche; '
-             'reverse basso è compatibile con omissioni o modifiche: nessuna delle due direzioni identifica da sola la causa. '
-             'Il minimo può essere sensibile a una sola frase difficile; q10 e media possono diluire errori isolati.', '',
-             'File: `metric_auc.csv`, `auc_by_stratum.csv`, `false_positive_rates.csv`, `aggregator_selection.json`, '
-             '`evaluation_pairs.csv`, `metric_definitions.csv`, `metric_spearman.csv`, `operating_points_by_operation.csv`, '
-             '`selected_aggregator_transfer.csv`, `positive_controls_all_fpr.csv`. '
-             'I testi restano nella directory dati ignorata.', '']
-    (output / 'aggregator_report.md').write_text('\n'.join(lines))
     if len(main):
         shown = main[main.metric.isin(CORE_METRICS + ['nli_bidirectional_' + name for name in AGGREGATORS])]
         fig, ax = plt.subplots(figsize=(9, 5))
@@ -537,5 +420,4 @@ def _report(frame, auc_table, thresholds, definitions, selection, output):
         ax.set_title('Test separato: ' + primary)
         fig.tight_layout()
         fig.savefig(output / 'aggregator_auc.png', dpi=170)
-        fig.savefig(output / 'aggregator_auc.pdf')
         plt.close(fig)

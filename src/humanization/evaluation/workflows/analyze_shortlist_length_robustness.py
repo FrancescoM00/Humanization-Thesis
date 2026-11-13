@@ -14,19 +14,21 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'src'))
 os.environ.setdefault('MPLCONFIGDIR', str(ROOT / '.cache/matplotlib'))
 os.environ.setdefault('XDG_CACHE_HOME', str(ROOT / '.cache'))
-from humanization.evaluation.shortlist_robustness_analysis import analyze_results, write_report
+from humanization.evaluation.shortlist_robustness_analysis import analyze_results
+from humanization.evaluation.shortlist_plots import plot_robustness
 
 def _argument_error(message):
     raise ValueError(message)
 
 def run(args):
     if args.results.resolve() != args.output.resolve():
-        shutil.copytree(args.results, args.output, dirs_exist_ok=True)
+        shutil.copytree(args.results, args.output, dirs_exist_ok=True,
+                        ignore=shutil.ignore_patterns('*.md', '*.MD', '*.txt', '*.pdf', '*.tex'))
     if args.protocol is not None and args.protocol.resolve() != (args.output / 'protocol.json').resolve():
         shutil.copyfile(args.protocol, args.output / 'protocol.json')
     summary = analyze_results(args.output, args.protocol, ROOT)
-    report = write_report(args.output, args.protocol)
-    print(json.dumps({'primary_metrics': summary['primary_metrics'], 'macro_differences': summary['macro_differences'], 'parent_C3_reproduced': summary['parent_C3_reproduced'], 'report': str(report)}, ensure_ascii=False, indent=2))
+    figures = plot_robustness(args.output)
+    print(json.dumps({'primary_metrics': summary['primary_metrics'], 'macro_differences': summary['macro_differences'], 'parent_C3_reproduced': summary['parent_C3_reproduced'], 'figures': [str(path) for path in figures]}, ensure_ascii=False, indent=2))
 
 def default_arguments(**overrides):
     from types import SimpleNamespace

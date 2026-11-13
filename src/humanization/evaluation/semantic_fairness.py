@@ -19,7 +19,6 @@ from humanization.evaluation.semantic import (
     source_bootstrap_auc, _source_weights,
 )
 from humanization.semantics.metrics import _sentences
-from humanization.evaluation.reporting import markdown_table
 
 AGGREGATORS = ('mean', 'q10', 'min')
 FAMILIES = ('nli', 'aligned_cosine', 'aligned_bert_f1_rescaled',
@@ -241,7 +240,6 @@ def length_correlations(frame, quality, output, rng, n_bootstrap):
         ax.legend(fontsize=8)
         fig.tight_layout()
         fig.savefig(output/'length_positive_nli.png', dpi=170)
-        fig.savefig(output/'length_positive_nli.pdf')
         plt.close(fig)
     return table
 
@@ -403,11 +401,11 @@ def analyze_fairness(pairs, scores, output, *, seed=42, n_bootstrap=1000, allow_
                'length_adjustment_fitted_only_on_calibration_positives': True,
                'cohorts': {name: {'n_pairs': len(part), 'n_sources': part.source_group.nunique()} for name, part in cohorts.items()}}
     (output/'analysis_manifest.json').write_text(json.dumps(summary, indent=2)+'\n')
-    _plots_and_report(frame, quality, auc, adjusted_auc, length, summary, output)
+    _export_comparisons(auc, output)
     return summary
 
 
-def _plots_and_report(frame, quality, auc, adjusted_auc, length, summary, output):
+def _export_comparisons(auc, output):
     rows = []
     primary = auc[(auc.cohort == 'opai_matched_primary') & (auc.split == 'test')]
     for family in FAMILIES[:3]:
@@ -436,7 +434,6 @@ def _plots_and_report(frame, quality, auc, adjusted_auc, length, summary, output
         ax.legend(fontsize=8)
         fig.tight_layout()
         fig.savefig(output/'fair_aggregation_auc.png', dpi=170)
-        fig.savefig(output/'fair_aggregation_auc.pdf')
         plt.close(fig)
     distributed = auc[auc.cohort.str.startswith('distributed:')].copy()
     if len(distributed):
@@ -463,67 +460,4 @@ def _plots_and_report(frame, quality, auc, adjusted_auc, length, summary, output
                 ax.legend(fontsize=8)
         fig.tight_layout()
         fig.savefig(output/'distributed_aggregators.png',dpi=170)
-        fig.savefig(output/'distributed_aggregators.pdf')
         plt.close(fig)
-    selected_length = length[(length.stratum=='all') & (length.length=='max_sentences') & length.metric.str.endswith('_min')]
-    adjusted_test = adjusted_auc[(adjusted_auc.cohort=='opai_matched_primary') & (adjusted_auc.split=='test')] if len(adjusted_auc) else pd.DataFrame()
-    top3 = primary[primary.metric.str.startswith('aligned_bert_top3_f1_rescaled_bidirectional')]
-    counts = frame.groupby(['dataset','evaluation_split']).agg(n_pairs=('id','size'),n_sources=('source_group','nunique')).reset_index()
-    lines = ['# Confronto equo delle metriche e dipendenza dalla lunghezza','',
-             'Le metriche allineate lavorano sulle stesse frasi/chunk, con massimo supporto/similarità per unità ipotesi e media, q10 o minimo. '
-             'Il confronto principale usa originali e riscritture OpAI appaiati, con sorgenti separate fra calibrazione e test. '
-             'Le etichette rimangono proxy operative, non gold umane.','',
-             '## Campione','',markdown_table(counts),'',
-             '## Stesso aggregatore per similarità e NLI','',markdown_table(comparison),'',
-             '![Confronto equo](fair_aggregation_auc.png)','',
-             'Coseno e BERTScore allineati prendono il massimo su tutte le unità del documento opposto. '
-             'NLI conserva il protocollo precedente: massimo fra fino a tre evidenze recuperate con MiniLM. '
-             'La tabella di sensibilità sotto limita anche BERTScore agli stessi tre candidati NLI. '
-             'I documenti lunghi sono rappresentati da frasi/chunk senza troncamento silenzioso. '
-             'L’aggregazione bidirezionale prende il supporto minore delle due direzioni; tutte le AUC hanno orientamento prefissato.','',
-             markdown_table(top3[['metric','auc','ci_low','ci_high']]) if len(top3) else 'Sensibilità top3 non disponibile.','',
-             'Gli IC sono bootstrap percentile per sorgente. Nei confronti appaiati finiti possono essere spostati, '
-             'specialmente vicino ad AUC 0,5, e non contenere il punto stimato. Non dimostrano differenze piccole fra aggregatori. '
-             'BERTScore riscalato è una trasformazione affine crescente: non cambia ranking o AUC.','',
-             '## Errori concentrati e distribuiti','',
-             'I pannelli common_5_primary ed expanded_common_5_primary usano gli stessi output positivi per K=1,2,3,5: i primi K edit sono annidati e '
-             'riguardano frasi distinte. Le famiglie negazione e sottili sono separate. '
-             'I pannelli applicability_2to4_secondary non sono confrontabili come se avessero la stessa popolazione per ogni K. '
-             'I negativi sono confrontati soltanto con gli esatti positivi collegati, mai con un altro campione di parafrasi.','',
-             'Se presente, expanded_source_panel è il pannello principale per le curve K: usa fonti aggiuntive distinte dai 99 originali '
-             'dei controlli precedenti. Initial_source_panel rimane separato come controllo esplorativo di applicabilità. '
-             'Le due popolazioni non vengono mescolate né confrontate come se cambiassero soltanto K. '
-             'I riferimenti delle fasce di lunghezza restano sempre i 300 positivi originali.','',
-             'Le curve su tutte le fonti sono descrittive e non partecipano ad alcuna scelta dell’aggregatore. '
-             'Il test separato resta la valutazione principale, ma il pannello con cinque frasi applicabili può essere molto piccolo; '
-             'i relativi conteggi e gli avvisi di numerosità sono mantenuti nelle tabelle.','',
-             '![Errori distribuiti](distributed_aggregators.png)' if len(distributed) else 'Punteggi delle corruzioni distribuite non ancora disponibili.','',
-             'Le corruzioni a regole non certificano la distribuzione delle derive degli humanizer reali; aumentare K prova la sensibilità '
-             'alla diffusione dell’errore, non sostituisce una loro valutazione. Dettagli per K/famiglia in `distributed_auc.csv`.','',
-             '## Il minimo dipende dalla lunghezza?','',
-             markdown_table(selected_length[['metric','rho','ci_low','ci_high','n_sources']]),'',
-             '![Lunghezza e minimo](length_positive_nli.png)','',
-             'Il riepilogo principale è Spearman fra medie per sorgente sui soli positivi presunti. '
-             'I risultati per dominio, editor e operazione sono in `length_correlations.csv`. '
-             'Il diagnostico entro sorgente in `length_within_source.csv` centra i ranghi per fonte: non è una stima causale della lunghezza '
-             'e può essere poco informativo se quasi nessuna fonte cambia numero di frasi. '
-             'Una correlazione fra lunghezza e minimo può dipendere anche da contenuto o difficoltà; non va attribuita automaticamente al modello.','',
-             '## Normalizzazione esplorativa per fasce','',
-             'I confini delle fasce sono i tercili pesati del numero massimo di frasi fra originale e riscrittura, '
-             'appresi soltanto dai positivi di calibrazione. Ogni supporto diventa il suo percentile empirico pesato entro fascia; '
-             'le fasce troppo piccole ripiegano sulla calibrazione positiva complessiva. '
-             'È un punteggio continuo relativo a OpAI, non una probabilità di correttezza né una soglia universale. '
-             'I parametri sono in `length_calibration.json` e `length_calibration_reference.csv`.','',
-             markdown_table(adjusted_test[['metric','auc','ci_low','ci_high']]) if len(adjusted_test) else 'Non disponibile.','',
-             'Le AUC entro fascia sono in `within_length_bin_auc.csv`; questo controllo non usa le etichette del test per adattare il percentile.','',
-             '## Suite: punteggi continui e distribuzioni','',
-             '**L’output primario è continuo.** `continuous_score_distributions.csv` riporta quantili per editor, operazione, condizione e split. '
-             'Gli editor OpAI non sono humanizer intercambiabili: DIPPER e altri humanizer non sono stati eseguiti qui. '
-             'La precedente soglia 0,04075 rimane soltanto nel file storico diagnostico, senza essere adottata come risultato trasferibile. '
-             'Qualunque soglia operativa futura richiede una calibrazione sulla distribuzione bersaglio.','',
-             'Le guardie lessicali complementari e il loro confronto con NLI sono in `guards_full/`: '
-             'rilevano cambi di cautele, negazioni, valori numerici e quantificatori, senza certificare da sole un errore semantico.','',
-             'File completi: `fair_metric_auc.csv`, `fair_primary_comparison.csv`, `fair_auc_by_stratum.csv`, '
-             '`length_adjusted_auc.csv`, `continuous_score_distributions.csv`, `analysis_manifest.json`. '
-             'Le valutazioni precedenti sono conservate come esperimenti storici.','']
-    (output/'report.md').write_text('\n'.join(lines))

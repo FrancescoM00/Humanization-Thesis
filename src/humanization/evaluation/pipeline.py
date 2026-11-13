@@ -11,12 +11,11 @@ def run(config):
         analyze_scores(path('data/processed/nli_calibration'),path('results/published/08_nli_calibration/calibration/contextual_nli.csv'),out,bootstrap=n,seed=seed)
         return record(out,config,mode,models_executed=False,metrics_computed=True)
     if config.get('analysis')=='hedging':
-        from .hedging import analyze,write_report
+        from .hedging import analyze,plot_support_distributions
         source=path('results/published/hedging')
         import shutil
         for name in ['preparation_manifest.json','replacements.csv']:shutil.copy2(source/name,out/name)
-        if (source/'discussione.md').is_file():shutil.copy2(source/'discussione.md',out/'discussione.md')
-        analyze(source/'pairs.jsonl',source/'nli.csv',out,path('configs/protocols/hedging.json'),source/'assistant_review.csv');write_report(out)
+        analyze(source/'pairs.jsonl',source/'nli.csv',out,path('configs/protocols/hedging.json'),source/'assistant_review.csv');plot_support_distributions(out)
         return record(out,config,mode,models_executed=False,metrics_computed=True)
     source=path(config['source']) if mode=='reproduce' else path(config['run_dir'])
     if mode!='reproduce':

@@ -183,14 +183,6 @@ def paired_changes(a, b, bootstrap, seed):
             rows.append({'metric': metric, 'n_pairs': int(delta.notna().sum()), 'n_sources': len(values), 'mean_clean_minus_v1': values.mean(), 'ci_low': ci[0], 'ci_high': ci[1]})
     return (paired, pd.DataFrame(rows))
 
-def table(frame, columns=None):
-    if columns:
-        frame = frame[columns]
-
-    def cell(value):
-        return f'{value:.6f}' if isinstance(value, (float, np.floating)) else str(value)
-    return '\n'.join(['| ' + ' | '.join(frame.columns) + ' |', '| ' + ' | '.join(['---'] * len(frame.columns)) + ' |', *['| ' + ' | '.join((cell(x) for x in row)) + ' |' for row in frame.itertuples(index=False, name=None)]])
-
 def _argument_error(message):
     raise ValueError(message)
 
@@ -248,15 +240,6 @@ def run(args):
     pd.DataFrame(distribution).to_csv(output / 'entity_policy_type_distribution.csv', index=False)
     pd.DataFrame(coverage).to_csv(output / 'entity_policy_coverage.csv', index=False)
     pd.DataFrame(skip_details, columns=['policy', 'reason', 'count']).to_csv(output / 'entity_policy_skip_reasons.csv', index=False)
-    report = ['# Confronto fra sostituzioni di entità v1 e clean', '', 'Le sole condizioni autorizzate a cambiare sono entity_substitution e il relativo controllo identità locale. La coorte e tutte le altre coppie, incluse fixture e OpAI, sono confrontate per ID e contenuto integrale.', '', f'**Invarianza verificata:** {len(ids)} coppie non-entity esattamente identiche; {len(invariant)} colonne di metriche entro atol={args.atol:g}, rtol={args.rtol:g}. I contatori cumulativi di lavoro non sono metriche semantiche e sono esclusi.', '', '## Copertura sulla stessa coorte', '', table(pd.DataFrame(coverage)), '', 'I casi non applicabili della politica clean sono saltati esplicitamente, senza rimpiazzare le fonti. Il confronto principale seguente usa solo le fonti applicabili a entrambe le politiche; le medie all_applied nel CSV sono descrittive e possono riflettere selezione diversa.', '', '## Metriche sulle stesse fonti', '']
-    reuse_path = args.clean_output / 'unchanged_alignment_reuse.json'
-    if reuse_path.exists():
-        reuse = json.loads(reuse_path.read_text())
-        report[-2:-2] = ['## Retrieval mantenuto fisso sui controlli', '', f"Prima di pianificare l'NLI, {reuse['n_unchanged_pairs_reused']} coppie integralmente identiche hanno riusato il retrieval storico, dopo verifica di checkpoint, provenienza del codice, equivalenza numerica degli embedding, hash degli input, chunk, budget e top-k. Coseno e BERTScore sono stati ricalcolati; nessun punteggio NLI è stato usato per scegliere le evidenze. Le nuove sostituzioni clean e i loro controlli locali mantengono retrieval appena calcolato.", '', f"Prima del congelamento differivano {reuse['candidate_index_arrays_differ_before_freeze']} array candidati in {reuse['pairs_with_different_candidate_arrays']} coppie; I testi delle evidenze differivano in {reuse['candidate_text_sets_differ_before_freeze']} casi. Questo evita di cambiare un fattore estraneo alla policy a causa di pareggi numerici. Dettagli in unchanged_alignment_reuse.json; allineamento ricalcolato conservato separatamente.", '', 'Gli hash storici e attuali del modulo embedding coincidono.' if reuse['historical_embedding_code_hash_matches'] else "Il vecchio hash del modulo embedding è diverso e quel sorgente non è archiviato: non si sostiene un'equivalenza AST del codice storico. Il modulo usato dall'NLI storico coincide con quello attuale; si riusa il suo piano di evidenze su input e chunk identici, con coseni ricalcolati equivalenti entro la tolleranza dichiarata.", '']
-    display = summary[summary.scope == 'common_sources'].pivot(index='metric', columns='policy', values='mean').reset_index()
-    display = display.merge(deltas, on='metric', validate='one_to_one')
-    report += [table(display, ['metric', 'v1', 'clean', 'mean_clean_minus_v1', 'ci_low', 'ci_high', 'n_sources']), '', 'Gli IC sono bootstrap appaiati per gruppo sorgente. Un calo del supporto non dimostra da solo che la perturbazione sia semanticamente valida: nessun punteggio NLI viene usato come gold label. Le categorie di entità e la frase bersaglio possono cambiare fra politiche anche sulla stessa fonte.', '', 'Il minimo bidirezionale è min(nli_forward_min, nli_reverse_min). La probabilità locale principale è local_nli_forward_mean; sono riportati anche reverse e minimo delle due direzioni. Coseno e BERTScore sono distinti fra documento e frase alterata. BERTScore qui usa lo stesso protocollo non riscalato del run storico, per un confronto omogeneo.', '', '## Distribuzione delle categorie', '', table(pd.DataFrame(distribution)), '', 'La politica clean limita le categorie e può modificare più menzioni coreferenti. Non certifica la coreferenza o la verità dei fatti; le corruzioni restano condizioni sperimentali.', '', '## Riproduzione', '', '```bash', 'python experiments/02_semantic_validation.py --mode reproduce --analysis entity_clean', '```', '']
-    (output / 'entity_policy_comparison.md').write_text('\n'.join(report).rstrip() + '\n')
     manifest = {'unchanged_nonentity_input_pairs': len(ids), 'unchanged_metric_columns': len(invariant), 'semantic_metrics_unchanged_within_tolerance': True, 'atol': args.atol, 'rtol': args.rtol, 'runtime_counters_excluded': sorted(COUNTERS), 'coverage': coverage, 'comparison_uses_common_sources': True, 'bootstrap': args.bootstrap, 'labels_are_not_gold_semantic_annotations': True}
     (output / 'entity_policy_comparison_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(json.dumps(manifest, indent=2))

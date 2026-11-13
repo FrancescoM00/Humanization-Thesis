@@ -27,7 +27,6 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from transformers import AutoTokenizer
 from humanization.semantics.metrics import _nli_jobs
-from humanization.evaluation.reporting import markdown_table
 
 def expected_minimum(values, m):
     values = np.sort(np.asarray(values, dtype=float))
@@ -44,8 +43,8 @@ def run(args):
     output.mkdir(parents=True, exist_ok=True)
     pairs = [json.loads(x) for x in (data / 'positive_pairs.jsonl').read_text().splitlines()]
     alignment = json.loads((data / 'alignment.json').read_text())
-    lines = (data / 'nli_probability_cache.jsonl').read_text().splitlines()
-    probabilities = {x['key']: x['probabilities'] for x in map(json.loads, lines[1:])}
+    cache_rows = (data / 'nli_probability_cache.jsonl').read_text().splitlines()
+    probabilities = {x['key']: x['probabilities'] for x in map(json.loads, cache_rows[1:])}
     config = json.loads((ROOT / 'data/models/nli/config.json').read_text())
     entailment = next((int(i) for i, label in config['id2label'].items() if label.lower() == 'entailment'))
     tokenizer = AutoTokenizer.from_pretrained(ROOT / 'data/models/nli', local_files_only=True)
@@ -108,10 +107,7 @@ def run(args):
     axes[0].set_ylabel('Minimo atteso, stesse coppie positive')
     fig.tight_layout()
     fig.savefig(output / 'multiplicity.png', dpi=180)
-    fig.savefig(output / 'multiplicity.pdf')
     plt.close(fig)
-    text = ['# Numero di opportunità: controllo entro la stessa coppia', '', 'Si usano soltanto coppie OpAI presunte conservative con almeno 40 unità ipotesi complessive nelle due direzioni. La coorte è identica per tutti i modelli e tutti i valori di m. Le evidenze e i punteggi delle unità rimangono fissi: si calcola esattamente il minimo atteso su un sottoinsieme uniforme di m unità, senza sostituirle e senza nuove inferenze. Le direzioni sono riunite: m conta ipotesi verificate, non frasi uniche del documento.', '', markdown_table(table), '', markdown_table(contrast), '', '![Effetto del numero di ipotesi](multiplicity.png)', '', 'La monotonia del minimo è una proprietà matematica; qui si quantifica la sua entità sui punteggi osservati, a contenuto e qualità della coppia fissi. La media delle unità ha invece aspettativa costante per costruzione. Questo non è un esperimento su documenti troncati né dimostra accuratezza semantica. Gli IC ricampionano le sorgenti, mantenendo insieme editor e operazioni.']
-    (output / 'report.md').write_text('\n'.join(text) + '\n')
     print(table.to_string(index=False))
     print(contrast.to_string(index=False))
 

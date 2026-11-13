@@ -15,19 +15,20 @@ sys.path.insert(0, str(ROOT / 'src'))
 os.environ.setdefault('MPLCONFIGDIR', str(ROOT / '.cache/matplotlib'))
 os.environ.setdefault('XDG_CACHE_HOME', str(ROOT / '.cache'))
 from humanization.evaluation.shortlist_statistics import analyze_results
-from humanization.evaluation.shortlist_reporting import write_report
+from humanization.evaluation.shortlist_plots import plot_shortlist
 
 def _argument_error(message):
     raise ValueError(message)
 
 def run(args):
     if args.results.resolve() != args.output.resolve():
-        shutil.copytree(args.results, args.output, dirs_exist_ok=True)
+        shutil.copytree(args.results, args.output, dirs_exist_ok=True,
+                        ignore=shutil.ignore_patterns('*.md', '*.MD', '*.txt', '*.pdf', '*.tex'))
     if args.protocol is not None and args.protocol.resolve() != (args.output / 'protocol.json').resolve():
         shutil.copyfile(args.protocol, args.output / 'protocol.json')
     summary = analyze_results(args.output, args.protocol)
-    report = write_report(args.output, args.protocol)
-    print(json.dumps({'primary_metrics': summary['primary_metrics'], 'report': str(report), 'elapsed_seconds': summary['elapsed_seconds']}, indent=2, ensure_ascii=False))
+    figures = plot_shortlist(args.output, args.protocol)
+    print(json.dumps({'primary_metrics': summary['primary_metrics'], 'figures': [str(path) for path in figures], 'elapsed_seconds': summary['elapsed_seconds']}, indent=2, ensure_ascii=False))
 
 def default_arguments(**overrides):
     from types import SimpleNamespace

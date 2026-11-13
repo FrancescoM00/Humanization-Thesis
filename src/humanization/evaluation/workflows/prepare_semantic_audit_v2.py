@@ -181,7 +181,32 @@ def select_candidates(candidates, *, reference_per_cell=1, diagnostic_size=100, 
     if not summary['diagnostic_target_met']:
         summary['warning'] = 'Diagnostic target not reached: finite remaining capacity and complete-source grouping; no duplicated or fabricated pairs.'
     return (selected, summary)
-INSTRUCTIONS = "# Revisione semantica v2\n\nLe due schede contengono le stesse coppie, con ordine diverso e giudizi vuoti.\nConsegnare una sola copia a ciascun valutatore; i lettori lavorano indipendentemente,\nsenza consultare chiave, score, report, commenti dell'assistente o giudizi altrui.\nDue annotatori della stessa coppia non creano due fonti indipendenti.\n\nIn `input_type_prose_instructions_mixed` usare prose/instructions/mixed.\nIn `semantic_preserved_yes_partial_no` usare yes (informazioni e forza conservate),\npartial (quadro principale conservato ma informazioni rilevanti alterate, omesse\no aggiunte), no (contenuto ampiamente alterato o cambio di compito). Fusione e\ndivisione delle frasi sono ammesse se il contenuto rimane. Non giudicare soltanto\nla lunghezza; rimuovere ripetizioni può conservare l'informazione unica.\n\nIn `error_type` indicare omission, unsupported_addition, number_value, number_bound,\nentity, negation, hedging_or_claim_strength, task_shift o other, anche più d'uno.\nNelle note citare il punto preciso e l'eventuale ambiguità. Si valuta fedeltà al\npassaggio, non verità esterna o naturalezza. Non copiare il verdetto da NLI.\n\nConservare ID e testi esatti. Le etichette vuote non sono risultati. La chiave\ntenuta separatamente identifica il campione reference, scelto senza score, e\nquello diagnostic, arricchito per casi problematici: non usarli come un unico\ntest casuale. La chiave permette anche di riconoscere coppie già annotate nelle\nprecedenti schede e di evitare il doppio conteggio di giudizi dello stesso lettore.\n"
+ANNOTATION_SCHEMA = {
+    'columns': FORM_COLUMNS,
+    'allowed_values': {
+        'input_type_prose_instructions_mixed': ['prose', 'instructions', 'mixed'],
+        'semantic_preserved_yes_partial_no': ['yes', 'partial', 'no'],
+        'error_type': ['omission', 'unsupported_addition', 'number_value', 'number_bound',
+                       'entity', 'negation', 'hedging_or_claim_strength', 'task_shift', 'other'],
+    },
+    'semantic_labels': {
+        'yes': 'informazioni e forza delle affermazioni conservate',
+        'partial': 'quadro principale conservato con informazioni rilevanti alterate, omesse o aggiunte',
+        'no': 'contenuto ampiamente alterato o cambio di compito',
+    },
+    'multiple_error_types_allowed': True,
+    'sentence_merging_and_splitting_allowed_if_meaning_preserved': True,
+    'removing_redundancy_allowed_if_unique_information_preserved': True,
+    'assessment_target': 'fedeltà al passaggio originale',
+    'external_truth_or_naturalness_assessed': False,
+    'preserve_ids_and_texts': True,
+    'notes_require_evidence_and_ambiguities': True,
+    'annotators_work_independently': True,
+    'scores_keys_and_other_judgments_hidden': True,
+    'blank_labels_are_results': False,
+    'repeated_judgments_do_not_add_independent_sources': True,
+    'reference_and_diagnostic_samples_analyzed_separately': True,
+}
 
 def csv_text(rows, columns):
     handle = io.StringIO(newline='')
@@ -205,7 +230,7 @@ def prepare_audit(pair_paths, score_paths, output, *, reference_per_cell=1, diag
         form.update(review_id=review_id, original=row['original'], modified=row['modified'])
         forms.append(form)
         key.append(dict(review_id=review_id, **{k: v for k, v in row.items() if k not in {'original', 'modified'}}))
-    files = {'ISTRUZIONI.md': INSTRUCTIONS, 'selection_key.csv': csv_text(key, list(key[0]))}
+    files = {'annotation_schema.json': json.dumps(ANNOTATION_SCHEMA, ensure_ascii=False, indent=2) + '\n', 'selection_key.csv': csv_text(key, list(key[0]))}
     for annotator in ['A', 'B']:
         ordered = sorted(forms, key=lambda r: rank(seed, f'annotator-{annotator}-order', r['review_id']))
         files[f'semantic_audit_annotator_{annotator}.csv'] = csv_text(ordered, FORM_COLUMNS)
@@ -220,7 +245,7 @@ def prepare_audit(pair_paths, score_paths, output, *, reference_per_cell=1, diag
     for name, body in files.items():
         (output / name).write_text(body)
     with zipfile.ZipFile(output / 'annotation_forms.zip', 'w', compression=zipfile.ZIP_DEFLATED) as archive:
-        for name in ['semantic_audit_annotator_A.csv', 'semantic_audit_annotator_B.csv', 'ISTRUZIONI.md']:
+        for name in ['semantic_audit_annotator_A.csv', 'semantic_audit_annotator_B.csv', 'annotation_schema.json']:
             info = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(info, files[name].encode())
