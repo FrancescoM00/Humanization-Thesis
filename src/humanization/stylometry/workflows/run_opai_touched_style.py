@@ -1,4 +1,3 @@
-"""Feature e distanze locali OpAI da array originali delle frasi già verificati."""
 from __future__ import annotations
 import argparse
 from collections import Counter
