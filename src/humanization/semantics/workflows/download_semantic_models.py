@@ -1,8 +1,4 @@
-"""Scarica file pubblici di modelli con revisione fissata tramite HTTPS verificato.
 
-Non modifica mai le regole di rete, non registra URL di redirect firmati e
-non abilita codice remoto.
-"""
 from __future__ import annotations
 import argparse
 import hashlib
